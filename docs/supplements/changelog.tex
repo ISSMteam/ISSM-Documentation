@@ -1,0 +1,381 @@
+% Just The Docs Front Matter
+% title: Changelog
+% parent: Supplements
+% has_children: false
+% has_toc: false
+
+\section{Changelog} \label{sec:supplements-changelog}
+\subsection*{ISSM 4.23 (Release 2023-11-15)}
+\subsubsection{New features/enhancements}
+\begin{itemize}
+\item Added support for more controls (Automatic Differentiation)
+\item SHAKTI now works also with 3D meshes
+\item Added interpolation routines for common datasets in \lstinlinebg|src/m/modeldata|
+\item GlaDS: added turbulent/laminar flag
+\end{itemize}
+\subsubsection{External packages}
+\begin{itemize}
+\item Better partial support for Mac with Apple Silicon chips
+\item Added support for PETSc 3.19
+\end{itemize}
+
+\subsection*{ISSM 4.22 (Release 2022-10-27)}
+\subsubsection{New features/enhancements}
+\begin{itemize}
+\item Added adaptive time stepping support for GlaDS
+\item Added Debris modeling for mountain glaciers (still under development)
+\item Added autoregressive moving average statistical models for generation of SMB, thermal forcing, and floating ice melt rates
+\item Ability to couple thermal forcing between frontal forcings and Beckmann-Goosse floating ice melt rates
+\end{itemize}
+
+\subsection*{ISSM 4.21 (Release 2022-08-26)}
+\subsubsection{New features/enhancements}
+\begin{itemize}
+\item Glacier Energy and Mass Balance (GEMB v1.0): A model of firn processes for cryosphere research
+\end{itemize}
+Technical release, no other major change.
+
+\subsection*{ISSM 4.20 (Release 2022-06-01)}
+\subsubsection{New features/enhancements}
+\begin{itemize}
+\item Improved detection of icebergs
+\item Added new stabilization methods for the level set equation
+\item Improved implementation of some discrete calving laws
+\item \emph{NOTE}: \lstinlinebg|contourlevelzero.m| and \lstinlinebg|expcontourlevelzero.m| are now merged into \lstinlinebg|isoline.m|
+\item Improved usage of \lstinlinebg|plotmodel| for transient results. For example: \lstinlinebg|plotmodel(md, 'data', 'Vel', 'steps', 1, 'icefront', '-k', 'groundingline', '-r')|
+\item AD/CoDiPack now works with checkpointing with multiple cost functions
+\end{itemize}
+\subsubsection{External packages}
+\begin{itemize}
+\item Added support for PETSc 3.16 and 3.17
+\item Partial support for Mac with Apple Silicon chips
+\end{itemize}
+
+\subsection*{ISSM 4.19 (Release 2021-12-23)}
+\subsubsection{New features/enhancements}
+\begin{itemize}
+\item Improved ISSM's performance and scalability
+\item Python 3 is now default python version
+\item Started stochastic forcings
+\item Starting Julia interface
+\end{itemize}
+\subsubsection{External packages}
+\begin{itemize}
+\item Added support for PETSc 3.15
+\item Added support for CoDiPack 2.0
+\end{itemize}
+
+\subsection*{ISSM 4.18 (Release 2020-12-08)}
+\subsubsection{Important Name change}
+\begin{itemize}
+\item \emph{NOTE}: we have simplified \lstinlinebg|md.mask| to accommodate sea level calculations \lstinlinebg|md.mask.groundedice_levelset| is now \lstinlinebg|md.mask.ocean_levelset| so that:
+\begin{itemize}
+\item \lstinlinebg|md.mask.ocean_levelset > 0| and \lstinlinebg|md.mask.ice_levelset > 0| : ice-free land
+\item \lstinlinebg|md.mask.ocean_levelset > 0| and \lstinlinebg|md.mask.ice_levelset < 0| : grounded ice
+\item \lstinlinebg|md.mask.ocean_levelset < 0| and \lstinlinebg|md.mask.ice_levelset > 0| : ocean
+\item \lstinlinebg|md.mask.ocean_levelset < 0| and \lstinlinebg|md.mask.ice_levelset < 0| : floating ice
+\end{itemize}
+Old models are automatically converted to this new convention. Make sure to update your parameter files (you only need to rename \lstinlinebg|md.mask.groundedice_levelset| to \lstinlinebg|md.mask.ocean_levelset|, no change of sign required).
+\end{itemize}
+\begin{itemize}
+\item For the Schoof friction law, we now use $C^2$ instead of $C$ so make sure to take the square root of \lstinlinebg|md.friction.C| if you are loading an old model.
+\end{itemize}
+\subsubsection{External packages}
+\begin{itemize}
+\item Added support for PETSc 3.12, 3.13 and 3.14. mpich is now installed through PETSc
+\end{itemize}
+\subsubsection{Other}
+\begin{itemize}
+\item Added checkpointing capability for CoDiPack
+\end{itemize}
+
+\subsection*{ISSM 4.17 (Release 2020-04-01)}
+\subsubsection{Other}
+\begin{itemize}
+\item Entirely rewrote the management of inputs in the C++ code, which should significantly improve the efficiency of 3D models.
+\item \emph{NOTE}: You will need to recompile triangle in externalpackages (See \href{https://issm.ess.uci.edu/forum/d/239-update-to-triangle}{ISSM Forum} for instructions to update your configuration after updating).
+\end{itemize}
+
+\subsection*{ISSM 4.16 (Release 2019-11-01)}
+\subsubsection{New features}
+\begin{itemize}
+\item ocean undercutting now has its own class \lstinlinebg|md.frontalforcings|
+\item Added support for Python 3
+\item Added Schoof and Tsai friction law
+\item Added ISMIP6 sub-shelf melting rates
+\item Added ice front and grounding line flux as possible output (\lstinlinebg|'TotalCalvingFluxLevelset'| and \lstinlinebg|'GroundinglineMassFlux'|)
+\item Added GlaDS subglacial hydrology solver
+\end{itemize}
+\subsubsection{Other}
+\begin{itemize}
+\item Significantly improved the scaling of ISSM thanks to feedback from Martin Rueckamp.
+\end{itemize}
+
+\subsection*{ISSM 4.15 (Release 2018-10-05)}
+\subsubsection{New features}
+\begin{itemize}
+\item Integrated CoDiPack and MeDiPack for automatic differentiation
+\item Added PDD Scheme from SICOPOLIS
+\end{itemize}
+
+\subsection*{ISSM 4.14 (Release 2018-08-28)}
+\subsubsection{New features}
+\begin{itemize}
+\item implemented sea level solver
+\item implemented different melt interpolation at elements crossing the grounding line
+\item Added PICO and PICOP melt parameterizations
+\end{itemize}
+\subsubsection{Other}
+\begin{itemize}
+\item \lstinlinebg|hydrologysommers()| has been renamed \lstinlinebg|hydrologicalshakti()|
+\item \emph{NOTE}: we now have to specify the melt and friction parameterization at the grounding line. You should use the defaults:
+\begin{itemize}
+\item \lstinlinebg|md.groundingline.melt_interpolation = 'NoMeltOnPartiallyFloating';|
+\item \lstinlinebg|md.groundingline.friction_interpolation = 'SubelementFriction1';|
+\end{itemize}
+\item \emph{NOTE}: Python users are now responsible for using their own Python package and make sure that SciPy and NumPy are correctly installed. The respective directories in \lstinlinebg|externalpackages/| will be removed. We have updated the instructions on the installation page.
+\end{itemize}
+
+\subsection*{ISSM 4.13 (Release 2018-05-10)}
+\subsubsection{New features}
+\begin{itemize}
+\item \emph{NOTE}: material parameters B, D and E are not averaged over the elements anymore, if you have non-uniform fields, your results will be different with this new version of ISSM
+\item new capability to compute 3-D crustal motions induced by the applied surface loads (\lstinlinebg|md.esa|)
+\item new capability to compute sea-level "fingerprint" induced by land hydrological changes (including ice melting) on elastically-compressible, self-gravitating, rotating Earth (\lstinlinebg|md.slr|)
+\item new class for adaptive (bounded) time stepping: \lstinlinebg|timesteppingadaptive|
+\item new Adaptive mesh refinement capability, not fully supported yet
+\item Implemented PICO ice shelf melt rate parameterization
+\end{itemize}
+\subsubsection{Important bug fix}
+\begin{itemize}
+\item Fixed a significant memory leak when \lstinlinebg|md.transient.output_frequency| is greater than 1
+\end{itemize}
+\subsubsection{Other}
+\begin{itemize}
+\item class \lstinlinebg|settings| has been renamed \lstinlinebg|issmsettings| to avoid shadowing MATLAB's settings function. Make sure to change \lstinlinebg|md.settings.output_frequency| when you load old models as this field cannot be recovered.
+\item we removed \lstinlinebg|md.stressbalance.viscosity_overshoot|, which does not speed up simulations and makes FS crash
+\end{itemize}
+
+\subsection*{ISSM 4.12 (Release 2017-05-19)}
+\subsubsection{New features}
+\begin{itemize}
+\item Higher order finite elements for thermal models (P1xP2 and P1xP3)
+\item Adaptive mesh refinement (still under development)
+\end{itemize}
+\subsubsection{Other}
+\begin{itemize}
+\item Upgraded to mpich 3.2
+\end{itemize}
+
+\subsection*{ISSM 4.11 (Release 2016-11-04)}
+\subsubsection{New features}
+\begin{itemize}
+\item Added new anisotropic rheology law ESTAR (publication in preparation)
+\end{itemize}
+\subsubsection{Important bug fix}
+\begin{itemize}
+\item For flowline models, the SSA and HO effective strain rates were not accounting for $\dot{\varepsilon}_{zz}$. This is now fixed.
+\end{itemize}
+\subsubsection{Other}
+\begin{itemize}
+\item \emph{NOTE}: All Enums have been removed from MATLAB and python. When you want to call \lstinlinebg|solve|, you now need to replace the Enum by one of the following strings:
+\begin{itemize}
+\item \lstinlinebg|'Stressbalance'|      or \lstinlinebg|'sb'|
+\item \lstinlinebg|'Masstransport'|      or \lstinlinebg|'mt'|
+\item \lstinlinebg|'Thermal'|            or \lstinlinebg|'th'|
+\item \lstinlinebg|'Steadystate'|        or \lstinlinebg|'ss'|
+\item \lstinlinebg|'Transient'|          or \lstinlinebg|'tr'|
+\item \lstinlinebg|'Balancethickness'|   or \lstinlinebg|'mc'|
+\item \lstinlinebg|'Balancevelocity'|    or \lstinlinebg|'bv'|
+\item \lstinlinebg|'BedSlope'|           or \lstinlinebg|'bsl'|
+\item \lstinlinebg|'SurfaceSlope'|       or \lstinlinebg|'ssl'|
+\item \lstinlinebg|'Hydrology'|          or \lstinlinebg|'hy'|
+\item \lstinlinebg|'DamageEvolution'|    or \lstinlinebg|'da'|
+\item \lstinlinebg|'Gia'|                or \lstinlinebg|'gia'|
+\item \lstinlinebg|'Sealevelrise'|       or \lstinlinebg|'slr'|
+\end{itemize}
+For example: \lstinlinebg|md = solve(md, 'Stressbalance')| is now \lstinlinebg|md = solve(md, 'Stressbalance')| or simply \lstinlinebg|md = solve(md, 'sb')|
+\item upgraded to PETSc 3.7
+\item No need to install MATLAB anymore in externalpackages. You will potentially need to edit your configuring script (\lstinlinebg|configure.sh|) and include the path to MATLAB instead of \lstinlinebg|${ISSM_DIR}/externalpackages/matlab/install|. For example:
+\begin{lstlisting}
+--with-matlab-dir="/Applications/MATLAB_R2015b.app/" \
+\end{lstlisting}
+\end{itemize}
+
+\subsection*{ISSM 4.10 (Release 2016-04-25)}
+\subsubsection{New features}
+\begin{itemize}
+\item Added moving boundary capability based on level set method
+\item Added support for Dakota 6.2
+\end{itemize}
+\subsubsection{Important bug fix}
+\begin{itemize}
+\item Time series of constraints for the vertical velocities were not treated correctly for SSA and HO
+\item 2D SIA has been fixed
+\end{itemize}
+\subsubsection{Other}
+\begin{itemize}
+\item \emph{NOTE}: \lstinlinebg|md.surfaceforcings| has been renamed \lstinlinebg|md.smb|
+\end{itemize}
+
+\subsection*{ISSM 4.9 (Release 2015-02-12)}
+\begin{itemize}
+\item Increase performance by 20-30\%
+\item Minor bug fixes and code enhancements
+\item Replaced \lstinlinebg|md.mesh.hemisphere| by \lstinlinebg|md.mesh.epsg| which gives the EPSG code of the projection being used
+\end{itemize}
+
+\subsection*{ISSM 4.8 (Release 2014-07-30)}
+\begin{itemize}
+\item \emph{NOTE}: \lstinlinebg|md.basalforcings.melting_rate| is now split into:
+\begin{itemize}
+\item \lstinlinebg|md.basalforcings.floatingice_melting_rate| that is applied to floating ice only
+\item \lstinlinebg|md.basalforcings.groundedice_melting_rate| that is applied to grounded ice only
+\end{itemize}
+\item Upgraded to PETSc 3.5
+\item Added support for MATLAB 2014
+\item Added analytical validation tests
+\item Added new surface mass balance parameterization classes
+\item Minor bug fixes
+\end{itemize}
+
+\subsection*{ISSM 4.7 (Release: 2014-05-13)}
+Release for the ISSM workshop:
+\begin{itemize}
+\item Added m1qn3 optimization algorithm
+\item Minor bug fixes
+\end{itemize}
+
+\subsection*{ISSM 4.6 (Release: 2014-04-22)}
+\subsubsection{New features}
+\begin{itemize}
+\item Improved Taylor Hood Full-Stokes elements in 3d
+\item Implemented SSA and HO model in 2d flowband
+\item Added Cuffey and Paterson relationship between T and B (p75). One can use \lstinlinebg|cuffey.m| or \lstinlinebg|md.materials.rheology_law = 'Cuffey'|
+\item Damage evolution model
+\end{itemize}
+\subsubsection{Other}
+\begin{itemize}
+\item \emph{NOTE}: \lstinlinebg|md.geometry.bed| has been renamed \lstinlinebg|md.geometry.base|
+\item \emph{NOTE}: \lstinlinebg|md.geometry.bathymetry| has been renamed \lstinlinebg|md.geometry.bed|
+\item \emph{NOTE}: \lstinlinebg|md.mesh.vertexonbed| has been renamed \lstinlinebg|md.mesh.vertexonbase|
+\item the \lstinlinebg|surfaceforcings| class is now divided into different subclasses depending on the model of surface mass balance needed (\lstinlinebg|SMB|, \lstinlinebg|SMBpdd| and \lstinlinebg|SMBgradients|, more to come)
+\item the \lstinlinebg|mesh| class is now divided into different subclasses depending on the type of mesh (2d, 3d prisms, 3d tetras, etc)
+\end{itemize}
+
+\subsection*{ISSM 4.5 (Release: 2013-10-28)}
+\subsubsection{New features}
+\begin{itemize}
+\item We now have a Full-Stokes flowband model on a fully unstructured mesh (no grounding line dynamics yet)
+\item Damage evolution model. If you do not want to activate this functionality (default), you will need to add the following fields to the model:
+\end{itemize}
+\begin{lstlisting}
+md.damage.D = zeros(md.mesh.numberofvertices, 1);
+md.damage.spcdamage = NaN * ones(md.mesh.numberofvertices, 1);
+\end{lstlisting}
+\subsubsection{Other}
+\begin{itemize}
+\item \lstinlinebg|md.inversion.cost_functions| has now only one line (i.e., the cost function is no longer step dependent)
+\end{itemize}
+\subsubsection{Update conflict}
+You might get the following error message from svn:
+\begin{lstlisting}
+Summary of conflicts:
+  Tree conflicts: 1
+  D     C      16566   trunk/src/c/analyses
+>   local unversioned, incoming add upon update
+\end{lstlisting}
+which can be resolved using the following:
+\begin{lstlisting}
+cd ${ISSM_DIR}/src/c
+svn resolve --accept=working analyses
+svn revert --depth=infinity analyses
+\end{lstlisting}
+
+\subsection*{ISSM 4.4 (Release: 2013-09-16)}
+\subsubsection{Installation}
+\begin{itemize}
+\item configure now checks that the directories provided exist (e.g. \lstinlinebg|--with-petsc|). Make sure to remove the lines that are not necessary in your configure file.
+\end{itemize}
+\subsubsection{New features}
+\begin{itemize}
+\item SSA is now available with quadratic finite elements (P2 Lagrange), or with bubble functions (P1+ statically condensed or not)
+\item HO is now available with quadratic finite elements (P1xP2, P2xP1 and P2xP2 Lagrange), or with bubble functions (P1+ statically condensed or not)
+\item FS now available with Taylor-Hood finite elements (P2-P1)
+\end{itemize}
+\subsubsection{Other}
+\begin{itemize}
+\item \lstinlinebg|setflowequation| now takes as argument \lstinlinebg|'SIA'|, \lstinlinebg|'SSA'|, \lstinlinebg|'HO'| or \lstinlinebg|'FS'| instead of \lstinlinebg|'hutter'|, \lstinlinebg|'macayeal'|, \lstinlinebg|'pattyn'| and \lstinlinebg|'stokes'| respectively.
+\item \lstinlinebg|diagnostic| is now \lstinlinebg|stressbalance| and \lstinlinebg|prognostic| is \lstinlinebg|masstransport|. Make sure to update model fields and Enums accordingly.
+\item \lstinlinebg|md.mask| has been entirely redesigned and now has only two fields:
+\begin{itemize}
+\item \lstinlinebg|ice_levelset| (which is positive for the nodes where ice is present), and
+\item \lstinlinebg|groundedice_levelset| (which is positive for grounded ice). Example:
+\begin{lstlisting}
+md.friction.coefficient(find(md.mask.vertexonfloatingice)) = 0.;
+\end{lstlisting}
+is now:
+\begin{lstlisting}
+md.friction.coefficient(find(md.mask.groundedice_levelset < 0.)) = 0.;
+\end{lstlisting}
+\end{itemize}
+\item we removed the \lstinlinebg|startup.m| file. you now need to add the path manually when you start MATLAB or use the following command:
+\begin{lstlisting}
+matlab -r "addpath ${ISSM_DIR}/bin/ ${ISSM_DIR}/lib/"
+\end{lstlisting}
+\item Python users can use
+\begin{lstlisting}
+import sys; sys.path.append('${ISSM_DIR}/bin/'); sys.path.append('${ISSM_DIR}/lib/')
+\end{lstlisting}
+\end{itemize}
+
+\subsection*{ISSM 4.3 (Release: 2013-07-02)}
+\subsubsection{Installation}
+\begin{itemize}
+\item ISSM configuration file: \lstinlinebg|--with-mpi-lib| is now \lstinlinebg|--with-mpi-libflags|
+\item \lstinlinebg|externalpackages/mpich2| has been renamed \lstinlinebg|externalpackages/mpich|, you will need to reinstall \lstinlinebg|mpich| and \lstinlinebg|petsc| and recompile ISSM.
+\end{itemize}
+\subsubsection{New features}
+\begin{itemize}
+\item \lstinlinebg|'googlemaps'| option for \lstinlinebg|plotmodel|, which overlays onto satellite image from Google.
+\item New GIA model from Ivins et al.
+\item Added support for PETSc 3.4 and mpich 3.0
+\item Sub-element support for grounding line dynamics
+\end{itemize}
+\subsubsection{Other}
+\begin{itemize}
+\item \lstinlinebg|mpich2| is now \lstinlinebg|externalpackages/mpich|
+\item \lstinlinebg|md.petsc| is now \lstinlinebg|md.toolkits|
+\end{itemize}
+
+\subsection*{ISSM 4.2 (Release: 2012-06-01)}
+\subsubsection{Installation}
+\begin{itemize}
+\item \lstinlinebg|automake| and \lstinlinebg|autoconf| are now installed along with \lstinlinebg|libtool| in one single directory \lstinlinebg|autotools|. You can remove \lstinlinebg|externalpackages/autoconf| and \lstinlinebg|externalpackages/automake| and install \lstinlinebg|externalpackages/autotools|. You will need to \lstinlinebg|source ${ISSM_DIR}/etc/environment.sh| after the installation.
+\item You might need to reinstall \lstinlinebg|mpich2| and \lstinlinebg|petsc| so that shared libraries are available to libtool.
+\end{itemize}
+\subsubsection{Other}
+\begin{itemize}
+\item The MATLAB code has been entirely reorganized
+\item PETSc 3.3 is now available (we still recommend PETSc 3.2 for now)
+\end{itemize}
+
+\subsection*{ISSM 4.1 (Release: 2012-04-16)}
+\subsubsection{Installation}
+\begin{itemize}
+\item \lstinlinebg|ISSM_TIER| was renamed \lstinlinebg|ISSM_DIR| throughout the code. You will need to update your \lstinlinebg|.bashrc| and change all \lstinlinebg|ISSM_TIER| to \lstinlinebg|ISSM_DIR|
+\item External packages are now downloaded from the ISSM website when installed. This does not change the current install but makes the download of ISSM much faster, and the svn repository lighter
+\end{itemize}
+\subsubsection{New features}
+\begin{itemize}
+\item Newton's method available for SSA and HO
+\item Exact adjoint available for SSA and HO
+\item Added new Ordinary Kriging module
+\item Improved Python interface, still under development
+\end{itemize}
+\subsubsection{Other}
+\begin{itemize}
+\item The serial code has been entirely stripped out. As a consequence, the cluster \lstinlinebg|none| cannot be used anymore. The installation is faster and the code cleaner.
+\end{itemize}
+
+\clearpage % Make sure all figures are placed before next section

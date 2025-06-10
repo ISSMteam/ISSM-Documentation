@@ -1,0 +1,40 @@
+% Just The Docs Front Matter
+% title: Datasets
+% parent: Tutorials
+% has_children: false
+% has_toc: false
+
+\subsection{Datasets} \label{sec:using-issm-tutorials-datasets}
+To run the tutorials, you will need to download a number of datasets. The easiest way to do this is to run,
+\begin{lstlisting}
+${ISSM_DIR}/scripts/DownloadExamplesDatasets.sh
+\end{lstlisting}
+The default behavior of this script is to download the datasets to the \lstinlinebg|../examples/Data| relative to the location of the script. If you wish to download them to another location, supply the optional path argument.
+
+If you would prefer to download the datasets manually, use the following links, downloading each file to \lstinlinebg|${ISSM_DIR}/examples/Data|,
+% NOTE: Do not remove the following: it allows us to target dataset links with 
+%		the download script located in the ISSM code repository at 
+%		examples/Data/DownloadExamplesDatasets.sh
+%
+%__@MARKDOWN_ONLY_START@__
+%<!--DATASETS LIST START-->
+%__@MARKDOWN_ONLY_END@__
+\begin{itemize}
+	\item \href{https://issm.jpl.nasa.gov/files/workshop2014/SquareShelf.nc}{Square ice shelf dataset}
+	\item \href{https://issm.jpl.nasa.gov/files/examples/Antarctica_5km_withshelves_v0.75.nc}{SeaRISE Antarctica v0.75}
+	\item \href{https://issm.jpl.nasa.gov/files/examples/Greenland_5km_dev1.2.nc}{SeaRISE Greenland dev1.2}
+	\item \href{https://issm.ess.uci.edu/files/tutorials/Antarctica_ice_velocity.nc}{MEaSUREs Antarctic velocities}
+	\item \href{https://issm.jpl.nasa.gov/files/workshop2014/CrossOvers2009.mat}{Pine Island ice thickness cross overs (Dakota)}
+	\item \href{https://issm.jpl.nasa.gov/files/examples/Box_Greenland_SMB_monthly_1840-2012_5km_cal_ver20141007.nc}{Jason Box's SMB data}
+	\item \href{https://data.cresis.ku.edu/data/grids/old_versions/Jakobshavn_2008_2011_Composite.zip}{Jakobshavn Isbr\ae\ bed map} \newline(we only need \lstinlinebg|grids/Jakobshavn_2008_2011_Composite_XYZGrid.txt|)
+	\item \href{https://issm.jpl.nasa.gov/files/examples/GRACE_and_suporting_datasets.zip}{GRACE and supporting datasets for SESAW tutorials}
+\end{itemize}
+% NOTE: Do not remove the following: it allows us to target dataset links with 
+%		the download script located in the ISSM code repository at 
+%		examples/Data/DownloadExamplesDatasets.sh
+%
+%__@MARKDOWN_ONLY_START@__
+%<!--DATASETS LIST END-->
+%__@MARKDOWN_ONLY_END@__
+
+\clearpage % Make sure all figures are placed before next section

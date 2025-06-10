@@ -1,0 +1,175 @@
+% Just The Docs Front Matter
+% title: Pine Island Glacier Sensitivity Study
+% parent: Tutorials
+% has_children: false
+% has_toc: false
+
+\subsection{Pine Island Glacier Sensitivity Study} \label{sec:using-issm-tutorials-pigsensitivity}
+\subsubsection{Goals} %{{{
+This example is adapted from the results presented in \cite{Seroussi2014}. We model the impact of different external forcings on the dynamic evolution of Pine Island Glacier. The main objectives are to:
+\begin{itemize}
+	\item Run transient simulations (10 years) of a real glacier
+	\item Change external forcings
+	\item Compare the impact of changes on glacier dynamics and volume
+\end{itemize}
+
+Files needed to run this tutorial are located in \lstinlinebg|<ISSM_DIR>/examples/PigSensitivity/|. This tutorial relies on experience gained from completing the 
+%__@LATEX_ONLY_START@__
+\hyperref[sec:using-issm-tutorials-pig]{Pine Island Glacier}
+%__@LATEX_ONLY_END@__
+%__@MARKDOWN_ONLY_START@__
+% <a href="pig">Pine Island Glacier</a>
+%__@MARKDOWN_ONLY_END@__
+and 
+%__@LATEX_ONLY_START@__
+\hyperref[sec:using-issm-tutorials-greenland]{Greenland Ice Sheet}
+%__@LATEX_ONLY_END@__
+%__@MARKDOWN_ONLY_START@__
+% <a href="greenland">Greenland Ice Sheet</a>
+%__@MARKDOWN_ONLY_END@__
+modeling tutorials, so make sure to complete them first.
+%}}}
+\subsubsection{Evolution over 10 years}%{{{
+We first run a simulation of Pine Island Glacier over a 10 year period, starting from the \lstinlinebg|Pig| tutorial.
+
+In the \lstinlinebg|runme.m| file, several parameters are adjusted before running the transient model. Open \lstinlinebg|runme.m| and make sure that the variable \lstinlinebg|steps|, at the top of the file, is set to \lstinlinebg|steps = [1]|. In the code, you will see that in step 1 the following actions are implemented:
+\begin{itemize}
+	\item Load model from the \lstinlinebg|Pig| tutorial
+	\item Apply some basal melting rate
+		\begin{itemize}
+			\item On grounded ice: \lstinlinebg|md.basalforcings.groundedice_melting_rate|
+			\item On floating ice: \lstinlinebg|md.basalforcings.floatingice_melting_rate|
+		\end{itemize}
+	\item Specify time step length and run duration in \lstinlinebg|md.timestepping|
+	\item Disable inverse method in \lstinlinebg|md.inversion.iscontrol = 0|
+	\item Indicate what components of the transient to activate
+		\begin{itemize}
+			\item \lstinlinebg|md.transient.ismasstransport|
+			\item \lstinlinebg|md.transient.isstressbalance|
+			\item \lstinlinebg|md.transient.isthermal|
+			\item \lstinlinebg|md.transient.isgroundingline|
+			\item \lstinlinebg|md.transient.ismovingfront|
+		\end{itemize}
+	\item Request additional outputs
+	\item Solve transient solution
+\end{itemize}
+
+Execute \lstinlinebg|runme| to perform step 1. The following figure shows the evolution of the ice velocity and grounding line positions at the beginning and at the end of the simulation:
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=\textwidth]{\assetsParentPath/assets/img/using-issm/tutorials/pigsensitivity/ResultsTransient.png}
+	\end{center}
+\end{figure}
+%}}}
+\subsubsection{Increased basal melting rate}%{{{
+In this second step, we increase the basal melting rate under the floating portion of the domain from 25 to 60 m/yr. The other parameters remain the same as in the previous step.
+
+Open \lstinlinebg|runme.m| and change the step at the top of the file to \lstinlinebg|step = 2|, then run the simulation. The following figure shows the evolution of ice velocity and grounding line evolution for the increased melting scenario:
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=\textwidth]{\assetsParentPath/assets/img/using-issm/tutorials/pigsensitivity/ResultsHighMelt.png}
+	\end{center}
+\end{figure}
+%}}}
+\subsubsection{Retreat of ice front position}%{{{
+In this third step, we would like to test the sensitivity of Pig to calving events and retreat the position of the ice front. We first need to create a new contour of the region to be removed from the domain. Use \lstinlinebg|exptool| to create a new \lstinlinebg|RetreatFront.exp| contour that include the portion of floating ice that should calve off.
+
+Then extract the domain from the initial model, excluding the \lstinlinebg|RetreatFront.exp| area using the \lstinlinebg|extrude| routine:
+\begin{lstlisting}
+>> md2 = modelextract(md, ~RetreatFront.exp)
+\end{lstlisting}
+
+As this operation changes the model domain, some parameters and boundary conditions have the be adjusted or redefined.
+
+The boundary conditions are reset with \lstinlinebg|SetMarineIceSheetBC| and the model can then be solved.
+
+Open \lstinlinebg|runme.m| and change the step at the top of the file to \lstinlinebg|step = 3|, then run the simulation. The following figure shows the evolution of ice velocity and grounding line evolution with the new ice front:
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=\textwidth]{\assetsParentPath/assets/img/using-issm/tutorials/pigsensitivity/ResultsFrontRetreat.png}
+	\end{center}
+\end{figure}
+%}}}
+\subsubsection{Change in surface mass balance}%{{{
+In this last step, we change the surface mass balance, while the other parameters remain similar to the previous simulations.
+
+Open \lstinlinebg|runme.m| and implement the changes needed to investigate the impact of the surface mass balance, similar to what was done with the other external forcings in the previous steps. These changes are:
+\begin{itemize}
+	\item Load model from the \lstinlinebg|Pig| tutorial
+	\item Change the surface mass balance
+	\item Verify the ocean-induced melting rate
+		\begin{itemize}
+			\item On grounded ice: \lstinlinebg|md.basalforcings.groundedice_melting_rate|
+			\item On floating ice: \lstinlinebg|md.basalforcings.floatingice_melting_rate|
+		\end{itemize}
+	\item Specify time step length and run duration in \lstinlinebg|md.timestepping|
+	\item Disable inverse method in \lstinlinebg|md.inversion.iscontrol|
+	\item Indicate what components of the transient to activate
+		\begin{itemize}
+			\item \lstinlinebg|md.transient.ismasstransport|
+			\item \lstinlinebg|md.transient.isstressbalance|
+			\item \lstinlinebg|md.transient.isthermal|
+			\item \lstinlinebg|md.transient.isgroundingline|
+			\item \lstinlinebg|md.transient.ismovingfront|
+		\end{itemize}
+	\item Request additional outputs
+	\item Solve transient solution
+\end{itemize}
+
+Don't forget to change \lstinlinebg|step| at the top of the \lstinlinebg|runme.m|.
+
+Below is the solution to make this change:
+\begin{lstlisting}
+if step == 4
+	%Load model
+	md = loadmodel('./Models/PIG_Transient');
+
+	%Change external forcing basal melting rate and surface mass balance)
+	md.basalforcings.groundedice_melting_rate = zeros(md.mesh.numberofvertices, 1);
+	md.basalforcings.floatingice_melting_rate = 25 * ones(md.mesh.numberofvertices, 1);
+	md.smb.mass_balance = 2 * md.smb.mass_balance;
+
+	%Define time steps and time span of the simulation
+	md.timestepping.time_step = 0.1;
+	md.timestepping.final_time = 10;
+
+	%Request additional outputs
+	md.transient.requested_outputs = {'default', 'IceVolume', 'IceVolumeAboveFloatation'};
+
+	%Solve
+	md = solve(md, 'Transient');
+
+	%Plot
+	plotmodel(md, 'data', md.results.TransientSolution(1).Vel, ...
+		'title#1', 'Velocity t=0 years (m/yr)', ...
+		'data', md.results.TransientSolution(end).Vel, ...
+		'title#2', 'Velocity t=10 years (m/yr)', ...
+		'data', md.results.TransientSolution(1).MaskOceanLevelset, ...
+		'title#3', 'Floating ice t=0 years', ...
+		'data', md.results.TransientSolution(end).MaskOceanLevelset, ...
+		'title#4', 'Floating ice t=10 years', ...
+		'caxis#1', ([0 4500]), 'caxis#2', ([0 4500]), ...
+		'caxis#3', ([-1, 1]), 'caxis#4', ([-1, 1]));
+
+	%Save model
+	save ./Models/PIG_SMB md;
+end
+\end{lstlisting}
+
+Here is an example of velocity change and grounding line evolution when the surface mass balance is doubled:
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=\textwidth]{\assetsParentPath/assets/img/using-issm/tutorials/pigsensitivity/ResultsSMB.png}
+	\end{center}
+\end{figure}
+%}}}
+\subsubsection{Evolution of the ice volume above flotation} %{{{
+In the previous steps, we investigated the impact of changes in external forcings on ice flow dynamics (grounding line evolution and glacier acceleration). We can also see how these changes impact the glacier volume and its contribution to sea level rise. To do so, we use the additional output \lstinlinebg|IceVolumeAboveFloatation| requested in the transient simulation. The following figure shows the evolution of the volume (in Gt/yr) above flotation for the four scenarios performed previously:
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=\textwidth]{\assetsParentPath/assets/img/using-issm/tutorials/pigsensitivity/EvolutionVAF.png}
+	\end{center}
+\end{figure}
+%}}}
+
+\clearpage % Make sure all figures are placed before next section

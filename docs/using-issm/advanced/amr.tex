@@ -1,0 +1,94 @@
+% Just The Docs Front Matter
+% title: Adaptive Mesh Refinement - AMR
+% parent: Advanced Features
+% has_children: false
+% has_toc: false
+
+\subsection{Adaptive Mesh Refinement - AMR} \label{sec:using-issm-advanced-amr}
+%{{{
+The adaptive mesh refinement (AMR) in ISSM relies on two independent meshers: BAMG and NeoPZ. BAMG is a bidimensional anisotropic mesh generator developed by \href{http://www.ann.jussieu.fr/~hecht/}{Frederic Hecht} \citep{Hecht2006} and NeoPZ is a finite element package developed by Philippe Devloo \href{https://github.com/labmec/neopz}{Philippe Devloo} \cite{Devloo1997}.
+
+The current AMR is supported for 2D meshes (triangle elements) and for the SSA flow equations. The
+features of each one of these meshers are described below:
+
+\subsubsection{AMR using BAMG (default)}%{{{
+BAMG is the default mesher to run a simulation with AMR. AMR is executed specifying the required resolutions at the vertices of the mesh. The following properties can be defined by the user:
+
+\paragraph{hmin/hmax}
+The minimum and maximum edge lengths can be specified by \lstinlinebg|'hmin'| and \lstinlinebg|'hmax'| options:
+\begin{lstlisting}
+>> md.amr.hmin = 500;
+>> md.amr.hmax = 5000;
+\end{lstlisting}
+
+\paragraph{field/err}
+The option \lstinlinebg|'field'| can be used with the option \lstinlinebg|'err'| to adapt the mesh to the field given as input for the error given as input:
+\begin{lstlisting}
+>> md.amr.fieldname = 'Vel';
+>> md.amr.err = 3;
+\end{lstlisting}
+
+\paragraph{gradation}
+The ratio of the lengths of two adjacent edges is controlled by the option \lstinlinebg|'gradation'|:
+\begin{lstlisting}
+>> md.amr.gradation = 1.5;
+\end{lstlisting}
+
+\paragraph{resolution at the grounding line}
+One can specify the edge length around the grounding line. The user needs to specify the distance around the grounding line (the same distance is used upstream and downstream of the grounding line) where the imposed resolution will be applied:
+\begin{lstlisting}
+>> md.amr.groundingline_resolution = 500;
+>> md.amr.groundingline_distance = 10000;
+\end{lstlisting}
+Set \lstinlinebg|0| in the grounding distance if this refinement is not required.
+
+\paragraph{resolution at the ice front}
+The ice front is another region where AMR can be applied. For this, the edge length around the ice front should be specified. As for the grounding line, the user needs to specify the distance around the ice front (the same distance is used upstream and downstream to the ice front) where the imposed resolution will be applied.
+\begin{lstlisting}
+>> md.amr.icefront_resolution = 500;
+>> md.amr.icefront_distance = 10000;
+\end{lstlisting}
+Set \lstinlinebg|0| in the ice front distance if this refinement is not required.
+
+\emph{Note:} users using Intel compilers (\lstinlinebg|icc|, \lstinlinebg|icpc|) should use the flag \lstinlinebg|-fp-model precise| to disable optimizations that are not value-safe on floating-point data. This will prevent \lstinlinebg|bamg| from being compiler dependent (see \href{https://software.intel.com/en-us/node/522979}{here}).
+%}}}
+\subsubsection{AMR using NeoPZ (requires installation)}%{{{
+The mesh refinement with NeoPZ is based on levels of refinement: the initial coarse mesh is refined according to the user requirement and only nested meshes are generated (it means that the initial vertices positions are kept unchanged during all the AMR simulation). NeoPZ is an external package that needs to be installed before using in ISSM. Once installed, it is necessary setting NeoPZ as the AMR package:
+\begin{lstlisting}
+>> md.amr = amrneopz();
+\end{lstlisting}
+
+\paragraph{level max}
+Users should define the maximum level of refinement to be applied:
+\begin{lstlisting}
+>> md.amr.level_max = 2;
+\end{lstlisting}
+
+\paragraph{gradation}
+The ratio of the lengths of two adjacent edges is controlled by the option \lstinlinebg|'gradation'|:
+\begin{lstlisting}
+>> md.amr.gradation = 1.5;
+\end{lstlisting}
+
+\paragraph{distance to the grounding line}
+User needs to specify the distance around the grounding line (the same distance is used upstream and downstream to the grounding line) where the elements will be refined according to the maximum level of refinement:
+\begin{lstlisting}
+>> md.amr.groundingline_distance = 10000;
+\end{lstlisting}
+Set \lstinlinebg|0| as the grounding distance if this refinement is not required.
+
+\paragraph{distance to the ice front}
+If the user wants to refine around the ice front, it is necessary to specify the distance in which the elements will be refined according to the maximum level of refinement (the same distance is used upstream and downstream to the ice front):
+\begin{lstlisting}
+>> md.amr.icefront_distance = 10000;
+\end{lstlisting}
+Set \lstinlinebg|0| in the ice front distance if this refinement is not required.
+%}}}
+\paragraph{Running with AMR}%{{{
+To ability the AMR process, one needs to define the AMR frequency in the transient field (can be 1 or larger depending on how often the mesh needs to be updated):
+\begin{lstlisting}
+>> md.transient.amr_frequency = 1;
+\end{lstlisting}
+%}}}
+
+\clearpage % Make sure all figures are placed before next section

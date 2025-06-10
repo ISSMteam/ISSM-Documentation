@@ -1,0 +1,76 @@
+% Just The Docs Front Matter
+% title: Utilities
+% parent: Supplements
+% has_children: false
+% has_toc: false
+
+\section{Utilities} \label{sec:supplements-utilities}
+Several utilities are available to help the user to set up models and analyze results. Many of these tools are described below. More in-depth information can be found by running \lstinlinebg|help <FUNCTION>| in the MATLAB prompt where \lstinlinebg|<FUNCTION>| is any of the following function names. Note that many of these utilities are also available in Python, but that coverage is not 100\%.
+
+\subsection{Mesh}
+\begin{itemize}
+\item \lstinlinebg|triangle| generate a mesh from a domain outline
+\item \lstinlinebg|bamg| anisotropic mesh generation and adaptation
+\item \lstinlinebg|yams| anisotropic mesh adaptation
+\item \lstinlinebg|meshexprefine| refine a region of a mesh
+\item \lstinlinebg|meshprocessrift| process mesh when rifts are present
+\item \lstinlinebg|MeshQuality| compute mesh quality
+\item \lstinlinebg|rifttiprefine| refine mesh near rift tips
+\end{itemize}
+
+\subsection{Model parameterization}
+\begin{itemize}
+\item \lstinlinebg|extrude| vertically extrude a model
+\item \lstinlinebg|setmask| establish boundaries between grounded and floating ice
+\item \lstinlinebg|modelextract| extract the model over a subdomain
+\item \lstinlinebg|parameterize| model general parameterization
+\item \lstinlinebg|setflowequation| set stressbalance elements type
+\item \lstinlinebg|solversettoasm| set PETSc solver to ASM
+\item \lstinlinebg|solversettomumps| set PETSc solver to MUMPS
+\item \lstinlinebg|solversettosor| set PETSc solver to SOR
+\item \lstinlinebg|SetIceSheetBC| set ice sheet boundary conditions
+\item \lstinlinebg|SetIceShelfBC| set ice shelf boundary conditions
+\item \lstinlinebg|SetMarineIceSheetBC| set marine ice sheet boundary conditions
+\end{itemize}
+
+\subsection{Mask}
+\begin{itemize}
+\item \lstinlinebg|contourenvelope| create a list of segments enveloping an ARGUS contour
+\item \lstinlinebg|ContourToMesh| get elements and/or nodes inside an ARGUS contour
+\item \lstinlinebg|GetAreas| compute the area of each element
+\item \lstinlinebg|xy2ll| convert (x,y) to lat/lon
+\item \lstinlinebg|ll2xy| convert lat/lon to (x,y)
+\item \lstinlinebg|utm2ll| convert UTM to lat/lon
+\end{itemize}
+
+\subsection{Interpolation}
+\begin{itemize}
+\item \lstinlinebg|InterpFromGridToMesh| interpolation from a grid to a list of (x,y)
+\item \lstinlinebg|InterpFromMeshToGrid| interpolation from a 2D mesh to a grid
+\item \lstinlinebg|InterpFromMeshToMesh2d| interpolation from a 2D mesh to a list of (x,y)
+\end{itemize}
+
+\subsection{ARGUS files}
+\begin{itemize}
+\item \lstinlinebg|expcoarsen| coarsen or refine the resolution a contour
+\item \lstinlinebg|exptool| create and manage ARGUS files
+\item \lstinlinebg|expread| read an ARGUS file
+\item \lstinlinebg|expwrite| write an ARGUS file
+\end{itemize}
+
+\subsection{Results analysis}
+\begin{itemize}
+\item \lstinlinebg|averaging| data averaging over a mesh
+\item \lstinlinebg|basalstress| compute the basal stress
+\item \lstinlinebg|contourmassbalance| compute the mass balance of a contour
+\item \lstinlinebg|DepthAverage| depth averaging of a 3D field
+\item \lstinlinebg|drivingstress| compute the driving stress
+\item \lstinlinebg|flowlines| compute the coordinates of one or several flowlines
+\item \lstinlinebg|paterson| compute B from a temperature
+\item \lstinlinebg|project2d| project a 3D field on a layer
+\item \lstinlinebg|project3d| extrude a 2D field on every layer
+\item \lstinlinebg|SectionValues| compute the value of a field on a section or line
+\item \lstinlinebg|thicknessevolution| compute dh/dt
+\end{itemize}
+
+\clearpage % Make sure all figures are placed before next section

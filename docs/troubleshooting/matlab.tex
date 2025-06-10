@@ -1,0 +1,322 @@
+% Just The Docs Front Matter
+% title: MATLAB Interface
+% parent: Troubleshooting
+% nav_order: 4
+% has_children: false
+% has_toc: true
+
+\section{MATLAB Interface} \label{sec:troubleshooting-interfaces-matlab}
+\subsection*{MATLAB does not recognize any ISSM command}%{{{
+\begin{lstlisting}
+>> md=model;
+??? Undefined function or variable 'model'.
+\end{lstlisting}
+This error message shows that ISSM tools have not been loaded by MATLAB. See the 
+%__@LATEX_ONLY_START@__
+\hyperref[sec:getting-started-loading-issm]{`Loading ISSM' section}
+%__@LATEX_ONLY_END@__
+%__@MARKDOWN_ONLY_START@__
+% <a href="../getting-started/loading-issm">'Loading ISSM' page</a>
+%__@MARKDOWN_ONLY_END@__
+for more info.
+%}}}
+\subsection*{MATLAB complains about missing symbols}%{{{
+In some cases, MATLAB complains about missing symbols in MEX files. If your environment is set correctly (for example, you have run \lstinlinebg|source ${ISSM_DIR}/etc/environment.sh| before starting MATLAB), the error could be due to the fact that MATLAB ships with its own copies of various libraries and manipulates the environment to prefer the location of its own libraries over the locations you have provided. We have experienced this error with the following libraries,
+\begin{itemize}
+	\item Boost
+	\item HDF5
+	\item libgfortran
+\end{itemize}
+but any library that MATLAB ships with could potentially cause a conflict. There are various options for fixing the above case, but you may want to first run,
+\begin{lstlisting}
+!ldd <PATH_TO_MEX_FILE>
+\end{lstlisting}
+in the MATLAB console to confirm that the cause is as described. After running the command, look through the resulting list of libraries for any that are loaded from the the MATLAB installation directory.
+
+\subsubsection{Option 1 (preferred)}
+Locate your copy of the conflicting library and provide it to \lstinlinebg|LD_PRELOAD| before launching MATLAB. For example,
+\begin{lstlisting}
+LD_PRELOAD="${ISSM_DIR}/externalpackages/petsc/libhdf5.so" matlab
+\end{lstlisting}
+or,
+\begin{lstlisting}
+export LD_PRELOAD="${ISSM_DIR}/externalpackages/petsc/libhdf5.so"
+matlab
+\end{lstlisting}
+
+NOTE:
+\begin{itemize}
+	\item The full path to the library including its file extension must be provided.
+	\item Multiple libraries can be supplied to \lstinlinebg|LD_PRELOAD| by separating them by a colon or single space. For example, \lstinlinebg|LD_PRELOAD="libfoo.so:libbar.so"|.
+	\item Be careful to avoid overwriting previous changes to \lstinlinebg|LD_PRELOAD|. For example, \lstinlinebg|LD_PRELOAD="${LD_PRELOAD}:libfoo.dylib"|.
+\end{itemize}
+
+\subsubsection{Option 2}
+In some cases you may be able to provide the full path to the static copy of the library when configuring ISSM. For example, rather than providing generic link flags for libgfortran,
+\begin{lstlisting}
+--with-fortran-lib="-L/usr/local/Cellar/gcc@10/10.4.0/lib/gcc/10 -lgfortran"
+\end{lstlisting}
+you might instead use,
+\begin{lstlisting}
+--with-fortran-lib="/usr/local/Cellar/gcc@10/10.4.0/lib/gcc/10/libgfortran.a"
+\end{lstlisting}
+
+If the library in question is installed via external package using one of installation scripts provided by ISSM, you may need to reinstall the package using the appropriate installation script with suffix \lstinlinebg|-static| in order to have a static copy of the library. No further changes to the ISSM configuration or environment would have to be made in this case, but you would still have to recompile ISSM.
+
+\subsubsection{Option 3 (advanced)}
+If both dynamic and static versions of the conflicting library are available to you and you do not want to manipulate \lstinlinebg|LD_PRELOAD| or your ISSM configuration, you can instead modify \lstinlinebg|${ISSM_DIR}/m4/issm_options.m4|: find the section of this file that handles the library in question and provided the full path to the static copy of the library rather than generic link flags (see Option 2). Then, reconfigure and recompile ISSM.
+
+If this does not fix the problem, please search or post troubleshooting questions and issues to the \href{https://issm.ess.uci.edu/forum/}{ISSM Forum}, or ISSM GitHub repository \href{https://github.com/ISSMteam/ISSM/discussions}{Discussions} or \href{https://github.com/ISSMteam/ISSM/issues}{Issues}.
+%}}}
+
+\subsection*{MATLAB complains about missing \_\_gfortran\_transfer\_array\_write symbol}%{{{
+In some cases, MATLAB complains about missing symbols in MEX files. That is due to the fact that MATLAB uses its own libraries that are not the ones you compiled the MEX files with. For example, you might have the following error message:
+\begin{lstlisting}
+Invalid MEX-file '/Users/rtwalker/ISSM/trunk/lib/TriMesh.mexmaci64':
+dlopen(/Users/rtwalker/ISSM/trunk/lib/TriMesh.mexmaci64, 6): Symbol not found:
+__gfortran_transfer_array_write
+\end{lstlisting}
+
+This problem has been reported under macOS. There are two ways to fix this problem:
+
+\subsubsection{Option 1 (preferred)}
+\begin{enumerate}
+	\item Locate where your \lstinlinebg|gfortran| library is (for example: \lstinlinebg|/usr/local/gfortran/lib/|).
+	\item copy MATLAB's \lstinlinebg|.matlab7rc.sh| in your home directory. For example:
+	\begin{lstlisting}
+	cp /Applications/MATLAB_R2014b.app/bin/.matlab7rc.sh ~
+	\end{lstlisting}
+	\item open \lstinlinebg|~/.matlab7rc.sh| with your favorite editor, you will see a \lstinlinebg|case| with different architecture: \lstinlinebg|glnx86/glnxa64| for Linux, \lstinlinebg|mac/maci/maci64| for macOS and \lstinlinebg|*| for other architectures (windows etc). 
+	\item Go to the case that corresponds to your machine's architecture and uncomment the following line:
+	\begin{lstlisting}
+	#           LDPATH_PREFIX='$MATLAB/sys/opengl/lib/$ARCH'
+	\end{lstlisting}
+	and change the path to reflect where your \lstinlinebg|libgfortran.so| is located (step 1). For example:
+	\begin{lstlisting}
+	LDPATH_PREFIX='/usr/local/gfortran/lib/'
+	\end{lstlisting}
+\end{enumerate}
+
+Restart MATLAB and it should now work.
+
+\subsubsection{Option 2 (requires admin privileges)}
+The second fix consists of replacing MATLAB's library with the one that are on your system, but you will need to have admin privileges.
+
+We show here the steps for the following MATLAB path: \lstinlinebg|/Applications/MATLAB_R2013a.app/| and \lstinlinebg|libgfortran| path: \lstinlinebg|/usr/local/gfortran/lib/|.
+
+Before changing the libraries, make a backup:
+\begin{lstlisting}
+cd /Applications/MATLAB_R2013a.app/sys/os/maci64/
+mkdir orig
+mv libgfortran.* orig
+\end{lstlisting}
+
+Then substitute these libraries by the current ones used by \lstinlinebg|gfortran| (copy or symlink),
+\begin{lstlisting}
+ln -s /usr/local/gfortran/lib/libgfortran.dylib .
+ln -s /usr/local/gfortran/lib/libgfortran.3.dylib.
+\end{lstlisting}
+
+If this does not fix the problem, please search or post troubleshooting questions and issues to the \href{https://issm.ess.uci.edu/forum/}{ISSM Forum}, or ISSM GitHub repository \href{https://github.com/ISSMteam/ISSM/discussions}{Discussions} or \href{https://github.com/ISSMteam/ISSM/issues}{Issues}.
+%}}}
+
+\subsection*{MATLAB complains about GLIBCXX libraries}%{{{
+In some cases, MATLAB complains about its own libraries. That is due to the fact that MATLAB uses its own libraries that might not be the ones you compiled the MEX files with. For example, you might have the following error message:
+\begin{lstlisting}
+libstdc++.so.6: version 'GLIBCXX_3.4.9' not found
+\end{lstlisting}
+
+\subsubsection{Option 1}
+You should locate where your \lstinlinebg|libstdc++.so.6| is, and declare it using \lstinlinebg|LD_PRELOAD| before you launch MATLAB. For example:
+\begin{lstlisting}
+LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6 matlab
+\end{lstlisting}
+
+\subsubsection{Option 2}
+We found a fix on an \href{http://ubuntuforums.org/showthread.php?t=808045}{Ubuntu forum} that we copied here. The idea is to replace MATLAB's library with the one that was used to compile the MEX files, but you will need to have admin privileges.
+
+NOTE: The following uses MATLAB path \lstinlinebg|/usr/local/matlab80/| and GCC libraries in \lstinlinebg|/usr/lib| as an example. Modify the paths as needed.
+
+Before changing the libraries, make a backup:
+\begin{lstlisting}
+cd /usr/local/matlab80/sys/os/glnxa64
+mkdir orig
+mv libstdc++.so* orig
+mv libgcc_s.so* orig
+\end{lstlisting}
+
+Then substitute the last two by the current ones used by \lstinlinebg|gcc| (copy or symlink):
+\begin{lstlisting}
+ln -s /usr/lib/libstd* .
+ln -s /lib/libgcc_s.so* .
+\end{lstlisting}
+%}}}
+
+\subsection*{Error using gdaltransform}%{{{
+When making system calls to gdaltransform (or other GDAL binaries), you may run into something like,
+\begin{lstlisting}
+Error using gdaltransform (line <num>)
+gdaltransform: /usr/local/MATLAB/<MATLAB_VER>/bin/glnxa64/libtiff.so.<LIBTIFF_VER>: no version information available
+\end{lstlisting}
+Much like the previous issue, this can be solved with,
+\begin{lstlisting}
+cd /usr/local/MATLAB/<MATLAB_VER>/bin/glnxa64
+sudo mkdir bak
+sudo mv libtiff.so* bak
+sudo ln -s /usr/lib/libtiff.so* .
+\end{lstlisting}
+where \lstinlinebg|<MATLAB_VER>| is your MATLAB version and \lstinlinebg|<LIBTIFF_VER>| is the major version of \lstinlinebg|libtiff| identified in the error message.
+%}}}
+
+\subsection*{Windows: "Binary file <FILE>.outbin not found!"}%{{{
+You may encounter the following warning when running a solution,
+\begin{lstlisting}
+Binary file <FILE>.outbin not found!
+
+This typically happens when the run crashed.
+Please check for error messages above or in the outlog
+\end{lstlisting}
+In many cases, this does indeed indicate a runtime error caused by changes made to the source code. However, if you have an unmodified copy of ISSM and you are running one of our Windows configurations, the cause may actually be the equivalent of the previous issue.
+
+\emph{NOTE}: The following is included in our 
+%__@LATEX_ONLY_START@__
+\hyperref[sec:installation-windows]{Windows installation instructions}.
+%__@LATEX_ONLY_END@__
+%__@MARKDOWN_ONLY_START@__
+% <a href="../installation/windows">Windows installation instructions</a>.
+%__@MARKDOWN_ONLY_END@__
+
+After starting a MSYS2 MinGW 64-bit shell instance, run,
+\begin{lstlisting}
+find /c/msys64/mingw64/lib/gcc/x86_64-w64-mingw32 -name libstdc++*
+\end{lstlisting}
+to find all MSYS2 MinGW copies of \lstinlinebg|libstdc++*|. Then, run,
+\begin{lstlisting}
+cd /c/Program\ Files/MATLAB/<MATLAB_VER>/bin/win64
+mkdir orig
+mv libstdc++<VER> orig
+cp /c/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/<GCC_VER>/libstdc++.a .
+cp /c/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/<GCC_VER>/libstdc++.dll.a .
+\end{lstlisting}
+where \lstinlinebg|<GCC_VER>| is the GCC version that is installed and \lstinlinebg|<MATLAB_VER>| is the version of MATLAB that you are running. Restart MATLAB to see if your solution now runs.
+
+If this does not fix the problem, please search or post troubleshooting questions and issues to the \href{https://issm.ess.uci.edu/forum/}{ISSM Forum}, or ISSM GitHub repository \href{https://github.com/ISSMteam/ISSM/discussions}{Discussions} or \href{https://github.com/ISSMteam/ISSM/issues}{Issues}.
+%}}}
+
+\subsection*{Windows: MATLAB hangs (no GUI) or crashes with prompt "MATLAB has encountered an internal problem and needs to close." (GUI)}%{{{
+Although MATLAB hangs and crashes can have many causes, this may have to do with the fact that the ISSM build configuration for MEX files needs to be \href{https://www.mathworks.com/help/matlab/matlab_external/upgrading-mex-files-to-use-64-bit-api.html}{updated to use the new 64-bit API}.
+
+In the case of a hang (no GUI), use the Windows Task Manager to exit the MATLAB instance.
+
+In the case of a crash while using the MATLAB GUI,
+\begin{itemize}
+	\item  in the prompt that reads "MATLAB has encountered an internal problem and needs to close.", click the `Show Report' button
+	\item scroll down to the `Stack Trace (from fault):' section
+	\item look for a symbol that reads \lstinlinebg|'mexfile::Inspector::needs_upgrade'| to verify the likely cause of the crash
+	\item click `Don\'t Send' and exit MATLAB
+\end{itemize}
+%}}}
+
+\subsection*{MATLAB complains about intel\_fast\_memm symbol}%{{{
+If you compile MEX files with intel compilers, MATLAB might complain about missing symbols. That is due to the fact that MATLAB uses its own \lstinlinebg|libirc.so| library that are not the ones you compiled the MEX files with. For example, you might have the following error message:
+\begin{lstlisting}
+Invalid MEX-file '/users/username/test/issm/install/lib/IssmConfig.mexa64':
+<ISSM_DIR>/externalpackages/petsc/install/lib/libmetis.so: undefined symbol:
+_intel_fast_memmove
+\end{lstlisting}
+
+Here is how you can fix this problem:
+\begin{enumerate}
+	\item Locate where your \lstinlinebg|libirc.so| library is (for example: \newline\lstinlinebg|/opt/share/intel/composer_xe_2013_sp1.3.174/compiler/lib/intel64/|).
+	\item Copy MATLAB's \lstinlinebg|.matlab7rc.sh| in your home directory. For example:
+	\begin{lstlisting}
+	cp /nasa/mw/2013b/bin/.matlab7rc.sh ~/ 
+	\end{lstlisting}
+	\item open \lstinlinebg|~/.matlab7rc.sh| with your favorite editor, you will see a \lstinlinebg|case| with different architecture: \lstinlinebg|glnx86/glnxa64| for Linux, \lstinlinebg|mac/maci/maci64| for mac and \lstinlinebg|*| for other architectures (Windows etc). Go to the case that corresponds to your machine's architecture
+	\item Uncomment the following line:
+	\begin{lstlisting}
+	#           LDPATH_PREFIX='$MATLAB/sys/opengl/lib/$ARCH'
+	\end{lstlisting}
+	and change the path to reflect where your \lstinlinebg|libgfortran.so| is located (step 1). For example:
+	\begin{lstlisting}
+	LDPATH_PREFIX='/opt/share/intel/composer_xe_2013_sp1.3.174/compiler/lib/intel64/'
+	\end{lstlisting}
+\end{enumerate}
+
+Restart MATLAB and it should now work.
+
+If this does not fix the problem, please search or post troubleshooting questions and issues to the \href{https://issm.ess.uci.edu/forum/}{ISSM Forum}, or ISSM GitHub repository \href{https://github.com/ISSMteam/ISSM/discussions}{Discussions} or \href{https://github.com/ISSMteam/ISSM/issues}{Issues}.
+%}}}
+\subsection*{Fatal error in MPI\_Init}%{{{
+You may encounter a runtime error that looks something like the following,
+\begin{lstlisting}
+Fatal error in MPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(474)..............:
+MPID_Init(190).....................: channel initialization failed
+MPIDI_CH3_Init(89).................:
+MPID_nem_init(320).................:
+MPID_nem_tcp_init(173).............:
+MPID_nem_tcp_get_business_card(420):
+MPID_nem_tcp_init(379).............: gethostbyname failed, MT-<integers> (errno 1)
+loading results from cluster
+\end{lstlisting}
+This issue has been observed on more recent versions of MacOS, on both the precompiled and compiled-from-source versions of ISSM.
+
+The fix involves modifying the hosts file, \lstinlinebg|sudo vi /etc/hosts| and adding a line that reads,
+\begin{lstlisting}
+127.0.0.1	MT-<integers>
+\end{lstlisting}
+where \lstinlinebg|MT-<integers>| is what is display in the original error message.
+
+After saving the changes to \lstinlinebg|/etc/hosts| and restarting MATLAB, the issue should be resolved.
+%}}}
+\subsection*{MATLAB crashes unexpectedly}%{{{
+There are many causes that might make MATLAB crash. A possible cause is that PETSc is conflicting with Java (this happens on some Linux machines). The workaround is to use MATLAB in command line by deactivating the GUI,
+\begin{lstlisting}
+matlab -nojvm
+\end{lstlisting}
+%}}}
+\subsection*{Why can't I see what I am typing in the terminal after I exit MATLAB?}%{{{
+This is a bug of MATLAB when running with \lstinlinebg|-nojvm| or \lstinlinebg|-nodesktop| flags under bash. The solution \href{http://www.mathworks.com/support/solutions/en/data/1-CFTJX8/index.html?product=ML}{proposed by MathWorks} consists of resetting the terminal after MATLAB exits by running \lstinlinebg|reset| command in the terminal window,
+\begin{lstlisting}
+reset
+\end{lstlisting}
+%}}}
+\subsection*{The following message appears when I launch MATLAB}%{{{
+\begin{lstlisting}
+Warning: Executing startup failed in matlabrc.
+This indicates a potentially serious problem in your MATLAB setup,
+which should be resolved as soon as possible.  Error detected was:
+MATLAB:m_illegal_reserved_keyword_usage
+Error: File: trunk/src/m/classes/qmu/normal_uncertain.m Line: 38
+Column: 5
+Illegal use of reserved keyword "end".
+> In matlabrc at 220
+\end{lstlisting}
+This message indicates that your MATLAB version is too old (less than 7.6), and does not support MATLAB's \href{http://www.mathworks.com/help/matlab/matlab_oop/compatibility-with-previous-versions-.html}{new Class-Definition syntax}. In this case, please search or post troubleshooting questions and issues to the \href{https://issm.ess.uci.edu/forum/}{ISSM Forum}, or ISSM GitHub repository \href{https://github.com/ISSMteam/ISSM/discussions}{Discussions} or \href{https://github.com/ISSMteam/ISSM/issues}{Issues}, and we will help you convert all ISSM's MATLAB classes to the older syntax.
+%}}}
+\subsection*{Invalid MEX-file [...] symbol not found in flat namespace `\_\_ZN14ToolkitOptions11toolkittypeE'}%{{{
+If you experience the above error (reportedly happens on macOS), add the following to your ISSM configuration,
+\begin{lstlisting}
+--with-cxxoptflags="-D_DO_NOT_LOAD_GLOBALS_ -g -O2 -std=c++11"
+\end{lstlisting}
+reconfigure, recompile, and relaunch MATLAB.
+%}}}
+\subsection*{macOS: Invalid MEX-file}%{{{
+On running ISSM in MATLAB under macOS, you might receive an error such as,
+\begin{lstlisting}
+Invalid MEX-file
+<ISSM_DIR>/lib/IssmConfig_matlab.mexmaci64':
+dlopen(<ISSM_DIR>/lib/IssmConfig_matlab.mexmaci64,
+0x0006): Library not loaded: @rpath/libMatlabEngine.dylib
+  Referenced from: <1523DDB9-0961-3ACC-AB28-1AC66F6E3204>
+  <ISSM_DIR>/lib/IssmConfig_matlab.mexmaci64
+  \end{lstlisting}
+This can be corrected by running,
+\begin{lstlisting}
+sudo ln -s /Applications/<MATLAB_VER>.app/extern/bin/maci64/libMatlabEngine.dylib /Applications/<MATLAB_VER>.app/bin/maci64/libMatlabEngine.dylib
+\end{lstlisting}
+where \lstinlinebg|<MATLAB_VER>| is the version of MATLAB running when the error was encountered.
+%}}}
+
+\clearpage % Make sure all figures are placed before next section

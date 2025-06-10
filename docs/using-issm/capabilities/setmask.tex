@@ -1,0 +1,23 @@
+% Just The Docs Front Matter
+% title: Setting a Mask
+% parent: Capabilities
+% has_children: false
+% has_toc: false
+
+\subsection{Setting a Mask} \label{sec:using-issm-capabilities-setmask}
+The solver will use two different boundary conditions depending on the nature of the ice sheet system. An ice shelf will slide on the water whereas there is friction between an ice sheet and the bedrock for the grounded ice. The model must contain this field that tells whether the element is on an ice shelf or on an ice sheet. If the whole domain is an ice shelf, the following command may be used,
+\begin{lstlisting}
+>> md = setmask(md, 'all', '');
+\end{lstlisting}
+and for an ice sheet,
+\begin{lstlisting}
+>> md = setmask(md, '', '');
+\end{lstlisting}
+If the geometry is more complex (marine ice sheet, ice shelf with ice rises), ARGUS files must be
+used. The following command will set the geometry,
+\begin{lstlisting}
+>> md = setmask(md, 'Iceshelves.exp', 'Islands.exp');
+\end{lstlisting}
+The first argument is the model and the two other arguments are the files containing the coordinates of the ice shelf included in the Domain Outline and the part of grounded ice included in the ice shelf part (islands or ice rises).
+
+\clearpage % Make sure all figures are placed before next section

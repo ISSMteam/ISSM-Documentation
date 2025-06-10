@@ -1,0 +1,47 @@
+% Just The Docs Front Matter
+% title: Debugging
+% parent: Troubleshooting
+% nav_order: 6
+% has_children: false
+% has_toc: false
+
+\section{Debugging} \label{sec:troubleshooting-debugging}
+\subsection*{How to debug a crash in issm.exe?}
+If there is crash during the solve phase, we strongly suggest using \href{http://valgrind.org}{Valgrind}. Install Valgrind using one of the script in the directory \lstinlinebg|${ISSM_DIR}/externalpackages/valgrind|. Valgrind will subsequently be embedded in ISSM and can detect segmentation faults as well as memory leaks. To do so, set the model debugging field to 1 and use only one CPU,
+\begin{lstlisting}
+md.debug.valgrind = 1;
+md.cluster.np = 1;
+\end{lstlisting}
+in your script, or, simply set,
+\begin{lstlisting}
+valgrind = true;
+\end{lstlisting}
+in \lstinlinebg|src/m/classes/debug.m| to apply run Valgrind on all subsequently-run scripts.
+Launch the solution sequence and read the \lstinlinebg|errlog| file that it outputs.
+
+\subsubsection{When a build includes Boost}
+If your build includes the Boost C++ libraries, there are additional configuration steps needed to overcome a conflict when running Valgrind. Either,
+\begin{enumerate}
+\item install Valgrind with \lstinlinebg|externalpackages/valgrind/install-<OS>.sh|
+\item set \lstinlinebg|#define BOOST_MATH_PROMOTE_DOUBLE_POLICY false| in \newline\lstinlinebg|externalpackages/valgrind/src/boost/math/tools/user.hpp| before running \lstinlinebg|bootstrap.sh| and \lstinlinebg|b2 install|
+\item if you are using Dakota, this will need to be reinstalled as well
+\end{enumerate}
+
+\subsection*{Interfaces}
+\subsubsection{How to debug a MATLAB crash?}
+If there is a crash that is not in \lstinlinebg|issm.exe| (sometimes shown as by PETSc's error manager), one should also use Valgrind. Use the following command,
+\begin{lstlisting}
+matlab -nojvm -nosplash -r "your matlab commands" -D"valgrind --error-limit=no --tool=memcheck -v --log-file=valgrind.log"
+\end{lstlisting}
+Valgrind's output file \lstinlinebg|valgrind.log| should help (look for Invalid read and Invalid write).
+
+\subsubsection{How to debug a Python crash?}
+If there is a crash that is not in \lstinlinebg|issm.exe| (sometimes shown as by PETSc's error manager), one should also use Valgrind. Use the following command:
+\begin{lstlisting}
+valgrind  --error-limit=no --tool=memcheck -v --log-file=valgrind.log python -E -tt ./yourpythonscript.py
+\end{lstlisting}
+Valgrind's output file \lstinlinebg|valgrind.log| should help (look for Invalid read and Invalid write).
+
+\emph{NOTE}: if line numbers are not displayed for Mac users, add the following option \lstinlinebg|--dsymutil=yes|
+
+\clearpage % Make sure all figures are placed before next section

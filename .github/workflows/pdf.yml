@@ -1,0 +1,79 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# NOTE:
+# - Search https://ctan.org/ for package names of missing TeX Live packages as
+#   needed
+#
+name: Generate User Guide
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/pdf.yml"
+      - "docs/**"
+      - "userguide/**"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  BIBINPUTS: "../publications/bibtex/"
+  TARGET: "userguide"
+
+jobs:
+  complete:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: userguide
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install TeX Live
+        uses: teatimeguest/setup-texlive-action@v3
+        with:
+          packages: |
+            scheme-basic
+            aguplus
+            amsfonts
+            amsmath
+            bibtex
+            collection-fontsrecommended
+            enumitem
+            fancyhdr
+            fancyvrb
+            float
+            fontawesome
+            geometry
+            graphics
+            hyperref
+            jknapltx
+            listings
+            multirow
+            natbib
+            pdfcol
+            tcolorbox
+            tools
+            upquote
+            xcolor
+      - name: Generate User Guide
+        run: |
+          export BIBINPUTS=${{ env.BIBINPUTS }}
+          export TARGET=${{ env.TARGET }}
+          ./userguide.sh
+      - name: Deploy to ISSM Repository
+        uses: lubu12/copy-files-to-repository@v1
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-files: ${{ env.TARGET }}/${{ env.TARGET }}.pdf
+          destination-username: 'TidbitSoftware'
+          destination-repository: 'ISSM'
+          destination-directory: ''
+          destination-branch: 'main'
+          commit-email: 'support@tidbitsoftware.com'
+          commit-message: 'CHG: Updated user guide'

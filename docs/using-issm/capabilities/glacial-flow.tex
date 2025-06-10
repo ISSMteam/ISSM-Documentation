@@ -1,0 +1,41 @@
+% Just The Docs Front Matter
+% title: Glacial Flow Approximation
+% parent: Capabilities
+% has_children: false
+% has_toc: false
+
+\subsection{Glacial Flow Approximation} \label{sec:using-issm-capabilities-glacial-flow}
+ISSM has the capability to compute the flow of a glacier with 4 different models:
+\begin{itemize}
+	\item Shallow Ice Approximation (SIA, 2d and 3d)
+	\item MacAyeal/Morland's Shelfy Stream Approximation (SSA, 2d and 3d)
+	\item Blatter/Pattyn's Higher-Order model (HO, 3d: extruded mesh only)
+	\item Full-Stokes' model (FS, 3d: extruded mesh only)
+\end{itemize}
+
+The ice flow model is specified for each element of the mesh. To assign the models to the elements, as an example the following command can be used:
+\begin{lstlisting}
+>> md = setflowequation(md, 'HO', 'Pattyn.exp', 'SSA', md.mask.ocean_levelset < 0., 'fill', 'SIA');
+\end{lstlisting}
+The routine \lstinlinebg|setflowequation| works like \lstinlinebg|plotmodel|: it requires an even number of arguments (without counting md itself). There are five possible options:
+\begin{itemize}
+	\item \lstinlinebg|'SIA'|
+	\item \lstinlinebg|'SSA'|
+	\item \lstinlinebg|'HO'|
+	\item \lstinlinebg|'FS'|
+	\item \lstinlinebg|'fill'|
+\end{itemize}
+
+The first four options must be followed by one of the following arguments:
+\begin{itemize}
+	\item An ARGUS file containing a closed contour, the elements inside the contour will be assigned to the model given by the option.  If user wants to assign the model to the elements outside the domain, add `~' to the name of the domain file (ex: `~Pattyn.exp')
+	\item A vector of size \lstinlinebg|md.numberofelements| holding 0, and 1 on the elements that the user had flagged. The model given by the option will be assigned to the elements flagged only.
+	\item \lstinlinebg|'all'| if the user wants to assign the model to all the elements
+\end{itemize}
+
+The last option \lstinlinebg|'fill'| must be followed by the name of the model that the user wants the other elements (that have not been flagged by the other options) assigned to. All options are not required to be used. The previous example assigns the model of Pattyn for the elements inside the contour \lstinlinebg|Pattyn.exp| and the model of  MacAyeal for the elements located on the ice shelf. The other elements are Hutter's elements. If the user wants to use MacAyeal's model only, type the following command: 
+\begin{lstlisting}
+>> md = setflowequation(md, 'SSA', 'all');
+\end{lstlisting}
+
+\clearpage % Make sure all figures are placed before next section

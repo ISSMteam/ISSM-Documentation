@@ -1,0 +1,77 @@
+% Just The Docs Front Matter
+% title: Hydrology Solution - Shreve Approximation
+% parent: Hydrology Solution
+% has_children: false
+% has_toc: false
+
+\subsubsection{Hydrology Solution - Shreve Approximation} \label{sec:using-issm-capabilities-hydrology-shreve}
+
+\paragraph{Physical basis}
+This model is the one described in \cite{LeBrocq2009}. Here we present only the main equations.
+
+\subparagraph{Water column}
+The model applied here is the most simplistic form of the water-film model, as described by the Weertman theory \citep{Weertman1957}. The model solves for the thickness $w$ of the water-film as follows:
+\begin{equation}
+	\frac{\partial w}{\partial t}=S - \nabla \cdot {\bf u}_{w} w
+\end{equation}
+where:
+\begin{itemize}
+	\item $S$ is the source term $[m\,s^{-1}]$
+	\item ${\bf u}_w$ is the water velocity vector $[m\,s^{-1}]$
+\end{itemize}
+
+The water velocity vector ${\bf u}_w$ is a depth-averaged two dimensional horizontal vector, which is computed using a theoretical treatment of laminar flow between two parallel plates:
+\begin{equation}
+	{\bf u}_w = \frac{w^2}{12 \mu}\nabla \phi
+\end{equation}
+\begin{itemize}
+	\item $\phi$ is the hydraulic potential $[Pa]$
+	\item $\mu$ is the water viscosity $[Pa\,s]$
+\end{itemize}
+
+In this model, the hydraulic potential $\phi$ is defined following the Shreve approximation \citep{Shreve1972}, which hypothesizes a null effective pressure. Assuming this null effective pressure gives the hydraulic potential gradient as follows:
+\begin{equation}
+	\nabla \phi=\rho_{ice} g \nabla s + \left(\rho_w - \rho_{ice}\right) g \nabla h 
+\end{equation}
+where:
+\begin{itemize}
+	\item $\rho_{ice}$ is the density of the ice $[kg\,m^{-3}]$
+	\item $\rho_w$ is the density of fresh water $[kg\,m^{-3}]$
+	\item $s$ is the surface elevation $[m]$
+	\item $g$ is the gravitational acceleration $[m\,s^{-2}]$
+	\item $h$ is the bedrock elevation $[m]$
+\end{itemize}
+
+\subparagraph{Numerical implementation}
+To stabilize the equation, artificial diffusion might be added to the left hand side:
+\begin{equation}
+	\frac{\partial w}{\partial t} +{\color{red} \nabla \left(\mathfrak{D} \nabla w\right)} =S - \nabla \cdot {\bf u}_w w
+\end{equation}
+where $\mathfrak{D}$ is the artificial diffusivity. We take:
+\begin{equation}
+	\mathfrak{D} = \frac{h}{2}
+	\left(\begin{array}{cc}
+		\left|vx\right| & 0 \\
+		\\
+		0 & \left|vy\right|
+	\end{array}\right)
+\end{equation}
+
+\paragraph{Model parameters}
+The parameters relevant to the water column solution can be displayed by running:
+\begin{lstlisting}
+>> md.hydrology
+\end{lstlisting}
+
+\begin{itemize}
+	\item \lstinlinebg|md.hydrology.spcwatercolumn|: water thickness constraints (\lstinlinebg|NaN| means no constraint) $[m]$
+	\item \lstinlinebg|md.hydrology.stabilization|: artificial diffusivity (default is 1).
+\end{itemize}
+
+\paragraph{Running a simulation}
+To run a simulation, use the following command:
+\begin{lstlisting}
+>> md = solve(md, 'Hydrology');
+\end{lstlisting}
+
+\clearpage % Make sure all figures are placed before next section

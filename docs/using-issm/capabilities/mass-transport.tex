@@ -1,0 +1,127 @@
+% Just The Docs Front Matter
+% title: Mass Transport Solution
+% parent: Capabilities
+% has_children: false
+% has_toc: false
+
+\subsection{Mass Transport Solution} \label{sec:using-issm-capabilities-mass-transport}
+
+\subsubsection{Physical basis}
+\paragraph{Conservation of mass}
+The mass transport equation is derived from the depth-integrated form of the mass conservation equation and reads:
+\begin{equation}
+	\frac{\partial H}{\partial t} = - \nabla \cdot \left(H \bar{\bf v}\right) + \dot{M}_s - \dot{M}_b
+\end{equation}
+where:
+\begin{itemize}
+	\item $\bar{\bf v}$ is the depth-averaged velocity vector
+	\item $H$ is the ice thickness
+	\item $\dot{M}_s$ is the surface accumulation (in m/yr of ice equivalent, positive for accumulation)
+	\item $\dot{M}_b$ is the basal melting (in m/yr of ice equivalent, positive for melting)
+\end{itemize}
+
+For full-Stokes models, free surface equations are solved for the upper surface and the base of floating ice:
+\begin{equation}
+	\frac{\partial s}{\partial t}
+	+ v_x\left(s\right) \dfrac{\partial s}{\partial x}
+	+ v_y\left(s\right) \dfrac{\partial s}{\partial y}
+	- v_z\left(s\right)
+	= \dot{M}_s
+\end{equation}
+and:
+\begin{equation}
+	\frac{\partial b}{\partial t}
+	+ v_x\left(b\right) \dfrac{\partial b}{\partial x}
+	+ v_y\left(b\right) \dfrac{\partial b}{\partial y}
+	- v_z\left(b\right)
+	= \dot{M}_b
+\end{equation}
+where:
+\begin{itemize}
+	\item $s$ is the elevation of the ice upper surface
+	\item $b$ is the elevation of the floating ice lower surface
+	\item $\left(v_x\left(s\right),v_y\left(s\right),v_z\left(s\right)\right)$ are the ice velocity
+		components at the upper surface $s$
+	\item $\left(v_x\left(b\right),v_y\left(b\right),v_z\left(b\right)\right)$ are the ice velocity
+		components at the base $b$
+\end{itemize}
+
+\paragraph{Boundary conditions}
+Ice thickness is imposed at the inflow boundary:
+\begin{equation}
+	H=H_{obs} \text{ on } \Gamma_{-}
+\end{equation}
+
+For free surfaces models, both $b$ and $s$ are constrained at the inflow boundary.
+
+\paragraph{Numerical implementation}
+Mass transport is solved using finite elements in space, and implicit finite difference in time. To stabilize the equation, a stabilization term might be added to the left hand side, for example:
+\begin{equation}
+	\frac{\partial H}{\partial t} + \nabla \cdot \left(H \bar{\bf v}\right) 
+	- {\color{red} \nabla \cdot \left(\mathfrak{D} \nabla H\right)}
+	= \dot{M}_s - \dot{M}_b
+\end{equation}
+where $\mathfrak{D}$ is the artificial diffusivity. We take:
+\begin{equation}
+	\mathfrak{D} = \frac{h}{2}
+	\left(\begin{array}{cc}
+		\left|vx\right| & 0 \\
+		\\
+		0 & \left|vy\right|
+	\end{array}\right)
+\end{equation}
+
+There are other stabilization schemes available in ISSM: (1) Artificial Diffusion, (2) Streamline Upwinding, (3) Discontinuous Galerkin (DG), (4) Flux Corrected Transport (FCT), and (5) Streamline Upwind Petrov-Galerlin (SUPG). They can used by setting:
+\begin{lstlisting}
+>> md.masstransport.stabilization = 1;
+\end{lstlisting}
+
+\subsubsection{Model parameters}
+The parameters relevant to the mass transport solution can be displayed by running:
+\begin{lstlisting}
+>> md.masstransport
+\end{lstlisting}
+
+\begin{itemize}
+	\item \lstinlinebg|md.masstransport.spcthickness|: thickness constraints (\lstinlinebg|NaN| means no constraint)
+	\item \lstinlinebg|md.masstransport.hydrostatic_adjustment|: adjustment of ice shelves upper and lower
+		surfaces: \lstinlinebg|'Incremental'| or \lstinlinebg|'Absolute'|
+	\item \lstinlinebg|md.masstransport.stabilization|: 0: no stabilization, 1: artificial diffusion, 2: streamline upwinding 3:
+		discontinuous Galerkin, 4: flux corrected transport (FCT), 5: streamline upwind Petrov-Galerkin (SUPG)
+	\item \lstinlinebg|md.masstransport.penalty_factor|: offset used by penalties
+\end{itemize}
+\begin{equation}
+	\kappa=10^{\text{penalty\_offset}} \max_{i,j}\left| K_{ij}\right|
+\end{equation}
+\begin{itemize}
+	\item \lstinlinebg|md.masstransport.vertex_pairing|: pairs of vertices that are penalized (for periodic
+		boundary conditions only)
+\end{itemize}
+
+The solution will also use the following model fields:
+\begin{itemize}
+	\item \lstinlinebg|md.smb.ablation_rate|: surface ablation rate (in meters)
+	\item \lstinlinebg|md.smb.mass_balance|: surface mass balance (in meters)
+	\item \lstinlinebg|md.initialization.vx|: x component of velocity
+	\item \lstinlinebg|md.initialization.vy|: y component of velocity
+	\item \lstinlinebg|md.basalforcings.groundedice_melting_rate|: basal melting rate applied on grounded ice (positive if melting)
+	\item \lstinlinebg|md.basalforcings.floatingice_melting_rate|: basal melting rate applied on floating ice (positive if melting)
+	\item \lstinlinebg|md.smb.mass_balance|: surface mass balance (in meters/year ice equivalent)
+	\item \lstinlinebg|md.timestepping.time_step|: length of time steps (in years)
+\end{itemize}
+
+\subsubsection{Running a simulation}
+To run a simulation, use the following command:
+\begin{lstlisting}
+>> md = solve(md,'Masstransport');
+\end{lstlisting}
+The first argument is the model, the second is the nature of the simulation one wants to run. This will compute one time step of the mass transport equation; use the 
+%__@LATEX_ONLY_START@__
+\hyperref[sec:using-issm-capabilities-transient]{transient solution}
+%__@LATEX_ONLY_END@__
+%__@MARKDOWN_ONLY_START@__
+% <a href="transient">transient solution</a>
+%__@MARKDOWN_ONLY_END@__
+for multiple time steps.
+
+\clearpage % Make sure all figures are placed before next section

@@ -1,0 +1,245 @@
+% Just The Docs Front Matter
+% title: Stress Balance Solution
+% parent: Capabilities
+% has_children: false
+% has_toc: false
+
+\subsection{Stress Balance Solution} \label{sec:using-issm-capabilities-stress-balance}
+
+\subsubsection{Physical basis}
+\paragraph{Conservation of linear momentum}
+The conservation of momentum reads:
+\begin{equation}
+	\rho \frac{D {\bf v} }{Dt} = \nabla \cdot {\boldsymbol{\sigma}} + \rho {\bf b}
+\end{equation}
+where:
+\begin{itemize}
+	\item $\rho$ is the ice density
+	\item ${\bf v}$ is the velocity vector
+	\item $\boldsymbol{\sigma}$ is the Cauchy stress tensor
+	\item ${\bf b}$ is a body force
+\end{itemize}
+Now if we assume that:
+\begin{itemize}
+	\item The ice motion is a Stokes flow (acceleration negligible)
+	\item The only body force is due to gravity (Coriolis effect negligible)
+\end{itemize}
+The equation of momentum conservation is reduced to:
+\begin{equation}
+	\nabla \cdot \boldsymbol{\sigma} + \rho {\bf g} = {\bf 0}
+\end{equation}
+\paragraph{Conservation of angular momentum}
+For a non-polar material body, the balance of angular momentum imposes the stress tensor to be symmetrical:
+\begin{equation}
+	\boldsymbol{\sigma} = \boldsymbol{\sigma}^T
+\end{equation}
+\paragraph{Ice constitutive equations}
+Ice is treated as a purely viscous incompressible material \cite{Cuffey2010}. Its constitutive equation therefore only involves the deviatoric stress and the strain rate tensor:
+\begin{equation}
+	\boldsymbol{\sigma}' = 2\,\mu\dot{\boldsymbol{\varepsilon}}
+\end{equation}
+where:
+\begin{itemize}
+	\item $\boldsymbol{\sigma}'$ is the deviatoric stress tensor ($\boldsymbol{\sigma}' = \boldsymbol{\sigma} + p {\bf I}$)
+	\item $\mu$ is the ice effective viscosity
+	\item $\dot{\boldsymbol{\varepsilon}}$ is the strain rate tensor
+\end{itemize}
+Ice is a non-Newtonian fluid, its viscosity follows the generalized Glen's flow law \cite{Glen1955}:
+\begin{equation}
+	\mu = \frac{B}{2\,\dot{\varepsilon}_e^{\frac{n-1}{n}}}
+\end{equation}
+where:
+\begin{itemize}
+	\item $B$ is the ice hardness or rigidity
+	\item $n$ is Glen's flow law exponent, generally taken as equal to 3
+	\item $\dot{\varepsilon}_e$ is the effective strain rate
+\end{itemize}
+The effective strain rate is defined as:
+\begin{equation}
+	\dot{\varepsilon}_e = \sqrt{\frac{1}{2} \sum_{i,j} \dot{\varepsilon}_{ij}^2}= \frac{1}{\sqrt{2}} \|\dot{\boldsymbol{\varepsilon}}\|_F
+\end{equation}
+where $\|\cdot\|_F$ is the Frobenius norm.
+
+\paragraph{Full-Stokes (FS) field equations}
+Without any further approximation, the previous system of equations are called the \emph{Full-Stokes} model.
+
+\paragraph{Higher-Order (HO) field equations}
+We make two assumptions:
+\begin{enumerate}
+	\item Bridging effects are neglected
+	\item Horizontal gradient of vertical velocities are neglected compared to vertical gradients of horizontal velocities
+\end{enumerate}
+With these two assumptions, the Full-Stokes equations are reduced to a system of 2 equations with 2 unknowns \cite{Blatter1995, Pattyn2003}:
+\begin{equation}
+	\begin{array}{l}
+		\nabla\cdot\left(2\mu\dot{\boldsymbol{\varepsilon}}_{HO1}\right) = \rho g \dfrac{\partial s}{\partial x} \\
+		\\
+		\nabla\cdot\left(2\mu\dot{\boldsymbol{\varepsilon}}_{HO2}\right) = \rho g \dfrac{\partial s}{\partial y}
+	\end{array}
+\end{equation}
+with:
+\begin{equation}
+	\begin{array}{l}
+		\dot{\boldsymbol{\varepsilon}}_{HO1} = \left[
+		\begin{array}{c}
+			2\dfrac{\partial v_x}{\partial x} +  \dfrac{\partial v_y}{\partial y}\\
+			\\
+			\dfrac{1}{2}\left(\dfrac{\partial v_x}{\partial y} + \dfrac{\partial v_y}{\partial x}\right)\\
+			\\
+			\dfrac{1}{2}\dfrac{\partial v_x}{\partial z}
+		\end{array}
+		\right]
+		\quad
+		\dot{\boldsymbol{\varepsilon}}_{HO2} =\left[
+		\begin{array}{c}
+			\dfrac{1}{2}\left(\dfrac{\partial v_x}{\partial y} + \dfrac{\partial v_y}{\partial x}\right)\\
+			\\
+			\dfrac{\partial v_x}{\partial x} + 2\dfrac{\partial v_y}{\partial y}\\
+			\\
+			\dfrac{1}{2}\dfrac{\partial v_y}{\partial z}
+		\end{array}
+		\right]
+	\end{array}
+\end{equation}
+
+\paragraph{Shelfy-Stream Approximation (SSA) field equations}
+We make the following assumption:
+\begin{enumerate}
+	\item Vertical shear is negligible
+\end{enumerate}
+With this assumption, we have a system of 2 equations with 2 unknowns in the horizontal plane
+\citep{Morland1987a, MacAyeal1989}:
+\begin{equation}
+	\begin{array}{l}
+		\nabla\cdot\left(2\bar{\mu}H\dot{\boldsymbol{\varepsilon}}_{SSA1}\right) - \alpha^2 v_x= \rho g H \dfrac{\partial s}{\partial x} \\
+		\\
+		\nabla\cdot\left(2\bar{\mu}H\dot{\boldsymbol{\varepsilon}}_{SSA2}\right) - \alpha^2 v_y= \rho g H \dfrac{\partial s}{\partial y}
+	\end{array}
+\end{equation}
+with:
+\begin{equation}
+	\begin{array}{l}
+		\dot{\boldsymbol{\varepsilon}}_{SSA1} = \left[
+		\begin{array}{c}
+			2\dfrac{\partial v_x}{\partial x} +  \dfrac{\partial v_y}{\partial y}\\
+			\\
+			\dfrac{1}{2}\left(\dfrac{\partial v_x}{\partial y} + \dfrac{\partial v_y}{\partial x}\right)
+		\end{array}
+		\right]
+		\quad
+		\dot{\boldsymbol{\varepsilon}}_{SSA2} =\left[
+		\begin{array}{c}
+			\dfrac{1}{2}\left(\dfrac{\partial v_x}{\partial y} + \dfrac{\partial v_y}{\partial x}\right)\\
+			\\
+			\dfrac{\partial v_x}{\partial x} + 2\dfrac{\partial v_y}{\partial y}
+		\end{array}
+		\right]
+	\end{array}
+\end{equation}
+where:
+\begin{itemize}
+	\item $\bar{\mu}$ is the depth-averaged viscosity
+	\item $H$ is the ice thickness
+	\item $\alpha$ is the basal friction coefficient
+\end{itemize}
+
+\paragraph{Boundary conditions}
+At the surface of the ice sheet, $\Gamma_s$, we assume a stress-free boundary condition. A viscous friction law is applied at the base of the ice sheet, $\Gamma_b$, and water pressure is applied at the ice/water interface $\Gamma_w$. For FS, these boundary conditions are:
+\begin{equation}
+	\begin{array}{rcll}
+		\boldsymbol{\sigma}\cdot {\bf n} & = & \boldsymbol{0} & \text{ on } \Gamma_s\\
+		\\
+		\left(\boldsymbol{\sigma}\cdot {\bf n} \cdot {\bf n} + {\alpha}^2 {\bf v}\right)_{\parallel} & = & \boldsymbol{0} & \text{ on } \Gamma_b\\
+		\\
+		{\bf v} \cdot {\bf n}  & = & 0 & \text{ on } \Gamma_b\\
+		\\
+		\boldsymbol{\sigma}\cdot {\bf n} & = & \rho_w g z {\bf n} & \text{ on } \Gamma_w
+	\end{array}
+\end{equation}
+where
+\begin{itemize}
+	\item ${\bf n}$ is the outward-pointing unit normal vector
+	\item $\rho_w$ is the water density
+	\item $z$ is the vertical coordinate with respect to sea level
+\end{itemize}
+
+For HO, these boundary conditions become:
+\begin{equation}
+	\begin{array}{rclrcll}
+		\dot{\boldsymbol{\varepsilon}}_{HO1} \cdot {\bf n} & = & 0 &
+		\dot{\boldsymbol{\varepsilon}}_{HO2} \cdot {\bf n} & = & 0 &
+		\text{ on } \Gamma_s\\
+		\\
+		2\mu\,\dot{\boldsymbol{\varepsilon}}_{HO1} \cdot {\bf n} & = & -\alpha^2 v_x &
+		2\mu\,\dot{\boldsymbol{\varepsilon}}_{HO2} \cdot {\bf n} & = & -\alpha^2 v_y &
+		\text{ on } \Gamma_b\\
+		\\
+		2\mu\,\dot{\boldsymbol{\varepsilon}}_{HO1} \cdot {\bf n} & = & f_w n_x &
+		2\mu\,\dot{\boldsymbol{\varepsilon}}_{HO2} \cdot {\bf n} & = & f_w n_y &
+		\text{ on } \Gamma_w
+	\end{array}
+\end{equation}
+where $f_w=\rho g\left(s-z\right) +\rho_w g \min\left(z,0\right)$.
+
+For SSA, these boundary conditions are:
+\begin{equation}
+	\begin{array}{rclrcll}
+		\dot{\boldsymbol{\varepsilon}}_{SSA1} \cdot {\bf n} & = & 0 &
+		\dot{\boldsymbol{\varepsilon}}_{SSA2} \cdot {\bf n} & = & 0 &
+		\text{ on } \Gamma_s
+	\end{array}
+\end{equation}
+\begin{equation}
+	\begin{array}{rcl}
+		2\bar{\mu}H\dot{\boldsymbol{\varepsilon}}_{SSA1} \cdot {\bf n} & = & \left(\frac{1}{2}\rho g H^2 - \frac{1}{2}\rho_w g b^2 \right) n_x \\
+		\\
+		2\bar{\mu}H\dot{\boldsymbol{\varepsilon}}_{SSA2} \cdot {\bf n} & = & \left(\frac{1}{2}\rho g H^2 - \frac{1}{2}\rho_w g b^2 \right) n_y
+	\end{array}
+	\text{ on } \Gamma_w
+\end{equation}
+
+\subsubsection{Model parameters}
+The parameters relevant to the stress balance solution can be displayed by typing:
+\begin{lstlisting}
+>> md.stressbalance
+\end{lstlisting}
+
+\begin{itemize}
+	\item \lstinlinebg|md.stressbalance.restol|: mechanical equilibrium residue convergence criterion
+	\item \lstinlinebg|md.stressbalance.reltol|: velocity relative convergence criterion, (\lstinlinebg|NaN| if not applied)
+	\item \lstinlinebg|md.stressbalance.abstol|: velocity absolute convergence criterion, (\lstinlinebg|NaN| if not applied)
+	\item \lstinlinebg|md.stressbalance.maxiter|: maximum number of nonlinear iterations (default is 100)
+	\item \lstinlinebg|md.stressbalance.spcvx|: x-axis velocity constraint (\lstinlinebg|NaN| means no constraint)
+	\item \lstinlinebg|md.stressbalance.spcvy|: y-axis velocity constraint (\lstinlinebg|NaN| means no constraint)
+	\item \lstinlinebg|md.stressbalance.spcvz|: z-axis velocity constraint (\lstinlinebg|NaN| means no constraint)
+	\item \lstinlinebg|md.stressbalance.rift_penalty_threshold|: threshold for instability of mechanical constraints
+	\item \lstinlinebg|md.stressbalance.rift_penalty_lock|: number of iterations before rift penalties are locked
+	\item \lstinlinebg|md.stressbalance.penalty_factor|: offset used by penalties:
+\end{itemize}
+\begin{equation}
+	\kappa=10^{\text{penalty\_factor}} \max_{i,j}\left| K_{ij}\right|
+\end{equation}
+\begin{itemize}
+	\item \lstinlinebg|md.stressbalance.vertex_pairing|: pairs of vertices that are penalized
+	\item \lstinlinebg|md.stressbalance.shelf_dampening|: use dampening for floating ice? Only for Stokes model
+	\item \lstinlinebg|md.stressbalance.referential|: local referential
+	\item \lstinlinebg|md.stressbalance.requested_outputs|: additional outputs requested
+\end{itemize}
+
+The solution will also use the following model fields:
+\begin{itemize}
+	\item \lstinlinebg|md.flowequations|: FS, HO or SSA
+	\item \lstinlinebg|md.materials|: material parameters
+	\item \lstinlinebg|md.initialization.vx|: x component of velocity (used as an initial guess)
+	\item \lstinlinebg|md.initialization.vy|: y component of velocity (used as an initial guess)
+	\item \lstinlinebg|md.initialization.vz|: y component of velocity (used as an initial guess)
+\end{itemize}
+
+\subsubsection{Running a simulation}
+To run a simulation, use the following command:
+\begin{lstlisting}
+>> md = solve(md, 'Stressbalance');
+\end{lstlisting}
+The first argument is the model, the second is the nature of the simulation one wants to run.
+
+\clearpage % Make sure all figures are placed before next section

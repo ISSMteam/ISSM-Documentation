@@ -1,0 +1,64 @@
+% Just The Docs Front Matter
+% title: Model Class
+% parent: Getting Started
+% nav_order: 2
+% has_children: false
+% has_toc: false
+
+\section{Model Class} \label{sec:getting-started-model-class}
+All the data belonging to a model (geometry, node coordinates, results, etc.) is held in the same object \lstinlinebg|model|. To create a new model in MATLAB, run,
+\begin{lstlisting}
+md = model
+\end{lstlisting}
+and in Python,
+\begin{lstlisting}
+from model import *
+md = model()
+\end{lstlisting}
+This will create a new model named \lstinlinebg|md| whose class is \lstinlinebg|model|. The information contained in the model \lstinlinebg|md| is grouped by class, each of which are comprised of fields related to that particular aspect of the model (e.g. mesh, material properties, friction, stressbalance solution, solution results). When one creates a new model, all of these fields are empty or \lstinlinebg|NaN| (not a number), but \lstinlinebg|md| is ready to be used as a model. The list of these classes is displayed by running, in MATLAB,
+
+\begin{lstlisting}
+>> md
+md = 
+
+               mesh: [1x1 mesh2d]           -- mesh properties
+               mask: [1x1 mask]             -- defines grounded and floating elements
+           geometry: [1x1 geometry]         -- surface elevation, bedrock topography, ice thickness,...
+                     [...]
+            results: [1x1 struct]           -- model results
+       radaroverlay: [1x1 radaroverlay]     -- radar image for plot overlay
+      miscellaneous: [1x1 miscellaneous]    -- miscellaneous fields
+\end{lstlisting}
+or, in Python,
+\begin{lstlisting}
+>>> print(md)
+               mesh: [1x1 mesh2d]           -- mesh properties
+               mask: [1x1 mask]             -- defines grounded and floating elements
+           geometry: [1x1 geometry]         -- surface elevation, bedrock topography, ice thickness,...
+                     [...]
+       radaroverlay: [1x1 radaroverlay]      -- radar image for plot overlay
+      miscellaneous: [1x1 miscellaneous]     -- miscellaneous fields
+  stochasticforcing: [1x1 stochasticforcing] -- stochasticity applied to model forcings
+\end{lstlisting}
+
+Likewise, you can display all the fields associated with, for example, the model's mesh by running,
+\begin{lstlisting}
+>> md.mesh
+\end{lstlisting}
+or,
+\begin{lstlisting}
+>>> print(md.mesh)
+\end{lstlisting}
+
+\subsection{Saving/Loading a Model}
+You can save the model with all its fields so that the saved file contains all of the information in the model by running,
+\begin{lstlisting}
+save squaremodel md
+\end{lstlisting}
+This will create a file \lstinlinebg|squaremodel.mat| made from the model \lstinlinebg|md|. Likewise, to load this file, run,
+\begin{lstlisting}
+>> loadmodel squaremodel
+\end{lstlisting}
+The loaded model will be named \lstinlinebg|md|.
+
+\clearpage % Make sure all figures are placed before next section

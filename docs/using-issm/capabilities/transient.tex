@@ -1,0 +1,105 @@
+% Just The Docs Front Matter
+% title: Transient Solution
+% parent: Capabilities
+% has_children: false
+% has_toc: false
+
+\subsection{Transient Solution} \label{sec:using-issm-capabilities-transient}
+\subsubsection{Physical basis}
+The transient solution is a combination of all the other solutions and modules that allow us to run a model forward in time (between a start time and a final time) using finite differences in time. At each time step of the simulation the following steps are performed in the order noted below,
+%__@LATEX_ONLY_START@__
+\begin{enumerate}
+	\item \hyperref[sec:using-issm-capabilities-thermal]{thermal solution}
+	\item \hyperref[sec:using-issm-capabilities-hydrology]{hydrology solution}
+	\item \hyperref[sec:using-issm-capabilities-stress-balance]{stress balance solution}
+	\item \hyperref[sec:using-issm-capabilities-damage]{damage mechanics}
+	\item \hyperref[sec:using-issm-capabilities-mass-transport]{mass transport solution}
+	\item \hyperref[sec:using-issm-capabilities-grounding-lines]{grounding line migration (and geometry update)}
+	\item \hyperref[sec:using-issm-capabilities-gia]{Glacial Isostatic Adjustment (GIA) solution}
+\end{enumerate}
+%__@LATEX_ONLY_END@__
+%__@MARKDOWN_ONLY_START@__
+% 1. <a href="thermal">thermal solution</a>
+% 1. <a href="hydrology">hydrology solution</a>
+% 1. <a href="stress-balance">stress balance solution</a>
+% 1. <a href="damage">damage mechanics</a>
+% 1. <a href="mass-transport">mass transport solution</a>
+% 1. <a href="grounding-lines">grounding line migration (and geometry update)</a>
+% 1. <a href="gia">Glacial Isostatic Adjustment (GIA) solution</a>
+%__@MARKDOWN_ONLY_END@__
+
+Not all solutions have to be included in the transient runs, and each of these functionalities can be activated or deactivated prior to launching the simulation.
+
+\subsubsection{Model parameters}
+The parameters relevant to the transient solution can be displayed by typing:
+\begin{lstlisting}
+>> md.transient
+\end{lstlisting}
+
+\begin{itemize}
+	\item \lstinlinebg|md.transient.ismasstransport|: indicates whether a masstransport solution is used in the transient
+	\item \lstinlinebg|md.transient.isstressbalance|: indicates whether a stressbalance solution is used in the transient
+	\item \lstinlinebg|md.transient.isthermal|: indicates whether a thermal solution is used in the transient
+	\item \lstinlinebg|md.transient.isgroundingline|: indicates whether a grounding line migration is used in the transient
+	\item \lstinlinebg|md.transient.isgia|: indicates whether a postglacial solution is used in the transient
+	\item \lstinlinebg|md.transient.isdamageevolution|: indicates whether damage evolution is used in the transient
+	\item \lstinlinebg|md.transient.islevelset|: level set, not implemented yet
+	\item \lstinlinebg|md.transient.ishydrology|: indicates whether a hydrology solution is used in the transient
+	\item \lstinlinebg|md.transient.requested_outputs|: list of additional outputs requested
+\end{itemize}
+
+The solution will also use fields from the following classes for each of the solution used:
+\begin{itemize}
+	\item \lstinlinebg|md.masstransport|: for parameters related to the masstransport solution
+	\item \lstinlinebg|md.stressbalance|: for parameters related to the stressbalance solution
+	\item \lstinlinebg|md.thermal|: for parameters related to the thermal solution
+	\item \lstinlinebg|md.groundingline|: for parameters related to grounding line migration
+	\item \lstinlinebg|md.gia|: for parameters related to the postglacial solution
+	\item \lstinlinebg|md.damage|: for parameters related to damage evolution
+	\item \lstinlinebg|md.hydrology|: for parameters related to the hydrology solution
+	\item \lstinlinebg|md.initialization|: for initial values of model fields (velocity, temperature, ...)
+	\item \lstinlinebg|md.timestepping|: for parameters related to time stepping (initial time, final time, length of time steps, ...)
+\end{itemize}
+
+\paragraph{Time stepping}
+Each solution requested is computed at each time step. The time step has either a fixed duration (specified by the user before the simulation is launched) or a varying duration based on the CFL (Courant–Friedrichs–Lewy) condition (necessary condition for the stability of certain partial differential equations).
+
+The parameters relevant to the time stepping can be displayed by running:
+\begin{lstlisting}
+>> md.timestepping
+\end{lstlisting}
+
+\begin{itemize}
+	\item \lstinlinebg|md.timestepping.start_time|: simulation starting time (year)
+	\item \lstinlinebg|md.timestepping.final_start|: final time to stop the simulation (year)
+	\item \lstinlinebg|md.timestepping.time_step|: length of time steps (year)
+	\item \lstinlinebg|md.timestepping.time_adapt|: to indicate if the CFL condition is used to define time step?
+	\item \lstinlinebg|md.timestepping.cfl_coefficient|: coefficient applied to cfl condition
+	\item \lstinlinebg|md.timestepping.interp_forcings|: interpolate in time between requested forcing values? (0 or 1)
+\end{itemize}
+
+\subsubsection{Forcing a transient}
+To specify a transient forcing, the user must add a time value to the end (i.e. in the \lstinlinebg|end + 1| position) of the variable to be forced. This means that a transient forcing will no longer be a single column of length \lstinlinebg|n|. Instead, it will be a matrix (or a series of columns), and each column will be of length \lstinlinebg|n + 1|.
+
+For example, let \lstinlinebg|smb| be values of surface mass balance. Below, we impose \lstinlinebg|smb| at year 10 and then impose a decrease of 1 m/yr in surface mass balance everywhere at year 20:
+\begin{lstlisting}
+>> md.smb.mass_balance = [smb smb - 1];
+>> md.smb.mass_balance = [md.smb.mass_balance; [10 20]];
+\end{lstlisting}
+
+Prior to first and after last imposed time, ISSM will impose constant surface mass balance values. In the example above, the surface mass balance is assumed constant prior to year 10, and again after year 20. Forcing values will be equal to \lstinlinebg|smb| prior to year 10 and \lstinlinebg|smb - 1| after year 20.
+
+Between years 10 and 20, ISSM will treat all forcings according to the value set in the time stepping parameter \lstinlinebg|interp_forcings|.
+
+By default, \lstinlinebg|md.timestepping.interp_forcings = 1|. This means that between the user-imposed times, forcings are linearly interpolated. For the example above, the model will linearly increase surface mass balance from \lstinlinebg|smb| to \lstinlinebg|smb - 1| between years 10 and 20.
+
+The user must set \lstinlinebg|md.timestepping.interp_forcings = 0| to turn this feature off and impose a step-wise forcing. When \lstinlinebg|interp_forcings = 0|, the forcing value will change only at the times designated by the user. After the last user-specified time, the forcing will remain constant. In the example above, the surface mass balance will be equal to \lstinlinebg|smb| up until time 20. At time 20, the surface mass balance will be changed to \lstinlinebg|smb - 1|, and will remain at these values until the end of the simulation.
+
+\subsubsection{Running a simulation}
+To run a simulation, use the following command:
+\begin{lstlisting}
+>> md = solve(md, 'Transient');
+\end{lstlisting}
+The first argument to \lstinlinebg|solve| is the model, the second is the nature of the simulation one wants to run.
+
+\clearpage % Make sure all figures are placed before next section

@@ -1,0 +1,169 @@
+% Just The Docs Front Matter
+% title: Basal Friction
+% parent: Parameterization
+% has_children: false
+% has_toc: false
+
+\subsection{Basal Friction} \label{sec:using-issm-parameterization-friction}
+\subsubsection{Introduction}
+All friction laws in ISSM are implemented as:
+\begin{equation}
+	\boldsymbol{\tau}_b = -f\left({\bf v}_b,N\right) \frac{ {\bf v}_b}{\left|{\bf v}_b\right|}
+\end{equation}
+where $N$ is the effective pressure, $\boldsymbol{\tau}_b$ and ${\bf v}_b$ are the basal stress and
+sliding velocities respectively. The friction laws described below are describing the norm of the
+basal stress for simplicity but all implementations are such that the oppose motion (i.e. the
+direction of the basal stress is the opposite of ${\bf v}_b$).
+
+Most friction laws use a switch to define how the effective pressure, $N = p_{ice} - p_{water}$ is
+calculated: \lstinlinebg|md.friction.coupling|:
+\begin{itemize}
+	\item 0: $p_{water} = -\rho_w g b$  uniform sheet (negative water pressure ok, default)
+	\item 1: $p_{water} = 0$, so that $N=p_{ice}=\rho_i g H$ is equal to the overburden pressure
+	\item 2: $p_{water} = \max\left(0,-\rho_w g b\right)$. Same as 0, but $p_{water}\ge 0$
+	\item 3: Use effective pressure prescrived in \lstinlinebg|md.friction.effective_pressure|
+	\item 4: Use effective pressure dynamically calculated by the hydrology model (i.e., fully
+		coupled)
+\end{itemize}
+
+\subsubsection{Budd Friction law (friction)}
+The default friction law is defined as \citep{Paterson1994} (p 151):
+\begin{equation}
+	v_b \propto N^{-q} {\tau}_b^p
+\end{equation}
+where:
+\begin{itemize}
+	\item $v_b$ is the basal velocity magnitude
+	\item $\tau_b$ is the basal stress magnitude
+	\item $N$ is the effective pressure
+	\item $p$ and $q$ are friction law exponents
+\end{itemize}
+
+In ISSM, this friction law is implemented in terms of basal stress, following \cite{Budd1979}:
+\begin{equation}
+	\tau_b = C_b^2 N^r {v}_b^s
+\end{equation}
+where:
+\begin{itemize}
+	\item $C_b$ friction coefficient
+	\item $r$ and $s$ are friction law exponents:
+\end{itemize}
+\begin{equation}
+	r=q/p \hspace{4em} s=1/p
+\end{equation}
+
+This friction law can be selected as follows:
+\begin{lstlisting}
+>> md.friction = friction();
+\end{lstlisting}
+
+The following fields need to be specified:
+\begin{itemize}
+	\item \lstinlinebg|md.friction.coefficient|: friction coefficient
+	\item \lstinlinebg|md.friction.p|: p exponent
+	\item \lstinlinebg|md.friction.q|: q exponent
+\end{itemize}
+
+\subsubsection{Weertman Friction law (weertmanfriction)}
+The Weertman friction \citep{Weertman1957} law reads:
+\begin{equation}
+	v_b  = C_w {\tau}_b^m
+\end{equation}
+\begin{itemize}
+	\item $C_w$ is a friction coefficient (variable in space)
+	\item $m$ is a friction law exponent
+\end{itemize}
+
+In ISSM, this friction law is implemented in terms of basal stress:
+\begin{equation}
+	\boldsymbol{\tau}_b = C_w^{-1/m} \|{\bf v}_b\|^{1/m-1} {\bf v}_b
+\end{equation}
+
+This friction law can be selected as follows:
+\begin{lstlisting}
+>> md.friction = frictionweertman();
+\end{lstlisting}
+
+One can display the following fields by running:
+\begin{lstlisting}
+>> md.friction
+\end{lstlisting}
+\begin{itemize}
+	\item \lstinlinebg|md.friction.C|: friction coefficient
+	\item \lstinlinebg|md.friction.m|: m exponent
+\end{itemize}
+
+\subsubsection{Coulomb-limited sliding 1 (frictioncoulomb)}
+\begin{equation}
+	\tau_b = \min\left(C N ub , C_c^2 N \right) 
+\end{equation}
+
+\subsubsection{Regularized Coulomb-limited sliding 1 (frictionregcoulomb)}
+Sliding law from \cite{Joughin2019}:
+\begin{equation}
+	\tau_b = \frac{C u_b^{1/m}\alpha^2 N}{\left(\frac{u_b}{u_0} + 1\right)^{1/m}}
+\end{equation}
+
+\subsubsection{Coulomb-limited sliding 2 (frictioncoulomb2)}
+Coulomb-limited sliding law used in MISMIP+ \citep{Cornford2020}:
+\begin{equation}
+	\tau_b = \frac{C u_b^{m}\alpha^2 N}{\left(C^{1/m}u_b + (\alpha^2N)^{1/m}\right)^{m}},
+\end{equation}
+where $\alpha^2 = 0.5$. Note that this friction law is exactly the same as \lstinlinebg|frictionschoof| described below, with $C_{max} = 0.5$.
+
+\subsubsection{Regularized Coulomb-limited sliding 2 (frictionregcoulomb2)}
+Sliding law from \cite{Helanow2021}:
+\begin{equation}
+	\tau_b = \frac{C\, N\, u_b^{1/m}}{\left(u_b + (K\,N)^{m}\right)^{1/m}}
+\end{equation}
+
+\subsubsection{Friction Tsai (frictiontsai)}
+from \citep{Tsai2015}:
+\begin{equation}
+	\tau_b = \min\left(C ub^{m} , f N \right) 
+\end{equation}
+
+\subsubsection{Friction Schoof (frictionschoof)}
+from \citep{Schoof2005,Gagliardini2007} (note that we use $C_s^2$ to make sure it is a positive number):
+\begin{equation}
+	\tau_b = \frac{C_s^2 v_b^{m}}{\left(1 + \left(\frac{C_s^2}{C_{max}N}\right)^{1/m} v_b\right)^{m}},
+\end{equation}
+
+\subsubsection{Friction PISM (frictionpism)}
+Under construction
+
+\subsubsection{Thin water layer friction law (frictionwaterlayer)}
+The thin water layer friction law is similar to the default friction law except that the effective pressure includes a specified layer of water at the bed:
+\begin{equation}
+	N= g \left( \rho_i H + \rho_w \left( b - w\right) \right)
+\end{equation}
+when the bedrock is below sea level, and:
+\begin{equation}
+	N= g \left( \rho_i H - \rho_w w \right)
+\end{equation}
+when the bedrock is above sea level, with:
+\begin{itemize}
+	\item $N$ the effective pressure
+	\item $\rho_i$ the ice density
+	\item $\rho_w$ the water density
+	\item $H$ and $b$ ice thickness and bed elevation
+	\item $w$ the water thickness at the ice base
+\end{itemize}
+
+This friction law can be selected as follows:
+\begin{lstlisting}
+>> md.friction = frictionwaterlayer();
+\end{lstlisting}
+
+One can display all these fields by running:
+\begin{lstlisting}
+>> md.friction
+\end{lstlisting}
+\begin{itemize}
+	\item \lstinlinebg|md.friction.coefficient|: friction coefficient
+	\item \lstinlinebg|md.friction.p|: p exponent
+	\item \lstinlinebg|md.friction.q|: q exponent
+	\item \lstinlinebg|md.friction.water_layer|: thin water layer thickness (meters)
+\end{itemize}
+
+\clearpage % Make sure all figures are placed before next section

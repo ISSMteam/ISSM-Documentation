@@ -1,0 +1,77 @@
+% Just The Docs Front Matter
+% title: Installation
+% nav_order: 2
+% has_children: true
+% has_toc: false
+
+%__@LATEX_ONLY_START@__
+\section{Introduction} \label{sec:installation-introduction}
+%__@LATEX_ONLY_END@__or for development is covered in the
+%__@MARKDOWN_ONLY_START@__
+%<h1>Installation</h1>
+%__@MARKDOWN_ONLY_END@__
+Most users should navigate to the page corresponding to their operating system and choose to either download and install a precompiled distributable or follow the instructions for configuring, compiling, and installing ISSM from source.
+
+Known configurations and other notes for compiling and installing and running ISSM on a number of 
+%__@LATEX_ONLY_START@__
+\hyperref[sec:installation-hpc]{`High-Performance Computing (HPC)'}
+%__@LATEX_ONLY_END@__
+%__@MARKDOWN_ONLY_START@__
+%<a href="hpc" target="_top">'High-Performance Computing (HPC)'</a>
+%__@MARKDOWN_ONLY_END@__
+systems are available and updated as new configurations are discovered.
+
+Configuring and compiling ISSM with extended capabilities (e.g. solid-earth, automatic differentiation) or for development is covered in the
+%__@LATEX_ONLY_START@__
+\hyperref[sec:installation-advanced]{`Advanced Features' section}.
+%__@LATEX_ONLY_END@__
+%__@MARKDOWN_ONLY_START@__
+%<a href="advanced" target="_top">'Advanced Features' page</a>.
+%__@MARKDOWN_ONLY_END@__
+
+%__@LATEX_ONLY_START@__
+\begin{calloutHighlight}{A Note About Anaconda}
+Anaconda environments can cause all sorts of toolchain conflicts at configuration and compile time that are hard to diagnose. If you use Anaconda and are having issues compiling the external packages, you might try disabling your Anaconda environment with,
+\begin{lstlisting}
+conda deactivate [<ENV_NAME>]
+\end{lstlisting}
+If disabling your Anaconda environment resolves configuration/compilation issues, you might consider disabling it by default in your shell profile (after the \lstinlinebg|conda initialize| block).
+
+This and other compile time and runtime issues are covered in the \hyperref[chap:troubleshooting]{`Troubleshooting' chapter}.
+\end{calloutHighlight}
+%__@LATEX_ONLY_END@__
+%__@MARKDOWN_ONLY_START@__
+%{: .highlight-title }
+%> A Note About Anaconda
+%>
+%> Anaconda environments can cause all sorts of toolchain conflicts at configuration and compile time that are hard to diagnose. If you use Anaconda and are having issues compiling the external packages, you might try disabling your Anaconda environment with,
+%> ````
+%> conda deactivate [<ENV_NAME>]
+%> ````
+%> If disabling your Anaconda environment resolves configuration/compilation issues, you might consider disabling it by default in your shell profile (after the `conda initialize` block).
+%>
+%> This and other compile time and runtime issues are covered on the <a href="../troubleshooting" target="_top">'Troubleshooting' pages</a>.
+%__@MARKDOWN_ONLY_END@__
+
+\subsection{Python Interface}
+There are currently two interfaces to ISSM: MATLAB (preferred) or Python (not fully supported). To run ISSM with a Python interface, you will need to install a few packages. The current best practice for achieving this is to do so through a virtual environment. Please see the page corresponding to your operating system for further instructions.
+
+%__@MARKDOWN_ONLY_START@__
+%- <a href="linux#python-interface" target="_top">Linux</a>
+%- <a href="macos#python-interface" target="_top">macOS</a>
+%- <a href="windows#python-interface" target="_top">Windows</a>
+%__@MARKDOWN_ONLY_END@__
+
+\subsection{External Packages}
+Compiling ISSM requires a few external packages. Some of these may be installed via package manager, but we also provide installation scripts which include known, valid configurations for a variety of external packages on all major operating systems and architectures. These scripts are located in \lstinlinebg|${ISSM_DIR}/externalpackages/|.
+
+There is no guarantee that compilation of a given external package will work on all systems. Some tweaking of the installation script may be necessary, especially the configuration. Some known gotchas are covered 
+%__@LATEX_ONLY_START@__
+in the \hyperref[chap:troubleshooting]{`Troubleshooting' chapter}.
+%__@LATEX_ONLY_END@__
+%__@MARKDOWN_ONLY_START@__
+%on the <a href="../troubleshooting" target="_top">'Troubleshooting' pages</a>.
+%__@MARKDOWN_ONLY_END@__
+Feel free as well to search or post troubleshooting questions and issues to the \href{https://issm.ess.uci.edu/forum/}{ISSM Forum}, or ISSM GitHub repository \href{https://github.com/ISSMteam/ISSM/discussions}{Discussions} or \href{https://github.com/ISSMteam/ISSM/issues}{Issues}.
+
+\clearpage % Make sure all figures are placed before next section

@@ -1,0 +1,86 @@
+% Just The Docs Front Matter
+% title: Configuring and Compiling External Packages
+% parent: Troubleshooting
+% nav_order: 1
+% has_children: false
+% has_toc: true
+
+\section{Configuring and Compiling External Packages} \label{sec:troubleshooting-compiling-externalpackages}
+\subsection*{Chaco Multilevel Graph Partitioning Tool}
+\subsubsection{Error compiling on macOS}%{{{
+When compiling \href{https://github.com/sandialabs/Chaco}{Chaco} on macOS (most likely using the \lstinlinebg|${ISSM_DIR}/externalpackages/chaco/install.sh| script), you may encounter an error that reads,
+\begin{lstlisting}
+util/smalloc.c:6:10: fatal error: 'malloc.h' file not found
+#include <malloc.h>
+         ^~~~~~~~~~
+1 error generated.
+make: *** [util/smalloc.o] Error 1
+\end{lstlisting}
+
+To correct this, you will have to have either Xcode Command Line Tools (preferred) or Xcode installed.
+\begin{itemize}
+\item To install the Xcode Command Line Tools, run \lstinlinebg|xcode-select --install|
+\item You can install Xcode through the Mac App Store
+\end{itemize}
+
+You will then need to modify the \lstinlinebg|CPATH| environment variable in your shell profile (e.g. \lstinlinebg|~/.bashrc|),
+\begin{itemize}
+\item If you installed the Xcode Command Line Tools, 
+\begin{lstlisting}
+export CPATH="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc:/usr/include"
+\end{lstlisting}
+\item If you installed Xcode,
+\begin{lstlisting}
+export CPATH="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/malloc:/usr/include"
+\end{lstlisting}
+\end{itemize}
+
+Then, source your shell profile again and rerun the installation script.
+%}}}
+
+\subsection*{PETSc}
+\subsection*{Error running make on <EXT\_PKG>}%{{{
+When using PETSc to install an external package you may encounter a failure that reads,
+\begin{lstlisting}
+Error running make on <EXT_PKG>
+\end{lstlisting}
+
+Inspection of \lstinlinebg|src/configure.log| should reveal a line similiar to,
+\begin{lstlisting}
+Error running make on <EXT_PKG>: Could not execute "['<CMD_STRING>']":
+\end{lstlisting}
+This is usually not a very helpful error message. What you can do is copy \lstinlinebg|<CMD_STRING>| and run it manually on the command line to reveal and correct the underlying errors.
+%}}}
+
+\subsubsection{Error running configure on MPICH}%{{{
+With GCC 10 and later, when using PETSc to install MPICH, you may encounter a failure that reads,
+\begin{lstlisting}
+Error running configure on MPICH
+\end{lstlisting}
+
+Inspection of \lstinlinebg|src/configure.log| should reveal,
+\begin{lstlisting}
+error: The Fortran compiler gfortran will not compile files that call
+the same routine with arguments of different types.
+\end{lstlisting}
+One way to get around this is to add,
+\begin{lstlisting}
+--FFLAGS="-fallow-argument-mismatch"
+\end{lstlisting}
+to the list of configuration arguments.
+%}}}
+
+\subsection*{C++ error! MPI\_Finalize() could not be located! / Error running make; make install on MPICH}%{{{
+When configuring and/or compiling MPICH via PETSc, it may fail with either of the above error messages. Inspection of \lstinlinebg|src/configure.log| should reveal something like,
+\begin{lstlisting}
+Checking for program /opt/homebrew/bin/mpicc...found
+\end{lstlisting}
+The solution here is one of the following,
+\begin{enumerate}
+\item Uninstall the MPI compiler set installed via package manager (in this example, Homebrew)
+\item Make sure that the path to the desired non-MPI compiler set (e.g. \lstinlinebg|gcc|, \lstinlinebg|g++|) appears in the \lstinlinebg|PATH| environment variable before the path to the offending MPI compiler set
+\item Remove the \lstinlinebg|--download-mpich=1| option from the PETSc configuration and instead supply the appropriate options to use the alternate MPI implementation
+\end{enumerate}
+%}}}
+
+\clearpage % Make sure all figures are placed before next section
