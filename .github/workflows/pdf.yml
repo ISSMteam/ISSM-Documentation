@@ -71,7 +71,7 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source-files: ${{ env.TARGET }}/${{ env.TARGET }}.pdf
-          destination-username: 'TidbitSoftware'
+          destination-username: 'ISSMteam'
           destination-repository: 'ISSM'
           destination-directory: ''
           destination-branch: 'main'
