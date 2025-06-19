@@ -32,7 +32,7 @@ The first argument is the model you are working on, the second argument is the f
 >> plotmodel(md, 'data', 'mesh');
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/capabilities/mesh/mesh.png" alt="Figure 1: mesh"></div><span style="display:block;width:100%;text-align:center"><small>Mesh</small></span>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/capabilities/mesh/mesh.png" alt="Figure 1: mesh"></div><span style="display:block;width:100%;text-align:center"><small>Mesh</small></span>
 ISSM includes a mesh adaptation capability embedded in the code, inspired by <a href="https://people.math.sc.edu/Burkardt/data/bamg/bamg.html" target="_blank">BAMG</a> developed by Frederic Hecht [<a href="#references">*Hecht2006*</a>], and YAMS developed by Pascal Frey [<a href="#references">*Frey2001*</a>].
 ### Bamg
 #### Domain
@@ -86,6 +86,6 @@ To extrude the mesh, run the following command:
 ````
 The first argument is the model, as usual. The second argument is the number of horizontal layers. A high number of layers gives a better precision for the simulations but creates more elements, which requires a longer computational time. Usually a number between 7 and 10 is a good balance. The third argument is called the extrusion exponent. Interesting things are usually happening near the bedrock and therefore users might want to refine the lower layers more than the upper ones. An extrusion exponent of 1 will create a mesh with layers equally distributed vertically. The higher the extrusion exponent, the more refined the base. An extrusion exponent of 3 or 4 is generally enough.
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/capabilities/mesh/extrusion.png" alt="Figure 2: extrusion"></div><span style="display:block;width:100%;text-align:center"><small>Extruded mesh</small></span>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/capabilities/mesh/extrusion.png" alt="Figure 2: extrusion"></div><span style="display:block;width:100%;text-align:center"><small>Extruded mesh</small></span>
 
 ## References

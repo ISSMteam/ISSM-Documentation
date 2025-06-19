@@ -123,4 +123,4 @@ Open `runme.m`, make sure that the third step is activated (`steps = [3];`), the
 ### Step 4: Display results
 Here, we display the results. Open `runme.m` and make sure that step number 4 is activated. Your results should look like this:
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/tutorials/jks/JKSModel.png" alt="Figure 1: JKSModel"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/jks/JKSModel.png" alt="Figure 1: JKSModel"></div>
