@@ -7,9 +7,8 @@ has_toc: false
 ---
 
 <h1>Ice-Sheet and Sea-level System Model (ISSM) Documentation</h1>
-
-<h2>ISSM Code Status</h2>
 ![Ubuntu - Basic](https://github.com/ISSMteam/ISSM/actions/workflows/ubuntu-basic.yml/badge.svg)
+[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 <!-- A PDF version of the following documentation is distributed with the ISSM source code and available for download <a href="https://github.com/ISSMteam/ISSM/blob/main/userguide.pdf" target="_blank" type="application/pdf">here</a>. -->
 
