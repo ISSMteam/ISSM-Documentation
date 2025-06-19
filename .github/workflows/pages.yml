@@ -1,21 +1,8 @@
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
-# documentation.
-
-# NOTE:
-# - Search https://ctan.org/ for package names of missing TeX Live packages as
-#   needed
 #
-# TODO:
-# - Pull userguide.pdf from its workflow or otherwise incorporate it into this 
-#   workflow so that is available via direct download link (rather than blob in 
-#   source code repo)
-#   - Then update link in docs/index.md
-# - Add test job to check for expected output given certain input on change to 
-#   latex2md.py?
-#
-name: Convert LaTeX Documentation to Markdown and Deploy to GitHub Pages
+name: Deploy ISSM Documentation to GitHub Pages
 
 on:
   push:
