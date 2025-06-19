@@ -6,9 +6,14 @@ has_children: false
 has_toc: false
 ---
 
-# ISSM Documentation
-A PDF version of the following documentation is distributed with the ISSM source code and available for download <a href="https://github.com/ISSMteam/ISSM/blob/main/userguide.pdf" target="_blank" type="application/pdf">here</a>.
+<h1>Ice-Sheet and Sea-level System Model (ISSM) Documentation</h1>
 
+<h2>ISSM Code Status</h2>
+![Ubuntu - Basic](https://github.com/ISSMteam/ISSM/actions/workflows/ubuntu-basic.yml/badge.svg)
+
+<!-- A PDF version of the following documentation is distributed with the ISSM source code and available for download <a href="https://github.com/ISSMteam/ISSM/blob/main/userguide.pdf" target="_blank" type="application/pdf">here</a>. -->
+
+<h2>Documentation Sections</h2>
 - <a href="installation">Installation</a>
 - <a href="getting-started">Getting Started</a>
 - <a href="using-issm">Using ISSM</a>
