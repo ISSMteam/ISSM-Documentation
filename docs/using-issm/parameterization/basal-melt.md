@@ -22,11 +22,11 @@ where:
 - <img src="https://latex.codecogs.com/svg.latex?q = C \left(\rho_0 - \rho_1\right)" alt="Equation 8"> is the strength of the overturning circulation
 
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/parameterization/basal-melt/pico.png" alt="Figure 1: pico"></div><span style="display:block;width:100%;text-align:center"><small>Schematic view of the PICO model (taken from [<a href="#references">*Reese2018*</a>]).</small></span>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/parameterization/basal-melt/pico.png" alt="Figure 1: pico"></div><span style="display:block;width:100%;text-align:center"><small>Schematic view of the PICO model (taken from [<a href="#references">*Reese2018*</a>]).</small></span>
 #### PICOP
 PICOP is described in [<a href="#references">*Pelle2019*</a>]. The idea is to use PICO to calculate the temperature and salinity in each box, but instead of using PICO's calculated melt, use these quantities to drive a plume model from [<a href="#references">*Lazeroms2018*</a>]:
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/parameterization/basal-melt/picop.png" alt="Figure 2: picop"></div><span style="display:block;width:100%;text-align:center"><small>Melt calculation in PICOP, adapted from [<a href="#references">*Pelle2019*</a>].</small></span>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/parameterization/basal-melt/picop.png" alt="Figure 2: picop"></div><span style="display:block;width:100%;text-align:center"><small>Melt calculation in PICOP, adapted from [<a href="#references">*Pelle2019*</a>].</small></span>
 ### Model parameters
 To activate this melt parameterization, you need to use the class `basalforcingspico`:
 ````

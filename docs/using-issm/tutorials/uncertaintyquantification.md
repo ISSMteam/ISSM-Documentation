@@ -24,7 +24,7 @@ It aims to use the ISSM-Dakota integrated model system to (1) quantify the uncer
 - Our model outputs: mass flux at 13 flux gates across PIG.
 Our Uncertainty Quantification (UQ) methods are based on the Design Analysis Kit for Optimization and Terascale Applications (Dakota) software [<a href="#references">*Eldred2008*</a>], which is embedded in ISSM. The following diagram illustrates the relationship between ISSM and Dakota. The ISSM mesh must be partitioned (i.e. vertices can be grouped together so that Dakota varies them together - this is helpful when you want to vary equal areas over the unstructured mesh). To partition the mesh, you can do so linearly (one partition per vertex), or you can use an external package software like Chaco to weight vertices and create the partitions you desire. Dakota is responsible for varying the provided inputs in the user-defined way (uniform, normal, etc.) for each mesh partition and then launching an ISSM run with the perturbed forcing. Dakota is also responsible for creating statistics for output, which are also user defined. Output diagnostics include ice mass flux through defined gates and scalar output (e.g. Ice Volume, Total SMB, etc.).
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/tutorials/uncertaintyquantification/ISSMUQDiagram.png" alt="Figure 1: ISSMUQDiagram"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/uncertaintyquantification/ISSMUQDiagram.png" alt="Figure 1: ISSMUQDiagram"></div>
 Tutorial steps to be taken:
 
 - Begin by loading results from the `examples/Pig` tutorial (the end of basal friction inversion)
@@ -36,13 +36,13 @@ Sampling Analysis:
 Quantify the uncertainties of model output (diagnostics like mass flux, Ice Volume, Max Velocity) in response to errors in model input. The figure below illustrates an example of Sampling errors in ice thickness. The result for each gate, is a histogram of Mass Flux (one value per each model run, or sample).
 Below is the resulting histogram for mass flux gate 2.
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/tutorials/uncertaintyquantification/Sampling.png" alt="Figure 2: Sampling"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/uncertaintyquantification/Sampling.png" alt="Figure 2: Sampling"></div>
 Sensitivity Analysis:
 Quantify sensitivities of model output to small spatial perturbations in model input. The figure below illustrates how this is accomplished. One by one, partition input is changed by a small percentage, and a model run is launched. For this specific run, changes in model diagnostics (output) are assessed by Dakota. This is done for each partition, such that the number of model runs is equal to the number of mesh partitions. In the end, every diagnostic is associated with a sensitivity value at every partition. In this way, we can make a map of sensitivities for each diagnostic. Sensitivities can also be ranked, for each diagnostic, in importance. One such example of Dakota output is the 'importance factor', or sensitivities scaled by error margins
 [<a href="#references">*Larour2012a, Larour2012b*</a>], illustrated below as UQ sensitivity analysis output for mass flux
 gate 2.
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/tutorials/uncertaintyquantification/Sensitivity.png" alt="Figure 3: Sensitivity"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/uncertaintyquantification/Sensitivity.png" alt="Figure 3: Sensitivity"></div>
 For manuscript examples of these studies, see
 [<a href="#references">*Larour2012a,Larour2012b,Schlegel2013,Schlegel2015*</a>].
 
@@ -53,7 +53,7 @@ Mass fluxes will be computed in (Gt/yr) for all of these gates (using the depth-
 
 Run step 1 of the `runme.m` to plot the gates overlaid over the PIG surface velocities.
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/tutorials/uncertaintyquantification/FluxGates.png" alt="Figure 4: FluxGates"></div>### Loading Cross-Over Errors
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/uncertaintyquantification/FluxGates.png" alt="Figure 4: FluxGates"></div>### Loading Cross-Over Errors
 For ice thickness errors we will use McCords cross-over errors from CReSIS. First you will load errors. Some of these errors are too large, too small, or need to be interpolated onto a larger domain (you will filter these out). Load cross overs `'../Data/CrossOvers2009.mat'`. Interpolate cross over errors over our mesh vertices. Avoid `NaN` values. Filter out unrealistic error ranges. Avoid large unrealistic values. Transform into absolute errors and setup a minimum error everywhere.
 
 Run Step 2 in the `runme.m` to load the crossover errors.
@@ -67,7 +67,7 @@ To plot the corresponding partition over a plot of the mesh:
 - See lines 155-162
 - Run step 4
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/tutorials/uncertaintyquantification/Partitions-1.png" alt="Figure 5: Partitions-1"></div>Note that after using Chaco, your partitions may look different from those illustrated here, because there is a randomness to the Chaco algorithm, and results differ on different computer systems.
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/uncertaintyquantification/Partitions-1.png" alt="Figure 5: Partitions-1"></div>Note that after using Chaco, your partitions may look different from those illustrated here, because there is a randomness to the Chaco algorithm, and results differ on different computer systems.
 
 Second, we must define our UQ input. Here, we will sample ice thickness (H), so we must define errors on each partition for H with a corresponding PDF (Probability Density Function). Here we calculate the crossover errors on each partition. In this example, we will sample a normal error distribution around every partition. To do so, we need to specify to Dakota that we want a normal sampling, and we must provide the standard deviation of error at every partition. Because crossover errors represent the full range of thickness errors, we assume this represents a 6-sigma normally distributed spread. Therefore, we set the standard deviation equal to the crossover error at a particular location, divided by 6:
 
@@ -124,7 +124,7 @@ Plot Sampling Results: In order to plot the results, we extract the results for 
 - `runme.m` step 6 will plot the relative frequency histogram for mass flux gate 1.
 - See lines 260-273
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/tutorials/uncertaintyquantification/SamplingResults.png" alt="Figure 6: SamplingResults"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/uncertaintyquantification/SamplingResults.png" alt="Figure 6: SamplingResults"></div>
 Plot Sensitivity Results:
 
 - To retrieve sensitivities for each model input:
@@ -137,7 +137,7 @@ Plot Sensitivity Results:
   - See lines 307-314
   - Run step 7, this step will result in two images. The first is the sensitivities (S), and the second in the importance factors (If, sensitivities scaled by input errors).
 
-<div style="display:flow-root"><img style="float:left;width:50.00%" src="/assets/img/using-issm/tutorials/uncertaintyquantification/PlotSensitivities.png" alt="Figure 7: PlotSensitivities"><img style="float:left;width:50.00%" src="/assets/img/using-issm/tutorials/uncertaintyquantification/ImportanceFactors.png" alt="Figure 7: ImportanceFactors"></div>### Additional Exercises
+<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/uncertaintyquantification/PlotSensitivities.png" alt="Figure 7: PlotSensitivities"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/uncertaintyquantification/ImportanceFactors.png" alt="Figure 7: ImportanceFactors"></div>### Additional Exercises
 
 - Add diagnostic IceVolume or MaxVelocity
 - Sample with a uniform distribution (See `help uniform_uncertain`)

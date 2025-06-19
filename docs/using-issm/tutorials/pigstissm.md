@@ -28,11 +28,11 @@ Files needed for this tutorial can be found in `trunk/examples/StISSM/`. The `ru
 ### Mesh
 This step follows what is done in the Pine Island Glacier tutorial. We simply set up the model mesh from the exp files. Set `step = 1` in the `runme.m` file to execute it.
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/tutorials/pigstissm/fig1Mesh.jpg" alt="Figure 1: fig1Mesh"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/pigstissm/fig1Mesh.jpg" alt="Figure 1: fig1Mesh"></div>
 ### Mask
 This step follows what is done in the Pine Island Glacier tutorial. We define the masks where ice is present/absent and where ice is grounded/floating. Set `step = 2` in the `runme.m` file to execute it.
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/tutorials/pigstissm/fig2Masks.jpg" alt="Figure 2: fig2Masks"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/pigstissm/fig2Masks.jpg" alt="Figure 2: fig2Masks"></div>
 ### Parameterization
 This step follows what is done in the Pine Island Glacier tutorial. We use the `PigStISSM.par` file to parameterize the following fields:
 
@@ -77,8 +77,8 @@ Set `step = 4` in the `runme.m` file to execute this step.
 ### Transient run 1
 Now that the entire model is configured, we run a transient simulation and plot some results. The plots generated are an example of the SMB results that you could reach. Note that all runs will have different SMB fields, due to stochasticity. Set `step = 5` in the `runme.m` file to execute it.
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/tutorials/pigstissm/fig3SMBseries.jpg" alt="Figure 3: fig3SMBseries"></div>
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/tutorials/pigstissm/fig4SMBmaps.jpg" alt="Figure 4: fig4SMBmaps"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/pigstissm/fig3SMBseries.jpg" alt="Figure 3: fig3SMBseries"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/pigstissm/fig4SMBmaps.jpg" alt="Figure 4: fig4SMBmaps"></div>
 ### Stochastic calving
 In the last step of this tutorial, we also want to activate stochastic calving. First, we need to specify that calving at the ice front is activated, and specify the background calving values. Notice also that imposing calving means that we need to allow for the ice front to migrate by setting `md.transient.ismovingfront` to 1.
 Here, we assign the same subdimensions for calving as for SMB. Next, we need to set the covariance matrix for calving. This involves setting the individual standard deviations for the two subdomains, the correlation matrix (here, we set no correlation), and applying Eq. (3). Finally, we modify the `md.stochasticforcing` class. We specify that two fields are stochastic `[{`SMBarma'}, {`DefaultCalving'}]`. We stack the SMB and calving covariance matrices together, here assuming no correlation between these different fields. As a final note, calving is not an ARMA model, thus its subdimensions must be passed as the default dimensions of the `md.stochasticforcing` class.
@@ -88,5 +88,5 @@ Set `step = 6` in the `runme.m` file to execute this step.
 We want to launch a second transient run. First, we load the final geometry, masks, and velocities of the previous transient run, and set these as initial conditions for the second transient run. The model is now fully configured for the second transient run. We launch the transient simulation, and plot some results. Again, the plots generated are an example of possible results, which will vary due to the stochastic nature of the model run.
 Set `step = 7` in the `runme.m` file to execute this step.
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/tutorials/pigstissm/fig5SMBseries.jpg" alt="Figure 5: fig5SMBseries"></div>
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/tutorials/pigstissm/fig6calvingseries.jpg" alt="Figure 6: fig6calvingseries"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/pigstissm/fig5SMBseries.jpg" alt="Figure 5: fig5SMBseries"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/pigstissm/fig6calvingseries.jpg" alt="Figure 6: fig6calvingseries"></div>

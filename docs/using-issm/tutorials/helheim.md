@@ -46,7 +46,7 @@ plotmodel(md, 'data', 'mesh')
 
 You should see the following figure, with finer resolution in the two main branches of Helheim and its main trunk:
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/tutorials/helheim/mesh.png" alt="Figure 1: mesh"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/helheim/mesh.png" alt="Figure 1: mesh"></div>
 Try experimenting with different values in the mesh generation to create finer or coarser meshes.
 
 ### Parameterization
@@ -89,7 +89,7 @@ plotmodel(md, 'data', md.initialization.vel, 'title', 'Surface Velocity (m/yr)',
 ````
 You should see something similar to the figure below:
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/assets/img/using-issm/tutorials/helheim/figure_vel_fric.png" alt="Figure 2: figure_vel_fric"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/helheim/figure_vel_fric.png" alt="Figure 2: figure_vel_fric"></div>
 Try experimenting with different cost-function values and other parameters in `md.inversion`.
 
 Now that you have run an inversion for basal friction and have a working stress-balance model of Helheim Glacier, you are ready for the next tutorial on simulating subglacial hydrology at Helheim using the SHAKTI model.
