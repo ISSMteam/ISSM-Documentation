@@ -19,6 +19,7 @@ Assuming [Jekyll] and [Bundler] are installed on your computer:
 
     The built site is stored in the directory `_site`.
 
+[generated documentation]: https://tidbitsoftware.github.io/ISSM-Documentation/
 [Jekyll]: https://jekyllrb.com
 [Just the Docs]: https://just-the-docs.github.io/just-the-docs/
 [GitHub Pages]: https://docs.github.com/en/pages
