@@ -17,6 +17,7 @@ on:
       - "docs/supplements/**"
       - "docs/troubleshooting/**"
       - "docs/using-issm/**"
+      - "docs/_config.yml"
       - "docs/Gemfile"
       - "docs/Gemfile.lock"
       - "docs/index.md"
