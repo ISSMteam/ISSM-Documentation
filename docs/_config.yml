@@ -4,13 +4,32 @@ theme: just-the-docs
 
 url: https://issmteam.github.io/ISSM-Documentation/
 
-# Set a path/url to a favicon that will be displayed by the browser
+# Site logo
+logo: "/assets/img/issm-logo.png"
+
+# Site favicon
 favicon_ico: "/assets/img/favicon.ico"
 
-# Footer "Edit this page on GitHub" link text
-gh_edit_link: true # show or hide edit this page link
+# Aux links
+aux_links:
+  "ISSM on GitHub":
+    - "https://github.com/ISSMteam/ISSM"
+aux_links_new_tab: true
+
+# Footer content
+gh_edit_link: true
 gh_edit_link_text: "Edit this page on GitHub."
-gh_edit_repository: "https://github.com/ISSMteam/ISSM-Documentation" # the github URL for your repo
-gh_edit_branch: "main" # the branch that your docs is served from
-gh_edit_source: "docs" # the source that your files originate from
-gh_edit_view_mode: "edit" # "tree" or "edit" if you want the user to jump into the editor immediately
+gh_edit_repository: "https://github.com/ISSMteam/ISSM-Documentation"
+gh_edit_branch: "main"
+gh_edit_source: "docs"
+gh_edit_view_mode: "edit"
+
+callouts:
+  note:
+    title: Note
+    color: purple
+  warning:
+    title: Warning
+    color: red
+  highlight:
+    color: yellow

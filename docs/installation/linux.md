@@ -191,7 +191,7 @@ where `<MATLAB_PATH>` is the path to the MATLAB installation that you wish to us
 Again, you might need to make adjustments to the above configurations based on your system and needs. We have a number of resources to help here:
 - Various external package install scripts and configurations in `${ISSM_DIR}/jenkins`
 - <a href="hpc" target="_top">'High-Performance Computing' page</a>
-- <a href="https://issm.ess.uci.edu/forum/" target="_blank">'ISSM Forum'</a>
+- <a href="https://issm.ess.uci.edu/forum/" target="_blank">ISSM Forum</a>
 - ISSM GitHub repository <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">Discussions</a>
 
 If the configuration completed without any errors, ISSM can now be compiled with,
