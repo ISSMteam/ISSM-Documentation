@@ -18,6 +18,8 @@ Please feel free to let us know how this documentation could be improved. We als
 ----
 <h2>Build Status</h2>
 ![Ubuntu - Basic](https://github.com/ISSMteam/ISSM/actions/workflows/ubuntu-basic.yml/badge.svg)
+[![Ubuntu Python](https://github.com/ISSMteam/ISSM/actions/workflows/ubuntu-python.yml/badge.svg)](https://github.com/ISSMteam/ISSM/actions/workflows/ubuntu-python.yml)
+[![Ubuntu CodiPack](https://github.com/ISSMteam/ISSM/actions/workflows/ubuntu-codipack.yml/badge.svg)](https://github.com/ISSMteam/ISSM/actions/workflows/ubuntu-codipack.yml)
 
 There are more regression tests on <a href="https://ross.ics.uci.edu/jenkins/view/All/" target="_blank">ISSM's Jenkins server</a>.
 
