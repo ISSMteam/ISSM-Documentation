@@ -273,4 +273,3 @@ Sources:
 
 - <a href="https://www.msys2.org/wiki/Setting-up-SSHd" target="_blank">MSYS2 'Setting up SSHd' webpage</a>
 - <a href="https://gist.github.com/samhocevar/00eec26d9e9988d080ac" target="_blank">Sam Hocevar's GitHub Gist page on setting up SSHd under MSYS2</a>
-
