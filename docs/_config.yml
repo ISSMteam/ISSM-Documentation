@@ -1,8 +1,10 @@
 title: ISSM Documentation
-description: Custom template for the ISSM Documentation Jeykll site using the Just the Docs theme
+description: Documentation page for the Ice-Sheet and Sea-level System Model (ISSM). Included are instructions for installation and use of ISSM, development status and forecast, as well as information about how ISSM used and the team behind it.
 theme: just-the-docs
 
 url: https://issmteam.github.io/ISSM-Documentation/
+
+color_scheme: issm
 
 # Site logo
 logo: "/assets/img/issm-logo.png"
