@@ -26,5 +26,6 @@ has_children: false
 has_toc: true
 NOTE: This file was generated automatically by .github/workflows/publications.yml. To make changes, edit the workflow file and commit the changes to the repository.
 ---
-# Publications"
+# Publications
+The following is a list of articles that feature research conducted in whole or in part using ISSM, as well as articles that cite ISSM."
 $(dirname "$0")/issm_pub_list.sh

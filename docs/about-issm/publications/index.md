@@ -4,7 +4,6 @@ layout: default
 nav_order: 7
 has_children: false
 has_toc: true
-NOTE: This file was generated automatically by .github/workflows/publications.yml. To make changes, edit the workflow file and commit the changes to the repository.
 ---
 # Publications
 
