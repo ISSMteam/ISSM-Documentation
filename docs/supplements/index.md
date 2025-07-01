@@ -2,7 +2,7 @@
 title: Supplements
 layout: default
 nav_order: 6
-has_children: false
+has_children: true
 has_toc: false
 ---
 
@@ -11,7 +11,5 @@ has_toc: false
 	<li><a href="utilities" target="_top">Utilities</a></li>
 	<li><a href="ssh" target="_top">SSH</a></li>
 	<li><a href="changelog" target="_top">Changelog</a></li>
-	<li><a href="https://issm.ess.uci.edu/doxygen/chtml/index.html" target="_blank">doxygen</a></li>
 	<li><a href="validation" target="_top">Validation Guide</a></li>
 </ul>
-

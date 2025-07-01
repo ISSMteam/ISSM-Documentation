@@ -2,6 +2,7 @@
 title: SSH
 layout: default
 parent: Supplements
+nav_order: 2
 has_children: false
 has_toc: false
 ---
@@ -62,4 +63,3 @@ will redirect all traffic from port 1025 on your machine to port 22 on remote ma
 Tunneling is especially useful on clusters with multi-stop authentication (e.g. authentication required by both login node and compute nodes).
 
 **See also**: <a href="https://www.ssh.com/academy/ssh/tunneling-example" target="_blank">SSH Tunneling: Examples, Command, Server Config | ssh.com</a>
-
