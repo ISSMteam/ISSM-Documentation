@@ -2,7 +2,7 @@
 ################################################################################
 # Takes as an argument the DOI for a given publication and returns a string 
 # formatted for inclusion on the ISSM Documentation 'Publications' page 
-# (https://issmteam.github.io/ISSM-Documentation/publications).
+# (https://issmteam.github.io/ISSM-Documentation/about-issm/publications).
 #
 # Example:
 #

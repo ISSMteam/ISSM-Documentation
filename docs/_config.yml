@@ -7,7 +7,7 @@ url: https://issmteam.github.io/ISSM-Documentation/
 color_scheme: issm
 
 # Site logo
-logo: "/assets/img/issm-logo.png"
+logo: "/assets/img/brand/ISSMlogo.png"
 
 # Site favicon
 favicon_ico: "/assets/img/favicon.ico"
@@ -19,6 +19,12 @@ aux_links:
   "ISSM Forum":
     - "https://issm.ess.uci.edu/forum/"
 aux_links_new_tab: true
+
+# External navigation links
+nav_external_links:
+  - title: Virtual Earth System Laboratory
+    url: https://vesl.jpl.nasa.gov
+    opens_in_new_tab: true
 
 # Footer content
 gh_edit_link: true
