@@ -9,11 +9,12 @@ on:
     branches: ["main"]
     paths:
       - ".github/workflows/pages.yml"
+      - "docs/about-issm/*"
+      - "docs/about-issm/publications/bibtex/references.bib"
+      - "docs/about-issm/publications/index.md"
       - "docs/assets/**"
       - "docs/getting-started/**"
       - "docs/installation/**"
-      - "docs/publications/bibtex/references.bib"
-      - "docs/publications/index.md"
       - "docs/supplements/**"
       - "docs/troubleshooting/**"
       - "docs/using-issm/**"

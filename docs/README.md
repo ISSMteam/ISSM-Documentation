@@ -11,13 +11,13 @@ It can take up to 10 minutes for changes to your site to publish after you push 
 ### Previewing Changes Locally
 Assuming [Jekyll] and [Bundler] are installed on your computer:
 
-1.  Change your working directory to the root directory of your site.
+1. Change your working directory to the root directory of your site.
 
-2.  Run `bundle install`.
+2. Run `bundle install`.
 
-3.  Run `bundle exec jekyll serve` to build your site and preview it at `localhost:4000`.
+3. Run `bundle exec jekyll serve` to build your site and preview it at `localhost:4000`.
 
-    The built site is stored in the directory `_site`.
+The built site is stored in the directory `_site`.
 
 ## Structure
 Each page in the [front end of the documentation](https://issmteam.github.io/ISSM-Documentation/) has a corresponding Markdown file (`.md`) in the appropriate subdirectory of `docs/`. For example,

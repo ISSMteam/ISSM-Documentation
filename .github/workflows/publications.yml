@@ -13,8 +13,8 @@ on:
     branches: ["main"]
     paths:
       - ".github/workflows/publications.yml"
-      - "docs/publications/bin/**"
-      - "docs/publications/doi/**"
+      - "docs/about-issm/publications/bin/**"
+      - "docs/about-issm/publications/doi/**"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: docs/publications
+        working-directory: docs/about-issm/publications
     steps:
       - name: Checkout
         uses: actions/checkout@v4
