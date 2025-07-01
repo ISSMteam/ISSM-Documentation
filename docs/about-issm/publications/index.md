@@ -7,8 +7,17 @@ has_children: false
 has_toc: true
 NOTE: This file was generated automatically by .github/workflows/publications.yml. To make changes, edit the workflow file and commit the changes to the repository.
 ---
+
 # Publications
-The following is a list of articles that feature research conducted in whole or in part using ISSM, as well as articles that cite ISSM.
+
+{: .note-title }
+> Citing ISSM
+>
+> Larour, E., Seroussi, H., Morlighem, M., & Rignot, E. (2012). Continental scale, high order, high spatial resolution, ice sheet modeling using the Ice Sheet System Model (ISSM). Journal of Geophysical Research: Earth Surface, 117(F1). <a href="https://doi.org/10.1029/2011JF002140" target=_blank>https://doi.org/10.1029/2011JF002140</a>
+
+----
+
+The following is a list of articles that feature research conducted using ISSM or cite ISSM.
 
 ## 2025
 - Akins, A. B., Tanner, A. B., Colliander, A., Schlegel, N.-J., Boudad, K., Yanovsky, I., et al. (2025). A Sparse Synthetic Aperture Radiometer Constellation Concept for Remote Sensing of Antarctic Ice Sheet Temperature. IEEE Transactions on Geoscience and Remote Sensing, 63, 1–21. <a href="https://doi.org/10.1109/TGRS.2025.3534466" target=_blank>https://doi.org/10.1109/TGRS.2025.3534466</a>

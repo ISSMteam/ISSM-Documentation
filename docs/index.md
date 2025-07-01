@@ -30,6 +30,14 @@ There are more regression tests on <a href="https://ross.ics.uci.edu/jenkins/vie
 - ISSM source code GitHub repository
   - <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">Discussions</a>
   - <a href="https://github.com/ISSMteam/ISSM/issues" target="_blank">Issues</a>
+- <a href="https://issm.ess.uci.edu/forum/d/242-issm-development-slack-workspace" target="_blank">ISSM Slack Workspace</a>
+
+----
+
+## About ISSM
+- <a href="about-issm/contributors">Contributors</a>
+- <a href="about-issm/development-status">Development Status</a>
+- <a href="about-issm/publications">Publications</a>
 
 ----
 
@@ -39,6 +47,3 @@ There are more regression tests on <a href="https://ross.ics.uci.edu/jenkins/vie
 - <a href="using-issm">Using ISSM</a>
 - <a href="supplements">Supplements</a>
 - <a href="troubleshooting">Troubleshooting</a>
-
-## About ISSM
-- <a href="publications">Publications</a>

@@ -1,11 +1,33 @@
 ---
 title: About ISSM
 layout: default
-nav_order: 7
+nav_order: 2
 has_children: true
 has_toc: false
 ---
 
 # About ISSM
+- <a href="./contributors" target="_top">Contributors</a>
 - <a href="./development-status" target="_top">Development Status</a>
 - <a href="./publications" target="_top">Publications</a>
+<!--- - <a href="./news" target="_top">News</a> --->
+
+----
+
+## Funding
+ISSM is currently funded (or has been funded in the past) by,
+- JPL R&TD (Research and Technology Development)
+- NASA's Cryosphere Science Program
+- NASA's Modeling Analysis and Prediction Program
+- The National Science Foundation (NSF)
+
+## Brand
+The ISSM logo is available in several formats,
+- <a href="/assets/img/brand/ISSMlogo.pdf" download>PDF</a>
+- <a href="/assets/img/brand/ISSMlogo.eps" download>EPS</a>
+- <a href="/assets/img/brand/ISSMlogo.jpg" download>JPG</a>
+- <a href="/assets/img/brand/ISSMlogo.png" download>PNG</a>
+- <a href="/assets/img/brand/ISSMlogo.tex" download>TEX</a>
+- <a href="/assets/img/brand/ISSMlogo.svg" download>SVG</a>
+
+If you have any questions about appropriate use of the ISSM logo, please contact us.

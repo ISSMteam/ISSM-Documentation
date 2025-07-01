@@ -2,7 +2,7 @@
 ################################################################################
 # Generates a series of strings formatted for inclusion on the ISSM 
 # Documentation 'Publications' page 
-# (https://issmteam.github.io/ISSM-Documentation/publications) for all DOI's in 
+# (https://issmteam.github.io/ISSM-Documentation/about-issm/publications) for all DOI's in 
 # files in ../doi/.
 #
 # Intended to be run from parent of this directory (i.e. publications/).
