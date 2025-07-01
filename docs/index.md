@@ -15,6 +15,8 @@ Welcome to the documentation page for the Ice-Sheet and Sea-level System Model (
 
 Please feel free to let us know how this documentation could be improved. We also welcome contributions to the source code via fork and pull request.
 
+This site uses <a href="https://just-the-docs.com/" target="_blank">Just the Docs</a>, a documentation theme for Jekyll.
+
 ----
 ## Build Status
 ![Ubuntu - Basic](https://github.com/ISSMteam/ISSM/actions/workflows/ubuntu-basic.yml/badge.svg)
@@ -47,3 +49,8 @@ There are more regression tests on <a href="https://ross.ics.uci.edu/jenkins/vie
 - <a href="using-issm">Using ISSM</a>
 - <a href="supplements">Supplements</a>
 - <a href="troubleshooting">Troubleshooting</a>
+
+----
+
+## Projects
+- <a href="projects/gofm">Gulf of Mexico</a>

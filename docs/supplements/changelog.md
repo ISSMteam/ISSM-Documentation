@@ -2,6 +2,7 @@
 title: Changelog
 layout: default
 parent: Supplements
+nav_order: 3
 has_children: false
 has_toc: false
 ---
@@ -321,4 +322,3 @@ import sys; sys.path.append('${ISSM_DIR}/bin/'); sys.path.append('${ISSM_DIR}/li
 ### Other
 
 - The serial code has been entirely stripped out. As a consequence, the cluster `none` cannot be used anymore. The installation is faster and the code cleaner.
-

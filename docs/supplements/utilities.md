@@ -2,6 +2,7 @@
 title: Utilities
 layout: default
 parent: Supplements
+nav_order: 1
 has_children: false
 has_toc: false
 ---
@@ -68,4 +69,3 @@ Several utilities are available to help the user to set up models and analyze re
 - `project3d` extrude a 2D field on every layer
 - `SectionValues` compute the value of a field on a section or line
 - `thicknessevolution` compute dh/dt
-

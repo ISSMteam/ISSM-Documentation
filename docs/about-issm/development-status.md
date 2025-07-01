@@ -2,7 +2,7 @@
 title: Development Status
 layout: default
 parent: About ISSM
-nav_order: 2
+nav_order: 3
 has_children: false
 has_toc: false
 ---
@@ -10,6 +10,22 @@ has_toc: false
 # Development Status
 
 If you wish to use or are proposing to use 'Developmental' or 'Experimental' features, please contact the corresponding lead or make a post to the <a href="https://issm.ess.uci.edu/forum" target="_blank">ISSM Forum</a>.
+
+**Legend**
+<table>
+	<tr>
+		<td>Production (fully supported)</td>
+		<td class="dev-status-prod"></td>
+	</tr>
+	<tr>
+		<td>Development (not fully supported)</td>
+		<td class="dev-status-dev"></td>
+	</tr>
+	<tr>
+		<td>Experimental (not supported)</td>
+		<td class="dev-status-exp"></td>
+	</tr>
+</table>
 
 <table>
 	<tr>
@@ -146,21 +162,5 @@ If you wish to use or are proposing to use 'Developmental' or 'Experimental' fea
 		<td>Grounding Zone</td>
 		<td class="dev-status-exp"></td>
 		<td>Poinelli</td>
-	</tr>
-</table>
-
-Legend
-<table>
-	<tr>
-		<td>Production (fully supported)</td>
-		<td class="dev-status-prod"></td>
-	</tr>
-	<tr>
-		<td>Development (not fully supported)</td>
-		<td class="dev-status-dev"></td>
-	</tr>
-	<tr>
-		<td>Experimental (not supported)</td>
-		<td class="dev-status-exp"></td>
 	</tr>
 </table>
