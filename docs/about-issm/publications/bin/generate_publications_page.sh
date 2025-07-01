@@ -21,6 +21,7 @@
 echo "---
 title: Publications
 layout: default
+parent: About ISSM
 nav_order: 7
 has_children: false
 has_toc: true
