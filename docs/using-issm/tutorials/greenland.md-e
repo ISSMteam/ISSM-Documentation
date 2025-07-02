@@ -44,7 +44,7 @@ Review the code used to create a continental Greenland mesh (lines 8-30) in the 
 
 Execute step 1 in the `runme.m` file. After doing so, you should see the figure below:
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/Mesh.png" alt="Figure 1: Mesh"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/greenland/Mesh.png" alt="Figure 1: Mesh"></div>
 ### Parameterization
 Call the `setmask` function with empty arguments, to denote that all ice is grounded. Then parameterize your mesh with file `Greenland.par`. Next, set your flow equation to SSA for all. Read through the parameter file `./Greenland.par`, which is similar to your PIG .par file, but for Greenland. Here, we are parameterizing a full continental domain, so all points along the domain boundary will be considered ice front. As a result, these boundaries do not need to be constrained, therefore the single point constraints variables will all be set to NaN.
 
@@ -55,9 +55,9 @@ Run step 2. This will save your parameterized model. Now, plot the new model thi
 ````
 
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/Thickness.png" alt="Figure 2: Thickness"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/greenland/Thickness.png" alt="Figure 2: Thickness"></div>
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/Velocity.png" alt="Figure 3: Velocity"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/greenland/Velocity.png" alt="Figure 3: Velocity"></div>
 ### Stress Balance
 Use control methods to inversely solve for Greenland FrictionCoefficient (Step 3, lines 44-81).
 
@@ -80,7 +80,7 @@ Review step 3 in the `runme.m` to verify that the parameters have been set prope
 You are now ready to run a transient! In Step 4, we will simulate a simple constant warming trend over Greenland by forcing a temporal decrease in `md.smb.mass_balance`.
 
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/TransientSMB.png" alt="Figure 4: TransientSMB"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/greenland/TransientSMB.png" alt="Figure 4: TransientSMB"></div>
 Specify a transient forcing by adding a time value to the end (in the end+1 position) of the column of forcing variable values. For example, let SMB be the initial values of surface mass balance. To impose the forcing such that before time 10, surface mass balance is set to the column vector `smb`, and after time 20, it is set to `smb - 1` we use the following code:
 ````
 >> md.smb.mass_balance = [smb smb-1]
@@ -104,21 +104,21 @@ In Step 5, we give you an example of how to plot the transient results (lines 11
 
 Now, run steps 4 and 5 to launch your transient and plot results.
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/ThicknessVelocity.png" alt="Figure 5: ThicknessVelocity"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/greenland/ThicknessVelocity.png" alt="Figure 5: ThicknessVelocity"></div>
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/Transient.png" alt="Figure 6: Transient"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/greenland/Transient.png" alt="Figure 6: Transient"></div>
 ### Exercise
 Now, let's run our transient with historical mass balance! Use Jason Box's surface mass balance (SMB) time series as forcing [<a href="#references">*Box2013a,Box2013b,Box2013c*</a>].<a href="#footnotes" target="_top"><sup>1</sup></a>
 
 First, format the SMB provided. In Step 6 of the `runme.m` file, we extract the SMB timeseries from the NetCDF file, and create a timeseries plot (lines 147-175). Execute step 6. This will result in the figure below:
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/HistoricalMassBalance.png" alt="Figure 7: HistoricalMassBalance"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/greenland/HistoricalMassBalance.png" alt="Figure 7: HistoricalMassBalance"></div>
 In Step 7, we will relax the model towards equilibrium with the mean SMB forcing. An example of a 20 year relaxation to the time series mean is shown in `runme.m`, step 7. Run step 7, which will assign the mean SMB to `md.smb.mass_balance` and run a transient model for 20 years, with a timestep of 0.2 years, saving the results every timestep. Step 7 will save the results in the Model `Greenland.HistoricTransient`.
 
 To plot the relaxed version of the model that you just created, change step 5 to load the model `Greenland.HistoricTransient` rather than `Greenland.Transient`, and run step 5 again.
 
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/Transient2.png" alt="Figure 8: Transient2"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/greenland/Transient2.png" alt="Figure 8: Transient2"></div>
 To reach equilibrium, the model should run on the order of 3000 years. Since, 3000 years might take quite a long time to run on a personal computer, you may want to try running for 200 years instead.
 
 To accomplish this extended relaxation, alter step 7 to run for the extended time period (200 years instead of 20 years). In the last line of this step, save your model as `./Models/Greenland.HistoricTransient_200yr` instead of `./Models/Greenland.HistoricTransient`, to avoid overwriting the old model. Then, run step 7 again. This run of 200 years will take longer than your original 20 year run.
@@ -130,7 +130,7 @@ Next, save velocity by looping through 1000 steps. Plot velocity time series in 
 Lastly, save Ice Volume by looping through 1000 steps. Plot volume time series in a third subplot. Title this plot "Ice Volume" and add an x label of "years". The resulting plot should look like this:
 
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/200TimeSeries.png" alt="Figure 9: 200TimeSeries"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/greenland/200TimeSeries.png" alt="Figure 9: 200TimeSeries"></div>
 In Step 9, we will use the 200 year relaxed ice sheet as a starting condition for a historic transient run. To do so we need to save the 200 year resulting geometry and velocities into the model state. To load your past results see lines 254-259.
 
 Next, we load the Box time series saved earlier in mat file, `smbbox.mat`, and then (lines 261-300):
@@ -144,7 +144,7 @@ Run step 9, which will execute your historical transient forward simulation, mon
 Then, run step 10 to plot a time series of total surface mass balance, max velocity, and ice volume. See Lines 305-329.
 
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/MassVelocityVolume.png" alt="Figure 10: MassVelocityVolume"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/greenland/MassVelocityVolume.png" alt="Figure 10: MassVelocityVolume"></div>
 ### Solution for step 7
 ````
 if any(steps == 7)

@@ -29,7 +29,7 @@ In Test A, we will generate a Square ice sheet flowing over a bumpy bed:
 - Ice frozen on the bed
 - Periodic boundary conditions
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/ismip/SquareIceFlow.png" alt="Figure 1: SquareIceFlow"></div>### Simulation File Layout and Organization
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/ismip/SquareIceFlow.png" alt="Figure 1: SquareIceFlow"></div>### Simulation File Layout and Organization
 The simulation file `runme.m` is organized into different steps, each with the same structure:
 
 - Model loading
@@ -43,13 +43,13 @@ In place of loading a preceding model we initialize one. The action here is the 
 - Mesh size: 80,000 meters
 - Nodes in each direction: 20
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/ismip/Mesh.png" alt="Figure 2: Mesh"></div>Load the preceding step `(#help loadmodel)`. Path is given by the organizer with the name of the given step. Set the mask `(#help setmask)`. Note that all MISMIP nodes are grounded. Plot the given mask `(md.mask)` to locate the field. Save the model.
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/ismip/Mesh.png" alt="Figure 2: Mesh"></div>Load the preceding step `(#help loadmodel)`. Path is given by the organizer with the name of the given step. Set the mask `(#help setmask)`. Note that all MISMIP nodes are grounded. Plot the given mask `(md.mask)` to locate the field. Save the model.
 
 - Mesh size: 80,000 meters
 - Nodes in each direction: 20
 - All grounded: default
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/ismip/Mesh2.png" alt="Figure 3: Mesh2"></div>### Parameterization
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/ismip/Mesh2.png" alt="Figure 3: Mesh2"></div>### Parameterization
 Load the preceding step. Next, parameterize the model `(#help parameterize)`. You will need to fill up the parameter file (given by the name ParamFile variable). Save the given model. It is important to note that the values are not important as we are dealing with a no-sliding flux. The values will be overridden by the basal boundary conditions. Take care of the size of the parameters.
 
 - Mesh size: 80,000 meters
@@ -58,7 +58,7 @@ Load the preceding step. Next, parameterize the model `(#help parameterize)`. Yo
 - Ice-flow parameter: `B = 6.8067 x 10^7 Pa s^1/n`
 - Glen's exponent: n = 3
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/ismip/Parameterize1.png" alt="Figure 4: Parameterize1"></div>### Extrusion
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/ismip/Parameterize1.png" alt="Figure 4: Parameterize1"></div>### Extrusion
 Load `Parameterization` model. The action here is to extrude the preceding mesh. Next, vertically extrude the preceding mesh `(#help extrude)` with only 5 layers exponent 1. Plot the 3D geometry and save the model.
 
 - Mesh size: 80,000 meters
@@ -68,7 +68,7 @@ Load `Parameterization` model. The action here is to extrude the preceding mesh.
 - Glen's exponent: n = 3
 - 5 layer extrusion
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/ismip/Extrusion1.png" alt="Figure 5: Extrusion1"></div>### Flow Equation
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/ismip/Extrusion1.png" alt="Figure 5: Extrusion1"></div>### Flow Equation
 Load the `Extrusion` model and set the approximation for the flow computation `(#help setflowequation)`. We will be using the Higher Order Model (HO). Save the model.
 
 - Mesh size: 80,000 meters
@@ -101,7 +101,7 @@ Load the `BoundaryConditions` model. Set the cluster `(#md.cluster)` with generi
 - 5 layers extrusion
 - Flow model: HO
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/ismip/BoundaryCondition.png" alt="Figure 6: BoundaryCondition"></div>### Test F
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/ismip/BoundaryCondition.png" alt="Figure 6: BoundaryCondition"></div>### Test F
 Square ice sheet flowing over a bump.
 
 - Gaussian bumped bedrock
@@ -109,7 +109,7 @@ Square ice sheet flowing over a bump.
 - Periodic boundary conditions
 - Transient model until steady-state
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/ismip/RedSquareFlow.png" alt="Figure 7: RedSquareFlow"></div>#### Model Setup
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/ismip/RedSquareFlow.png" alt="Figure 7: RedSquareFlow"></div>#### Model Setup
 
 - Mesh size: 100,000 meters
 - Nodes in each direction: 30
@@ -124,9 +124,9 @@ Load the preceding model under the path given by the organizer with the name of 
 
 Side view:
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/ismip/UpperSurface2.png" alt="Figure 8: UpperSurface2"></div>Top view:
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/ismip/UpperSurface2.png" alt="Figure 8: UpperSurface2"></div>Top view:
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/ismip/UpperSurfaceVelocity.png" alt="Figure 9: UpperSurfaceVelocity"></div>### Solution for runme.m (MATLAB)
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/ismip/UpperSurfaceVelocity.png" alt="Figure 9: UpperSurfaceVelocity"></div>### Solution for runme.m (MATLAB)
 ````
 %which steps to perform; steps are from 1 to 8
 %step 7 is specific to ISMIPA

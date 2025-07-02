@@ -24,11 +24,11 @@ ISSM is currently funded (or has been funded in the past) by,
 
 ## Brand
 The ISSM logo is available in several formats,
-- <a href="/assets/img/brand/ISSMlogo.pdf" download>PDF</a>
-- <a href="/assets/img/brand/ISSMlogo.eps" download>EPS</a>
-- <a href="/assets/img/brand/ISSMlogo.jpg" download>JPG</a>
-- <a href="/assets/img/brand/ISSMlogo.png" download>PNG</a>
-- <a href="/assets/img/brand/ISSMlogo.tex" download>TEX</a>
-- <a href="/assets/img/brand/ISSMlogo.svg" download>SVG</a>
+- <a href="/ISSM-Documentation/assets/img/brand/ISSMlogo.pdf" download>PDF</a>
+- <a href="/ISSM-Documentation/assets/img/brand/ISSMlogo.eps" download>EPS</a>
+- <a href="/ISSM-Documentation/assets/img/brand/ISSMlogo.jpg" download>JPG</a>
+- <a href="/ISSM-Documentation/assets/img/brand/ISSMlogo.png" download>PNG</a>
+- <a href="/ISSM-Documentation/assets/img/brand/ISSMlogo.tex" download>TEX</a>
+- <a href="/ISSM-Documentation/assets/img/brand/ISSMlogo.svg" download>SVG</a>
 
 If you have any questions about appropriate use of the ISSM logo, please contact us.

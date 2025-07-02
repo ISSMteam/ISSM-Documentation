@@ -1,0 +1,37 @@
+.dev-status-prod {
+	background-color: green;
+}
+
+.dev-status-dev {
+	background-color: yellow;
+}
+
+.dev-status-exp {
+	background-color: red;
+}
+
+.contributors {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+
+	> li {
+		&::before {
+			display: none;
+			content: none;
+		}
+
+		width: 200px;
+		height: 260px;
+		margin: auto;
+		
+		img {
+			width: 100%;
+			height: 200px;
+		}
+
+		img, span {
+			display: block;
+		}
+	}
+}
