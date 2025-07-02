@@ -65,13 +65,13 @@ plotmodel(md, 'data', md.results.TransientSolution(end).Vel, 'title', 'Velocity 
 	'data', md.results.TransientSolution(end).EffectivePressure, 'title', 'Effective Pressure (Pa)')
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/helheimshakti/figure_vel_N.png" alt="Figure 1: figure_vel_N"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/helheimshakti/figure_vel_N.png" alt="Figure 1: figure_vel_N"></div>
 ````
 plotmodel(md, 'data', log10(md.results.TransientSolution(end).HydrologyBasalFlux, 'title', 'log_{10}(Basal Water Flux) (m^2 s^{-1})', ...
 	'data', md.results.TransientSolution(end).HydrologyHead, 'title', 'Head (m)')
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/helheimshakti/figure_q_h.png" alt="Figure 2: figure_q_h"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/using-issm/tutorials/helheimshakti/figure_q_h.png" alt="Figure 2: figure_q_h"></div>
 If you are interested in a steady state, check convergence to a steady winter state by comparing `md.results.TransientSolution(end).Vel` and `md.results.TransientSolution(end).EffectivePressure` with the previous time step. You will probably need to run for a year or two for the system to fully equilibrate.
 
 ### Continuing a simulation

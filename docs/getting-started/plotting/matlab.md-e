@@ -18,7 +18,7 @@ You can plot several fields at the same time but you have to add the argument `'
 >> plotmodel(md, 'data', md.geometry.thickness, 'data', 'mesh', 'data', [1:md.mesh.numberofelements])
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/plot.png" alt="Figure 1: plot"></div>This can work for any field of length `md.mesh.numberofelements` or `md.mesh.numberofvertices`.
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/plot.png" alt="Figure 1: plot"></div>This can work for any field of length `md.mesh.numberofelements` or `md.mesh.numberofvertices`.
 ### Options
 Options in `plotmodel` come as pairs: the option name must be followed by its value. For example, if one wants to remove the color bar, the option name is `'colorbar'` and the value `0`:
 ````
@@ -53,7 +53,7 @@ Same as standard <a href="http://www.mathworks.com/access/helpdesk/help/techdoc/
 >> plotmodel(md, 'data', md.vel, 'caxis', [0 1000])
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/caxis.png" alt="Figure 2: caxis"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/caxis.png" alt="Figure 2: caxis"></div>
 #### colorbar
 This option is used to control the colorbar display (`'on'` or `'off'`):
 ````
@@ -66,32 +66,32 @@ Same as standard <a href="http://www.mathworks.com/access/helpdesk/help/techdoc/
 >> plotmodel(md, 'data', md.vel, 'colormap', 'hsv')
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/colormap.png" alt="Figure 3: colormap"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/colormap.png" alt="Figure 3: colormap"></div>
 #### log
 To get a logarithmic colorbar, use the `'log'` option followed by `10` for a decimal logarithm:
 ````
 >> plotmodel(md, 'data', md.vel, 'log', 10)
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/log.png" alt="Figure 4: log"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/log.png" alt="Figure 4: log"></div>
 #### contourlevels
 Contours of equi-value can be added to the plot by using the `'contourlevels'` option. The number of contours can be chosen by using the `'contourlevels'` options. The user can specify a number of levels or a cell containing the values of color changes. For example:
 ````
 >> plotmodel(md, 'data', md.vel, 'contourlevels', 3)
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/contour3.png" alt="Figure 5: contour3"></div>````
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/contour3.png" alt="Figure 5: contour3"></div>````
 >> plotmodel(md, 'data', md.vel, 'contourlevels', {100, 200, 500, 1000, 2000, 2500})
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/contourcell.png" alt="Figure 6: contourcell"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/contourcell.png" alt="Figure 6: contourcell"></div>
 #### contourticks
 If the user does not want to display the contour levels ticks, use the `'contourticks'` set as `'off'`:
 ````
 >> plotmodel(md, 'data', md.vel, 'contourlevels', {100, 200, 500, 1000, 2000, 2500}, 'contourticks', 'off')
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/contourticks.png" alt="Figure 7: contourticks"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/contourticks.png" alt="Figure 7: contourticks"></div>
 #### contouronly
 If the user wants to display the contours only, use the `'contouronly'` set as `'on'`:
 ````
@@ -107,7 +107,7 @@ Streamlines can be displayed by using the `'streamlines'` option followed by a n
 >> plotmodel(md, 'data', md.initialization.vel, 'streamlines', {10^6 * [-1.45 -0.27], 10^6 * [-1.6 0]})
 ````
 
-<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/streamlines50.png" alt="Figure 8: streamlines50"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/streamlinescell.png" alt="Figure 8: streamlinescell"></div>
+<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/streamlines50.png" alt="Figure 8: streamlines50"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/streamlinescell.png" alt="Figure 8: streamlinescell"></div>
 NOTE: Streamlines use the velocities that are in `md.initialization`. Make sure you transfer the calculated velocities to `md.initialization` if you want to display the calculated streamlines.
 
 #### edgecolor
@@ -116,7 +116,7 @@ The mesh can be superimposed onto the plot by using the `'edgecolor'` option fol
 >> plotmodel(md, 'data', md.initialization.vel, 'edgecolor', 'w')
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/edgecolor.png" alt="Figure 9: edgecolor"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/edgecolor.png" alt="Figure 9: edgecolor"></div>
 #### expdisp
 Any ARGUS file can be displayed with the `'expdisp'` option followed by the name of the ARGUS file:
 ````
@@ -135,7 +135,7 @@ If one does not want to display the value of the field on a mask only, use the `
 >> plotmodel(md, 'data', md.initialization.vel, 'mask', md.mask.ocean_levelset < 0)
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/mask.png" alt="Figure 10: mask"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/mask.png" alt="Figure 10: mask"></div>
 #### northarrow
 An arrow pointing North can be added with the `'northarrow'` option followed by `'on'`. The shape and position of the arrow can be controlled by using `[x0 y0 length [ratio [width]]]` 
 instead of `'on'`:
@@ -186,14 +186,14 @@ Basal drag relies on the velocity provided in `md.initialization`. The x and y c
 >> plotmodel(md, 'data', 'basal_dragx')
 ````
 
-<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/basaldrag.png" alt="Figure 11: basaldrag"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/basaldragcomp.png" alt="Figure 11: basaldragcomp"></div><span style="display:block;width:100%;text-align:center"><small>Basal friction norm and Basal friction x-component</small></span>
+<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/basaldrag.png" alt="Figure 11: basaldrag"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/basaldragcomp.png" alt="Figure 11: basaldragcomp"></div><span style="display:block;width:100%;text-align:center"><small>Basal friction norm and Basal friction x-component</small></span>
 #### BC
 The special plot `'BC'` displays all boundary conditions (Newmann and Dirichlet) for 2D and 3D meshes:
 ````
 >> plotmodel(md, 'data', 'BC')
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/BC.png" alt="Figure 12: BC"></div>#### driving\_stress
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/BC.png" alt="Figure 12: BC"></div>#### driving\_stress
 The special plot `'driving_stress'` displays the basal drag friction in kPa following formula:
 
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
@@ -202,36 +202,36 @@ The special plot `'driving_stress'` displays the basal drag friction in kPa foll
 >> plotmodel(md, 'data', 'driving_stress')
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/driving_stress.png" alt="Figure 13: driving_stress"></div>#### elementnumbering
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/driving_stress.png" alt="Figure 13: driving_stress"></div>#### elementnumbering
 In the debugging process, it is often very useful to display all the elements next to their numbers. This is what the special plot `'elementnumbering'` does:
 ````
 >> plotmodel(md, 'data', 'elementnumbering')
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/elementnumbering.png" alt="Figure 14: elementnumbering"></div>A given list of elements can be highlighted with the `'highlight'` option:
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/elementnumbering.png" alt="Figure 14: elementnumbering"></div>A given list of elements can be highlighted with the `'highlight'` option:
 ````
 >> plotmodel(md, 'data', 'elementnumbering', 'highlight', [3 4 5 6 7])
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/elementnumbering_highlight.png" alt="Figure 15: elementnumbering_highlight"></div>#### elements\_type
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/elementnumbering_highlight.png" alt="Figure 15: elementnumbering_highlight"></div>#### elements\_type
 The special plot `'elements_type'` displays the elements with a specific color for each formulation:
 ````
 >> plotmodel(md, 'data', 'elements_type')
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/elements_type.png" alt="Figure 16: elements_type"></div>#### vertexnumbering
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/elements_type.png" alt="Figure 16: elements_type"></div>#### vertexnumbering
 In the debugging process, it is often very useful to display all the vertices next to their numbers. This is what the special plot `'vertexnumbering'` does:
 ````
 >> plotmodel(md, 'data', 'vertexnumbering')
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/gridnumbering.png" alt="Figure 17: gridnumbering"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/gridnumbering.png" alt="Figure 17: gridnumbering"></div>
 A given list of vertices can be highlighted with the `'highlight'` option:
 ````
 >> plotmodel(md, 'data', 'vertexnumbering', 'highlight', [2 5 7 12])
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/gridnumbering_highlight.png" alt="Figure 18: gridnumbering_highlight"></div>#### highlightelements
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/gridnumbering_highlight.png" alt="Figure 18: gridnumbering_highlight"></div>#### highlightelements
 The special plot `'highlightelements'` is very similar to the plot `'elementnumbering'`. It is another possibility to highlight one or several grids, but without indicating the number of all the elements. It is a lot faster for large models:
 ````
 >> plotmodel(md, 'data', 'highlightelements', 'highlight', 5)
@@ -240,7 +240,7 @@ The special plot `'highlightelements'` is very similar to the plot `'elementnumb
 >> plotmodel(md, 'data', 'highlightelements', 'highlight', [5 12])
 ````
 
-<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/highlightelements_highlight.png" alt="Figure 19: highlightelements_highlight"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/highlightelements_highlight3d.png" alt="Figure 19: highlightelements_highlight3d"></div>#### highlightgrids
+<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/highlightelements_highlight.png" alt="Figure 19: highlightelements_highlight"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/highlightelements_highlight3d.png" alt="Figure 19: highlightelements_highlight3d"></div>#### highlightgrids
 The special plot `'highlightgrids'` is very similar to `'gridnumbering'`. It is another possibility to highlight grids without indicating all the grids numbers. It is a lot faster for big models:
 ````
 >> plotmodel(md, 'data', 'highlightgrids', 'highlight', [12 20])
@@ -249,25 +249,25 @@ The special plot `'highlightgrids'` is very similar to `'gridnumbering'`. It is 
 >> plotmodel(md, 'data', 'highlightgrids', 'highlight', [12 16 26])
 ````
 
-<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/highlightgrids_highlight.png" alt="Figure 20: highlightgrids_highlight"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/highlightgrids_highlight3d.png" alt="Figure 20: highlightgrids_highlight3d"></div>#### icefront
+<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/highlightgrids_highlight.png" alt="Figure 20: highlightgrids_highlight"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/highlightgrids_highlight3d.png" alt="Figure 20: highlightgrids_highlight3d"></div>#### icefront
 The special plot `'icefront'` displays the Neumann boundary conditions, i.e. all the segments on ice front and the normal to these segments, for a 2D or 3D mesh:
 ````
 >> plotmodel(md, 'data', 'icefront')
 ````
 
-<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/icefront2d.png" alt="Figure 21: icefront2d"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/icefront3d.png" alt="Figure 21: icefront3d"></div>#### mesh
+<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/icefront2d.png" alt="Figure 21: icefront2d"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/icefront3d.png" alt="Figure 21: icefront3d"></div>#### mesh
 The special plot `'mesh'` displays the mesh of 2D or 3D model:
 ````
 >> plotmodel(md, 'data', 'mesh')
 ````
 
-<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/mesh2d.png" alt="Figure 22: mesh2d"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/mesh3d.png" alt="Figure 22: mesh3d"></div>### Quiver plot
+<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/mesh2d.png" alt="Figure 22: mesh2d"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/mesh3d.png" alt="Figure 22: mesh3d"></div>### Quiver plot
 For 2D or 3D fields, a generic color plot cannot be used (except component by component). The `'data'` used by the function `plotmodel` must be a matrix of 2 or 3 columns. For example:
 ````
 >> plotmodel(md, 'data', [md.vx md.vy])
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/plotquiver.png" alt="Figure 23: plotquiver"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/plotquiver.png" alt="Figure 23: plotquiver"></div>
 #### ColorLevels
 The number of colors can be chosen by using the `'colorlevels'` options. The user can specify a number of levels or a cell containing the values of color changes. For example:
 ````
@@ -277,11 +277,11 @@ The number of colors can be chosen by using the `'colorlevels'` options. The use
 >> plotmodel(md, 'data', [md.vx md.vy], 'colorlevels', 100)
 ````
 
-<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/color3.png" alt="Figure 24: color3"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/color100.png" alt="Figure 24: color100"></div>````
+<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/color3.png" alt="Figure 24: color3"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/color100.png" alt="Figure 24: color100"></div>````
 >> plotmodel(md, 'data', [md.vx md.vy], 'colorlevels', {100, 200, 500, 1000, 2000, 2500})
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/colorcell.png" alt="Figure 25: colorcell"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/colorcell.png" alt="Figure 25: colorcell"></div>
 #### Scaling
 The arrows length can be modified with the `'scaling'` options. The default value is 0.4. A higher scaling value will result in longer arrows:
 ````
@@ -291,31 +291,31 @@ The arrows length can be modified with the `'scaling'` options. The default valu
 >> plotmodel(md, 'data', [md.vx md.vy], 'scaling', 0.1)
 ````
 
-<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/scaling1.png" alt="Figure 26: scaling1"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/scaling01.png" alt="Figure 26: scaling01"></div>
+<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/scaling1.png" alt="Figure 26: scaling1"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/scaling01.png" alt="Figure 26: scaling01"></div>
 #### Autoscale
 If the user wants all the arrows to have the same length, use the option `'autoscale'` set as `'off'`:
 ````
 >> plotmodel(md, 'data', [md.vx md.vy], 'autoscale', 'off')
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/autoscale.png" alt="Figure 27: autoscale"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/autoscale.png" alt="Figure 27: autoscale"></div>
 #### Density
 The number of arrows can be reduced with the option `'density'`. If the density is set as 3, only one arrow out of 3 will be displayed. This option is very useful when the mesh is very refined:
 ````
 >> plotmodel(md, 'data', [md.vx md.vy], 'density', 3)
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/density3.png" alt="Figure 28: density3"></div>### Cross section
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/density3.png" alt="Figure 28: density3"></div>### Cross section
 The section plot can be used to display the value of a field on a given track. The option `'sectionvalue'` must be followed by the name of an ARGUS file which contained the coordinates of the points describing the profile (this file can be generated by `exptool.m`). The resulting plot will be a curve in 2D and a colored surface in 3D. For example:
 ````
 >> plotmodel(md, 'data', md.vel, 'expdisp', 'track.exp')
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/track.png" alt="Figure 29: track"></div>````
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/track.png" alt="Figure 29: track"></div>````
 >> plotmodel(md, 'data', md.vel, 'sectionvalue', 'track.exp')
 ````
 
-<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/2d.png" alt="Figure 30: 2d"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/3d.png" alt="Figure 30: 3d"></div><span style="display:block;width:100%;text-align:center"><small>Section plot for 2D (left) and 3D (right) models</small></span>
+<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/2d.png" alt="Figure 30: 2d"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/3d.png" alt="Figure 30: 3d"></div><span style="display:block;width:100%;text-align:center"><small>Section plot for 2D (left) and 3D (right) models</small></span>
 #### Resolution
 The horizontal and vertical (in 3D) resolution can be specified by the `'resolution'` option. It must be a list with the horizontal resolution followed by the vertical resolution (in meters). When not specified, the default resolution is displayed:
 ````
@@ -331,4 +331,4 @@ The profile used to create the section plot can be also plotted with the `'shows
 >> plotmodel(md, 'data', md.vel, 'showsection', 'on')
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/getting-started/plotting/matlab/show.png" alt="Figure 31: show"></div>
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/getting-started/plotting/matlab/show.png" alt="Figure 31: show"></div>
