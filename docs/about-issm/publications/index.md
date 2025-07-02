@@ -13,7 +13,7 @@ NOTE: This file was generated automatically by .github/workflows/publications.ym
 {: .note-title }
 > Citing ISSM
 >
-> Larour, E., Seroussi, H., Morlighem, M., & Rignot, E. (2012). Continental scale, high order, high spatial resolution, ice sheet modeling using the Ice Sheet System Model (ISSM). Journal of Geophysical Research: Earth Surface, 117(F1). <a href=https://doi.org/10.1029/2011JF002140 target=_blank>https://doi.org/10.1029/2011JF002140</a>
+> Larour, E., Seroussi, H., Morlighem, M., & Rignot, E. (2012). Continental scale, high order, high spatial resolution, ice sheet modeling using the Ice Sheet System Model (ISSM). Journal of Geophysical Research: Earth Surface, 117(F1). <a href="https://doi.org/10.1029/2011JF002140" target="_blank">https://doi.org/10.1029/2011JF002140</a>
 ----
 
 The following is a list of articles that feature research conducted in whole or in part using ISSM, as well as articles that cite ISSM.
