@@ -1,7 +1,7 @@
 ---
 title: ISSM Codebase Has Been Migrated From SVN to GitHub
 layout: post
-image: /assets/img/news/issm-codebase-has-been-migrated-to-github.png
+image: /ISSM-Documentation/assets/img/news/issm-codebase-has-been-migrated-to-github.png
 excerpt: When you get a chance, please check out a new copy from GitHub.
 tags: [general,]
 featured: true

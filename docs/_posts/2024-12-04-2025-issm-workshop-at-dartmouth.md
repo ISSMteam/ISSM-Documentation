@@ -1,7 +1,7 @@
 ---
 title: 2025 ISSM Workshop at Dartmouth College announced
 layout: post
-image: /assets/img/news/2025-issm-workshop-at-dartmouth.jpg
+image: /ISSM-Documentation/assets/img/news/2025-issm-workshop-at-dartmouth.jpg
 excerpt: We are happy to announce that the 2025 ISSM Workshop will be held at Dartmouth College.
 tags: [workshops,]
 ---
