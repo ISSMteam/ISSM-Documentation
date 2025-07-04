@@ -9,6 +9,7 @@ on:
     branches: ["main"]
     paths:
       - ".github/workflows/pages.yml"
+      - "docs/_posts/**"
       - "docs/about-issm/*"
       - "docs/about-issm/publications/bibtex/references.bib"
       - "docs/about-issm/publications/index.md"

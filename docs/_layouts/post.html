@@ -1,0 +1,80 @@
+---
+layout: default
+---
+
+<article>
+    <!-- Post Title -->
+    {% if page.title %}
+    <h1>{{ page.title }}</h1>
+    {% endif %}
+    <!-- End Post Title -->
+
+    <!-- Post Featured Image -->
+    {% if page.image %}
+    <img class="featured-image img-fluid" src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ site.baseurl }}/{{ page.image }}{% endif %}" alt="{{ page.title }}">
+    {% endif %}
+    <!-- End Featured Image -->
+
+    <!-- Post Date -->
+    <p>
+    <small>
+        <span class="post-date"><time class="post-date" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time></span>           
+        {% if page.last_modified_at %}
+        (Updated: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y" }}</time>)
+        {% endif %}
+        </small>
+    </p>
+    <!-- End Post Date -->
+
+    <!-- Post Content -->
+    <!-- Toc if any -->
+    {% if page.toc %}
+        {% if page.beforetoc %}
+            <p><em>{{page.beforetoc}}</em></p>
+        {% endif %}
+        <div class="toc mt-4 mb-4 lead">
+            <h3 class="font-weight-bold">Summary</h3>
+            {% include toc.html html=content %}
+        </div>
+    {% endif %}
+    <!-- End Toc -->
+    {{ content }}
+
+    <!-- Post Categories -->
+    <!-- <div class="after-post-cats">
+        <ul class="tags mb-4">
+            {% assign sortedCategories = page.categories | sort %}
+            {% for category in sortedCategories %}
+            <li>
+                <a class="smoothscroll" href="{{site.baseurl}}/categories#{{ category | replace: " ","-" }}">{{ category }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div> -->
+    <!-- End Categories -->
+
+    <!-- Post Tags -->
+    <!-- <div class="after-post-tags">
+        <ul class="tags">
+            {% assign sortedTags = page.tags | sort %}
+            {% for tag in sortedTags %}
+            <li>
+                <a class="smoothscroll" href="{{site.baseurl}}/tags#{{ tag | replace: " ","-" }}">#{{ tag }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div> -->
+    <!-- End Tags -->
+</article>
+
+<!-- Prev/Next -->
+<!-- <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+{% if page.previous.url %}
+<a class="prev d-block col-md-6" href="{{ site.baseurl }}/{{page.previous.url}}"> &laquo; {{page.previous.title}}</a>
+{% endif %}
+{% if page.next.url %}
+<a class="next d-block col-md-6 text-lg-right" href="{{ site.baseurl }}/{{page.next.url}}">{{page.next.title}} &raquo; </a>
+{% endif %}
+<div class="clearfix"></div>
+</div> -->
+<!-- End Prev/Next -->
