@@ -15,15 +15,14 @@ Welcome to the documentation page for the Ice-Sheet and Sea-level System Model (
 
 Please feel free to let us know how this documentation could be improved. We also welcome contributions to the source code via fork and pull request.
 
-This site uses <a href="https://just-the-docs.com/" target="_blank">Just the Docs</a>, a documentation theme for Jekyll.
-
 ----
+
 ## Build Status
 ![Ubuntu - Basic](https://github.com/ISSMteam/ISSM/actions/workflows/ubuntu-basic.yml/badge.svg)
 [![Ubuntu Python](https://github.com/ISSMteam/ISSM/actions/workflows/ubuntu-python.yml/badge.svg)](https://github.com/ISSMteam/ISSM/actions/workflows/ubuntu-python.yml)
 [![Ubuntu CodiPack](https://github.com/ISSMteam/ISSM/actions/workflows/ubuntu-codipack.yml/badge.svg)](https://github.com/ISSMteam/ISSM/actions/workflows/ubuntu-codipack.yml)
 
-There are more regression tests on <a href="https://ross.ics.uci.edu/jenkins/view/All/" target="_blank">ISSM's Jenkins server</a>.
+There are more build configurations and regression test suites on <a href="https://ross.ics.uci.edu/jenkins/view/All/" target="_blank">ISSM's Jenkins server</a>.
 
 ----
 
@@ -38,8 +37,35 @@ There are more regression tests on <a href="https://ross.ics.uci.edu/jenkins/vie
 
 ## About ISSM
 - <a href="about-issm/contributors">Contributors</a>
-- <a href="about-issm/development-status">Development Status</a>
+- <a href="about-issm/contributors">Collaborations</a>
 - <a href="about-issm/publications">Publications</a>
+- <a href="about-issm/development-status">Development Status</a>
+- <a href="about-issm/news">News</a>
+
+{% comment %}Only output if we have featured posts{% endcomment %}
+{% assign have_featured_posts = false %}
+{% for post in site.posts %}
+	{% if post.featured %}
+		{% assign have_featured_posts = true %}
+		{% break %}
+	{% endif %}
+{% endfor %}
+{% if have_featured_posts %}
+### Featured News
+<ul class="post-index home-page-post-index">
+	{% for post in site.posts %}
+		{% if post.featured %}
+			<li>
+				<a href="{{ post.url }}"><img src="{{ post.image }}" /></a>
+				<div>
+					<a href="{{ post.url }}"><span class="text-beta">{{ post.title }}</span></a>
+					<p class="post-excerpt">{{ post.excerpt }}</p>
+				</div>
+			</li>
+		{% endif %}
+	{% endfor %}
+</ul>
+{% endif %}
 
 ----
 
@@ -54,3 +80,8 @@ There are more regression tests on <a href="https://ross.ics.uci.edu/jenkins/vie
 
 ## Projects
 - <a href="projects/gofm">Gulf of Mexico</a>
+
+----
+
+## Acknowledgements
+This site uses <a href="https://just-the-docs.com/" target="_blank">Just the Docs</a>, a documentation theme for Jekyll.

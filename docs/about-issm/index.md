@@ -9,9 +9,9 @@ has_toc: false
 # About ISSM
 - <a href="./contributors" target="_top">Contributors</a>
 - <a href="./collaborations" target="_top">Collaborations</a>
-- <a href="./development-status" target="_top">Development Status</a>
 - <a href="./publications" target="_top">Publications</a>
-<!--- - <a href="./news" target="_top">News</a> --->
+- <a href="./development-status" target="_top">Development Status</a>
+- <a href="./news" target="_top">News</a>
 
 ----
 

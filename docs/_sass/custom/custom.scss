@@ -1,3 +1,11 @@
+@mixin clearfix {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
 .dev-status-prod {
 	background-color: green;
 }
@@ -14,6 +22,7 @@
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-around;
+	padding-left: unset !important;
 
 	> li {
 		&::before {
@@ -32,6 +41,79 @@
 
 		img, span {
 			display: block;
+		}
+	}
+}
+
+.post-index {
+	padding-left: unset !important;
+
+	&.home-page-post-index {
+		> li {
+			margin: 0 auto;
+			width: 100%;
+			max-width: 320px;
+
+			img {
+				width: 100%;
+				height: auto;
+			}
+
+			> div {
+
+			}
+		}
+	}
+
+	&.news-page-post-index {
+		> li {
+			img {
+				width: 100%;
+				height: auto;
+			}
+
+			> div {
+
+			}
+		}
+	}
+
+	> li {
+		&::before {
+			display: none;
+			content: none;
+		}
+
+		.post-excerpt {
+			margin-top: 0;
+		}
+	}
+}
+
+/* Sidebar expanded */
+@media (min-width: 800px) {
+	.post-index {
+		&.home-page-post-index {
+			> li {
+				@include clearfix;
+
+				margin: unset;
+				max-width: unset;
+
+				img, > div {
+					float: left;
+				}
+
+				img {
+					width: 31%;
+					height: auto;
+				}
+
+				> div {
+					margin-left: 3%;
+					width: 66%;
+				}
+			}
 		}
 	}
 }
