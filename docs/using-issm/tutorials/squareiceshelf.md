@@ -43,15 +43,16 @@ Compute the velocity field of the ice shelf:
 ````
 
 Finally, generate a plot of the velocity:
-<div style="background-color: rgb(100, 100, 90);">
-```Matlab
+<div style="background-color: rgb(255, 255, 200);">
+````
 >> plotmodel(md, 'data', md.results.StressbalanceSolution.Vel);
-```
+````
 </div>
-<div style="background-color: rgb(90, 100, 90);">
-```python
+
+<div style="background-color: rgb(200, 255, 200);">
+````
 plotmodel(md, data=md.results.StressbalanceSolution.Vel)
-```
+````
 </div>
 
 
