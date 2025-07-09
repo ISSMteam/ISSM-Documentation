@@ -1,0 +1,20 @@
+/* Python code blocks */
+.language-python {
+  background-color: #f0fff4 !important; // Light greenish
+  color: #1a1a1a;
+}
+
+/* MATLAB code blocks */
+.language-matlab {
+  background-color: #fff7f0 !important; // Light orange
+  color: #1a1a1a;
+}
+
+/* Optional: Padding & border for visibility */
+.language-python,
+.language-matlab {
+  padding: 1em;
+  border-radius: 0.5em;
+  display: block;
+  overflow-x: auto;
+}
