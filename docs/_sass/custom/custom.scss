@@ -90,7 +90,31 @@
 	}
 }
 
-/* Sidebar expanded */
+/*
+	Code block styling
+*/
+.language-mat,
+.language-py
+{
+	padding: 1em;
+	border-radius: 0.5em;
+	display: block;
+	overflow-x: auto;
+}
+
+.language-mat {
+	background-color: #fff7f0 !important; // Light orange
+	color: #1a1a1a;
+}
+
+.language-py {
+	background-color: #f0fff4 !important; // Light greenish
+	color: #1a1a1a;
+}
+
+/*
+	Sidebar expanded
+*/
 @media (min-width: 800px) {
 	.post-index {
 		&.home-page-post-index {
@@ -116,25 +140,4 @@
 			}
 		}
 	}
-}
-
-/* Python code blocks */
-.language-python {
-  background-color: #f0fff4 !important; // Light greenish
-  color: #1a1a1a;
-}
-
-/* MATLAB code blocks */
-.language-matlab {
-  background-color: #fff7f0 !important; // Light orange
-  color: #1a1a1a;
-}
-
-/* Optional: Padding & border for visibility */
-.language-python,
-.language-matlab {
-  padding: 1em;
-  border-radius: 0.5em;
-  display: block;
-  overflow-x: auto;
 }

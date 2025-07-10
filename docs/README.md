@@ -13,13 +13,25 @@ It can take up to 10 minutes for changes to your site to publish after you push 
 ### Previewing Changes Locally
 Assuming [Jekyll] and [Bundler] are installed on your computer:
 
-1. Change your working directory to the root directory of your site.
+1. Change your working directory to `docs/` in the local copy of the repository.
 
 2. Run `bundle install`.
 
-3. Run `bundle exec jekyll serve --watch` to build your site and preview it at `localhost:4000`.
+3. Run `bundle exec jekyll serve --watch` to build your site.
 
-The built site is stored in the directory `_site/`.
+4. Preview the site in a web browser at `localhost:4000`.
+
+The built site is stored in and served from `_site/`.
+
+NOTE: The copy of Ruby included with macOS will likely not be of a new enough version. We suggest you install Ruby via Homebrew with,
+```
+brew install ruby
+```
+add the following to your `.bash_profile`,
+```
+export PATH="/opt/homebrew/opt/ruby/bin:${PATH}"
+```
+then start a new terminal and follow the above steps.
 
 ## Structure
 Each page in the [front end of the documentation](https://issmteam.github.io/ISSM-Documentation/) has a corresponding Markdown file (`.md`) in the appropriate subdirectory of `docs/`. For example,
