@@ -6,9 +6,6 @@ url: https://issmteam.github.io/ISSM-Documentation/
 
 color_scheme: issm
 
-markdown: kramdown
-highlighter: rouge
-
 # Site logo
 logo: "/assets/img/brand/ISSMlogo.png"
 

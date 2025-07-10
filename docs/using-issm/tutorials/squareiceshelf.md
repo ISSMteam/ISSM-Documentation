@@ -43,13 +43,15 @@ Compute the velocity field of the ice shelf:
 ````
 
 Finally, generate a plot of the velocity:
-```python
->> plotmodel(md, 'data', md.results.StressbalanceSolution.Vel);
-```
 
-```matlab
+*MATLAB*
+```mat
 plotmodel(md, data=md.results.StressbalanceSolution.Vel)
 ```
 
+*Python*
+```py
+>> plotmodel(md, 'data', md.results.StressbalanceSolution.Vel);
+```
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/squareiceshelf/squarevel.png" alt="Figure 1: squarevel"></div>
