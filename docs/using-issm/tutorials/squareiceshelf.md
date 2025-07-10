@@ -54,4 +54,4 @@ plotmodel(md, data=md.results.StressbalanceSolution.Vel)
 >> plotmodel(md, 'data', md.results.StressbalanceSolution.Vel);
 ```
 
-<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/squareiceshelf/squarevel.png" alt="Figure 1: squarevel"></div>
+<div style="display:flow-root"><img style="float:center;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/squareiceshelf/squarevel.png" alt="Figure 1: squarevel"></div>
