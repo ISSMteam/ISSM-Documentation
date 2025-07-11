@@ -1,7 +1,7 @@
 ---
 title: In-depth ISSM video tutorials
 layout: default
-nav_order: 6
+nav_order: 2
 has_children: false
 has_toc: false
 ---
