@@ -2,6 +2,7 @@
 title: Development for ISSM
 layout: default
 parent: Videos
+nav_exclude: true
 has_children: false
 has_toc: false
 ---
