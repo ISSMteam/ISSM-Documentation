@@ -21,8 +21,11 @@ ISSM is currently funded (or has been funded in the past) by,
 - NASA's Cryosphere Science Program
 - NASA's Modeling Analysis and Prediction Program
 - The National Science Foundation (NSF)
+- Heising Simons Foundation
+- <a href="https://icefuture.org/cluster-page/">Dartmouth's Changing Polar Regions</a> Academic clusuer
 
-## Brand
+## ISSM Logo
+<img src="/ISSM-Documentation/assets/img/brand/ISSMlogo.jpg" />
 The ISSM logo is available in several formats,
 - <a href="/ISSM-Documentation/assets/img/brand/ISSMlogo.pdf" download>PDF</a>
 - <a href="/ISSM-Documentation/assets/img/brand/ISSMlogo.eps" download>EPS</a>
