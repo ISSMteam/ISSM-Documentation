@@ -51,11 +51,7 @@ where `<ISSM_PATH>` is the path to the copy of the ISSM source code that you che
 ## System Packages
 **NOTE**: The following assumes use of the GNU compiler collection (i.e. `gcc`, `gfortran`), the <a href="https://brew.sh" target="_blank">Homebrew package manager</a>, and `sudo` privileges.
 
-In order to install ISSM on macOS, you will need the Xcode Command Line Tools, which can be installed with,
-````
-xcode-select --install
-````
-Alternatively, you can use the compiler and other build tools that come with <a href="https://developer.apple.com/xcode/" target="_blank">Xcode</a>, but if you do not otherwise use Xcode as an IDE, we recommend installing only the Command Line Tools.
+In order to install ISSM on macOS, you will need the compilers and other build tools that come with <a href="https://developer.apple.com/xcode/" target="_blank">Xcode</a>.
 
 {: .highlight-title }
 > Important
@@ -67,7 +63,7 @@ Alternatively, you can use the compiler and other build tools that come with <a 
 
 Unfortunately, both the Command Line Tools and Xcode lack a Fortran compiler, which is required for various external packages. We recommend either of the following methods for installing `gfortran`,
 
-- <a href="https://github.com/fxcoudert/gfortran-for-macOS" target="_blank">FX Coudert's GitHub repository for macOS installers for GNU Fortran</a>.
+- <a href="https://github.com/fxcoudert/gfortran-for-macOS" target="_blank">FX Coudert's GitHub repository for macOS installers for GNU Fortran</a> (Preferred).
 - Via Homebrew with,
   ````
 brew install gfortran
@@ -87,7 +83,7 @@ Download and install the desired version of MATLAB from the <a href="https://www
 <i id="macos-python-interface"></i>
 ### Python Interface
 **NOTE**:
-- We assume use of copy of Python 3 supplied by the Command Line Tools.
+- We assume use of copy of Python 3 supplied by XCode.
 - There are various methods for installing the required packages. The following is our suggestion.
 
 Create a Python virtual environment for ISSM and activate it with,
@@ -196,6 +192,10 @@ If the configuration completed without any errors, ISSM can now be compiled with
 make
 make install
 ````
+if you want to speed up the compilation, you can multithread make using
+````
+make -j4
+````
+change 4 to the number of threads you want to use.
 
-You are now ready to 
-<a href="../getting-started" target="_top">get started with ISSM</a>!
+You are now ready to <a href="../getting-started" target="_top">get started with ISSM</a>!
