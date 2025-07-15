@@ -53,19 +53,11 @@ has_toc: false
 	</li>
 	<li>
 		<img src="/ISSM-Documentation/assets/img/contributors/Youngmin_Choi.jpeg" />
-		<span>Youngmin_Choi (JPL)</span>
-	</li>
-	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Winnie_Chu.png" />
-		<span>Winnie Chu (Georgia Tech)</span>
+		<span>Youngmin Choi (UMD)</span>
 	</li>
 	<li>
 		<img src="/ISSM-Documentation/assets/img/contributors/Josh_Cuzzone.png" />
 		<span>Josh Cuzzone (UCLA Jifresse)</span>
-	</li>
-	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Thiago_dos_Santos.jpeg" />
-		<span>Thiago Dias dos Santos (UCI)</span>
 	</li>
 	<li>
 		<img src="/ISSM-Documentation/assets/img/contributors/Eric_Larour.png" />
@@ -73,7 +65,7 @@ has_toc: false
 	</li>
 	<li>
 		<img src="/ISSM-Documentation/assets/img/contributors/Felicity_McCormack.png" />
-		<span>Felicity McCormack (UTAS)</span>
+		<span>Felicity McCormack (University of Melbourne)</span>
 	</li>
 	<li>
 		<img src="/ISSM-Documentation/assets/img/contributors/Mathieu_Morlighem.png" />
@@ -81,7 +73,7 @@ has_toc: false
 	</li>
 	<li>
 		<img src="/ISSM-Documentation/assets/img/contributors/Mattia_Poinelli.jpg" />
-		<span>Mattia Poinelli (JPL)</span>
+		<span>Mattia Poinelli (UCI)</span>
 	</li>
 	<li>
 		<img src="/ISSM-Documentation/assets/img/contributors/Justin_Quinn.png" />
@@ -89,7 +81,7 @@ has_toc: false
 	</li>
 	<li>
 		<img src="/ISSM-Documentation/assets/img/contributors/Martin_Rueckamp.png" />
-		<span>Martin Rüeckamp (BAdW)</span>
+		<span>Martin Rückamp (BAdW)</span>
 	</li>
 	<li>
 		<img src="/ISSM-Documentation/assets/img/contributors/Nicole_Schlegel.jpg" />
@@ -115,9 +107,9 @@ has_toc: false
 - Ellen Robo (2018, AD and Dakota)
 - John Schiermeier (JPL) (2008-2013, Dakota)
 - Jean Utke (ANL) (2012-2014, automatic differentiation)
+- hiago Dias dos Santos (UNICAMP, 2016-2021, AMR)
 
 ## Active Collaborations
-- Jason Box (GEUS) (SMB reconstructions)
 - Winnie Chu (Georgia Tech)
 - Beatha Csatho (UB) (altimetry)
 - Wayne Hayes (UCI) (satellite tracking of calving fronts)
@@ -144,16 +136,14 @@ has_toc: false
 - Ala Khazendar (JPL)
 - Silje Smith-Johansen (Bjerknes Centre for Climate Research, Bergen, Norway)
 - Eric Larour (JPL)
-- Derrick Lampkin (University of Maryland)
-- Kevin Lemorzadec (St John’s)
-- Felicity McCormack (UTAS)
+- Felicity McCormack (Melbourne)
 - Brent Minchew (MIT)
 - Mathieu Morlighem (Dartmouth)
 - Inwoo Park (SNU/KOPRI)
 - Tyler Pelle (UCI)
 - Mattia Poinelli (UCI, TU Delft)
 - Martin Rüeckamp (BAdW)
-- Thiago Dias dos Santos (UCI)
+- Thiago Dias dos Santos (UNICAMP)
 - Nicole Schlegel (JPL)
 - Helene Seroussi (Dartmouth)
 - Hongju Yu (UCI)
