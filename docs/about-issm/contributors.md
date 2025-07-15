@@ -107,7 +107,7 @@ has_toc: false
 - Ellen Robo (2018, AD and Dakota)
 - John Schiermeier (JPL) (2008-2013, Dakota)
 - Jean Utke (ANL) (2012-2014, automatic differentiation)
-- hiago Dias dos Santos (UNICAMP, 2016-2021, AMR)
+- Thiago Dias dos Santos (UNICAMP, 2016-2021, AMR)
 
 ## Active Collaborations
 - Winnie Chu (Georgia Tech)
