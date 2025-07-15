@@ -108,6 +108,7 @@ has_toc: false
 - John Schiermeier (JPL) (2008-2013, Dakota)
 - Jean Utke (ANL) (2012-2014, automatic differentiation)
 - Thiago Dias dos Santos (UNICAMP, 2016-2021, AMR)
+- Chris Borstad (2011-2020, Damage Mechanics)
 
 ## Active Collaborations
 - Winnie Chu (Georgia Tech)
@@ -120,14 +121,13 @@ has_toc: false
 - Sophie Nowicki (GSFC) (coupling to GEOS5)
 - Eric Rignot (UCI/JPL) (scientific guidance)
 - Alex Robel (Georgia Tech)
-- Martin Rüeckamp (BAdW)
+- Martin Rückamp (BAdW)
 - Michael Schodlok (JPL) (ECCO/MITgcm)
 - Dustin Schroeder (Stanford)
 
 ## Users
 - Surendra Adhikari (JPL)
 - Henning Åkesson (Stockholm University)
-- Chris Borstad (Montana State University)
 - Blake Castleman (Georgia Tech)
 - Youngmin Choi (JPL)
 - Richard Cullather (GSFC)
@@ -142,7 +142,7 @@ has_toc: false
 - Inwoo Park (SNU/KOPRI)
 - Tyler Pelle (UCI)
 - Mattia Poinelli (UCI, TU Delft)
-- Martin Rüeckamp (BAdW)
+- Martin Rückamp (BAdW)
 - Thiago Dias dos Santos (UNICAMP)
 - Nicole Schlegel (JPL)
 - Helene Seroussi (Dartmouth)
