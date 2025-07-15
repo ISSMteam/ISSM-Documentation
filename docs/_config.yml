@@ -21,10 +21,10 @@ aux_links:
 aux_links_new_tab: true
 
 # External navigation links
-nav_external_links:
-  - title: Virtual Earth System Laboratory
-    url: https://vesl.jpl.nasa.gov
-    opens_in_new_tab: true
+#nav_external_links:
+#  - title: Virtual Earth System Laboratory
+#    url: https://vesl.jpl.nasa.gov
+#    opens_in_new_tab: true
 
 # Footer content
 gh_edit_link: true
