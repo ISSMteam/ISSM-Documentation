@@ -3,10 +3,12 @@ title: Pleiades (NASA NAS HECC)
 layout: default
 parent: High-Performance Computing (HPC)
 has_children: false
-has_toc: false
+has_toc: true
 ---
 
 # Pleiades (NASA NAS HECC)
+For comprehensive information on access to and use of NASA NAS High-End Computing Capability (HECC), please refer to <a href="https://www.nas.nasa.gov/hecc/support/kb" target="_blank">their knowledge base</a>.
+
 ## Getting an Account
 New users will have to ask a NASA- or JPL-employed PI to request an account for them on NASA NAS HECC. They will need the group ID of the PI in order to submit this request.
 
@@ -71,3 +73,159 @@ replacing `<ISSM_DIR>` with the path to the local copy of the ISSM code reposito
 >
 > The version of the `comp-intel` module as well as the corresponding value of variable `COMP_INTEL_ROOT` may need to be updated as recommended/available modules are updated on HECC. Please update this page or ask a project lead to do so when this occurs.
 
+## Installing ISSM
+
+{: .highlight-title }
+> Important
+>
+> ISSM and external packages should not be compiled on the Pleiades front end. Please refer to the NAS HECC knowledge base article <a href="https://www.nas.nasa.gov/hecc/support/kb/reserving-a-dedicated-compute-node_556.html" target="_blank">'Reserving a Dedicated Compute Node'</a> for instructions on reserving a and logging into a compute node for the purpose of compiling.
+
+{: .highlight-title }
+> Important
+>
+> Do *not* install `mpich` and `petsc`. The MPI implementation (MPT) provided by HECC *must* be used. Pleiades will *only* be used to run solutions and the user's local machine for pre- and post-processing.
+
+There are a number of configurations for ISSM provided below. Users may also refer to the recipes in `${ISSM_DIR}/jenkins/` prefixed with `pleiades-`.
+
+### Installing ISSM with Basic Capabilities
+For an installation of ISSM with basic capabilities, the only external packages required are,
+```sh
+autotools	install-linux.sh
+triangle	install-linux.sh
+m1qn3		install-linux.sh
+semic		install.sh
+```
+
+Before configuring ISSM, run,
+```sh
+cd $ISSM_DIR
+autoreconf -ivf
+```
+
+Then use the following configuring script (adapting it as needed),
+```sh
+export CFLAGS="-g -Ofast"
+export CXXFLAGS="-g -Ofast -xCORE-AVX512,CORE-AVX2 -xAVX -std=c++11"
+
+./configure \
+	--prefix="${ISSM_DIR}" \
+	--enable-development \
+	--enable-standalone-libraries \
+	--with-wrappers=no \
+	--with-fortran-lib="-L${COMP_INTEL_ROOT}/compiler/lib/intel64_lin -lifcore -lifport -lgfortran" \
+	--with-mkl-libflags="-L${COMP_INTEL_ROOT}/mkl/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm" \
+	--with-mpi-include="${MPI_ROOT}/include" \
+	--with-mpi-libflags="-L${MPI_ROOT}/lib -lmpi" \
+	--with-blas-lapack-lib="-L${COMP_INTEL_ROOT}/mkl/lib/intel64 -lmkl_blas95_lp64 -lmkl_lapack95_lp64" \
+	--with-metis-dir="${PETSC_DIR}" \
+	--with-parmetis-dir="${PETSC_DIR}" \
+	--with-scalapack-lib="-L${COMP_INTEL_ROOT}/mkl/lib/intel64/libmkl_scalapack_lp64.so" \
+	--with-mumps-dir="${PETSC_DIR}" \
+	--with-petsc-dir="${PETSC_DIR}" \
+	--with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install" \
+	--with-m1qn3-dir="${ISSM_DIR}/externalpackages/m1qn3/install" \
+	--with-semic-dir="${ISSM_DIR}/externalpackages/semic/install"
+```
+
+### Installing ISSM with Dakota
+For an installation of ISSM with Dakota, the following external packages are required,
+```sh
+autotools	install-linux.sh
+boost		install-1.7-linux.sh
+dakota		install-6.2-pleiades.sh
+chaco		install-linux.sh
+triangle	install-linux.shwhic
+m1qn3		install-linux.sh
+semic		install.sh
+```
+
+Before configuring ISSM, run,
+```sh
+cd $ISSM_DIR
+autoreconf -ivf
+```
+
+Then use the following configuring script (adapting it as needed),
+```sh
+export CFLAGS="-g -Ofast"
+export CXXFLAGS="-g -Ofast -xCORE-AVX512,CORE-AVX2 -xAVX -std=c++11"
+
+./configure \
+	--prefix="${ISSM_DIR}" \
+	--enable-development \
+	--enable-standalone-libraries \
+	--with-wrappers=no \
+	--with-fortran-lib="-L${COMP_INTEL_ROOT}/compiler/lib/intel64_lin -lifcore -lifport -lgfortran" \
+	--with-mkl-libflags="-L${COMP_INTEL_ROOT}/mkl/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm" \
+	--with-mpi-include="${MPI_ROOT}/include" \
+	--with-mpi-libflags="-L${MPI_ROOT}/lib -lmpi" \
+	--with-blas-lapack-lib="-L${COMP_INTEL_ROOT}/mkl/lib/intel64 -lmkl_blas95_lp64 -lmkl_lapack95_lp64" \
+	--with-metis-dir="${PETSC_DIR}" \
+	--with-parmetis-dir="${PETSC_DIR}" \
+	--with-scalapack-lib="-L${COMP_INTEL_ROOT}/mkl/lib/intel64/libmkl_scalapack_lp64.so" \
+	--with-mumps-dir="${PETSC_DIR}" \
+	--with-petsc-dir="${PETSC_DIR}" \
+	--with-boost-dir="${ISSM_DIR}/externalpackages/boost/install" \
+	--with-dakota-dir="${ISSM_DIR}/externalpackages/dakota/install" \
+	--with-chaco-dir="${ISSM_DIR}/externalpackages/chaco/install" \
+	--with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install" \
+	--with-m1qn3-dir="${ISSM_DIR}/externalpackages/m1qn3/install" \
+	--with-semic-dir="${ISSM_DIR}/externalpackages/semic/install"
+```
+
+### Installing ISSM with Solid Earth Capabilities
+For an installation of ISSM with solid Earth capabilities, the following external packages are required,
+```sh
+autotools	install-linux.sh
+boost		install-1.7-linux.sh
+dakota		install-6.2-pleiades.sh
+chaco		install-linux.sh
+zlib		install-1.sh
+hdf5		install-1.sh
+netcdf		install-4.sh
+sqlite		install.sh
+proj		install-6.sh
+gdal		install-3-linux.sh
+gshhg		install.sh
+gmt			install-6-pleiades.sh
+gmsh		install-4-pleiades.sh
+triangle	install-linux.sh
+m1qn3		install-linux.sh
+semic		install.sh
+```
+
+Before configuring ISSM, run,
+```sh
+cd $ISSM_DIR
+autoreconf -ivf
+```
+
+Then use the following configuring script (adapting it as needed),
+```sh
+export CFLAGS="-g -Ofast"
+export CXXFLAGS="-g -Ofast -xCORE-AVX512,CORE-AVX2 -xAVX -std=c++11"
+
+./configure \
+	--prefix="${ISSM_DIR}" \
+	--enable-development \
+	--enable-standalone-libraries \
+	--with-wrappers=no \
+	--with-fortran-lib="-L${COMP_INTEL_ROOT}/compiler/lib/intel64_lin -lifcore -lifport -lgfortran" \
+	--with-mkl-libflags="-L${COMP_INTEL_ROOT}/mkl/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm" \
+	--with-mpi-include="${MPI_ROOT}/include" \
+	--with-mpi-libflags="-L${MPI_ROOT}/lib -lmpi" \
+	--with-blas-lapack-lib="-L${COMP_INTEL_ROOT}/mkl/lib/intel64 -lmkl_blas95_lp64 -lmkl_lapack95_lp64" \
+	--with-metis-dir="${PETSC_DIR}" \
+	--with-parmetis-dir="${PETSC_DIR}" \
+	--with-scalapack-lib="-L${COMP_INTEL_ROOT}/mkl/lib/intel64/libmkl_scalapack_lp64.so" \
+	--with-mumps-dir="${PETSC_DIR}" \
+	--with-hdf5-dir="${ISSM_DIR}/externalpackages/hdf5/install" \
+	--with-petsc-dir="${PETSC_DIR}" \
+	--with-boost-dir="${ISSM_DIR}/externalpackages/boost/install" \
+	--with-dakota-dir="${ISSM_DIR}/externalpackages/dakota/install" \
+	--with-chaco-dir="${ISSM_DIR}/externalpackages/chaco/install" \
+	--with-proj-dir="${ISSM_DIR}/externalpackages/proj/install" \
+	--with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install" \
+	--with-m1qn3-dir="${ISSM_DIR}/externalpackages/m1qn3/install" \
+	--with-semic-dir="${ISSM_DIR}/externalpackages/semic/install"
+```
