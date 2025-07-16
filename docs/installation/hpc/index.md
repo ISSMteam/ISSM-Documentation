@@ -3,8 +3,7 @@ title: High-Performance Computing (HPC)
 layout: default
 parent: Installation
 nav_order: 4
-has_children: false
-has_toc: false
+has_children: true
 ---
 
 # High-Performance Computing (HPC)
@@ -16,5 +15,5 @@ Note as well that the 'local' machine in the above case may be one that is physi
 ## Configuration and Compiling ISSM
 Please see the <a href="https://issm.ess.uci.edu/trac/issm/wiki" target="_blank">ISSM Development Wiki</a> for notes on configuring and compiling on various HPC systems.
 
-We will be working soon to migrate the content from the wiki to this documentation.
-
+The following are pages that have already been migrated (also linked in the Main Navigation in the sidebar),
+- <a href="./pleiades">Pleiades (NASA NAS HECC)</a>
