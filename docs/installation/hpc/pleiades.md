@@ -2,12 +2,17 @@
 title: Pleiades (NASA NAS HECC)
 layout: default
 parent: High-Performance Computing (HPC)
-has_children: false
-has_toc: true
 ---
 
 # Pleiades (NASA NAS HECC)
+{: .no_toc }
 For comprehensive information on access to and use of NASA NAS High-End Computing Capability (HECC), please refer to <a href="https://www.nas.nasa.gov/hecc/support/kb" target="_blank">their knowledge base</a>.
+
+## Table of Contents
+{: .no_toc }
+1. TOC
+{:toc}
+----
 
 ## Getting an Account
 New users will have to ask a NASA- or JPL-employed PI to request an account for them on NASA NAS HECC. They will need the group ID of the PI in order to submit this request.
