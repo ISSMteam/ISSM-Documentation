@@ -3,8 +3,6 @@ title: Tutorials
 layout: default
 parent: Using ISSM
 nav_order: 1
-has_children: true
-has_toc: false
 ---
 
 # Tutorials

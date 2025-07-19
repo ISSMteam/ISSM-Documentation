@@ -2,8 +2,6 @@
 title: Sea-Level Fingerprints (GRACE)
 layout: default
 parent: Tutorials
-has_children: false
-has_toc: false
 ---
 
 ## Sea-Level Fingerprints (GRACE)

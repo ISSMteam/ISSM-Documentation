@@ -2,8 +2,6 @@
 title: Calving
 layout: default
 parent: Parameterization
-has_children: false
-has_toc: false
 ---
 
 ## Calving

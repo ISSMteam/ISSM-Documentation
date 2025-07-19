@@ -2,8 +2,6 @@
 title: Elastostatic Adjustment Solution
 layout: default
 parent: Capabilities
-has_children: false
-has_toc: false
 ---
 
 ## Elastostatic Adjustment Solution

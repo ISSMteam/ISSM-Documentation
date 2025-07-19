@@ -2,8 +2,6 @@
 title: Ice Sheet Model Intercomparison Project (ISMIP) Tests
 layout: default
 parent: Tutorials
-has_children: false
-has_toc: false
 ---
 
 ## Ice Sheet Model Intercomparison Project (ISMIP) Tests

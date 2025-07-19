@@ -2,8 +2,6 @@
 title: Interpolation Routines
 layout: default
 parent: Capabilities
-has_children: false
-has_toc: false
 ---
 
 ## Interpolation Routines

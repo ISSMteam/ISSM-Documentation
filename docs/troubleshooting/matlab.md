@@ -3,8 +3,6 @@ title: MATLAB Interface
 layout: default
 parent: Troubleshooting
 nav_order: 4
-has_children: false
-has_toc: true
 ---
 
 # MATLAB Interface

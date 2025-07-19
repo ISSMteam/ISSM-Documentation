@@ -2,8 +2,6 @@
 title: Development for ISSM
 layout: default
 parent: Videos
-has_children: false
-has_toc: false
 ---
 
 ## Development for ISSM Video Series

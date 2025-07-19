@@ -2,8 +2,6 @@
 title: Subglacial Hydrology of Helheim Glacier (SHAKTI)
 layout: default
 parent: Tutorials
-has_children: false
-has_toc: false
 ---
 
 ## Subglacial Hydrology of Helheim Glacier (SHAKTI)

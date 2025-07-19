@@ -2,8 +2,6 @@
 title: Thermal Solution
 layout: default
 parent: Capabilities
-has_children: false
-has_toc: false
 ---
 
 ## Thermal Solution

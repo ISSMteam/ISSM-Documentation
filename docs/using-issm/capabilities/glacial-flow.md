@@ -2,8 +2,6 @@
 title: Glacial Flow Approximation
 layout: default
 parent: Capabilities
-has_children: false
-has_toc: false
 ---
 
 ## Glacial Flow Approximation

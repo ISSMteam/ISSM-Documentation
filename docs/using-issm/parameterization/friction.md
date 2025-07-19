@@ -2,8 +2,6 @@
 title: Basal Friction
 layout: default
 parent: Parameterization
-has_children: false
-has_toc: false
 ---
 
 ## Basal Friction

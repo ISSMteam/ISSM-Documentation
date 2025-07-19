@@ -3,7 +3,6 @@ title: Using ISSM
 layout: default
 nav_order: 5
 has_children: true
-has_toc: false
 ---
 
 <h1>Using ISSM</h1>

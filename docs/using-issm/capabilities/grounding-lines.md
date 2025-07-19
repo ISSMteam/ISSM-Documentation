@@ -2,8 +2,6 @@
 title: Grounding Lines
 layout: default
 parent: Capabilities
-has_children: false
-has_toc: false
 ---
 
 ## Grounding Lines

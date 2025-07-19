@@ -2,8 +2,6 @@
 title: Mesh Generation
 layout: default
 parent: Capabilities
-has_children: false
-has_toc: false
 ---
 
 ## Mesh Generation

@@ -4,7 +4,6 @@ layout: default
 parent: Using ISSM
 nav_order: 5
 has_children: true
-has_toc: false
 ---
 
 <h1>Videos</h1>

@@ -2,8 +2,6 @@
 title: Surface Mass Balance (SMB)
 layout: default
 parent: Parameterization
-has_children: false
-has_toc: false
 ---
 
 ## Surface Mass Balance (SMB)

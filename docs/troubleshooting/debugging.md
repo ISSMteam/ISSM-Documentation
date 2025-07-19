@@ -3,8 +3,6 @@ title: Debugging
 layout: default
 parent: Troubleshooting
 nav_order: 6
-has_children: false
-has_toc: false
 ---
 
 # Debugging

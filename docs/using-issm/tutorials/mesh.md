@@ -2,8 +2,6 @@
 title: Mesh Adaptation
 layout: default
 parent: Tutorials
-has_children: false
-has_toc: false
 ---
 
 ## Mesh Adaptation

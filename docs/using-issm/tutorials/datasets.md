@@ -2,8 +2,6 @@
 title: Datasets
 layout: default
 parent: Tutorials
-has_children: false
-has_toc: false
 ---
 
 ## Datasets

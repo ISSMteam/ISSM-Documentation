@@ -2,8 +2,6 @@
 title: Pine Island Glacier Stochastic Forcing (StISSM)
 layout: default
 parent: Tutorials
-has_children: false
-has_toc: false
 ---
 
 ## Pine Island Glacier Stochastic Forcing (StISSM)

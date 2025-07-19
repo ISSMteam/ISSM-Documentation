@@ -2,8 +2,6 @@
 title: Stress Balance Solution
 layout: default
 parent: Capabilities
-has_children: false
-has_toc: false
 ---
 
 ## Stress Balance Solution

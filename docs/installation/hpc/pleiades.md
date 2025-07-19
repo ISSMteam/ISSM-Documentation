@@ -31,6 +31,7 @@ Then, the user needs to request an account with the following procedure,
 NOTE: All users must complete NASA's Basic IT Security Training
 
 ### Current Points of Contact
+{: .no_toc }
 - Dartmouth security officer: <a href="mailto:Sean.R.McNamara@dartmouth.edu">Sean McNamara</a> (<a href="https://itc.dartmouth.edu/about/who-we-are/itc-leadership" target="_blank">Dartmouth ITC</a>)
 - JPL IT security officer: <a href="mailto:Tomas.J.Soderstrom@jpl.nasa.gov">Tomas Soderstrom</a>
 - UCI OIT security officer: <a href="mailto:jdrummon@uci.edu">Josh Drummond</a>

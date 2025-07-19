@@ -2,8 +2,6 @@
 title: Rifts
 layout: default
 parent: Advanced Features
-has_children: false
-has_toc: false
 ---
 
 ## Rifts

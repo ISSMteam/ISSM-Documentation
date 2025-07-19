@@ -2,8 +2,6 @@
 title: Positive Degree Day (PDD)
 layout: default
 parent: Parameterization
-has_children: false
-has_toc: false
 ---
 
 ## Positive Degree Day (PDD)

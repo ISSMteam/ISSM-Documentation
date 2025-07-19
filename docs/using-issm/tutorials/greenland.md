@@ -2,8 +2,6 @@
 title: Modeling the Greenland Ice Sheet (SeaRISE)
 layout: default
 parent: Tutorials
-has_children: false
-has_toc: false
 ---
 
 ## Modeling the Greenland Ice Sheet (SeaRISE)

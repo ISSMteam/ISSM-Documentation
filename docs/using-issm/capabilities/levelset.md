@@ -2,8 +2,6 @@
 title: Ice Front Migration (level-set method)
 layout: default
 parent: Capabilities
-has_children: false
-has_toc: false
 ---
 
 ## Ice Front Migration (level-set method)

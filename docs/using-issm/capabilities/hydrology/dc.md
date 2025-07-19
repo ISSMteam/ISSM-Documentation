@@ -2,8 +2,6 @@
 title: Hydrology Solution - Dual Continuum Porous Equivalent Approach
 layout: default
 parent: Hydrology Solution
-has_children: false
-has_toc: false
 ---
 
 ### Hydrology Solution - Dual Continuum Porous Equivalent Approach

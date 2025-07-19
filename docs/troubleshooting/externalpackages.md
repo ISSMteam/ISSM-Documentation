@@ -3,8 +3,6 @@ title: Configuring and Compiling External Packages
 layout: default
 parent: Troubleshooting
 nav_order: 1
-has_children: false
-has_toc: true
 ---
 
 # Configuring and Compiling External Packages

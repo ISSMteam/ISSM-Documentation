@@ -2,8 +2,6 @@
 title: Empirical Scalar Tertiary Anisotropy Regime (ESTAR)
 layout: default
 parent: Parameterization
-has_children: false
-has_toc: false
 ---
 
 ## Empirical Scalar Tertiary Anisotropy Regime (ESTAR)

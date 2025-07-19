@@ -2,8 +2,6 @@
 title: Setting a Mask
 layout: default
 parent: Capabilities
-has_children: false
-has_toc: false
 ---
 
 ## Setting a Mask

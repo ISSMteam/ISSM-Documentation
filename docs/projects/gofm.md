@@ -2,8 +2,6 @@
 title: Gulf of Mexico
 layout: default
 parent: Projects
-has_children: false
-has_toc: false
 ---
 
 # Gulf of Mexico Project

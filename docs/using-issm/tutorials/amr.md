@@ -2,8 +2,6 @@
 title: Adaptive Mesh Refinement (AMR)
 layout: default
 parent: Tutorials
-has_children: false
-has_toc: false
 ---
 
 ## Adaptive Mesh Refinement (AMR)
