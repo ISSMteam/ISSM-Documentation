@@ -3,8 +3,6 @@ title: Python Interface
 layout: default
 parent: Troubleshooting
 nav_order: 5
-has_children: false
-has_toc: true
 ---
 
 # Python Interface

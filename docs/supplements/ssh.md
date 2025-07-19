@@ -3,8 +3,6 @@ title: SSH
 layout: default
 parent: Supplements
 nav_order: 2
-has_children: false
-has_toc: false
 ---
 
 ## SSH

@@ -2,8 +2,6 @@
 title: Modeling Pine Island Glacier
 layout: default
 parent: Tutorials
-has_children: false
-has_toc: false
 ---
 
 ## Modeling Pine Island Glacier

@@ -2,8 +2,6 @@
 title: Uncertainty Quantification (UQ)
 layout: default
 parent: Tutorials
-has_children: false
-has_toc: false
 ---
 
 ## Uncertainty Quantification (UQ)

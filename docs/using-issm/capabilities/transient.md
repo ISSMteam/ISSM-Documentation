@@ -2,8 +2,6 @@
 title: Transient Solution
 layout: default
 parent: Capabilities
-has_children: false
-has_toc: false
 ---
 
 ## Transient Solution

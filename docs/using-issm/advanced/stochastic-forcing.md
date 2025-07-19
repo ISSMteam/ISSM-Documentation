@@ -2,8 +2,6 @@
 title: Stochastic Forcing with StISSM
 layout: default
 parent: Advanced Features
-has_children: false
-has_toc: false
 ---
 
 ## Stochastic Forcing with StISSM

@@ -2,8 +2,6 @@
 title: Modeling Jakobshavn Isbr&#230;
 layout: default
 parent: Tutorials
-has_children: false
-has_toc: false
 ---
 
 ## Modeling Jakobshavn Isbr\ae

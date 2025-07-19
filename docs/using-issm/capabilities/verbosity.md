@@ -2,8 +2,6 @@
 title: Verbosity
 layout: default
 parent: Capabilities
-has_children: false
-has_toc: false
 ---
 
 ## Verbosity

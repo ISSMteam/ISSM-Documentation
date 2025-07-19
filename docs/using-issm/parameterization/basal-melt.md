@@ -2,8 +2,6 @@
 title: Basal Melt
 layout: default
 parent: Parameterization
-has_children: false
-has_toc: false
 ---
 
 ## Basal Melt

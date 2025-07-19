@@ -2,8 +2,6 @@
 title: Pine Island Glacier Sensitivity Study
 layout: default
 parent: Tutorials
-has_children: false
-has_toc: false
 ---
 
 ## Pine Island Glacier Sensitivity Study

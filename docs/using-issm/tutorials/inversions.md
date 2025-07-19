@@ -2,8 +2,6 @@
 title: Inversions
 layout: default
 parent: Tutorials
-has_children: false
-has_toc: false
 ---
 
 ## Inversions

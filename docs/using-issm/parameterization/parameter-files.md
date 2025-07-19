@@ -2,8 +2,6 @@
 title: Parameter Files
 layout: default
 parent: Parameterization
-has_children: false
-has_toc: false
 ---
 
 ## Parameter Files

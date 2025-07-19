@@ -3,8 +3,6 @@ title: Plotting in MATLAB
 layout: default
 parent: Plotting
 nav_order: 1
-has_children: false
-has_toc: false
 ---
 
 ## Plotting in MATLAB

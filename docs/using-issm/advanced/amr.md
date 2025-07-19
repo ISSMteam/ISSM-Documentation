@@ -2,8 +2,6 @@
 title: Adaptive Mesh Refinement - AMR
 layout: default
 parent: Advanced Features
-has_children: false
-has_toc: false
 ---
 
 ## Adaptive Mesh Refinement - AMR

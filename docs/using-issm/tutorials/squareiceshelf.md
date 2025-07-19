@@ -2,8 +2,6 @@
 title: Square Ice Shelf
 layout: default
 parent: Tutorials
-has_children: false
-has_toc: false
 ---
 
 ## Square Ice Shelf

@@ -2,8 +2,6 @@
 title: Inversions
 layout: default
 parent: Advanced Features
-has_children: false
-has_toc: false
 ---
 
 ## Inversions

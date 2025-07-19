@@ -2,8 +2,6 @@
 title: Sea-level Fingerprints Solution
 layout: default
 parent: Capabilities
-has_children: false
-has_toc: false
 ---
 
 ## Sea-level Fingerprints Solution

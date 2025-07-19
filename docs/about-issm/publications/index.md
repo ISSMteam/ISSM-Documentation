@@ -3,8 +3,6 @@ title: Publications
 layout: default
 parent: About ISSM
 nav_order: 3
-has_children: false
-has_toc: true
 NOTE: This file was generated automatically by .github/workflows/publications.yml. To make changes, edit the workflow file and commit the changes to the repository.
 ---
 

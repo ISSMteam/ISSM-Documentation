@@ -3,8 +3,6 @@ title: Changelog
 layout: default
 parent: Supplements
 nav_order: 3
-has_children: false
-has_toc: false
 ---
 
 # Changelog

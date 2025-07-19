@@ -2,8 +2,6 @@
 title: Glacial Isostatic Adjustment (GIA) Solution
 layout: default
 parent: Capabilities
-has_children: false
-has_toc: false
 ---
 
 ## Glacial Isostatic Adjustment (GIA) Solution

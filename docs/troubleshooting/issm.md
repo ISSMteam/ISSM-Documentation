@@ -3,8 +3,6 @@ title: Configuring and Compiling ISSM
 layout: default
 parent: Troubleshooting
 nav_order: 2
-has_children: false
-has_toc: true
 ---
 
 # Configuring and Compiling ISSM

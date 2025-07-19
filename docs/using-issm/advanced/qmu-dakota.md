@@ -2,8 +2,6 @@
 title: Quantifications of Margins and Uncertainties (QMU) with Dakota
 layout: default
 parent: Advanced Features
-has_children: false
-has_toc: false
 ---
 
 ## Quantifications of Margins and Uncertainties (QMU) with Dakota

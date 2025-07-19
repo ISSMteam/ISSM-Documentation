@@ -2,8 +2,6 @@
 title: Modeling Helheim Glacier
 layout: default
 parent: Tutorials
-has_children: false
-has_toc: false
 ---
 
 ## Modeling Helheim Glacier

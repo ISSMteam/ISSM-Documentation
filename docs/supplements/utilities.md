@@ -3,8 +3,6 @@ title: Utilities
 layout: default
 parent: Supplements
 nav_order: 1
-has_children: false
-has_toc: false
 ---
 
 # Utilities
