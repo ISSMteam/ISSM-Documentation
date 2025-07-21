@@ -103,7 +103,8 @@ export MSYS=winsymlinks:nativestrict
 ### .bashrc
 
 - Open `/c/msys64/home/<USER>/.bashrc` for editing and add the following at the bottom of the file:
-```sh
+
+```bash
 ## MATLAB
 #
 MATLAB_VER="<MATLAB_VER>" # Allows for easy resetting of MATLAB version added to path
@@ -115,6 +116,7 @@ export PATH="${MATLAB_PATH}/bin:${PATH}"
 export ISSM_DIR=<ISSM_PATH>
 export ISSM_DIR_WIN=$(cygpath -ms "${ISSM_DIR}") # Needed by MATLAB
 ```
+
 where `<MATLAB_VER>` is the version of MATLAB that you have installed (for example, "R2023b") and `<ISSM_DIR>` is the path to the copy of the ISSM source code that you checked out (e.g. `/c/Users/<USER>/ISSM/src`, where `<USER>` is your username)
 
 ## Microsoft MPI
