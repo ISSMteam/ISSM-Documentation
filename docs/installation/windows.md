@@ -235,21 +235,21 @@ The MSYS2 sshd service was started successfully.
 ssh -l <UNPRIV_NAME> localhost
 ````
 where `<UNPRIV_NAME>` is the same user that we authorized to use the service. You should be prompted to accept an ECDSA fingerprint, you which you respond "yes". Then, enter the password for this account. If all goes well, you should now have a prompt that reads, 
-````
+```bash
 <UNPRIV_NAME>@<HOSTNAME> MSYS ~
-````
+```
 - Once logged in to the target machine, open `/etc/ssh/sshd_config` for editing, add,
-````
+```bash
 AcceptEnv MSYSTEM
-````
+```
 then save out the changes. On the client machine, open `/etc/ssh/ssh_config` for editing, add, 
-````
+```bash
 SendEnv MSYSTEM
-````
+```
 to the file (you can add `MSYSTEM` to the list of environment variables if `SendEnv` already exists), then save out the changes. You can now prefix your SSH commands like, 
-````
+```bash
 MSYSTEM=MINGW64 ssh [...]
-````
+```
 in order to log in to the MSYS2 MinGW 64-bit shell (other possible values are MSYS2 and MINGW32).
 - If an attempted SSH connection from a remote machine stalls out or is denied, it may be the case that you are running Windows Defender Firewall and need to open port 22. To do so,
 - in the Windows search bar, search for "Defender" and select 'Windows Defender Firewall with Advanced Security'
@@ -263,14 +263,13 @@ in order to log in to the MSYS2 MinGW 64-bit shell (other possible values are MS
 - set the 'Name' field to "SSH", then click the 'Next' button
 - The `ssh-keygen` utility can be used to create a more secure SSH connection and to protect your Windows user password
 - If you later decide that you want to stop the `sshd` service, you can do so with, 
-````
+```bash
 net stop msys2_sshd
-````
+```
 and can remove the service altogether with, 
-````
+```bash
 cygrunsrv -R msys2_sshd
-````
+```
 Sources:
-
 - <a href="https://www.msys2.org/wiki/Setting-up-SSHd" target="_blank">MSYS2 'Setting up SSHd' webpage</a>
 - <a href="https://gist.github.com/samhocevar/00eec26d9e9988d080ac" target="_blank">Sam Hocevar's GitHub Gist page on setting up SSHd under MSYS2</a>
