@@ -235,6 +235,7 @@ The MSYS2 sshd service was started successfully.
 ssh -l <UNPRIV_NAME> localhost
 ````
 where `<UNPRIV_NAME>` is the same user that we authorized to use the service. You should be prompted to accept an ECDSA fingerprint, you which you respond "yes". Then, enter the password for this account. If all goes well, you should now have a prompt that reads, 
+
 ```bash
 <UNPRIV_NAME>@<HOSTNAME> MSYS ~
 ```
