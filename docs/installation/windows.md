@@ -45,39 +45,39 @@ The following instructions detail how to create an environment for compiling ISS
 - The 'Best match' should be 'MSYS2 MSYS'; click 'Open file location'
 - In the resulting File Explorer window, right-click 'MSYS2 MinGW 64-bit' and select 'Send to' &#8594; 'Desktop (create shortcut)'
 - Right-click on the newly-created desktop shortcut and select 'Properties'
-  - click the 'Advanced...' button
-  - check the box labeled 'Run as administrator'
-  - click the 'OK' button
-  - click the 'Apply' button
-  - click the 'OK' button
+- click the 'Advanced...' button
+- check the box labeled 'Run as administrator'
+- click the 'OK' button
+- click the 'Apply' button
+- click the 'OK' button
 
 ### Update the package database and install required packages
 
 - Double-click the 'MSYS2 MinGW 64-bit' desktop shortcut
 - At the resulting command prompt run, 
-    ````
+````
 $ pacman -Syu
-  ````
-    to update the database and base packages, entering "Y" when prompted
+ ````
+to update the database and base packages, entering "Y" when prompted
 - The previous step will result in the window being closed, so double-click the 'MSYS2 MinGW 64-bit' desktop shortcut again
 - At the resulting command prompt run,
-    ````
+````
 $ pacman -Su
-  ````
-    until the resulting output is,
-    ````
+````
+until the resulting output is,
+````
 :: Starting core system upgrade...
  there is nothing to do
 :: Starting full system upgrade...
  there is nothing to do
-  ````
-  - Install necessary packages with,
-    ````
+````
+- Install necessary packages with,
+````
 $ pacman -S --needed base-devel git openssh python python-setuptools subversion unzip mingw-w64-x86_64-autotools mingw-w64-x86_64-cmake mingw-w64-x86_64-gcc-fortran mingw-w64-x86_64-toolchain
-  ````
-    entering "Y" or simply hitting the return key as needed
+````
+entering "Y" or simply hitting the return key as needed
 - (Optional) Install Vim text editor with,
-    ````
+````
 $ pacman -S vim
   ````
 
@@ -95,15 +95,15 @@ The Python interface to ISSM on Windows is currently under development.
 
 - Open `/c/msys64/home/<USER>/.bash_profile` for editing (the easiest way to do this is with vim if you installed it in the previous step)
 - Add the following to the bottom of the file,
-    ````
+````
 # Allow for NTFS symbolic links
 export MSYS=winsymlinks:nativestrict
-  ````
+````
 
 ### .bashrc
 
-- Open `/c/msys64/home/<USER>/.bashrc` for editing and add the following at the bottom of the file, 
-    ````
+- Open `/c/msys64/home/<USER>/.bashrc` for editing and add the following at the bottom of the file:
+````
 ## MATLAB
 #
 MATLAB_VER="<MATLAB_VER>" # Allows for easy resetting of MATLAB version added to path
@@ -114,8 +114,9 @@ export PATH="${MATLAB_PATH}/bin:${PATH}"
 #
 export ISSM_DIR=<ISSM_PATH>
 export ISSM_DIR_WIN=$(cygpath -ms "${ISSM_DIR}") # Needed by MATLAB
-  ````
-    where `<MATLAB_VER>` is the version of MATLAB that you have installed (for example, "R2023b") and `<ISSM_DIR>` is the path to the copy of the ISSM source code that you checked out (e.g. `/c/Users/<USER>/ISSM/src`, where `<USER>` is your username)
+````
+where `<MATLAB_VER>` is the version of MATLAB that you have installed (for example, "R2023b") and `<ISSM_DIR>` is the path to the copy of the ISSM source code that you checked out (e.g. `/c/Users/<USER>/ISSM/src`, where `<USER>` is your username)
+
 ## Microsoft MPI
 
 - Navigate to <a href="https://docs.microsoft.com/en-us/message-passing-interface/microsoft-mpi-release-notes" target="_blank">the 'Microsoft MPI Release Notes' webpage</a>
@@ -162,10 +163,10 @@ autoreconf -ivf
 - Replace `<NUM_CPUS>` with the number of available CPU's
 - `MATLAB_PATH` was defined previously in `bashrc`.
 - `MSMPI_ROOT` will be defined after running,
-    ````
+````
 $ source ${ISSM_DIR}/etc/environment.sh
-  ````
-  - You may need to update the path to `libgfortran` in the `--with-fortran-lib` option
+````
+- You may need to update the path to `libgfortran` in the `--with-fortran-lib` option
 
 Next, create a configuration file called `configure.sh` in `${ISSM_DIR}`. Its contents will depend on the interface you will be using, the external packages and capabilities you wish to use, and the location of certain libraries and executables on disk. The following examples can be used for an installation of ISSM with basic capabilities,
 
@@ -212,61 +213,61 @@ You are now ready to
 - Navigate to <a href="https://www.msys2.org/wiki/Setting-up-SSHd" target="_blank">the MSYS2 'Setting up SSHd' webpage</a>
 - Copy the contents of the code block and paste to a new text file
 - Set the value of the variable `UNPRIV_NAME` to the desired user
-  - If the user does not already exist, it will be created
-  - If the user does already exist, note the default password is the same that is used to log in to the Windows user account
+- If the user does not already exist, it will be created
+- If the user does already exist, note the default password is the same that is used to log in to the Windows user account
 - Save the file out to the location of your choice
 - In a MSYS2 MinGW 64-bit shell instance, run the script
 - If errors occur with messages about missing packages, install those packages and run the script again
 - You can disregard the message,
-    ````
+````
 cygrunsrv: Error removing a service: OpenService: Win32 error 1060:
 The specified service does not exist as an installed service.
-  ````
-  - The following message indicates that setup was successful, 
-    ````
+````
+- The following message indicates that setup was successful, 
+````
 The MSYS2 sshd service is starting.
 The MSYS2 sshd service was started successfully.
-  ````
-  - You can test that the service and your log in are working correctly by running, 
-    ````
+````
+- You can test that the service and your log in are working correctly by running, 
+````
 ssh -l <UNPRIV_NAME> localhost
-  ````
-    where `<UNPRIV_NAME>` is the same user that we authorized to use the service. You should be prompted to accept an ECDSA fingerprint, you which you respond "yes". Then, enter the password for this account. If all goes well, you should now have a prompt that reads, 
-    ````
+````
+where `<UNPRIV_NAME>` is the same user that we authorized to use the service. You should be prompted to accept an ECDSA fingerprint, you which you respond "yes". Then, enter the password for this account. If all goes well, you should now have a prompt that reads, 
+````
 <UNPRIV_NAME>@<HOSTNAME> MSYS ~
-  ````
-  - Once logged in to the target machine, open `/etc/ssh/sshd_config` for editing, add,
-    ````
+````
+- Once logged in to the target machine, open `/etc/ssh/sshd_config` for editing, add,
+````
 AcceptEnv MSYSTEM
-  ````
-    then save out the changes. On the client machine, open `/etc/ssh/ssh_config` for editing, add, 
-    ````
+````
+then save out the changes. On the client machine, open `/etc/ssh/ssh_config` for editing, add, 
+````
 SendEnv MSYSTEM
-  ````
-    to the file (you can add `MSYSTEM` to the list of environment variables if `SendEnv` already exists), then save out the changes. You can now prefix your SSH commands like, 
-    ````
+````
+to the file (you can add `MSYSTEM` to the list of environment variables if `SendEnv` already exists), then save out the changes. You can now prefix your SSH commands like, 
+````
 MSYSTEM=MINGW64 ssh [...]
-  ````
-    in order to log in to the MSYS2 MinGW 64-bit shell (other possible values are MSYS2 and MINGW32).
+````
+in order to log in to the MSYS2 MinGW 64-bit shell (other possible values are MSYS2 and MINGW32).
 - If an attempted SSH connection from a remote machine stalls out or is denied, it may be the case that you are running Windows Defender Firewall and need to open port 22. To do so,
-  - in the Windows search bar, search for "Defender" and select 'Windows Defender Firewall with Advanced Security'
-  - click 'Inbound Rules' in the left sidebar
-  - click 'New Rule...' in the right sidebar
-  - select 'Port', then click the 'Next' button
-  - select 'TCP'
-  - select 'Specific local ports', set the field to "22", then click the 'Next' button
-  - select 'Allow the connection' then click the 'Next' button (if you are using a third-party firewall application, it is up to you to determine how to open port 22)
-  - uncheck the 'Public' box (if a subsequent attempted connection stalls out or is denied, you may need to edit this rule, checking the 'Public' box, but try first without it), then click the 'Next' button
-  - set the 'Name' field to "SSH", then click the 'Next' button
+- in the Windows search bar, search for "Defender" and select 'Windows Defender Firewall with Advanced Security'
+- click 'Inbound Rules' in the left sidebar
+- click 'New Rule...' in the right sidebar
+- select 'Port', then click the 'Next' button
+- select 'TCP'
+- select 'Specific local ports', set the field to "22", then click the 'Next' button
+- select 'Allow the connection' then click the 'Next' button (if you are using a third-party firewall application, it is up to you to determine how to open port 22)
+- uncheck the 'Public' box (if a subsequent attempted connection stalls out or is denied, you may need to edit this rule, checking the 'Public' box, but try first without it), then click the 'Next' button
+- set the 'Name' field to "SSH", then click the 'Next' button
 - The `ssh-keygen` utility can be used to create a more secure SSH connection and to protect your Windows user password
 - If you later decide that you want to stop the `sshd` service, you can do so with, 
-    ````
+````
 net stop msys2_sshd
-  ````
-    and can remove the service altogether with, 
-    ````
+````
+and can remove the service altogether with, 
+````
 cygrunsrv -R msys2_sshd
-  ````
+````
 Sources:
 
 - <a href="https://www.msys2.org/wiki/Setting-up-SSHd" target="_blank">MSYS2 'Setting up SSHd' webpage</a>
