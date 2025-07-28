@@ -2,6 +2,7 @@
 title: Adaptive Mesh Refinement - AMR
 layout: default
 parent: Advanced Features
+grand_parent: Using ISSM
 ---
 
 ## Adaptive Mesh Refinement - AMR

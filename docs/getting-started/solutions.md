@@ -3,7 +3,6 @@ title: Solutions
 layout: default
 parent: Getting Started
 nav_order: 3
-has_children: true
 ---
 
 # Solutions

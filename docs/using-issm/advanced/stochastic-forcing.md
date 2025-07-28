@@ -2,6 +2,7 @@
 title: Stochastic Forcing with StISSM
 layout: default
 parent: Advanced Features
+grand_parent: Using ISSM
 ---
 
 ## Stochastic Forcing with StISSM

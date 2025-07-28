@@ -3,6 +3,7 @@ title: Advanced Features
 layout: default
 parent: Installation
 nav_order: 5
+has_toc: false
 ---
 
 # Advanced Features
