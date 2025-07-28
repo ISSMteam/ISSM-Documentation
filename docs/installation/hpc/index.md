@@ -3,7 +3,7 @@ title: High-Performance Computing (HPC)
 layout: default
 parent: Installation
 nav_order: 4
-has_children: true
+has_toc: false
 ---
 
 # High-Performance Computing (HPC)

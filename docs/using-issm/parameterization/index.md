@@ -3,7 +3,7 @@ title: Parameterization
 layout: default
 parent: Using ISSM
 nav_order: 3
-has_children: true
+has_toc: false
 ---
 
 # Parameterization of Physical Processes
@@ -14,4 +14,3 @@ has_children: true
  - <a href="calving">Calving (UNDER DEVELOPMENT)</a>
  - <a href="basal-melt">Basal Melt</a>
  - <a href="estar">Empirical Scalar Tertiary Anisotropy Regime (ESTAR)</a>
-
