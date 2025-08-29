@@ -12,7 +12,7 @@ By default, MATLAB and Python cannot locate ISSM and its external packages. We o
 First, we need to make sure our interface can find ISSM and its external packages by running,
 
 `bash, zsh`
-````
+```sh
 export ISSM_DIR=<ISSM_PATH>
 source ${ISSM_DIR}/etc/environment.sh
 ````
@@ -134,21 +134,21 @@ ISSM should now be findable by Python whether you are in an interactive or non-i
 If you configured and compiled ISSM for development, you will have to load ISSM a bit differently.
 
 #### MATLAB
-````
+```sh
 addpath <ISSM_PATH>/src/m/dev
 devpath
-````
+```
 again, where `<ISSM_PATH>` is the path to ISSM on disk.
 
 #### Python
 Before starting Python, run,
-````
+```sh
 export PYTHONPATH="${ISSM_DIR}/src/m/dev"
 export PYTHONSTARTUP="${PYTHONPATH}/devpath.py"
-````
+```
 
 For IPython users, instead launch the interface with,
-````
+```sh
 ipython -i ${ISSM_DIR}/src/m/dev/devpath.py
-````
+```
 
