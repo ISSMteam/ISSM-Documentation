@@ -234,18 +234,16 @@ MPIDI_CH3_Init(89).................:
 MPID_nem_init(320).................:
 MPID_nem_tcp_init(173).............:
 MPID_nem_tcp_get_business_card(420):
-MPID_nem_tcp_init(379).............: gethostbyname failed, MT-<integers> (errno 1)
+MPID_nem_tcp_init(379).............: gethostbyname failed, MACHINENAME (errno 1)
 loading results from cluster
 ````
-This issue has been observed on more recent versions of MacOS, on both the precompiled and compiled-from-source versions of ISSM.
-
-The fix involves modifying the hosts file, `sudo vi /etc/hosts` and adding a line that reads,
+This issue has been observed on more recent versions of MacOS, on both the precompiled and compiled-from-source versions of ISSM typically when users use a VPN. MPI does not know if you are running on your local machine or on a remote server. The fix involves modifying the hosts file, `sudo vi /etc/hosts` and adding a line that reads,
 ````
-127.0.0.1	MT-<integers>
+127.0.0.1	MACHINENAME
 ````
-where `MT-<integers>` is what is display in the original error message.
+where `MACHINENAME` is what is display in the original error message.
 
-After saving the changes to `/etc/hosts` and restarting MATLAB, the issue should be resolved.
+After saving the changes to `/etc/hosts`, the issue should be resolved.
 ## MATLAB crashes unexpectedly
 There are many causes that might make MATLAB crash. A possible cause is that PETSc is conflicting with Java (this happens on some Linux machines). The workaround is to use MATLAB in command line by deactivating the GUI,
 ````
