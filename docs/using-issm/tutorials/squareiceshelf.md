@@ -44,12 +44,12 @@ Finally, generate a plot of the velocity:
 
 *MATLAB*
 ```mat
-plotmodel(md, data=md.results.StressbalanceSolution.Vel)
+>> plotmodel(md, 'data', md.results.StressbalanceSolution.Vel);
 ```
 
 *Python*
 ```py
->> plotmodel(md, 'data', md.results.StressbalanceSolution.Vel);
+plotmodel(md, data=md.results.StressbalanceSolution.Vel)
 ```
 
 <div style="display:flow-root"><img style="float:middle;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/squareiceshelf/squarevel.png" alt="Figure 1: squarevel"></div>
