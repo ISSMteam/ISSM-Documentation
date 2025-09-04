@@ -20,7 +20,7 @@ The quickest way to get started with ISSM is to download one of our precompiled 
 After downloading the distributable, unpack it with the 'Extract' feature and move it to the desired location on disk.
 
 You are now ready to 
-<a href="../getting-started" target="_top">get started with ISSM</a>!
+<a href="../using-issm/getting-started" target="_top">get started with ISSM</a>!
 
 <hr>
 
@@ -207,7 +207,7 @@ $ make install
 ````
 
 You are now ready to 
-<a href="../getting-started" target="_top">get started with ISSM</a>!
+<a href="../using-issm/getting-started" target="_top">get started with ISSM</a>!
 
 ## (Optional) SSHd
 **NOTE**: The following is probably not applicable to most users.

@@ -1,7 +1,8 @@
 ---
 title: Getting Started
 layout: default
-nav_order: 4
+parent: Using ISSM
+nav_order: 1
 has_toc: false
 ---
 

@@ -24,7 +24,7 @@ Note that for the Python interface, you will also need to follow the setup instr
 After downloading the distributable, simply unzip it and move it to the desired location on disk.
 
 You are now ready to 
-<a href="../getting-started" target="_top">get started with ISSM</a>!
+<a href="../using-issm/getting-started" target="_top">get started with ISSM</a>!
 
 <hr>
 
@@ -196,4 +196,4 @@ make -j4
 ````
 change 4 to the number of threads you want to use.
 
-You are now ready to <a href="../getting-started" target="_top">get started with ISSM</a>!
+You are now ready to <a href="../using-issm/getting-started" target="_top">get started with ISSM</a>!

@@ -19,7 +19,7 @@ tar -zxvf <DISTRIBUTABLE>
 and move it to the desired location on disk.
 
 You are now ready to 
-<a href="../getting-started" target="_top">get started with ISSM</a>!
+<a href="../using-issm/getting-started" target="_top">get started with ISSM</a>!
 
 <hr>
 
@@ -199,4 +199,4 @@ make install
 ```
 
 You are now ready to 
-<a href="../getting-started" target="_top">get started with ISSM</a>!
+<a href="../using-issm/getting-started" target="_top">get started with ISSM</a>!
