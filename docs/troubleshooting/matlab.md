@@ -12,7 +12,7 @@ nav_order: 4
 ??? Undefined function or variable 'model'.
 ````
 This error message shows that ISSM tools have not been loaded by MATLAB. See the 
- <a href="../getting-started/loading-issm">'Loading ISSM' page</a>
+ <a href="../using-issm/getting-started/loading-issm">'Loading ISSM' page</a>
 for more info.
 ## MATLAB complains about missing symbols
 In some cases, MATLAB complains about missing symbols in MEX files. If your environment is set correctly (for example, you have run `source ${ISSM_DIR}/etc/environment.sh` before starting MATLAB), the error could be due to the fact that MATLAB ships with its own copies of various libraries and manipulates the environment to prefer the location of its own libraries over the locations you have provided. We have experienced this error with the following libraries,

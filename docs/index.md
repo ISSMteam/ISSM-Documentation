@@ -68,7 +68,6 @@ There are more build configurations and regression test suites on <a href="https
 
 ## Installation and Usage Documentation
 - <a href="installation">Installation</a>
-- <a href="getting-started">Getting Started</a>
 - <a href="using-issm">Using ISSM</a>
 - <a href="supplements">Supplements</a>
 - <a href="troubleshooting">Troubleshooting</a>
@@ -77,6 +76,7 @@ There are more build configurations and regression test suites on <a href="https
 
 ## Projects
 - <a href="projects/gofm">Gulf of Mexico</a>
+- <a href="projects/vesl">Virtual Earth System Laboratory (VESL)</a>
 
 ----
 

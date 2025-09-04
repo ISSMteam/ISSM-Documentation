@@ -7,6 +7,7 @@ has_toc: false
 
 <h1>Using ISSM</h1>
 
+- <a href="getting-started" target="_top">Getting Started</a>
 - <a href="tutorials" target="_top">Tutorials</a>
 - <a href="capabilities" target="_top">Capabilities</a>
 - <a href="parameterization" target="_top">Parameterization</a>

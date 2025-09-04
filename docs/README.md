@@ -36,11 +36,11 @@ then start a new terminal and follow the above steps.
 ## Structure
 Each page in the [front end of the documentation](https://issmteam.github.io/ISSM-Documentation/) has a corresponding Markdown file (`.md`) in the appropriate subdirectory of `docs/`. For example,
 ````
-https://issmteam.github.io/ISSM-Documentation/getting-started/model-class
+https://issmteam.github.io/ISSM-Documentation/using-issm/getting-started/model-class
 ````
 corresponds to,
 ````
-docs/getting-started/model-class/index.md
+docs/using-issm/getting-started/model-class/index.md
 ````
 A subdirectory may contain the default file (`index.md`) as well as additional sibling files. In these cases, the `index` file is just that: an index of the other files in the subdirectory (e.g. `docs/troubleshooting/index.md`).
 
