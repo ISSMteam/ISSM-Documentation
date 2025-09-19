@@ -235,3 +235,100 @@ export CXXFLAGS="-g -Ofast -xCORE-AVX512,CORE-AVX2 -xAVX -std=c++11"
 	--with-m1qn3-dir="${ISSM_DIR}/externalpackages/m1qn3/install" \
 	--with-semic-dir="${ISSM_DIR}/externalpackages/semic/install"
 ```
+
+### Installing ISSM with CoDiPack
+For an installation of ISSM with CoDiPack, the following external packages are required,
+```sh
+autotools	install-linux.sh
+codipack
+medipack
+```
+
+Before configuring ISSM, run,
+```sh
+cd $ISSM_DIR
+autoreconf -ivf
+```
+
+Then use the following configuring script (adapting it as needed),
+```sh
+export CFLAGS="-g -Ofast -wd2196"
+export CXXFLAGS="-g -Ofast -xCORE-AVX512,CORE-AVX2 -xAVX -std=c++11"
+
+./configure \
+	--prefix="${ISSM_DIR}" \
+	--enable-development \
+	--enable-standalone-libraries \
+	--with-wrappers=no \
+	--enable-tape-alloc \
+	--without-kriging \
+	--without-kml \
+	--without-Sealevelchange \
+	--without-Love \
+	--with-fortran-lib="-L${COMP_INTEL_ROOT}/compiler/lib/intel64_lin -lifcore -lifport -lgfortran" \
+	--with-mkl-libflags="-L${COMP_INTEL_ROOT}/mkl/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm" \
+	--with-mpi-include="${MPI_ROOT}/include" \
+	--with-mpi-libflags="-L${MPI_ROOT}/lib -lmpi" \
+	--with-metis-dir="${PETSC_DIR}" \
+	--with-parmetis-dir="${PETSC_DIR}" \
+	--with-mumps-dir="${PETSC_DIR}" \
+	--with-codipack-lib="${ISSM_DIR}/externalpackages/codipack/install" \
+	--with-medipack-lib="${ISSM_DIR}/externalpackages/medipack/install"
+```
+
+{: .highlight-title }
+> NOTE
+>
+> You will get a lot of warnings while compiling (i.e. *warning #2196: routine is both "inline" and "noinline"*), which can be ignored.
+
+## pfe_settings
+You will have to add a file titled `pfe_settings.m` (or `pfe_settings.py`) in `$ISSM_DIR/src/m` on the machine that you are doing model setup and results analysis on. This file will set up your personal settings so that that machine can send solution requests to Pleiades and retrieve results. For example, this file might include,
+```
+cluster.login='mmorligh';
+cluster.queue='devel';
+cluster.codepath='/nobackup/mmorligh/ISSM/bin';
+cluster.executionpath='/nobackup/mmorligh/execution';
+cluster.grouplist='s5692';
+cluster.port=1099;
+cluster.modules={'mpi-hpe/mpt', 'comp-intel/2020.4.304', 'petsc/3.17.3_intel_mpt_py'};
+```
+
+- `cluster.login` should be set to your NAS username
+- `cluster.codepath` should be set to the `bin` directory of the installation of ISSM on Pleiades that you wish to use
+- `cluster.executionpath` should be set to where the job should be run on Pleiades (should not be you home directory due to disk use quotas)
+- `cluster.grouplist` should be set to the result of running `groups <USERNAME>` on Pleiades, where `<USERNAME>` is your NAS username
+- `cluster.modules` should include the same modules that we set above in the 'Environment' step for compiling ISSM
+
+The above settings will be found automatically by MATLAB (or Python) when setting the cluster class for your model, i.e.,
+```
+md.cluster=pfe();
+```
+
+## Running Jobs on Pleiades
+On Pleiades, the more nodes and time requested, the longer your job will have to wait in the queue, so choose your settings accordingly. For example,
+```
+md.cluster=pfe('numnodes',1,'time',28,'processor','bro','queue','devel');
+md.cluster.time=10;
+```
+will request a maximum job time of 10 minutes and one Broadwell node. If the run lasts more than 10 minutes, it will be killed and you will not be able to retrieve your results.
+
+For more information on the available processor types, please refer to the NAS HECC knowledge base article <a href="https://www.nas.nasa.gov/hecc/support/kb/pleiades-configuration-details_77.html" target="_blank">'Pleiades Configuration Details'</a>.
+
+If you want to check the status of your job and the queue that you are using, run,
+```
+qstat -u <USERNAME>
+```
+You can delete your job manually by typing,
+```
+qdel <JOB_ID>
+```
+where `<JOB_ID>` is the job ID reported on your local machine when you submitted your solution request. Also reported is the directory where you can find log files associated with the run (i.e. `<JOB_ID>.outlog` and `<JOB_ID>.errlog`). The `outlog` contains the information that would normally be printed to the console if you were running the job on your local machine. Likewise, the `errlog` contains any information printed in case of error.
+
+If you would like to load results from the cluster manually (for example, if you encountered an error due to network disconnection), run,
+```
+md=loadresultsfromcluster(md,'runtimename','<EXEC_DIR>');
+```
+where `<EXEC_DIR>` is the parent of the job on your local machine, for example,
+```
+${ISSM_DIR}/execution/<EXEC_DIR>/<JOB_ID>.lock
+```
