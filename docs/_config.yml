@@ -16,6 +16,10 @@ favicon_ico: "/assets/img/favicon.ico"
 aux_links:
   "ISSM on GitHub":
     - "https://github.com/ISSMteam/ISSM"
+  "Discussions":
+    - "https://github.com/ISSMteam/ISSM/discussions"
+  "Bug Report":
+    - "https://github.com/ISSMteam/ISSM/issues"
 aux_links_new_tab: true
 
 # External navigation links

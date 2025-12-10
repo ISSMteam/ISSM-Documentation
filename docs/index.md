@@ -34,35 +34,10 @@ There are more build configurations and regression test suites on <a href="https
 
 ## About ISSM
 - <a href="about-issm/contributors">Contributors</a>
-- <a href="about-issm/contributors">Collaborations</a>
+- <a href="about-issm/collaborations">Collaborations</a> 
 - <a href="about-issm/publications">Publications</a>
 - <a href="about-issm/development-status">Development Status</a>
 - <a href="about-issm/news">News</a>
-
-{% comment %}Only output if we have featured posts{% endcomment %}
-{% assign have_featured_posts = false %}
-{% for post in site.posts %}
-	{% if post.featured %}
-		{% assign have_featured_posts = true %}
-		{% break %}
-	{% endif %}
-{% endfor %}
-{% if have_featured_posts %}
-### Featured News
-<ul class="post-index home-page-post-index">
-	{% for post in site.posts %}
-		{% if post.featured %}
-			<li>
-				<a href="{{ post.url }}"><img src="{{ post.image }}" /></a>
-				<div>
-					<a href="{{ post.url }}"><span class="text-beta">{{ post.title }}</span></a>
-					<p class="post-excerpt">{{ post.excerpt }}</p>
-				</div>
-			</li>
-		{% endif %}
-	{% endfor %}
-</ul>
-{% endif %}
 
 ----
 
