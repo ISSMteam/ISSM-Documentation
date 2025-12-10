@@ -16,8 +16,6 @@ favicon_ico: "/assets/img/favicon.ico"
 aux_links:
   "ISSM on GitHub":
     - "https://github.com/ISSMteam/ISSM"
-  "ISSM Forum":
-    - "https://issm.ess.uci.edu/forum/"
 aux_links_new_tab: true
 
 # External navigation links
