@@ -28,7 +28,7 @@ There are more build configurations and regression test suites on <a href="https
 - ISSM source code GitHub repository
   - <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">Discussions</a>
   - <a href="https://github.com/ISSMteam/ISSM/issues" target="_blank">Issues</a>
-- <a href="https://issm.ess.uci.edu/forum/d/242-issm-development-slack-workspace" target="_blank">ISSM Slack Workspace</a>
+- <a href="https://github.com/ISSMteam/ISSM/discussions/113" target="_blank">ISSM Slack Workspace</a>
 
 ----
 

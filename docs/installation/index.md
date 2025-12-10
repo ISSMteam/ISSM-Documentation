@@ -38,5 +38,5 @@ Compiling ISSM requires a few external packages. Some of these may be installed 
 
 There is no guarantee that compilation of a given external package will work on all systems. Some tweaking of the installation script may be necessary, especially the configuration. Some known gotchas are covered 
 on the <a href="../troubleshooting" target="_top">'Troubleshooting' pages</a>.
-Feel free as well to search or post troubleshooting questions and issues to the <a href="https://issm.ess.uci.edu/forum/" target="_blank">ISSM Forum</a>, or ISSM GitHub repository <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">Discussions</a> or <a href="https://github.com/ISSMteam/ISSM/issues" target="_blank">Issues</a>.
+Feel free as well to search or post troubleshooting questions and issues to <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">GitHub Discussions</a> or <a href="https://github.com/ISSMteam/ISSM/issues" target="_blank">Issues</a>.
 

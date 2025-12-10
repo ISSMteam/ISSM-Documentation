@@ -80,7 +80,7 @@ Technical release, no other major change.
 ### Other
 
 - Entirely rewrote the management of inputs in the C++ code, which should significantly improve the efficiency of 3D models.
-- **NOTE**: You will need to recompile triangle in externalpackages (See <a href="https://issm.ess.uci.edu/forum/d/239-update-to-triangle" target="_blank">ISSM Forum</a> for instructions to update your configuration after updating).
+- **NOTE**: You will need to recompile triangle in externalpackages).
 
 ## ISSM 4.16 (Release 2019-11-01)
 ### New features

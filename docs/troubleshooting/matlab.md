@@ -58,7 +58,7 @@ If the library in question is installed via external package using one of instal
 ### Option 3 (advanced)
 If both dynamic and static versions of the conflicting library are available to you and you do not want to manipulate `LD_PRELOAD` or your ISSM configuration, you can instead modify `${ISSM_DIR}/m4/issm_options.m4`: find the section of this file that handles the library in question and provided the full path to the static copy of the library rather than generic link flags (see Option 2). Then, reconfigure and recompile ISSM.
 
-If this does not fix the problem, please search or post troubleshooting questions and issues to the <a href="https://issm.ess.uci.edu/forum/" target="_blank">ISSM Forum</a>, or ISSM GitHub repository <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">Discussions</a> or <a href="https://github.com/ISSMteam/ISSM/issues" target="_blank">Issues</a>.
+If this does not fix the problem, please search or post troubleshooting questions and issues to <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">GitHub Discussions</a> or <a href="https://github.com/ISSMteam/ISSM/issues" target="_blank">Issues</a>.
 
 ## MATLAB complains about missing \_\_gfortran\_transfer\_array\_write symbol
 In some cases, MATLAB complains about missing symbols in MEX files. That is due to the fact that MATLAB uses its own libraries that are not the ones you compiled the MEX files with. For example, you might have the following error message:
@@ -107,7 +107,7 @@ ln -s /usr/local/gfortran/lib/libgfortran.dylib .
 ln -s /usr/local/gfortran/lib/libgfortran.3.dylib.
 ````
 
-If this does not fix the problem, please search or post troubleshooting questions and issues to the <a href="https://issm.ess.uci.edu/forum/" target="_blank">ISSM Forum</a>, or ISSM GitHub repository <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">Discussions</a> or <a href="https://github.com/ISSMteam/ISSM/issues" target="_blank">Issues</a>.
+If this does not fix the problem, please search or post troubleshooting questions and issues to <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">GitHub Discussions</a> or <a href="https://github.com/ISSMteam/ISSM/issues" target="_blank">Issues</a>.
 
 ## MATLAB complains about GLIBCXX libraries
 In some cases, MATLAB complains about its own libraries. That is due to the fact that MATLAB uses its own libraries that might not be the ones you compiled the MEX files with. For example, you might have the following error message:
@@ -182,7 +182,7 @@ cp /c/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/<GCC_VER>/libstdc++.dll.a .
 ````
 where `<GCC_VER>` is the GCC version that is installed and `<MATLAB_VER>` is the version of MATLAB that you are running. Restart MATLAB to see if your solution now runs.
 
-If this does not fix the problem, please search or post troubleshooting questions and issues to the <a href="https://issm.ess.uci.edu/forum/" target="_blank">ISSM Forum</a>, or ISSM GitHub repository <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">Discussions</a> or <a href="https://github.com/ISSMteam/ISSM/issues" target="_blank">Issues</a>.
+If this does not fix the problem, please search or post troubleshooting questions and issues to <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">GitHub Discussions</a> or <a href="https://github.com/ISSMteam/ISSM/issues" target="_blank">Issues</a>.
 
 ## Windows: MATLAB hangs (no GUI) or crashes with prompt "MATLAB has encountered an internal problem and needs to close." (GUI)
 Although MATLAB hangs and crashes can have many causes, this may have to do with the fact that the ISSM build configuration for MEX files needs to be <a href="https://www.mathworks.com/help/matlab/matlab_external/upgrading-mex-files-to-use-64-bit-api.html" target="_blank">updated to use the new 64-bit API</a>.
@@ -223,7 +223,7 @@ LDPATH_PREFIX='/opt/share/intel/composer_xe_2013_sp1.3.174/compiler/lib/intel64/
 
 Restart MATLAB and it should now work.
 
-If this does not fix the problem, please search or post troubleshooting questions and issues to the <a href="https://issm.ess.uci.edu/forum/" target="_blank">ISSM Forum</a>, or ISSM GitHub repository <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">Discussions</a> or <a href="https://github.com/ISSMteam/ISSM/issues" target="_blank">Issues</a>.
+If this does not fix the problem, please search or post troubleshooting questions and issues to <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">GitHub Discussions</a> or <a href="https://github.com/ISSMteam/ISSM/issues" target="_blank">Issues</a>.
 ## Fatal error in MPI\_Init
 You may encounter a runtime error that looks something like the following,
 ````
@@ -265,7 +265,7 @@ Column: 5
 Illegal use of reserved keyword "end".
 > In matlabrc at 220
 ````
-This message indicates that your MATLAB version is too old (less than 7.6), and does not support MATLAB's <a href="http://www.mathworks.com/help/matlab/matlab_oop/compatibility-with-previous-versions-.html" target="_blank">new Class-Definition syntax</a>. In this case, please search or post troubleshooting questions and issues to the <a href="https://issm.ess.uci.edu/forum/" target="_blank">ISSM Forum</a>, or ISSM GitHub repository <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">Discussions</a> or <a href="https://github.com/ISSMteam/ISSM/issues" target="_blank">Issues</a>, and we will help you convert all ISSM's MATLAB classes to the older syntax.
+This message indicates that your MATLAB version is too old (less than 7.6), and does not support MATLAB's <a href="http://www.mathworks.com/help/matlab/matlab_oop/compatibility-with-previous-versions-.html" target="_blank">new Class-Definition syntax</a>. In this case, please search or post troubleshooting questions and issues to <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">GitHub Discussions</a> or <a href="https://github.com/ISSMteam/ISSM/issues" target="_blank">Issues</a>, and we will help you convert all ISSM's MATLAB classes to the older syntax.
 ## Invalid MEX-file [...] symbol not found in flat namespace `\_\_ZN14ToolkitOptions11toolkittypeE'
 If you experience the above error (reportedly happens on macOS), add the following to your ISSM configuration,
 ````

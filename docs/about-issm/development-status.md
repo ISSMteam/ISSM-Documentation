@@ -7,7 +7,7 @@ nav_order: 4
 
 # Development Status
 
-If you wish to use or are proposing to use 'Developmental' or 'Experimental' features, please contact the corresponding lead or make a post to the <a href="https://issm.ess.uci.edu/forum" target="_blank">ISSM Forum</a>.
+If you wish to use or are proposing to use 'Developmental' or 'Experimental' features, please contact the corresponding lead or post a suggestions to <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">GitHub Discussions</a>.
 
 **Legend**
 <table>

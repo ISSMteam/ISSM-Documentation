@@ -25,7 +25,7 @@ You are now ready to
 <hr>
 
 ## Compiling ISSM from Source
-The following instructions detail how to create an environment for compiling ISSM from source on Windows. We rely on MSYS2 to provide a Linux-like interface and the MinGW compiler chain to generate native Windows executables and libraries. There may be other methods for achieving the above, which we invite you to share on <a href="https://issm.ess.uci.edu/forum" target="_blank">the ISSM forum</a>.
+The following instructions detail how to create an environment for compiling ISSM from source on Windows. We rely on MSYS2 to provide a Linux-like interface and the MinGW compiler chain to generate native Windows executables and libraries. There may be other methods for achieving the above, which we invite you to share on <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">GitHub Discussions</a>.
 
 **NOTE**: You will have to use an Administrator user account for some of the following to work as intended
 
@@ -196,8 +196,7 @@ Next, create a configuration file called `configure.sh` in `${ISSM_DIR}`. Its co
 Again, you might need to make adjustments to the above configurations based on your system and needs. We have a number of resources to help here:
 - Various external package install scripts and configurations in `${ISSM_DIR}/jenkins`
 - <a href="hpc" target="_top">'High-Performance Computing' page</a>
-- <a href="https://issm.ess.uci.edu/forum/" target="_blank">ISSM Forum</a>
-- ISSM GitHub repository <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">Discussions</a>
+- <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">GitHub Discussions</a>
 
 If the configuration completed without any errors, ISSM can now be compiled,
 ````
