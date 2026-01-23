@@ -47,12 +47,13 @@ At the ice/ocean interface, a heat flux is imposed. It mainly depends on the tem
 $$
 k \left.\nabla T\right|_b \cdot {\bf n} = -\rho_w c_{pM} \;\gamma\left(T_b - T_{pmp}\right)
 $$
+
 where:
-- $T_b$ is the ice temperature on the ice shelf base
-- $T_{pmp}$ is the pressure melting point
-- $\rho_w$ is the sea water density
-- $ c_{pM}$ is the mixed layer specific heat capacity
-- $\gamma$ the thermal exchange velocity.
+- $$T_b$$ is the ice temperature on the ice shelf base
+- $$T_{pmp}$$ is the pressure melting point
+- $$\rho_w$$ is the sea water density
+- $$ c_{pM}$$ is the mixed layer specific heat capacity
+- $$\gamma$$ the thermal exchange velocity.
 
 #### Numerical implementation
 The heat equation is solved using linear finite elements in space, and implicit finite difference in time (time stepping should satisfy the CFL condition). To stabilize the equation, we either add an isotropic artificial diffusion to the left hand side:
