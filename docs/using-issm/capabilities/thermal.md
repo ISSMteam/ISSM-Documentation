@@ -41,6 +41,12 @@ When using the enthalpy formulation, the basal boundary condition scheme from [<
 
 NOTE: For regional model, make sure to set a Dirichlet condition on the inflow boundary (throughout the ice column) to avoid advection of noise.
 
+At the ice/ocean interface, a heat flux is imposed. It mainly depends on the temperature difference between the ocean and the ice. Simple parameterizations can be used to specify this flux. Holland and Jenkins (1999) propose the following relation
+
+$$
+k \left.\nabla T\right|_b \cdot {\bf n} = -\rhp_w c_{pM} \;\gamma\left(T_b - T_{pmp}\right)
+$$
+
 #### Numerical implementation
 The heat equation is solved using linear finite elements in space, and implicit finite difference in time (time stepping should satisfy the CFL condition). To stabilize the equation, we either add an isotropic artificial diffusion to the left hand side:
 
