@@ -150,7 +150,7 @@ export LDFLAGS="-L/optnfs/common/intel/compilers_and_libraries_2023.2.0/compiler
    --enable-debugging
 ```
 
-# andes_settings.m
+## andes_settings.m
 You have to add a file in `$ISSM_DIR/src/m` entitled `andes_settings.m` with your personal settings on your local ism install:
 
 ```sph
