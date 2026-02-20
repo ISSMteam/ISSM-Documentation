@@ -13,7 +13,11 @@ MATLAB and Python are used only for model setup and post-processing of simulatio
 Note as well that the 'local' machine in the above case may be one that is physically remote to you. For example, you might install ISSM with its Python interface so that it is available in a remote Jupyter Lab/Hub environment. This paradigm is becoming increasingly popular with computing centers that provide access to HPC.
 
 ## Configuration and Compiling ISSM
-Please see the <a href="https://issm.ess.uci.edu/trac/issm/wiki" target="_blank">ISSM Development Wiki</a> for notes on configuring and compiling on various HPC systems.
 
-The following are pages that have already been migrated (also linked in the Main Navigation in the sidebar),
-- <a href="./pleiades">Pleiades (NASA NAS HECC)</a>
+### Dartmouth
+- <a href="./andes">Dartmouth's Andes </a>
+
+### NASA Advanced Supercomputing (NAS)
+- <a href="./pleiades">NAS' Pleiades</a>
+
+Please see the <a href="https://issm.ess.uci.edu/trac/issm/wiki" target="_blank">ISSM Development Wiki</a> for notes on configuring and compiling on various HPC systems that have not been migrated

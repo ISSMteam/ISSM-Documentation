@@ -1,7 +1,8 @@
 ---
-title: Andes (Dartmouth RC)
+title: Dartmouth's Andes
 layout: default
 parent: High-Performance Computing (HPC)
+nav_exclude: true
 ---
 
 # Andes (Dartmouth RC)

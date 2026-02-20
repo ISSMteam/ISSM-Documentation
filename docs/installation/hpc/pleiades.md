@@ -1,7 +1,8 @@
 ---
-title: Pleiades (NASA NAS HECC)
+title: NASA NAS' Pleiades 
 layout: default
 parent: High-Performance Computing (HPC)
+nav_exclude: true
 ---
 
 # Pleiades (NASA NAS HECC)
