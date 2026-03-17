@@ -10,8 +10,9 @@ math: mathjax3
 #### Thermal state
 The heat transport equation is derived from the balance equation of internal energy <img src="https://latex.codecogs.com/svg.latex?E" alt="Equation 1"> combined with Fourier's law of heat transfer and reads:
 
-<div align="center"><img src="https://latex.codecogs.com/svg.latex?
-\rho \left(\frac{\partial E}{\partial t} + {\bf v} \cdot \nabla E \right)= - \nabla \left(\kappa(E) \nabla E \right) + \mbox{Tr} \left( \boldsymbol{\sigma} \cdot \dot{\boldsymbol{\varepsilon}}\right)" alt="Equation 2"></div>
+$$
+\rho \left(\frac{\partial E}{\partial t} + {\bf v} \cdot \nabla E \right)= - \nabla \left(\kappa(E) \nabla E \right) + \mbox{Tr} \left( \boldsymbol{\sigma} \cdot \dot{\boldsymbol{\varepsilon}}\right)
+$$
 where radiative sources have been neglected, and:
 
 - <img src="https://latex.codecogs.com/svg.latex?{\bf v}" alt="Equation 3"> is the velocity vector
