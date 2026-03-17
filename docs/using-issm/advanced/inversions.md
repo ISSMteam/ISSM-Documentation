@@ -33,8 +33,8 @@ This is the classic way of calculating a misfit between a modeled and observed v
 $$
 {\mathcal J\left({\bf v}\right)}=\int_{S} \dfrac{1}{2}\left(\left(v_x-v_x^{\text{obs}}\right)^{2}+\left(v_y-v_y^{\text{obs}}\right)^{2}\right) dS
 $$
-where:
 
+where:
 - v<sub>x</sub> is the x component of the glacier modeled velocity
 - v<sub>y</sub> is the y component of the glacier modeled velocity
 - v<sub>x</sub><sup>obs</sup> is the x component of the glacier observed velocity
@@ -114,7 +114,17 @@ Depending on the class of `md.inversion`, several optimization algorithm are ava
 - Brent search algorithm (`md.inversion = inversion()`, the default)
 - Toolkit for Advanced Optimization (TAO) (`md.inversion = taoinversion()`)
 - M1QN3 algorithm (`md.inversion = m1qn3inversion()`)
+
 Each minimizer has its own optimization parameters described below.
+
+#### M1QN3 (recommended)
+ISSM has an interface to M1QN3 (Inria) [<a href="#references">*Gilbert1989*</a>]. This interface was largely based on [<a href="#references">*Nardi2009*</a>]. Here is a list of the relevant parameters:
+
+- `md.inversion.maxsteps`: maximum number of iterations (gradient computation)
+- `md.inversion.maxiter`: maximum number of Function evaluation (forward run)
+- `md.inversion.dxmin`:  convergence criterion: two points less than dxmin from each other (sup-norm) are considered identical
+- `md.inversion.gttol`: gradient relative convergence criterion 2 (defined below)
+
 
 #### Brent search minimizers
 
@@ -156,19 +166,10 @@ where:
 - $$X^*$$ is the estimated "true" minimum
 - $$X_0$$ is the initial guess
 
-#### M1QN3
-ISSM has an interface to M1QN3 (Inria) [<a href="#references">*Gilbert1989*</a>]. This interface was largely based on [<a href="#references">*Nardi2009*</a>]. Here is a list of the relevant parameters:
-
-- `md.inversion.maxsteps`: maximum number of iterations (gradient computation)
-- `md.inversion.maxiter`: maximum number of Function evaluation (forward run)
-- `md.inversion.dxmin`:  convergence criterion: two points less than dxmin from each other (sup-norm) are considered identical
-- `md.inversion.gttol`: gradient relative convergence criterion 2 (defined below)
-
 ### Running an inversion
-To launch an inversion, run a stress balance solution with `md.inversion.iscontrol = 1`:
+To run an inversion, solve a stress balance solution with `md.inversion.iscontrol = 1`:
 ````
 >> md = solve(md, 'Stressbalance');
 ````
-
 
 ## References
