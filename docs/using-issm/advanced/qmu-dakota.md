@@ -1,5 +1,5 @@
 ---
-title: Quantifications of Margins and Uncertainties (QMU) with Dakota
+title: Dakota
 layout: default
 parent: Advanced Features
 grand_parent: Using ISSM
