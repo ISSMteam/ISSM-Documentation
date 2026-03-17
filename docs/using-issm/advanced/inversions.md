@@ -12,7 +12,7 @@ Inversions are used to constrain poorly known model parameters such as basal
 friction. The method consists of finding a set of model inputs that minimizes
 the cost function $${\mathcal J}$$
 that measures the misfit between model and observations. For
-example, inverse methods are used to infer the basal friction $$k$$:
+example, inverse methods are used to infer the basal friction k:
 
 $$
 \boldsymbol{\tau}_b = -k^2 N^r \|{\bf v}\|^{s-1} {\bf v}_b
