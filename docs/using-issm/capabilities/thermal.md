@@ -2,7 +2,6 @@
 title: Thermal Solution
 layout: default
 parent: Capabilities
-math: mathjax3
 ---
 
 ## Thermal Solution

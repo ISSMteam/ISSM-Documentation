@@ -36,6 +36,9 @@ gh_edit_branch: "main"
 gh_edit_source: "docs"
 gh_edit_view_mode: "edit"
 
+#LaTeX Math support
+math: mathjax3
+
 callouts:
   note:
     title: Note
