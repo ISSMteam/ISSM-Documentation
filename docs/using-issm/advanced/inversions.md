@@ -10,15 +10,15 @@ math: mathjax3
 ### Introduction
 Inversions are used to constrain poorly known model parameters such as basal
 friction. The method consists of finding a set of model inputs that minimizes
-the cost function ${\mathcal J}$ that measures the misfit between model and
+the cost function $${\mathcal J}$$ that measures the misfit between model and
 observations. For example, inverse methods are used to infer the basal friction
-$k$:
+$$k$$:
 
 $$
 \boldsymbol{\tau}_b = -k^2 N^r \|{\bf v}\|^{s-1} {\bf v}_b
 $$
 
-and/or the depth-averaged ice hardness, $B$, in Glen's flow law:
+and/or the depth-averaged ice hardness, $$B$$, in Glen's flow law:
 
 $$
 \mu = \frac{B}{2\left( \dot{\varepsilon}_e^{1-\frac{1}{n}}\right) }
@@ -48,7 +48,7 @@ $$
 $$
 
 where:
-- $\varepsilon$ is a minimum velocity used to avoid the observed velocity being equal to zero.
+- $$\varepsilon$$ is a minimum velocity used to avoid the observed velocity being equal to zero.
 
 #### Logarithmic misfit
 
@@ -59,7 +59,7 @@ $$
 where:
 - v is the glacier modeled velocity magnitude
 - v<sup>obs</sup> is the glacier observed velocity magnitude
-- $\varepsilon$ is a minimum velocity used to avoid the observed velocity being equal to zero
+- $$\varepsilon$$ is a minimum velocity used to avoid the observed velocity being equal to zero
 
 #### Thickness misfit
 
@@ -78,7 +78,7 @@ $$
 $$
 
 where:
-- $\gamma$ is a Tikhonov regularization parameter
+- $$\gamma$$ is a Tikhonov regularization parameter
 
 #### Thickness gradient
 
@@ -87,7 +87,7 @@ $$
 $$
 
 where:
-- $\gamma$ is a Tikhonov regularization parameter
+- $$\gamma$$ is a Tikhonov regularization parameter
 
 ### Model parameters
 The parameters relevant to the stress balance solution can be displayed by typing:
@@ -149,8 +149,8 @@ f(X) - f(X^*)  & < & \epsilon_{fatol} \\
 \|g(X)\|/\|g(X_0)\|  & < & \epsilon_{gttol} \\
 \end{array}
 $$
-where:
 
+where:
 - $$f(X)$$ is the cost function at $$X$$
 - $$g(X)$$ is the cost function gradient with respect to $$X$$
 - $$X^*$$ is the estimated "true" minimum
