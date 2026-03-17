@@ -10,20 +10,21 @@ math: mathjax3
 ### Introduction
 Inversions are used to constrain poorly known model parameters such as basal
 friction. The method consists of finding a set of model inputs that minimizes
-the cost function ${\mathcal J}$
-that measures the misfit between model and observations. For
-example, inverse methods are used to infer the basal friction $k$:
+the cost function ${\mathcal J}$ that measures the misfit between model and
+observations. For example, inverse methods are used to infer the basal friction
+$k$:
 
 $$
 \boldsymbol{\tau}_b = -k^2 N^r \|{\bf v}\|^{s-1} {\bf v}_b
 $$
+
 and/or the depth-averaged ice hardness, $B$, in Glen's flow law:
 
 $$
 \mu = \frac{B}{2\left( \dot{\varepsilon}_e^{1-\frac{1}{n}}\right) }
 $$
 
-This section explains how to launch an inverse method and how optimization parameters must be tuned.
+This section explains how to solve inverse problems and how optimization parameters must be tuned.
 
 ### Cost functions
 #### Absolute misfit
@@ -36,8 +37,8 @@ where:
 
 - v<sub>x</sub> is the x component of the glacier modeled velocity
 - v<sub>y</sub> is the y component of the glacier modeled velocity
-- v<sub>x</sub><a href="#footnotes" target="_top"><sup>obs</sup></a> is the x component of the glacier observed velocity
-- v<sub>y</sub><a href="#footnotes" target="_top"><sup>obs</sup></a> is the y component of the glacier observed velocity
+- v<sub>x</sub><sup>obs</sup> is the x component of the glacier observed velocity
+- v<sub>y</sub><sup>obs</sup> is the y component of the glacier observed velocity
 
 #### Relative misfit
 The relative misfit is defined as follows:
@@ -58,7 +59,7 @@ $$
 where:
 - v is the glacier modeled velocity magnitude
 - v<sup>obs</sup> is the glacier observed velocity magnitude
-- $$\varepsilon$$ is a minimum velocity used to avoid the observed velocity being equal to zero
+- $\varepsilon$ is a minimum velocity used to avoid the observed velocity being equal to zero
 
 #### Thickness misfit
 
@@ -77,7 +78,7 @@ $$
 $$
 
 where:
-- $$\gamma$$ is a Tikhonov regularization parameter
+- $\gamma$ is a Tikhonov regularization parameter
 
 #### Thickness gradient
 
@@ -86,7 +87,7 @@ $$
 $$
 
 where:
-- $$\gamma$$ is a Tikhonov regularization parameter
+- $\gamma$ is a Tikhonov regularization parameter
 
 ### Model parameters
 The parameters relevant to the stress balance solution can be displayed by typing:

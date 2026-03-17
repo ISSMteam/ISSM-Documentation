@@ -2,6 +2,7 @@
 title: Thermal Solution
 layout: default
 parent: Capabilities
+math: mathjax3
 ---
 
 ## Thermal Solution
@@ -12,9 +13,9 @@ The heat transport equation is derived from the balance equation of internal ene
 $$
 \rho \left(\frac{\partial E}{\partial t} + {\bf v} \cdot \nabla E \right)= - \nabla \left(\kappa(E) \nabla E \right) + \mbox{Tr} \left( \boldsymbol{\sigma} \cdot \dot{\boldsymbol{\varepsilon}}\right)
 $$
-where radiative sources have been neglected, and:
 
-- <img src="https://latex.codecogs.com/svg.latex?{\bf v}" alt="Equation 3"> is the velocity vector
+where radiative sources have been neglected, and:
+- $${\bf v}$$  is the velocity vector
 - <img src="https://latex.codecogs.com/svg.latex?\dot{\boldsymbol{\varepsilon}}" alt="Equation 4"> is the strain rate tensor
 - <img src="https://latex.codecogs.com/svg.latex?E" alt="Equation 5"> is the internal energy density
 - <img src="https://latex.codecogs.com/svg.latex?\kappa" alt="Equation 6"> is the specific heat conductivity, which can depend on the heat density
