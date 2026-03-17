@@ -124,7 +124,7 @@ Each minimizer has its own optimization parameters described below.
 - `md.inversion.gradient_scaling`: scaling factor on gradient direction during optimization, for each optimization step
 
 $$
-\alpha\in\left[0,\text{\ttfamily gradient\_scaling} \right]\hspace{3em}p^{\text{new}}=p^{\text{old}}-\alpha\;\nabla_p {\mathcal J}/\|\nabla_p {\mathcal J}\|
+\alpha\in\left[0,\mbox{gradient\_scaling} \right]\hspace{3em}p^{\text{new}}=p^{\text{old}}-\alpha\;\nabla_p {\mathcal J}/\|\nabla_p {\mathcal J}\|
 $$
 
 #### Toolkit for Advanced Optimization (TAO)
