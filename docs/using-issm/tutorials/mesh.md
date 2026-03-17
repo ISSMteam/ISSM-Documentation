@@ -1,5 +1,5 @@
 ---
-title: Mesh Adaptation
+title: Mesh
 layout: default
 parent: Tutorials
 ---

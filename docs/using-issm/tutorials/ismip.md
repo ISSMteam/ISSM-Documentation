@@ -1,5 +1,5 @@
 ---
-title: Ice Sheet Model Intercomparison Project (ISMIP) Tests
+title: ISMIP
 layout: default
 parent: Tutorials
 ---

@@ -1,5 +1,5 @@
 ---
-title: Thermal Solution
+title: Thermal
 layout: default
 parent: Capabilities
 math: mathjax3

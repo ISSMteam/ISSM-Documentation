@@ -1,5 +1,5 @@
 ---
-title: Modeling the Greenland Ice Sheet (SeaRISE)
+title: Greenland SeaRISE
 layout: default
 parent: Tutorials
 ---

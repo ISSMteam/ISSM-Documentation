@@ -1,5 +1,5 @@
 ---
-title: Surface Mass Balance (SMB)
+title: SMB
 layout: default
 parent: Parameterization
 ---

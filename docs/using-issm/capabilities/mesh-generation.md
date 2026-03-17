@@ -1,5 +1,5 @@
 ---
-title: Mesh Generation
+title: Mesh
 layout: default
 parent: Capabilities
 ---

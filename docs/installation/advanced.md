@@ -1,5 +1,5 @@
 ---
-title: Advanced Features
+title: Advanced
 layout: default
 parent: Installation
 nav_order: 5

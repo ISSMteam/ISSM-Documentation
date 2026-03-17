@@ -1,5 +1,5 @@
 ---
-title: Positive Degree Day (PDD)
+title: PDD
 layout: default
 parent: Parameterization
 ---

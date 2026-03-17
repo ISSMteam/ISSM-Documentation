@@ -1,5 +1,5 @@
 ---
-title: Modeling Pine Island Glacier
+title: Pine Island
 layout: default
 parent: Tutorials
 ---

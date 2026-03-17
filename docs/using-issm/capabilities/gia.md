@@ -1,5 +1,5 @@
 ---
-title: Glacial Isostatic Adjustment (GIA) Solution
+title: GIA
 layout: default
 parent: Capabilities
 ---

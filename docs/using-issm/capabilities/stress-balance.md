@@ -1,5 +1,5 @@
 ---
-title: Stress Balance Solution
+title: Stress Balance
 layout: default
 parent: Capabilities
 ---

@@ -1,5 +1,5 @@
 ---
-title: Mass Transport Solution
+title: Mass Transport
 layout: default
 parent: Capabilities
 ---

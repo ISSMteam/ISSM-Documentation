@@ -1,5 +1,5 @@
 ---
-title: Damage Evolution
+title: Damage
 layout: default
 parent: Capabilities
 ---

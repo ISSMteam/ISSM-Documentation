@@ -1,5 +1,5 @@
 ---
-title: Interpolation Routines
+title: Interpolations
 layout: default
 parent: Capabilities
 ---

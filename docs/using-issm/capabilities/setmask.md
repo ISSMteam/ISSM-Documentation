@@ -1,5 +1,5 @@
 ---
-title: Setting a Mask
+title: Mask
 layout: default
 parent: Capabilities
 ---

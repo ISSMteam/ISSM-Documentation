@@ -1,5 +1,5 @@
 ---
-title: Glacial Flow Approximation
+title: Ice Flow App.
 layout: default
 parent: Capabilities
 ---

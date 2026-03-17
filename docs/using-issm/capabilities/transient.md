@@ -1,5 +1,5 @@
 ---
-title: Transient Solution
+title: Transient
 layout: default
 parent: Capabilities
 ---

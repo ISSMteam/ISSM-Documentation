@@ -1,5 +1,5 @@
 ---
-title: Python Interface
+title: Python
 layout: default
 parent: Troubleshooting
 nav_order: 5

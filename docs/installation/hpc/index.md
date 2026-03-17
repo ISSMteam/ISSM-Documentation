@@ -1,5 +1,5 @@
 ---
-title: High-Performance Computing (HPC)
+title: HPC
 layout: default
 parent: Installation
 nav_order: 4

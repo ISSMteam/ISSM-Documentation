@@ -1,5 +1,5 @@
 ---
-title: Sea-level Fingerprints Solution
+title: Sea-level Fingerprints
 layout: default
 parent: Capabilities
 ---

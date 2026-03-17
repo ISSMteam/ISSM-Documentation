@@ -1,5 +1,5 @@
 ---
-title: Subglacial Hydrology of Helheim Glacier (SHAKTI)
+title: SHAKTI Helheim
 layout: default
 parent: Tutorials
 ---

@@ -1,5 +1,5 @@
 ---
-title: Modeling Jakobshavn Isbr&#230;
+title: Jakobshavn Isbr&#230;
 layout: default
 parent: Tutorials
 ---

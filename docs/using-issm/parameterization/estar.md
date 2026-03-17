@@ -1,5 +1,5 @@
 ---
-title: Empirical Scalar Tertiary Anisotropy Regime (ESTAR)
+title: ESTAR
 layout: default
 parent: Parameterization
 ---

@@ -1,5 +1,5 @@
 ---
-title: Uncertainty Quantification (UQ)
+title: UQ
 layout: default
 parent: Tutorials
 ---

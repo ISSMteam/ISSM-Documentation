@@ -1,5 +1,5 @@
 ---
-title: Sea-Level Fingerprints (GRACE)
+title: Fingerprints
 layout: default
 parent: Tutorials
 ---

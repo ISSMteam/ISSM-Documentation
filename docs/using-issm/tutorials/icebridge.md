@@ -1,5 +1,5 @@
 ---
-title: Modeling the Greenland Ice Sheet Using IceBridge Data
+title: Greenland OIB
 layout: default
 parent: Tutorials
 ---

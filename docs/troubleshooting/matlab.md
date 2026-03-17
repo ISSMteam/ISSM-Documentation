@@ -1,5 +1,5 @@
 ---
-title: MATLAB Interface
+title: MATLAB
 layout: default
 parent: Troubleshooting
 nav_order: 4

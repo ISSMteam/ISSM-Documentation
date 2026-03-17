@@ -1,5 +1,5 @@
 ---
-title: Subglacial Channel Formation From a Single Moulin (SHAKTI)
+title: SHAKTI Single Moulin
 layout: default
 parent: Tutorials
 ---

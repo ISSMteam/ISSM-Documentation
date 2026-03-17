@@ -1,5 +1,5 @@
 ---
-title: Configuring and Compiling ISSM
+title: Compiling ISSM
 layout: default
 parent: Troubleshooting
 nav_order: 2

@@ -1,5 +1,5 @@
 ---
-title: Configuring and Compiling External Packages
+title: External Packages
 layout: default
 parent: Troubleshooting
 nav_order: 1

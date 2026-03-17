@@ -1,5 +1,5 @@
 ---
-title: Modeling Helheim Glacier
+title: Helheim Glacier
 layout: default
 parent: Tutorials
 ---

@@ -1,5 +1,5 @@
 ---
-title: Ice Front Migration (level-set method)
+title: Ice Front Migration
 layout: default
 parent: Capabilities
 ---

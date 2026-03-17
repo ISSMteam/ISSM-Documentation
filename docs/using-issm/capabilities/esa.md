@@ -1,5 +1,5 @@
 ---
-title: Elastostatic Adjustment Solution
+title: Elastostatic
 layout: default
 parent: Capabilities
 ---

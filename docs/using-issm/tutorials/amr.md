@@ -1,5 +1,5 @@
 ---
-title: Adaptive Mesh Refinement (AMR)
+title: AMR
 layout: default
 parent: Tutorials
 ---

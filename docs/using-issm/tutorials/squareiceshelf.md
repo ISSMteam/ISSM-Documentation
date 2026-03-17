@@ -1,5 +1,5 @@
 ---
-title: Square Ice Shelf
+title: Square Shelf
 layout: default
 parent: Tutorials
 ---

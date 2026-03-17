@@ -1,5 +1,5 @@
 ---
-title: Stochastic Forcing with StISSM
+title: StISSM
 layout: default
 parent: Advanced Features
 grand_parent: Using ISSM
