@@ -6,6 +6,13 @@ nav_order: 4
 ---
 
 # MATLAB Interface
+
+## Table of Contents
+{: .no_toc }
+1. TOC
+{:toc}
+----
+
 ## MATLAB does not recognize any ISSM command
 ````
 >> md=model;
