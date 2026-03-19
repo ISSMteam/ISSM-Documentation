@@ -67,7 +67,7 @@ bool Test(int a,double b,char* c){
 
 All MATLAB routines should start with a help (Example and See Also are not mandatory):
 
-```m
+```matlab
 function outputs=FunctionName(inputs)
 %FUNCTIONNAME - one line description
 %
@@ -86,7 +86,7 @@ function outputs=FunctionName(inputs)
 
 At the very least, the first line and the Usage should be provided. Use indentations of 3 and 6 spaces. Example:
 
-```m
+```matlab
 function outputs=hello()
 %HELLO - prints hello to the screen
 %
@@ -97,10 +97,10 @@ function outputs=hello()
 ## Vim Folding
 Classes, functions, and other logical blocks of code should be folded (note the exact formatting used below):
 
-```m
-function foo() % {{{
+```matlab
+function foo() % &#123;&#123;&#123;
 ...
-end % }}}
+end % &#125;&#125;&#125;
 ```
 
 ## Python
@@ -145,9 +145,9 @@ As with MATLAB, at the very least, the first line and the 'Usage' should be prov
 Classes, functions, and other logical blocks of code should be folded (note the exact formatting used below):
 
 ```py
-def foo():  # {{{
+def foo(): # &#123;&#123;&#123;
 ...
-# }}}
+# &#125;&#125;&#125;
 ```
 
 ## MATLAB Built-In Equivalents
@@ -165,11 +165,11 @@ Some notable omissions in the above sources are as follows:
 
 | MATLAB | Python | Notes |
 |:-------|:-------|:------|
-| `<<cell_array>>{:}`  | `<<np.ndarray>>.flatten()` | Flatten a MATLAB cell array or !NumPy `ndarray`. |
-| `find(a>0.5)` | `np.where(a>0.5)[0]` | Find the indices where (a > 0.5).[[BR]][[BR]]When only the {{{condition}}} parameter is provided, this function is a shorthand for `np.asarray(condition).nonzero()`.[[BR]][[BR]]See also: [https://numpy.org/doc/stable/reference/generated/numpy.where.html numpy.where - NumPy][[BR]][[BR]]NOTE:[[BR]]- `a` must be of type `np.array` (or one of its subclasses): a {{{list}}} will not automatically be cast.[[BR]]- Returns a tuple of arrays of indices, one for each dimension of the input array. Thus, when the input array is 1D, the indices can be retrieved simply by addressing the first element of the result (as in the example). |
-| `find('cond1'&'cond2')` | `np.where(np.logical_and.reduce(('cond1','cond2'))[0]` | Find the indices where `'cond1'` and `'cond2'` are met.[[BR]][[BR]]The same protocol can be followed for MATLAB's `|` by instead using `logical_or`.[[BR]][[BR]]More than two conditions may be compounded. |
+| `<<cell_array>>{:}`  | `<<np.ndarray>>.flatten()` | Flatten a MATLAB cell array or NumPy `ndarray` |
+| `find(a>0.5)` | `np.where(a>0.5)[0]` | Find the indices where (`a>0.5`).<br> <br>When only the `condition` parameter is provided, this function is a shorthand for `np.asarray(condition).nonzero()`.<br><br>See also [here](https://numpy.org/doc/stable/reference/generated/numpy.where.html)<br> - `a` must be of type `np.array` (or one of its subclasses): a `list` will not automatically be cast.<br> - Returns a tuple of arrays of indices, one for each dimension of the input array. Thus, when the input array is 1D, the indices can be retrieved simply by addressing the first element of the result (as in the example). |
+| `find('cond1'&'cond2')` | `np.where(np.logical_and.reduce(('cond1','cond2'))[0]` | Find the indices where `'cond1'` and `'cond2'` are met.<br><br>The same protocol can be followed for MATLAB's `|` by instead using `logical_or`.<br><br>More than two conditions may be compounded. |
 | `v=nonzeros(A)` | `v=A[np.nonzero(A)]` | Find the values of the nonzero elements |
-| `B=sortrows(A,column)` | `B=A[A[:,column].argsort()]` | sort rows of matrix or table (MATLAB), or 2D array (!NumPy) in ascending order based on the elements in 'column' |
+| `B=sortrows(A,column)` | `B=A[A[:,column].argsort()]` | sort rows of matrix or table (MATLAB), or 2D array (NumPy) in ascending order based on the elements in 'column' |
 | `sqrt(A)` | `A ** 0.5` | Element-wise square root (math.sqrt can only be applied to scalars) |
 
 ## Variable/Enum/Function Names
