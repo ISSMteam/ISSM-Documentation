@@ -97,11 +97,13 @@ function outputs=hello()
 ## Vim Folding
 Classes, functions, and other logical blocks of code should be folded (note the exact formatting used below):
 
+{% raw %}
 ```matlab
-function foo() % &#123;&#123;&#123;
+function foo() % {{{
 ...
-end % &#125;&#125;&#125;
+end % }}}
 ```
+{% endraw %}
 
 ## Python
 
@@ -144,11 +146,13 @@ As with MATLAB, at the very least, the first line and the 'Usage' should be prov
 ## Vim Folding
 Classes, functions, and other logical blocks of code should be folded (note the exact formatting used below):
 
+{% raw %}
 ```py
-def foo(): # &#123;&#123;&#123;
+def foo(): # {{{
 ...
-# &#125;&#125;&#125;
+# }}}
 ```
+{% endraw %}
 
 ## MATLAB Built-In Equivalents
 The following is a list of MATLAB built-in equivalents in Python:
