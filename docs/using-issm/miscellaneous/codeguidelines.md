@@ -18,6 +18,7 @@ grand_parent: Using ISSM
 - no space fetween if/for and its statement
 - If an if/for holds on one line, then do not use brackets
 - Otherwise, use brackets
+
 ```c
 for(int i=0<i<n;i++)  A[i]=i;
 
@@ -44,7 +45,9 @@ else{
     c=a;
 }
 ```
+
  - Comments should follow the code indentation and there should not be any blank line between a comment and the code it is referring to
+
 ```c
    /*Assigning values of A*/
    for(int i=0<i<n;i++){
@@ -53,7 +56,9 @@ else{
       A[i]=i;
    }
 ```
+
  - Function declaration should hold on one line only
+
 ```c
 bool Test(int a,double b,char* c){
 ```
@@ -61,6 +66,7 @@ bool Test(int a,double b,char* c){
 ## MATLAB
 
 All MATLAB routines should start with a help (Example and See Also are not mandatory):
+
 ```m
 function outputs=FunctionName(inputs)
 %FUNCTIONNAME - one line description
@@ -90,6 +96,7 @@ function outputs=hello()
 
 ## Vim Folding
 Classes, functions, and other logical blocks of code should be folded (note the exact formatting used below):
+
 ```m
 function foo() % {{{
 ...
@@ -98,7 +105,7 @@ end % }}}
 
 ## Python
 
-[https://www.python.org/dev/peps/pep-0008/ PeP8 compliance] should be used throughout the code with the exceptions below (with flake8 codes):
+[PeP8 compliance](https://www.python.org/dev/peps/pep-0008/ PeP8 compliance) should be used throughout the code with the exceptions below (with flake8 codes):
 - We allow lines of any length (E501)
 - We don't enforce the space after "#" for comments (E262, E265)
 - We still allow form module import * (F403) but we should avoid those if possible
@@ -106,7 +113,8 @@ end % }}}
 flake8 allows you to track and highlight the syntax errors (through Elpy in Emacs, I guess it can be introduced in vim).
 
 If you install flake8, you can also run it in standalone to check the files in a directory:
-```
+
+```sh
 flake8  --ignore=E262,E265,F403,F405,E405,E501
 ```
 
@@ -135,6 +143,7 @@ As with MATLAB, at the very least, the first line and the 'Usage' should be prov
 
 ## Vim Folding
 Classes, functions, and other logical blocks of code should be folded (note the exact formatting used below):
+
 ```py
 def foo():  # {{{
 ...
@@ -143,15 +152,17 @@ def foo():  # {{{
 
 ## MATLAB Built-In Equivalents
 The following is a list of MATLAB built-in equivalents in Python:
+
 | MATLAB | Python | Notes |
 |:-------|:-------|:------|
 | `s=num2str(A)` | `s=str(A)` | convert numbers to character array |
 
 ## NumPy/SciPy 
 NumPy and SciPy are used extensively in the Python interface to ISSM to replicate MATLAB-native functionality. When translating modules or tests, for example, from MATLAB to Python, the following sources may come in handy:
-- [https://numpy.org/devdocs/user/numpy-for-matlab-users.html NumPy for Matlab users | NumPy]
-- [http://mathesaurus.sourceforge.net/matlab-numpy.html NumPy for MATLAB users | mathesaurus.sourceforge.net]
+- [NumPy for Matlab users](https://numpy.org/devdocs/user/numpy-for-matlab-users.html)
+- [MATLAB to NumPy](http://mathesaurus.sourceforge.net/matlab-numpy.html)
 Some notable omissions in the above sources are as follows:
+
 | MATLAB | Python | Notes |
 |:-------|:-------|:------|
 | `<<cell_array>>{:}`  | `<<np.ndarray>>.flatten()` | Flatten a MATLAB cell array or !NumPy `ndarray`. |
@@ -163,9 +174,11 @@ Some notable omissions in the above sources are as follows:
 
 ## Variable/Enum/Function Names
 
- - variables should not use capital letters. Use underscores to make variables more understandable.
- - Function names and enums should not use any underscore. Use capital letters to make names more understandable.
+- variables should not use capital letters. Use underscores to make variables more understandable.
+- Function names and enums should not use any underscore. Use capital letters to make names more understandable.
+
 Example:
+
 ```c
   Input* vx_input=GetInput(inputs,VxInput);
 ```
