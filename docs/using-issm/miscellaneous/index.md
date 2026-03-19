@@ -7,4 +7,5 @@ has_toc: false
 ---
 
  - <a href="toolkits">Preferred toolkits</a>
+ - <a href="codeguidelines">Code guidelines for developers</a>
 
