@@ -3,6 +3,7 @@ title: Collaborations
 layout: default
 parent: About ISSM
 nav_order: 2
+nav_exclude: true #hide for now because it is not up to date
 ---
 
 # Collaborations
