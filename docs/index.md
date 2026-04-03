@@ -33,11 +33,13 @@ There are more build configurations and regression test suites on <a href="https
 ----
 
 ## About ISSM
-- <a href="about-issm/contributors">Contributors</a>
-- <a href="about-issm/collaborations">Collaborations</a> 
 - <a href="about-issm/publications">Publications</a>
 - <a href="about-issm/development-status">Development Status</a>
 - <a href="about-issm/news">News</a>
+{% comment %}
+- <a href="about-issm/contributors">Contributors</a>
+- <a href="about-issm/collaborations">Collaborations</a> 
+{% endcomment %}
 
 ----
 
