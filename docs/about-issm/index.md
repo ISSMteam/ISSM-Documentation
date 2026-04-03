@@ -17,13 +17,13 @@ has_toc: false
 ----
 
 ## Funding
-ISSM is currently funded (or has been funded in the past) by,
-- JPL R&TD (Research and Technology Development)
-- NASA's Cryosphere Science Program
-- NASA's Modeling Analysis and Prediction Program
+ISSM is currently funded (or has been funded in the past) by
+- NASA (Cryosphere Science Program, Modeling Analysis and Prediction Program)
 - The National Science Foundation (NSF)
 - Heising Simons Foundation (HSF)
 - <a href="https://icefuture.org/cluster-page/">Dartmouth's Changing Polar Regions</a> Academic clusuer
+- Novo Nordisk Foundation
+- JPL R&TD (Research and Technology Development)
 
 ## ISSM Logo
 <img src="/ISSM-Documentation/assets/img/brand/ISSMlogo.jpg" />
