@@ -6,8 +6,10 @@ has_toc: false
 ---
 
 # About ISSM
-- <a href="./contributors" target="_top">Contributors</a>
+- <a href="https://github.com/ISSMteam/ISSM/graphs/contributors" target="_top">Contributors</a>
+{% comment %}
 - <a href="./collaborations" target="_top">Collaborations</a>
+{% endcomment %}
 - <a href="./publications" target="_top">Publications</a>
 - <a href="./development-status" target="_top">Development Status</a>
 - <a href="./news" target="_top">News</a>

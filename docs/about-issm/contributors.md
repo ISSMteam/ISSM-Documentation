@@ -3,6 +3,7 @@ title: Contributors
 layout: default
 parent: About ISSM
 nav_order: 1
+nav_exclude: true #hide for now because it is not up to date
 ---
 
 # Contributors
