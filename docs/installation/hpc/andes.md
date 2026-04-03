@@ -65,7 +65,7 @@ source $ISSM_DIR/etc/environment.sh
 
 #load modules
 module purge
-module load module load cmake/3.23.2
+module load cmake/3.23.2
 module load intel-compilers/23.2
 module load mkl/19.3
 ```
