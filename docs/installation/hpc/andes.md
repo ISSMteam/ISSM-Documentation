@@ -40,6 +40,7 @@ ssh andes
 
 ## Password-less ssh
 
+### Generic Security Services Application Programming Interface (GSSAPI)
 Andes officially suggests using GSSAPI for passwordless access, see ​here.
 
 On your local machine, you will need to enter:
@@ -48,13 +49,15 @@ kinit -f -l 7d username@KIEWIT.DARTMOUTH.EDU
 ```
 with your NetID at username and the password for NetID to request a ticket for 7 days (or any time period you need), then you can use ssh andes without entering a password.
 
-If you can't log in anymore (or if you get weird error messages saying that permissions to access your home directory are denied), you will need to destroy all active Kerberos authorization tickets. To do this:
-
-- Connect to discovery8: ```ssh NetID@discovery8.dartmouth.edu```
-- Once on discovery8 (even with the error thrown), do: ```kdestroy -A```
-- exit out of discovery8, go back to your ```~/.ssh/config``` and comment out the GSSAPI lines with a ```#```
+### Troubleshooting
+If you can't log in anymore (or if you get an error message about wrong permission for your home directory), you will need to destroy all active Kerberos authorization tickets. To do this:
+- Connect to andes: ```ssh NetID@andes8.dartmouth.edu```
+- Once on andes (even with the error thrown), do: ```kdestroy -A```
+- exit out of andes, go back to your ```~/.ssh/config``` and comment out the GSSAPI lines with a ```#```
 - on your computer (or totten, whichever you're using) run: ```kdestroy -A```
-- Now try to ```ssh``` into discovery8 again with your password and it should work!
+- Now try to ```ssh``` into andes8 again with your password and it should work!
+
+In some instances, the return key produces `^M` and the password cannot be entered. If this happens, use the following command `stty sane`.
 
 ## Environment
 On Andes, add the following lines to ```~/.bashrc```:
