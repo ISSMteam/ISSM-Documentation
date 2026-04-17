@@ -46,17 +46,17 @@ where `<ISSM_PATH>` is the path to the copy of the ISSM source code that you che
 
 Install a basic package set with,
 ```sh
-sudo apt-get install build-essential gfortran libssl-dev
+sudo apt install build-essential gfortran libssl-dev
 ```
 
 If you will be installing the GDAL external package, install dependencies with,
 ```sh
-sudo apt-get install swig
+sudo apt install swig
 ```
 
 If you will be installing the PROJ external package, install dependencies with,
 ```sh
-sudo apt-get install libsqlite3-dev sqlite3
+sudo apt install libsqlite3-dev sqlite3
 ```
 
 **NOTE**: Some systems may require a link to be created so that the linker can find `libstdc++`, which can be accomplished with,
@@ -76,19 +76,19 @@ Download and install the desired version of MATLAB from the <a href="https://www
 
 Install Python 3 with,
 ```sh
-sudo apt-get install python3-minimal
+sudo apt install python3-minimal
 ```
 Install required Python 3 header files with,
 ```sh
-sudo apt-get install python3-dev
+sudo apt install python3-dev
 ```
 Install `venv` module with,
 ```sh
-sudo apt-get install python3-venv
+sudo apt install python3-venv
 ```
 Install pip with,
 ```sh
-sudo apt-get install python3-pip
+sudo apt install python3-pip
 ```
 Create a Python virtual environment for ISSM and activate it with,
 ```sh
@@ -110,7 +110,7 @@ pip install matplotlib netcdf4 nose numpy pyshp scipy
 
 Alternatively, copy and paste the following to achieve all of the above,
 ```sh
-sudo apt-get install python3-dev python3-minimal python3-pip python3-venv
+sudo apt install python3-dev python3-minimal python3-pip python3-venv
 mkdir ${HOME}/.venv
 python3 -m venv ${HOME}/.venv/ISSM
 source ${HOME}/.venv/ISSM/bin/activate
