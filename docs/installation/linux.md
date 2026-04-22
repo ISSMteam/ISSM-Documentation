@@ -105,7 +105,7 @@ source ${HOME}/.venv/ISSM/bin/activate
 
 Then, use pip to install NumPy, SciPy, and dependencies,
 ```sh
-pip install matplotlib netcdf4 nose numpy pyshp scipy
+pip install matplotlib netcdf4 nose numpy=2.1 pyshp scipy
 ```
 
 Alternatively, copy and paste the following to achieve all of the above,
