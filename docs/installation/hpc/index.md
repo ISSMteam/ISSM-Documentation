@@ -20,6 +20,9 @@ Note as well that the 'local' machine in the above case may be one that is physi
 ### NASA Advanced Supercomputing (NAS)
 - <a href="./pleiades">NAS' Pleiades</a>
 
+### Tongji University
+- <a href="./tjhpc">Tongji's HPC</a>
+
 Please see the <a href="https://issm.ess.uci.edu/trac/issm/wiki"
 target="_blank">ISSM Development Wiki</a> for notes on configuring and
 compiling on various HPC systems that have not been migrated yet.
