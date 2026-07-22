@@ -19,6 +19,7 @@ Tongji University's Scientific Computing Platform can be used as a remote execut
 
 {: .highlight-title }
 > NOTE
+>
 > These instructions target the Intel CPU environment on Tongji HPC.
 
 
@@ -74,6 +75,7 @@ source ~/.bashrc
 
 {: .highlight-title }
 > NOTE
+>
 > Do not load the `openmpi/5.0.6` module from the cluster for this installation. PETSc is compiled with its downloaded MPICH 4.3.0, so compiling or running ISSM with Open MPI can cause link-time or runtime failures.
 
 Check the active MPI wrappers and libraries with:
