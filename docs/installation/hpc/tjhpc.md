@@ -17,7 +17,10 @@ parent: HPC
 
 Tongji University's Scientific Computing Platform can be used as a remote execution cluster for ISSM. The recommended setup is to use a local ISSM installation with MATLAB or Python for model preparation and post-processing, and a binary-only ISSM installation on Tongji HPC for simulations.
 
-These instructions target the Intel CPU environment on Tongji HPC.
+{: .highlight-title }
+> NOTE
+> These instructions target the Intel CPU environment on Tongji HPC.
+
 
 ## Getting an account
 
@@ -46,15 +49,21 @@ ssh tjhpc
 Add the following lines to `~/.bashrc` on Tongji HPC:
 
 ```sh
+module purge
+module load intel/oneapi/24.0
+module load gcc/13.2.0
+module load cmake/3.31.6
+
 export ISSM_DIR=/path/to/ISSM
+export PETSC_DIR="${ISSM_DIR}/externalpackages/petsc/install"
+export MKL_LIBDIR="/share/apps/oneapi24.0/mkl/latest/lib/intel64"
+
 source "${ISSM_DIR}/etc/environment.sh"
 
-module purge
-module load cmake/3.31.6
-module load OpenBLAS/0.3.26
-module load openmpi/5.0.6
-module load gcc/13.2.0
-module load intel/oneapi/24.0
+# PETSc is built with its bundled MPICH. Keep its compiler wrappers and
+# shared libraries ahead of other MPI installations.
+export PATH="${PETSC_DIR}/bin:${PATH}"
+export LD_LIBRARY_PATH="${PETSC_DIR}/lib:${MKL_LIBDIR}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
 ```
 
 Replace `/path/to/ISSM` with the absolute path to your ISSM checkout, then apply the changes with:
@@ -64,17 +73,26 @@ source ~/.bashrc
 ```
 
 {: .highlight-title }
-> Important
->
-> PETSc and ISSM must use a compatible MPI implementation. The PETSc script below downloads MPICH, while the module environment also loads Open MPI. After PETSc is installed and `${ISSM_DIR}/etc/environment.sh` is sourced, verify that `mpicc`, `mpicxx`, and `mpifort` point to the MPI wrappers intended for the PETSc installation. Mixing Open MPI wrappers with PETSc libraries built against MPICH may cause link-time or runtime failures.
+> NOTE
+> Do not load the `openmpi/5.0.6` module from the cluster for this installation. PETSc is compiled with its downloaded MPICH 4.3.0, so compiling or running ISSM with Open MPI can cause link-time or runtime failures.
 
-Check the active wrappers with:
+Check the active MPI wrappers and libraries with:
 
 ```sh
 which mpicc
 which mpicxx
 which mpifort
+which mpiexec
+
 mpicc -show
+
+ldd "${PETSC_DIR}/lib/libpetsc.so.3.23" | grep -E "libmpi|libmpifort"
+```
+
+The MPI wrappers and shared libraries should resolve inside:
+
+```text
+${ISSM_DIR}/externalpackages/petsc/install/
 ```
 
 ## Installing PETSc
@@ -213,55 +231,12 @@ curl -L \
 
 The filenames must match exactly because they are passed directly to PETSc's `--download-*` options.
 
-### PETSc installation script
-
-Create `externalpackages/petsc/install-3.23-tjhpc.sh` with:
-
-```sh
-#!/bin/bash
-set -eu
-
-VER="3.23.6"
-PETSC_DIR="${ISSM_DIR}/externalpackages/petsc/src"
-PREFIX="${ISSM_DIR}/externalpackages/petsc/install"
-
-"${ISSM_DIR}/scripts/DownloadExternalPackage.sh" \
-    "https://web.cels.anl.gov/projects/petsc/download/release-snapshots/petsc-${VER}.tar.gz" \
-    "petsc-${VER}.tar.gz"
-
-tar -zxvf "petsc-${VER}.tar.gz"
-rm -rf "${PREFIX}" "${PETSC_DIR}"
-mkdir -p "${PETSC_DIR}"
-mv "petsc-${VER}"/* "${PETSC_DIR}"
-rm -rf "petsc-${VER}"
-
-cd "${PETSC_DIR}"
-./configure \
-    --prefix="${PREFIX}" \
-    --PETSC_DIR="${PETSC_DIR}" \
-    --with-make-np=20 \
-    --with-debugging=0 \
-    --with-valgrind=0 \
-    --with-x=0 \
-    --with-ssl=0 \
-    --with-pic=1 \
-    --download-fblaslapack="${ISSM_DIR}/externalpackages/petsc/downloads/petsc-pkg-fblaslapack-e8a03f57d64c.tar.gz" \
-    --download-metis="${ISSM_DIR}/externalpackages/petsc/downloads/petsc-pkg-metis-69fb26dd0428.tar.gz" \
-    --download-mpich="${ISSM_DIR}/externalpackages/petsc/downloads/mpich-4.3.0.tar.gz" \
-    --download-mumps="${ISSM_DIR}/externalpackages/petsc/downloads/MUMPS_5.7.3.tar.gz" \
-    --download-parmetis="${ISSM_DIR}/externalpackages/petsc/downloads/petsc-pkg-parmetis-f5e3aab04fd5.tar.gz" \
-    --download-scalapack="${ISSM_DIR}/externalpackages/petsc/downloads/scalapack-0e8767285b7a201c7b1ff34d2c2bb009534145df.tar.gz" \
-    --download-zlib="${ISSM_DIR}/externalpackages/petsc/downloads/zlib-1.3.1.tar.gz"
-
-make
-make install
-```
+### PETSc installation 
 
 Run the installation with:
 
 ```sh
 cd "${ISSM_DIR}/externalpackages/petsc"
-chmod +x install-3.23-tjhpc.sh
 ./install-3.23-tjhpc.sh
 source "${ISSM_DIR}/etc/environment.sh"
 ```
@@ -275,52 +250,79 @@ cd "${ISSM_DIR}"
 autoreconf -ivf
 ```
 
-Create `${ISSM_DIR}/configure_tjhpc.sh` with:
+Create `${ISSM_DIR}/configure.sh` with:
 
 ```sh
 #!/bin/bash
 set -eu
 
-export CC=mpicc
-export CXX=mpicxx
-export FC=mpifort
-export CXXFLAGS="-g -O2 -std=c++11"
+PETSC_DIR="${ISSM_DIR}/externalpackages/petsc/install"
+MKL_LIBDIR="/share/apps/oneapi24.0/mkl/latest/lib/intel64"
+
+# Use the MPICH compiler wrappers installed together with PETSc.
+export CC="${PETSC_DIR}/bin/mpicc"
+export CXX="${PETSC_DIR}/bin/mpicxx"
+export FC="${PETSC_DIR}/bin/mpifort"
+
+export CFLAGS="-g -O2 -fPIC"
+export CXXFLAGS="-g -O2 -fPIC -std=c++11"
+export FCFLAGS="-g -O2 -fPIC"
+
+# Keep PETSc's MPICH and oneMKL available during linking and at runtime.
+export PATH="${PETSC_DIR}/bin:${PATH}"
+export LD_LIBRARY_PATH="${PETSC_DIR}/lib:${MKL_LIBDIR}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
+export LDFLAGS="-Wl,-rpath,${PETSC_DIR}/lib -Wl,-rpath,${MKL_LIBDIR}"
 
 ./configure \
     --prefix="${ISSM_DIR}" \
     --with-wrappers=no \
-    --with-petsc-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-    --with-mpi-include="${ISSM_DIR}/externalpackages/petsc/install/include" \
-    --with-mpi-libflags="-L${ISSM_DIR}/externalpackages/petsc/install/lib -lmpi -lmpifort" \
-    --with-metis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-    --with-mkl-libflags="-L/share/apps/oneapi24.0/mkl/latest/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm" \
-    --with-scalapack-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-    --with-mumps-dir="${ISSM_DIR}/externalpackages/petsc/install" \
+    --with-petsc-dir="${PETSC_DIR}" \
+    --with-mpi-include="${PETSC_DIR}/include" \
+    --with-mpi-libflags="-L${PETSC_DIR}/lib -lmpi -lmpifort" \
+    --with-metis-dir="${PETSC_DIR}" \
+    --with-parmetis-dir="${PETSC_DIR}" \
+    --with-scalapack-dir="${PETSC_DIR}" \
+    --with-mumps-dir="${PETSC_DIR}" \
+    --with-mkl-libflags="-L${MKL_LIBDIR} -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl" \
     --enable-development
 ```
 
 Run the configuration and compilation:
 
 ```sh
-chmod +x configure_tjhpc.sh
-./configure_tjhpc.sh
+chmod +x configure.sh
+./configure.sh
 make -j20
 make install
 ```
 
-Confirm that the executable was created:
+Confirm that the executable was created and that PETSc's MPICH is loaded:
 
 ```sh
 ls -l "${ISSM_DIR}/bin/issm.exe"
-ldd "${ISSM_DIR}/bin/issm.exe" | grep -E "mpi|mkl"
+
+ldd "${ISSM_DIR}/bin/issm.exe" \
+    | grep -E "libpetsc|libmpi|libmpifort|libmkl|libstdc\+\+"
 ```
+
+All MPI libraries should resolve from:
+
+```text
+${ISSM_DIR}/externalpackages/petsc/install/lib/
+```
+
+{: .highlight-title }
+> Runtime MPI errors
+>
+> If ISSM reports an error such as `undefined symbol: MPI_Type_get_envelope_c`, another MPI implementation is being loaded at runtime. Remove any Open MPI module and make sure `${PETSC_DIR}/lib` is the first MPI library directory in `LD_LIBRARY_PATH`.
 
 ## `tjhpc_settings.m`
 
 On the local ISSM installation used with MATLAB, create `$ISSM_DIR/src/m/tjhpc_settings.m`:
 
 ```matlab
-cluster.login = 'yourLoginID';
+cluster.login = 'yourLoginID_To_HPC';
+cluster.emailname = 'yourEmailName'
 cluster.codepath = '/path/to/ISSM/bin';
 cluster.executionpath = '/path/to/ISSM/execution';
 ```
