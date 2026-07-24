@@ -15,13 +15,27 @@ parent: HPC
 
 ## Overview
 
-Tongji University's Scientific Computing Platform can be used as a remote execution cluster for ISSM. The recommended setup is to use a local ISSM installation with MATLAB or Python for model preparation and post-processing, and a binary-only ISSM installation on Tongji HPC for simulations.
+Tongji University's Scientific Computing Platform can be used as a remote execution cluster for ISSM. The recommended workflow is:
+
+1. prepare and inspect models with a local MATLAB or Python installation of ISSM;
+2. submit simulations to a binary-only ISSM installation on Tongji HPC; and
+3. retrieve the completed results for post-processing on the local workstation.
 
 {: .highlight-title }
-> NOTE
+> Recommended platform
 >
-> These instructions target the Intel CPU environment on Tongji HPC.
+> Use the **AMD CPU nodes** for the standard Tongji HPC installation. The main instructions below therefore describe the AMD environment and AMD `configure.sh`.
+>
+> Intel CPU nodes remain supported as an alternative. Their module environment and `configure.sh` are provided in a separate section near the end of the installation instructions.
 
+If you intend to use both CPU architectures, keep completely separate ISSM installations:
+
+```text
+/path/to/ISSM-amd
+/path/to/ISSM-intel
+```
+
+Do not share the PETSc installation or compiled ISSM binaries between the AMD and Intel checkouts.
 
 ## Getting an account
 
@@ -45,40 +59,37 @@ Replace the placeholders with the values assigned to your account. You can then 
 ssh tjhpc
 ```
 
-## Environment
+## AMD nodes (Recommended)
 
-Add the following lines to `~/.bashrc` on Tongji HPC:
+Add the following lines to `~/.bashrc` on Tongji HPC, or place them near the beginning of the AMD Slurm job script:
 
 ```sh
 module purge
-module load intel/oneapi/24.0
 module load gcc/13.2.0
 module load cmake/3.31.6
 
-export ISSM_DIR=/path/to/ISSM
-export PETSC_DIR="${ISSM_DIR}/externalpackages/petsc/install"
-export MKL_LIBDIR="/share/apps/oneapi24.0/mkl/latest/lib/intel64"
+export ISSM_DIR=/path/to/ISSM-amd
+export PETSC_PREFIX="${ISSM_DIR}/externalpackages/petsc/install"
 
 source "${ISSM_DIR}/etc/environment.sh"
 
-# PETSc is built with its bundled MPICH. Keep its compiler wrappers and
-# shared libraries ahead of other MPI installations.
-export PATH="${PETSC_DIR}/bin:${PATH}"
-export LD_LIBRARY_PATH="${PETSC_DIR}/lib:${MKL_LIBDIR}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
+# Use the MPICH installation built together with PETSc.
+export PATH="${PETSC_PREFIX}/bin:${PATH}"
+export LD_LIBRARY_PATH="${PETSC_PREFIX}/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
 ```
 
-Replace `/path/to/ISSM` with the absolute path to your ISSM checkout, then apply the changes with:
+Replace `/path/to/ISSM-amd` with the absolute path to the AMD ISSM checkout, then reload the environment:
 
 ```sh
 source ~/.bashrc
 ```
 
 {: .highlight-title }
-> NOTE
+> MPI requirement
 >
-> Do not load the `openmpi/5.0.6` module from the cluster for this installation. PETSc is compiled with its downloaded MPICH 4.3.0, so compiling or running ISSM with Open MPI can cause link-time or runtime failures.
+> Do not load the cluster's `openmpi/5.0.6` module for this installation. PETSc is compiled with its downloaded MPICH 4.3.0. Mixing Open MPI with PETSc's MPICH may cause link-time or runtime errors.
 
-Check the active MPI wrappers and libraries with:
+Check the active MPI wrappers:
 
 ```sh
 which mpicc
@@ -87,8 +98,13 @@ which mpifort
 which mpiexec
 
 mpicc -show
+```
 
-ldd "${PETSC_DIR}/lib/libpetsc.so.3.23" | grep -E "libmpi|libmpifort"
+After PETSc has been installed, also check its runtime dependencies:
+
+```sh
+ldd "${PETSC_PREFIX}/lib/libpetsc.so.3.23" \
+    | grep -E "libmpi|libmpifort"
 ```
 
 The MPI wrappers and shared libraries should resolve inside:
@@ -99,8 +115,6 @@ ${ISSM_DIR}/externalpackages/petsc/install/
 
 ## Installing PETSc
 
-Tongji HPC is used only to run ISSM binaries; MATLAB or Python wrappers should normally remain on the local workstation.
-
 This configuration uses PETSc 3.23.6 and the script:
 
 ```text
@@ -109,7 +123,7 @@ externalpackages/petsc/install-3.23-tjhpc.sh
 
 ### Required downloads
 
-Because some external downloads may be inaccessible from Tongji HPC, download the following archives manually and place them in:
+Because some external downloads may be inaccessible from Tongji HPC due to the bandwidth, download the following archives manually and place them in:
 
 ```text
 ${ISSM_DIR}/externalpackages/petsc/downloads/
@@ -233,17 +247,21 @@ curl -L \
 
 The filenames must match exactly because they are passed directly to PETSc's `--download-*` options.
 
-### PETSc installation 
+### PETSc installation
 
-Run the installation with:
+Run the installation on an AMD compute node with:
 
 ```sh
 cd "${ISSM_DIR}/externalpackages/petsc"
+chmod +x install-3.23-tjhpc.sh
 ./install-3.23-tjhpc.sh
 source "${ISSM_DIR}/etc/environment.sh"
 ```
 
-## Installing ISSM
+The same PETSc procedure can also be used for the optional Intel installation, provided that it is run inside the separate Intel ISSM checkout.
+
+
+## Installing ISSM on AMD nodes
 
 Generate the Autotools files:
 
@@ -258,10 +276,97 @@ Create `${ISSM_DIR}/configure.sh` with:
 #!/bin/bash
 set -eu
 
+PETSC_PREFIX="${ISSM_DIR}/externalpackages/petsc/install"
+
+export CC="${PETSC_PREFIX}/bin/mpicc"
+export CXX="${PETSC_PREFIX}/bin/mpicxx"
+export FC="${PETSC_PREFIX}/bin/mpifort"
+
+export CFLAGS="-g -O2"
+export CXXFLAGS="-g -O2 -std=c++11"
+export FCFLAGS="-g -O2"
+
+export PATH="${PETSC_PREFIX}/bin:${PATH}"
+export LD_LIBRARY_PATH="${PETSC_PREFIX}/lib:${LD_LIBRARY_PATH}"
+export LDFLAGS="-Wl,-rpath,${PETSC_PREFIX}/lib"
+
+./configure \
+    --prefix="${ISSM_DIR}" \
+    --with-wrappers=no \
+    --with-petsc-dir="${PETSC_PREFIX}" \
+    --with-mpi-include="${PETSC_PREFIX}/include" \
+    --with-mpi-libflags="-L${PETSC_PREFIX}/lib -lmpi -lmpifort" \
+    --with-blas-lapack-dir="${PETSC_PREFIX}" \
+    --with-metis-dir="${PETSC_PREFIX}" \
+    --with-scalapack-dir="${PETSC_PREFIX}" \
+    --with-mumps-dir="${PETSC_PREFIX}" \
+    --enable-development
+```
+
+Run the configuration and compilation on an AMD compute node:
+
+```sh
+chmod +x configure.sh
+./configure.sh
+make -j20
+make install
+```
+
+Confirm that the executable was created and that PETSc's MPICH is loaded:
+
+```sh
+ls -l "${ISSM_DIR}/bin/issm.exe"
+
+ldd "${ISSM_DIR}/bin/issm.exe" \
+    | grep -E "libpetsc|libmpi|libmpifort|libstdc\+\+"
+```
+
+All MPI libraries should resolve from:
+
+```text
+${ISSM_DIR}/externalpackages/petsc/install/lib/
+```
+
+{: .highlight-title }
+> Runtime MPI errors
+>
+> If ISSM reports an error such as `undefined symbol: MPI_Type_get_envelope_c`, another MPI implementation is being loaded at runtime. Remove any Open MPI module and make sure `${PETSC_PREFIX}/lib` appears before other MPI library directories in `LD_LIBRARY_PATH`.
+
+## Alternative installation: Intel nodes
+
+The Intel installation is optional. Use a separate checkout, such as:
+
+```text
+/path/to/ISSM-intel
+```
+
+Load the Intel environment:
+
+```sh
+module purge
+module load intel/oneapi/24.0
+module load gcc/13.2.0
+module load cmake/3.31.6
+
+export ISSM_DIR=/path/to/ISSM-intel
+export PETSC_PREFIX="${ISSM_DIR}/externalpackages/petsc/install"
+export MKL_LIBDIR="/share/apps/oneapi24.0/mkl/latest/lib/intel64"
+
+source "${ISSM_DIR}/etc/environment.sh"
+
+export PATH="${PETSC_PREFIX}/bin:${PATH}"
+export LD_LIBRARY_PATH="${PETSC_PREFIX}/lib:${MKL_LIBDIR}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
+```
+
+Install PETSc using the same procedure described above, but from the Intel ISSM checkout. Then create `${ISSM_DIR}/configure.sh` with:
+
+```sh
+#!/bin/bash
+set -eu
+
 PETSC_DIR="${ISSM_DIR}/externalpackages/petsc/install"
 MKL_LIBDIR="/share/apps/oneapi24.0/mkl/latest/lib/intel64"
 
-# Use the MPICH compiler wrappers installed together with PETSc.
 export CC="${PETSC_DIR}/bin/mpicc"
 export CXX="${PETSC_DIR}/bin/mpicxx"
 export FC="${PETSC_DIR}/bin/mpifort"
@@ -270,7 +375,6 @@ export CFLAGS="-g -O2 -fPIC"
 export CXXFLAGS="-g -O2 -fPIC -std=c++11"
 export FCFLAGS="-g -O2 -fPIC"
 
-# Keep PETSc's MPICH and oneMKL available during linking and at runtime.
 export PATH="${PETSC_DIR}/bin:${PATH}"
 export LD_LIBRARY_PATH="${PETSC_DIR}/lib:${MKL_LIBDIR}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
 export LDFLAGS="-Wl,-rpath,${PETSC_DIR}/lib -Wl,-rpath,${MKL_LIBDIR}"
@@ -289,34 +393,20 @@ export LDFLAGS="-Wl,-rpath,${PETSC_DIR}/lib -Wl,-rpath,${MKL_LIBDIR}"
     --enable-development
 ```
 
-Run the configuration and compilation:
+Build the Intel installation on an Intel compute node:
 
 ```sh
+cd "${ISSM_DIR}"
+autoreconf -ivf
 chmod +x configure.sh
 ./configure.sh
 make -j20
 make install
 ```
 
-Confirm that the executable was created and that PETSc's MPICH is loaded:
-
-```sh
-ls -l "${ISSM_DIR}/bin/issm.exe"
-
-ldd "${ISSM_DIR}/bin/issm.exe" \
-    | grep -E "libpetsc|libmpi|libmpifort|libmkl|libstdc\+\+"
-```
-
-All MPI libraries should resolve from:
-
-```text
-${ISSM_DIR}/externalpackages/petsc/install/lib/
-```
-
 {: .highlight-title }
-> Runtime MPI errors
->
-> If ISSM reports an error such as `undefined symbol: MPI_Type_get_envelope_c`, another MPI implementation is being loaded at runtime. Remove any Open MPI module and make sure `${PETSC_DIR}/lib` is the first MPI library directory in `LD_LIBRARY_PATH`.
+>  
+> NOTE: Do not use the Intel executable on AMD nodes or the AMD executable on Intel nodes.
 
 ## `tjhpc_settings.m`
 
@@ -324,7 +414,7 @@ On the local ISSM installation used with MATLAB, create `$ISSM_DIR/src/m/tjhpc_s
 
 ```matlab
 cluster.login = 'yourLoginID_To_HPC';
-cluster.emailname = 'yourEmailName'
+cluster.emailname = 'yourEmailName';
 cluster.codepath = '/path/to/ISSM/bin';
 cluster.executionpath = '/path/to/ISSM/execution';
 ```
@@ -340,6 +430,8 @@ The `tjhpc` cluster class must also be available as:
 ```text
 src/m/classes/clusters/tjhpc.m
 ```
+
+Set `cluster.codepath` and `cluster.executionpath` to the AMD installation unless you deliberately intend to run on Intel nodes.
 
 ## Storage
 
@@ -359,7 +451,7 @@ For example, request one node and eight CPU cores from MATLAB:
 md.cluster = tjhpc('numnodes', 1, 'cpuspernode', 8);
 ```
 
-Tongji HPC's Intel nodes provide up to 96 physical CPU cores per node. Request only the resources needed by the model, because larger node counts, longer wall times, and larger memory requests may increase queueing time.
+Use the AMD partition or AMD resource type in the Tongji job configuration unless an Intel run is specifically required. Request only the resources needed by the model, because larger node counts, longer wall times, and larger memory requests may increase queueing time.
 
 See Tongji's documentation for <a href="https://dev.tongji.edu.cn/hpc-doc/#/pages/quickStart/resourceConfig" target="_blank">resource configuration</a> and <a href="https://dev.tongji.edu.cn/hpc-doc/#/pages/quickStart/jobSubmit" target="_blank">job submission</a>.
 
