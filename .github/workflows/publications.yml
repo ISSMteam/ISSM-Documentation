@@ -34,7 +34,7 @@ jobs:
         working-directory: docs/about-issm/publications
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Generate Publications Page
         run: |
           ./bin/generate_publications_page.sh > ${{ env.TARGET }}
