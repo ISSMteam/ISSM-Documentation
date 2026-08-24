@@ -15,7 +15,8 @@ Note as well that the 'local' machine in the above case may be one that is physi
 ## Configuration and Compiling ISSM
 
 ### Dartmouth
-- <a href="./andes">Dartmouth's Andes </a>
+- <a href="./andes">Dartmouth's Andes</a>
+- <a href="./epica">Dartmouth's Epica</a>
 
 ### NASA Advanced Supercomputing (NAS)
 - <a href="./pleiades">NAS' Pleiades</a>
