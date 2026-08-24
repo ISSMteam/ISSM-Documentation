@@ -112,6 +112,10 @@ Use the following configuration script (adapt to your needs):
     --enable-development \
     --enable-debugging
 ```
+and to avoid conflicts with MATLAB's own dynamic libraries use the following alias:
+```sh
+alias ma='LD_PRELOAD=/lib/x86_64-linux-gnu/libstdc++.so.6 matlab -nodesktop -nosplash -r "addpath $ISSM_DIR/src/m/dev; devpath;"'
+```
 
 ## Installing ISSM with CoDiPack (AD)
 You will need to install the following additional packages in the below order:
