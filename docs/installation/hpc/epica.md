@@ -40,6 +40,7 @@ ssh epica
 ```
 
 ## Password-less ssh
+{% include_relative shared/sshkey.md %}
 Once you have the account, you can setup a public key authentication in order
 to avoid having to input your password for each run. You need to have a SSH
 public/private key pair. If you do not, you can create a SSH public/private key
