@@ -2,6 +2,7 @@
 title: Epica
 layout: default
 parent: HPC
+machine_name: "Epica"
 ---
 
 # Epica (hosted by EAPS)
