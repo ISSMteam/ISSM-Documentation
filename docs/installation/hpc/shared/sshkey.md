@@ -25,7 +25,7 @@ the remote machine:
 your_localhost$ scp ~/.ssh/id_rsa.pub username@your_remotehost:~
 ```
 
-Now, log onto {{ page.machine_name }} and add the content of `id_rsa.pub` to `~/.ssh/authorized_keys`:
+Now, log onto *{{ page.machine_name }}* and add the content of `id_rsa.pub` to `~/.ssh/authorized_keys`:
 ```sh
 your_remotehost$ cat ~/id_rsa.pub >> ~/.ssh/authorized_keys
 your_remotehost$ rm ~/id_rsa.pub

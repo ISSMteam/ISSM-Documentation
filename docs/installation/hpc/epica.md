@@ -42,35 +42,6 @@ ssh epica
 
 ## Password-less ssh
 {% include_relative shared/sshkey.md %}
-Once you have the account, you can setup a public key authentication in order
-to avoid having to input your password for each run. You need to have a SSH
-public/private key pair. If you do not, you can create a SSH public/private key
-pair by typing the following command on your local machine and following the
-prompts (no passphrase necessary):
-
-```sh
-your_localhost$ ssh-keygen -t rsa
-Generating public/private rsa key pair.
-Enter file in which to save the key (/Users/username/.ssh/id_rsa):RETURN
-Enter passphrase (empty for no passphrase):RETURN
-Enter same passphrase again:RETURN
-Your identification has been saved in /Users/username/.ssh/id_rsa.
-Your public key has been saved in /Users/username/.ssh/id_rsa.pub.
-```
-Two files were created: your private key `/Users/username/.ssh/id_rsa`, and the public key `/Users/username/.ssh/id_rsa.pub`.
-The private key is read-only and only for you, it is used to decrypt all correspondence encrypted with the public key.
-The contents of the public key need to be copied to `~/.ssh/authorized_keys` on your epica account:
-
-```sh
-your_localhost$ scp ~/.ssh/id_rsa.pub username@your_remotehost:~
-```
-
-Now on *epica*, copy the content of `id_rsa.pub`:
-```sh
-your_remotehost$ cat ~/id_rsa.pub >> ~/.ssh/authorized_keys
-your_remotehost$ rm ~/id_rsa.pub
-```
-If Epica complains that about `/home/mmorligh/.ssh/authorized_keys: No such file or directory`, you may need to create an `.ssh` directory first.
 
 ## Environment
 On Epica, add the following lines to ```~/.bashrc```:
