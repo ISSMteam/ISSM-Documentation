@@ -61,8 +61,9 @@ if perform(org,'Parameterization')
 	savemodel(org,md);
 end
 ```
-You can check the ids and step names by setting `'steps'` to 0 and running your
-script: it will print all the step numbers and names.
+You can check the ids and step names by running your script once and then
+execute `org` in MATLAB, or setting `'steps'` to 0 and running your script. In both cases 
+all the step numbers and names will be printed to the screen.
 
 ### Saving and loading models
 
