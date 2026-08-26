@@ -109,15 +109,15 @@ autoreconf -ivf
 Then use the following configuring script (adapting it as needed),
 ```sh
 export CFLAGS="-g -Ofast"
-export CXXFLAGS="-g -Ofast -xCORE-AVX512,CORE-AVX2 -xAVX -std=c++11"
+export CXXFLAGS="-fp-model=precise -diag-disable=15009,10441,10121"
 
 ./configure \
 	--prefix="${ISSM_DIR}" \
 	--enable-development \
 	--enable-standalone-libraries \
 	--with-wrappers=no \
-	--with-fortran-lib="-L${COMP_INTEL_ROOT}/compiler/lib/intel64_lin -lifcore -lifport -lgfortran" \
-	--with-mkl-libflags="-L${COMP_INTEL_ROOT}/mkl/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm" \
+	--with-fortran-lib="-L/nasa/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin -lifcore -lifport -lgfortran" \
+	--with-mkl-libflags="-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_blacs_sgimpt_ilp64 -lmkl_scalapack_ilp64 -lmkl_core -lpthread -lm" \
 	--with-mpi-include="${MPI_ROOT}/include" \
 	--with-mpi-libflags="-L${MPI_ROOT}/lib -lmpi" \
 	--with-blas-lapack-lib="-L${COMP_INTEL_ROOT}/mkl/lib/intel64 -lmkl_blas95_lp64 -lmkl_lapack95_lp64" \
