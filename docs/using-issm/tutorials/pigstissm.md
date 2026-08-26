@@ -2,6 +2,7 @@
 title: Pig StISSM
 layout: default
 parent: Tutorials
+math: mathjax3
 ---
 
 ## Pine Island Glacier Stochastic Forcing (StISSM)
@@ -48,25 +49,29 @@ Set `step = 3` in the `runme.m` file to execute it.
 ### Stochastic SMB Parameterization
 From here, we start to focus on the specifics of StISSM. We set up an Autoregressive Moving-Average (ARMA) model for SMB. In other words, the evolution of SMB follows the following equation:
 
-<div align="center"><img src="https://latex.codecogs.com/svg.latex? \label{eq1}
-\textit{SMB}_{t} = \mu_{t} + \sum_{i=1}^{p} \varphi_i \left(\textit{SMB}_{t-i}-\mu_{t-i}\right) + \sum_{j=1}^{q} \theta_{j} \epsilon_{y,t-j} + \epsilon_{t}" alt="Equation 1"></div>
+$$
+\textit{SMB}_{t} = \mu_{t} + \sum_{i=1}^{p} \varphi_i \left(\textit{SMB}_{t-i}-\mu_{t-i}\right) + \sum_{j=1}^{q} \theta_{j} \epsilon_{y,t-j} + \epsilon_{t}
+$$
 
-where <img src="https://latex.codecogs.com/svg.latex?\mu_{t}" alt="Equation 8"> is a deterministic function of time, <img src="https://latex.codecogs.com/svg.latex?\varphi" alt="Equation 7"> are the autoregressive (AR) coefficients, and <img src="https://latex.codecogs.com/svg.latex?\theta" alt="Equation 6"> are the moving-average coefficients (MA). The values of <img src="https://latex.codecogs.com/svg.latex?p" alt="Equation 5"> and <img src="https://latex.codecogs.com/svg.latex?q" alt="Equation 4"> are the orders of the AR and MA part of the ARMA model, respectively. The term <img src="https://latex.codecogs.com/svg.latex?\epsilon_{t}" alt="Equation 3"> is a Gaussian noise term generated at time step <img src="https://latex.codecogs.com/svg.latex?t" alt="Equation 2">.
+where $$\mu_{t}$$ is a deterministic function of time, $$\varphi$$ are the autoregressive (AR) coefficients, and $$\theta$$ are the moving-average coefficients (MA). The values of $$p$$ and $$q$$ are the orders of the AR and MA part of the ARMA model, respectively. The term $$\epsilon_{t}$$ is a Gaussian noise term generated at time step $$t$$.
 
-We define two different subdomains, with separate ARMA processes. The subdomains are separated at 1/3rd of the x-axis. For the deterministic function <img src="https://latex.codecogs.com/svg.latex?\mu" alt="Equation 9"> in Eq. (1), we use a piecewise linear function with a single breakpoint:
+We define two different subdomains, with separate ARMA processes. The subdomains are separated at 1/3rd of the x-axis. For the deterministic function $$\mu$$ in Eq. (1), we use a piecewise linear function with a single breakpoint:
 
-<div align="center"><img src="https://latex.codecogs.com/svg.latex? \label{eq2}
-\begin{cases}\mu_{t} = c_{0}+a_{0}\left(t-t_{0}\right) & \mathrm{if \:}t\leq t_{\textit{brk}}  \\\mu_{t} = c_{1}+a_{1}\left(t-t_{\textit{brk}}\right) & \mathrm{if \:} t>t_{\textit{brk}}  \\\end{cases}" alt="Equation 10"></div>
-where <img src="https://latex.codecogs.com/svg.latex?t_{0}" alt="Equation 14"> is the initial time of the ARMA model, <img src="https://latex.codecogs.com/svg.latex?t_{brk}" alt="Equation 13"> is the breakpoint (a date in time), the <img src="https://latex.codecogs.com/svg.latex?c" alt="Equation 12"> terms are constant values, and the <img src="https://latex.codecogs.com/svg.latex?a" alt="Equation 11"> terms are trends in time. All the coefficients and parameters of Eqs (1) and (2) are prescribed in the runme.m file. 
+$$
+\begin{cases}\mu_{t} = c_{0}+a_{0}\left(t-t_{0}\right) & \mathrm{if \:}t\leq t_{\textit{brk}}  \\\mu_{t} = c_{1}+a_{1}\left(t-t_{\textit{brk}}\right) & \mathrm{if \:} t>t_{\textit{brk}}  \\\end{cases}
+$$
+
+where $$t_{0}$$ is the initial time of the ARMA model, $$t_{brk}$$ is the breakpoint (a date in time), the $$c$$ terms are constant values, and the $$a$$ terms are trends in time. All the coefficients and parameters of Eqs (1) and (2) are prescribed in the runme.m file. 
 
 Next, we also define some SMB lapse rates. Lapse rates are elevation gradients of SMB. The lapse rate values must be associated with an elevation range, such that lapse rate 1 applies below elevation 1, lapse rate 2 applies between elevation 1 and elevation 2, etc.
 
 After that, we set up the covariance matrix that will define the stochastic perturbations. We use different amplitudes of variability in the two subdomains, and a moderate correlation (0.5) between the subdomains. Notice that the covariance matrix is simply computed as:
 
-<div align="center"><img src="https://latex.codecogs.com/svg.latex? \label{eq3}
-\Sigma = KCK" alt="Equation 15"></div>
+$$
+\Sigma = KCK
+$$
 
-where <img src="https://latex.codecogs.com/svg.latex?K" alt="Equation 17"> is the diagonal matrix with the individual standard deviations on the diagonal, and <img src="https://latex.codecogs.com/svg.latex?C" alt="Equation 16"> is the correlation matrix.
+where $$K$$ is the diagonal matrix with the individual standard deviations on the diagonal, and $$C$$ is the correlation matrix.
 
 The final step of the stochasticity configuration is to set up the parameterization of `md.stochasticforcing`. This only entails activating stochasticity, specifying which model field is stochastic (SMBarma here), the time step of stochasticity (the frequency at which random perturbations are generated), and assigning the covariance matrix.
 Set `step = 4` in the `runme.m` file to execute this step.

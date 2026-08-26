@@ -3,6 +3,7 @@ title: Dakota
 layout: default
 parent: Advanced Features
 grand_parent: Using ISSM
+math: mathjax3
 ---
 
 ## Quantification of Margins and Uncertainties (QMU) with Dakota
@@ -15,57 +16,61 @@ QMU analyses are carried out on partitions of the model domain. Each partition c
 #### Sensitivity
 Sensitivity, or local reliability, analysis computes the local derivative of diagnostics with respect to model inputs. It is used to assess the spatial distribution of this derivative, for the purpose of spatially ranking the influence of various inputs.
 
-Given a response <img src="https://latex.codecogs.com/svg.latex?r" alt="Equation 2"> that is a function of multiple variables <img src="https://latex.codecogs.com/svg.latex?x_i" alt="Equation 1"> in a local reliability analysis [<a href="#references">*Coleman1999*</a>], we have:
+Given a response $$r$$ that is a function of multiple variables $$x_i$$ in a local reliability analysis [<a href="#references">*Coleman1999*</a>], we have:
 
-<div align="center"><img src="https://latex.codecogs.com/svg.latex?
-r=r(x_1,x_2,...,x_n)" alt="Equation 3"></div>
+$$
+r=r(x_1,x_2,...,x_n)
+$$
+
 where the sensitivities are defined as:
 
-<div align="center"><img src="https://latex.codecogs.com/svg.latex?
-\theta_i=\frac{\delta r}{\delta x_i}" alt="Equation 4"></div>
+$$
+\theta_i=\frac{\delta r}{\delta x_i}
+$$
 
-If each of the variables is independent, the error propagation equation defines the variance of <img src="https://latex.codecogs.com/svg.latex?r" alt="Equation 5"> as:
+If each of the variables is independent, the error propagation equation defines the variance of $$r$$ as:
 
-<div align="center"><img src="https://latex.codecogs.com/svg.latex?
-\sigma_r^2=\sum_{i=1}^n\theta_i^2 \sigma_i^2" alt="Equation 6"></div>
-where <img src="https://latex.codecogs.com/svg.latex?\sigma_i" alt="Equation 10"> is the standard deviation of <img src="https://latex.codecogs.com/svg.latex?x_i" alt="Equation 9"> and <img src="https://latex.codecogs.com/svg.latex?\sigma_r" alt="Equation 8"> is the standard deviation of <img src="https://latex.codecogs.com/svg.latex?r" alt="Equation 7">.
+$$
+\sigma_r^2=\sum_{i=1}^n\theta_i^2 \sigma_i^2
+$$
 
-**Importance factors** for each <img src="https://latex.codecogs.com/svg.latex?x_i" alt="Equation 13"> are determined by dividing the error propagation equation by <img src="https://latex.codecogs.com/svg.latex?\sigma" alt="Equation 12"><sub>r</sub><a href="#footnotes" target="_top"><sup>2</sup></a>. Note that the mean of the response is taken to be the response for the nominal value of each variable <img src="https://latex.codecogs.com/svg.latex?x_i" alt="Equation 11">.
+where $$\sigma_i$$ is the standard deviation of $$x_i$$ and $$\sigma_r$$ is the standard deviation of $$r$$.
 
-Sensitivities are computed from the function evaluations using finite differences. The finite difference step size is user-defined by a parameter in the ISSM model. This analysis imposes the finite-difference step size as a small perturbation to <img src="https://latex.codecogs.com/svg.latex?x_i" alt="Equation 14">. The resulting sensitivities quantify
-how the location of errors impact a specified model diagnostic (<img src="https://latex.codecogs.com/svg.latex?r" alt="Equation 15">).
+**Importance factors** for each $$x_i$$ are determined by dividing the error propagation equation by $$\sigma$$<sub>r</sub><a href="#footnotes" target="_top"><sup>2</sup></a>. Note that the mean of the response is taken to be the response for the nominal value of each variable $$x_i$$.
 
-First, Dakota calls one ISSM model solve for an un-perturbed control simulation. Then, for every <img src="https://latex.codecogs.com/svg.latex?x_i" alt="Equation 21">, ISSM perturbs each partition one at a time, and calls an ISSM solve for each. At every partition, <img src="https://latex.codecogs.com/svg.latex?p" alt="Equation 20">, a resulting sensitivity, <img src="https://latex.codecogs.com/svg.latex?\theta_i(p)" alt="Equation 19"> is assigned. Each <img src="https://latex.codecogs.com/svg.latex?\theta_i" alt="Equation 18"> (defined above) is dependent on how much the outcome diverges from the control run. The result is a spatial mapping of sensitivities and importance factors of <img src="https://latex.codecogs.com/svg.latex?r" alt="Equation 17"> for every <img src="https://latex.codecogs.com/svg.latex?x_i" alt="Equation 16">. For Transient solves, sensitivities are determined only at the completion of a forward run.
+Sensitivities are computed from the function evaluations using finite differences. The finite difference step size is user-defined by a parameter in the ISSM model. This analysis imposes the finite-difference step size as a small perturbation to $$x_i$$. The resulting sensitivities quantify
+how the location of errors impact a specified model diagnostic ($$r$$).
 
-**Method inputs**: <img src="https://latex.codecogs.com/svg.latex?\sigma_i" alt="Equation 23"> for each <img src="https://latex.codecogs.com/svg.latex?x_i" alt="Equation 22"> at every partition and the finite difference step
+First, Dakota calls one ISSM model solve for an un-perturbed control simulation. Then, for every $$x_i$$, ISSM perturbs each partition one at a time, and calls an ISSM solve for each. At every partition, $$p$$, a resulting sensitivity, $$\theta_i(p)$$ is assigned. Each $$\theta_i$$ (defined above) is dependent on how much the outcome diverges from the control run. The result is a spatial mapping of sensitivities and importance factors of $$r$$ for every $$x_i$$. For Transient solves, sensitivities are determined only at the completion of a forward run.
 
-**Method outputs**: sensitivities (<img src="https://latex.codecogs.com/svg.latex?\theta_i" alt="Equation 25">) and importance factors for each <img src="https://latex.codecogs.com/svg.latex?x_i" alt="Equation 24"> at every partition
+**Method inputs**: $$\sigma_i$$ for each $$x_i$$ at every partition and the finite difference step
+
+**Method outputs**: sensitivities ($$\theta_i$$) and importance factors for each $$x_i$$ at every partition
 
 #### Sampling
-Sampling analysis quantifies how input errors propagate through a model to impact a specified diagnostic, <img src="https://latex.codecogs.com/svg.latex?r" alt="Equation 26">. It is a Monte-Carlo-style method that relies upon repeated execution (samples) of the same model, where input variables are perturbed by different amounts at each partition for each individual run. Resulting statistics (mean, standard deviations, cumulative distribution functions) are calculated after the specified number of samples are run.
+Sampling analysis quantifies how input errors propagate through a model to impact a specified diagnostic, $$r$$. It is a Monte-Carlo-style method that relies upon repeated execution (samples) of the same model, where input variables are perturbed by different amounts at each partition for each individual run. Resulting statistics (mean, standard deviations, cumulative distribution functions) are calculated after the specified number of samples are run.
 
-For a particular sample, every <img src="https://latex.codecogs.com/svg.latex?x_i" alt="Equation 27"> is perturbed by a different amount at each partition. Input values are perturbed randomly, per partition, within a prescribed range (described by a statistical distribution, e.g. normal or uniform). Once the variables are perturbed, the ISSM model solve is called.
+For a particular sample, every $$x_i$$ is perturbed by a different amount at each partition. Input values are perturbed randomly, per partition, within a prescribed range (described by a statistical distribution, e.g. normal or uniform). Once the variables are perturbed, the ISSM model solve is called.
 
-**Distributions**: A normal distribution for a particular partition is fully described by an average, <img src="https://latex.codecogs.com/svg.latex?\mu_i" alt="Equation 31">, and a standard deviation, <img src="https://latex.codecogs.com/svg.latex?\sigma_i" alt="Equation 30">. By definition, normal distributions cluster around <img src="https://latex.codecogs.com/svg.latex?\mu_i" alt="Equation 29"> and decrease towards the tails, in a Gaussian bell curve ranging from <img src="https://latex.codecogs.com/svg.latex?\mu_i\pm 3\sigma_i" alt="Equation 28">. A uniform distribution places greater emphasis on values closer to the tails, where probability of occurrence is equal for any given value within a specified minimum and maximum value.
+**Distributions**: A normal distribution for a particular partition is fully described by an average, $$\mu_i$$, and a standard deviation, $$\sigma_i$$. By definition, normal distributions cluster around $$\mu_i$$ and decrease towards the tails, in a Gaussian bell curve ranging from $$\mu_i\pm 3\sigma_i$$. A uniform distribution places greater emphasis on values closer to the tails, where probability of occurrence is equal for any given value within a specified minimum and maximum value.
 
-If a user chooses so, any <img src="https://latex.codecogs.com/svg.latex?x_i" alt="Equation 33"> can be treated as a scaled value. In this case, the distribution definitions are given in percentages, relative to a <img src="https://latex.codecogs.com/svg.latex?\mu_i" alt="Equation 32"> value of 1.
+If a user chooses so, any $$x_i$$ can be treated as a scaled value. In this case, the distribution definitions are given in percentages, relative to a $$\mu_i$$ value of 1.
 
-For example, at the beginning of a particular sample for a scaled <img src="https://latex.codecogs.com/svg.latex?x_i" alt="Equation 39">, Dakota chooses a random percentage perturbation <img src="https://latex.codecogs.com/svg.latex?P_i(p)" alt="Equation 38"> at each partition <img src="https://latex.codecogs.com/svg.latex?p" alt="Equation 37">. The value of the random percentage will fall within the defined error distribution, and the new value of <img src="https://latex.codecogs.com/svg.latex?x_i" alt="Equation 36"> for duration of this sample run is perturbed by <img src="https://latex.codecogs.com/svg.latex?x_iP_i(p)" alt="Equation 35">. The generation algorithm for <img src="https://latex.codecogs.com/svg.latex?P_i(p)" alt="Equation 34"> is user-specified (e.g. Monte-Carlo or LHS [<a href="#references">*Swiler2004*</a>]).
+For example, at the beginning of a particular sample for a scaled $$x_i$$, Dakota chooses a random percentage perturbation $$P_i(p)$$ at each partition $$p$$. The value of the random percentage will fall within the defined error distribution, and the new value of $$x_i$$ for duration of this sample run is perturbed by $$x_iP_i(p)$$. The generation algorithm for $$P_i(p)$$ is user-specified (e.g. Monte-Carlo or LHS [<a href="#references">*Swiler2004*</a>]).
 
-In the case where the user wants to sample <img src="https://latex.codecogs.com/svg.latex?n" alt="Equation 43"> variables at the same time, a <img src="https://latex.codecogs.com/svg.latex?P_i(p)" alt="Equation 42"> is chosen separately for each <img src="https://latex.codecogs.com/svg.latex?x_i" alt="Equation 41"> before a particular sample run. Resulting statistics reflect the combined effects of the errors due to <img src="https://latex.codecogs.com/svg.latex?x_1,x_2,...,x_n" alt="Equation 40">.
+In the case where the user wants to sample $$n$$ variables at the same time, a $$P_i(p)$$ is chosen separately for each $$x_i$$ before a particular sample run. Resulting statistics reflect the combined effects of the errors due to $$x_1,x_2,...,x_n$$.
 
-For Transient simulations, <img src="https://latex.codecogs.com/svg.latex?P_i(p)" alt="Equation 44"> remains constant for the duration of a particular sample run. Note that statistics are determined only at the completion of each forward run.
+For Transient simulations, $$P_i(p)$$ remains constant for the duration of a particular sample run. Note that statistics are determined only at the completion of each forward run.
 
-**Method inputs**: The number of samples to be run and for every <img src="https://latex.codecogs.com/svg.latex?x_i" alt="Equation 45">, a definition of error distribution (error ranges may vary spatially by partition)
+**Method inputs**: The number of samples to be run and for every $$x_i$$, a definition of error distribution (error ranges may vary spatially by partition)
 
-**Method outputs**: For <img src="https://latex.codecogs.com/svg.latex?r" alt="Equation 47">, mean, standard deviations, and cumulative distribution functions resulting from errors due to <img src="https://latex.codecogs.com/svg.latex?x_1,x_2,...,x_n" alt="Equation 46">
+**Method outputs**: For $$r$$, mean, standard deviations, and cumulative distribution functions resulting from errors due to $$x_1,x_2,...,x_n$$
 
 ### Model parameters
 The parameters relevant to uncertainty quantification can be displayed by typing:
 ````
 >> md.qmu
 ````
-
 
 - `md.qmu.isdakota`: 1 to activate qmu analysis, or else 0
 - `md.qmu.variables`: arrays of each `variable` class
@@ -179,7 +184,7 @@ For more options see:
 ````
 
 ### Running a simulation
-Note: You must set your stress balance tolerance to <img src="https://latex.codecogs.com/svg.latex?10^{-5}" alt="Equation 48"> or smaller in order to avoid the accumulation of numerical residuals between consecutive samples:
+Note: You must set your stress balance tolerance to $$10^{-5}$$ or smaller in order to avoid the accumulation of numerical residuals between consecutive samples:
 ````
 >> md.stressbalance.restol = 10^-5;
 ````
@@ -190,7 +195,6 @@ To initiate the analysis of choice, use the following commands:
 >> md = solve(md, 'Masstransport');
 ````
 The first argument is the model, the second is the nature of the simulation one wants to run.
-
 
 ## References
 - H. W. Coleman and W. G. Steele Jr.

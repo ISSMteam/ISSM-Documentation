@@ -2,6 +2,7 @@
 title: SHAKTI Single Moulin
 layout: default
 parent: Tutorials
+math: mathjax3
 ---
 
 ## Subglacial Channel Formation From a Single Moulin (SHAKTI)
@@ -38,7 +39,7 @@ plotmodel(md, ...
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/shakti/moulin_initial.png" alt="Figure 2: moulin_initial"></div>
 
 ### Hydrology solution
-In step 3, we specify which machine we want to run the model on, including number of processors to be used, define the model time step, final time, and prescribe the moulin inputs. In this example, we put a steady moulin input of 4 m<img src="https://latex.codecogs.com/svg.latex?^3" alt="Equation 2"> s<img src="https://latex.codecogs.com/svg.latex?^{-1}" alt="Equation 1"> at the center of the domain (x=500 m, y=500 m). We also impose a no-flux "Type 2" (Neumann) boundary condition at all boundaries (except the outflow, where we have our Dirichlet condition defined already in step 2).
+In step 3, we specify which machine we want to run the model on, including number of processors to be used, define the model time step, final time, and prescribe the moulin inputs. In this example, we put a steady moulin input of 4 m$$^3$$ s$$^{-1}$$ at the center of the domain (x=500 m, y=500 m). We also impose a no-flux "Type 2" (Neumann) boundary condition at all boundaries (except the outflow, where we have our Dirichlet condition defined already in step 2).
 
 Now that the set up is complete, we can run the model:
 ````

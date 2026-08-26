@@ -2,6 +2,7 @@
 title: AMR
 layout: default
 parent: Tutorials
+math: mathjax3
 ---
 
 ## Adaptive Mesh Refinement (AMR)
@@ -26,7 +27,7 @@ Run step 1 in `runme.m` to generate an unstructured coarse mesh on a 800 x 50 km
 ### Parameterization
 Run step 2 in `runme.m` to define the model parameters. First we call on standard parameters defined in the `mismip.par` file (bed and ice geometry, sliding velocity, material properties, etc.). Then we define AMR-specific parameters to run an AMR transient simulation (resolution at the grounding line, distance to the grounding line used as criterion, ratio between two consecutive edges, etc.).
 
-The MISMIP3d domain is initially set up as a 100 m thick slab of ice. The MISMIP3d bed is defined as <img src="https://latex.codecogs.com/svg.latex?r=-100-x/1000" alt="Equation 5"> (in [m], negative if below sea level). The surface mass balance is constant over the domain and equal to 0.5 m/yr. A Weertman-type friction law is applied to the grounded ice. The basal friction coefficient is uniform over the domain and equal to <img src="https://latex.codecogs.com/svg.latex?10^{7}\,\textrm{Pa}\,\textrm{m}^{-1/3}\textrm{s}^{1/3}" alt="Equation 4">. The ice viscosity parameter, <img src="https://latex.codecogs.com/svg.latex?B" alt="Equation 3"> (<img src="https://latex.codecogs.com/svg.latex?=A^{1/n}" alt="Equation 2">) is equal to <img src="https://latex.codecogs.com/svg.latex?2.15 \, \times \, 10^{8}\,\textrm{Pa}\,\textrm{s}^{-1/3}" alt="Equation 1">.
+The MISMIP3d domain is initially set up as a 100 m thick slab of ice. The MISMIP3d bed is defined as $$r=-100-x/1000$$ (in [m], negative if below sea level). The surface mass balance is constant over the domain and equal to 0.5 m/yr. A Weertman-type friction law is applied to the grounded ice. The basal friction coefficient is uniform over the domain and equal to $$10^{7}\,\textrm{Pa}\,\textrm{m}^{-1/3}\textrm{s}^{1/3}$$. The ice viscosity parameter, $$B$$ ($$=A^{1/n}$$) is equal to $$2.15 \, \times \, 10^{8}\,\textrm{Pa}\,\textrm{s}^{-1/3}$$.
 
 To look at the initial ice surface, you can plot it in MATLAB:
 ````

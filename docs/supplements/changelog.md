@@ -3,6 +3,7 @@ title: Changelog
 layout: default
 parent: Supplements
 nav_order: 3
+math: mathjax3
 ---
 
 # Changelog
@@ -69,7 +70,7 @@ Technical release, no other major change.
   - `md.mask.ocean_levelset < 0` and `md.mask.ice_levelset < 0` : floating ice
   Old models are automatically converted to this new convention. Make sure to update your parameter files (you only need to rename `md.mask.groundedice_levelset` to `md.mask.ocean_levelset`, no change of sign required).
 
-- For the Schoof friction law, we now use <img src="https://latex.codecogs.com/svg.latex?C^2" alt="Equation 2"> instead of <img src="https://latex.codecogs.com/svg.latex?C" alt="Equation 1"> so make sure to take the square root of `md.friction.C` if you are loading an old model.
+- For the Schoof friction law, we now use $$C^2$$ instead of $$C$$ so make sure to take the square root of `md.friction.C` if you are loading an old model.
 ### External packages
 
 - Added support for PETSc 3.12, 3.13 and 3.14. MPICH is now installed through PETSc
@@ -148,7 +149,7 @@ Technical release, no other major change.
 - Added new anisotropic rheology law ESTAR (publication in preparation)
 ### Important bug fix
 
-- For flowline models, the SSA and HO effective strain rates were not accounting for <img src="https://latex.codecogs.com/svg.latex?\dot{\varepsilon}_{zz}" alt="Equation 3">. This is now fixed.
+- For flowline models, the SSA and HO effective strain rates were not accounting for $$\dot{\varepsilon}_{zz}$$. This is now fixed.
 ### Other
 
 - **NOTE**: All Enums have been removed from MATLAB and python. When you want to call `solve`, you now need to replace the Enum by one of the following strings:

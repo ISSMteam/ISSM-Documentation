@@ -2,6 +2,7 @@
 title: Basal Melt
 layout: default
 parent: Parameterization
+math: mathjax3
 ---
 
 ## Basal Melt
@@ -9,15 +10,16 @@ parent: Parameterization
 This model is described in [<a href="#references">*Reese2018*</a>] and [<a href="#references">*Pelle2019*</a>]. It consists of calculating basal melt rates under ice shelves based only on far field ocean temperature and salinity.
 
 #### PICO
-PICO is a box model of ocean circulation under ice shelf cavities. Each ice shelf is divided into a set of boxes, and the temperature (<img src="https://latex.codecogs.com/svg.latex?T_k" alt="Equation 2">) and salinity (<img src="https://latex.codecogs.com/svg.latex?S_k" alt="Equation 1">) of each box is given by:
+PICO is a box model of ocean circulation under ice shelf cavities. Each ice shelf is divided into a set of boxes, and the temperature ($$T_k$$) and salinity ($$S_k$$) of each box is given by:
 
-<div align="center"><img src="https://latex.codecogs.com/svg.latex?
-\begin{array}{l c l}\displaystyle q\left(T_{k-1} - T_k\right) - A_k m_k \frac{\rho_i}{\rho_w} \frac{L}{c_p}& =& 0\\\\q\left(S_{k-1} - S_k\right) - A_k m_k S_k & =& 0\end{array}" alt="Equation 3"></div>
+$$
+\begin{array}{l c l}\displaystyle q\left(T_{k-1} - T_k\right) - A_k m_k \frac{\rho_i}{\rho_w} \frac{L}{c_p}& =& 0\\\\q\left(S_{k-1} - S_k\right) - A_k m_k S_k & =& 0\end{array}
+$$
 where:
 
-- <img src="https://latex.codecogs.com/svg.latex?A_k" alt="Equation 5"> is the surface area of box <img src="https://latex.codecogs.com/svg.latex?k" alt="Equation 4">
-- <img src="https://latex.codecogs.com/svg.latex?m_k" alt="Equation 7"> is the melt rate in box <img src="https://latex.codecogs.com/svg.latex?k" alt="Equation 6">
-- <img src="https://latex.codecogs.com/svg.latex?q = C \left(\rho_0 - \rho_1\right)" alt="Equation 8"> is the strength of the overturning circulation
+- $$A_k$$ is the surface area of box $$k$$
+- $$m_k$$ is the melt rate in box $$k$$
+- $$q = C \left(\rho_0 - \rho_1\right)$$ is the strength of the overturning circulation
 
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/parameterization/basal-melt/pico.png" alt="Figure 1: pico"></div><span style="display:block;width:100%;text-align:center"><small>Schematic view of the PICO model (taken from [<a href="#references">*Reese2018*</a>]).</small></span>
@@ -39,7 +41,7 @@ The parameters relevant to the calculation can be displayed by running:
 - `md.basalforcings.num_basins`: number of basins the model domain is partitioned into [unitless]
 - `md.basalforcings.basin_id`: basin number assigned to each node [unitless]
 - `md.basalforcings.maxboxcount`: maximum number of boxes initialized under all ice shelves
-- `md.basalforcings.overturning_coeff`: overturning strength [<img src="https://latex.codecogs.com/svg.latex?m^3" alt="Equation 9">/s]
+- `md.basalforcings.overturning_coeff`: overturning strength [$$m^3$$/s]
 - `md.basalforcings.gamma_T`: turbulent temperature exchange velocity [m/s]
 - `md.basalforcings.farocean_temperature`: depth-averaged ocean temperature in front of the ice shelf for basin i [K]
 - `md.basalforcings.farocean_salinity`: depth-averaged ocean salinity in front of the ice shelf for basin i [psu]

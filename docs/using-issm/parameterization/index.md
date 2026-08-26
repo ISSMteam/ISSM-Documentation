@@ -12,6 +12,5 @@ has_toc: false
  - <a href="smb">Surface Mass Balance (SMB)</a>
  - <a href="friction">Basal Friction</a>
  - <a href="calving">Calving</a>
- - <a href="levelset">Level Set (Ice Front Migration)</a>
  - <a href="basal-melt">Basal Melt</a>
  - <a href="estar">Empirical Scalar Tertiary Anisotropy Regime (ESTAR)</a>

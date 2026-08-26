@@ -2,6 +2,7 @@
 title: Pine Island
 layout: default
 parent: Tutorials
+math: mathjax3
 ---
 
 ## Modeling Pine Island Glacier
@@ -106,14 +107,15 @@ Now, change the `runme.m` file as before, and run step 3 to perform the paramete
 ### Inversion of basal friction
 The friction coefficient is inferred from the surface velocity using the following friction law:
 
-<div align="center"><img src="https://latex.codecogs.com/svg.latex?
-\mathbf{ \tau }_b = -\beta^{2} N^r \|\mathbf{v_b}\|^{s-1}\mathbf{v_b}" alt="Equation 1"></div>
+$$
+\mathbf{ \tau }_b = -\beta^{2} N^r \|\mathbf{v_b}\|^{s-1}\mathbf{v_b}
+$$
 
-- <img src="https://latex.codecogs.com/svg.latex?\mathbf{ \tau }_b" alt="Equation 2"> : Basal drag
-- <img src="https://latex.codecogs.com/svg.latex?N" alt="Equation 3">: Effective pressure
-- <img src="https://latex.codecogs.com/svg.latex?v_b" alt="Equation 4">: Basal velocity (equal to surface in SSA approximation)
-- <img src="https://latex.codecogs.com/svg.latex?r" alt="Equation 6">: Exponent (equals <img src="https://latex.codecogs.com/svg.latex?q/p" alt="Equation 5"> of the parameter file)
-- <img src="https://latex.codecogs.com/svg.latex?s" alt="Equation 8">: Exponent (equals <img src="https://latex.codecogs.com/svg.latex?1/p" alt="Equation 7"> of the parameter file)
+- $$\mathbf{ \tau }_b$$ : Basal drag
+- $$N$$: Effective pressure
+- $$v_b$$: Basal velocity (equal to surface in SSA approximation)
+- $$r$$: Exponent (equals $$q/p$$ of the parameter file)
+- $$s$$: Exponent (equals $$1/p$$ of the parameter file)
 
 The procedure for the inversion is as follows:
 

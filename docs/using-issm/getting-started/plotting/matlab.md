@@ -3,6 +3,7 @@ title: Plotting in MATLAB
 layout: default
 parent: Plotting
 nav_order: 1
+math: mathjax3
 ---
 
 ## Plotting in MATLAB
@@ -174,8 +175,9 @@ Same as standard <a href="http://www.mathworks.com/help/techdoc/ref/xlabel.html"
 #### basaldrag
 The special plot `'basal_drag'` displays the norm of the basal drag friction in kPa following the formula:
 
-<div align="center"><img src="https://latex.codecogs.com/svg.latex?
-\boldsymbol{\tau}_b = -k^2 N^r \|{\bf v}\|^{s-1} {\bf v}_b" alt="Equation 1"></div>
+$$
+\boldsymbol{\tau}_b = -k^2 N^r \|{\bf v}\|^{s-1} {\bf v}_b
+$$
 Basal drag relies on the velocity provided in `md.initialization`. The x and y components of the basal drag can be displayed with the `'basal_dragx'` or `'basal_dragy'` special plots:
 ```m
 >> plotmodel(md, 'data', 'basal_drag')
@@ -194,8 +196,9 @@ The special plot `'BC'` displays all boundary conditions (Neumann and Dirichlet)
 <div style="display:flow-root"><img style="float:left;" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/BC.png" alt="Figure 12: BC"></div>#### driving\_stress
 The special plot `'driving_stress'` displays the driving stress in kPa following the formula:
 
-<div align="center"><img src="https://latex.codecogs.com/svg.latex?
-\boldsymbol{\tau}_d = \rho g H\;\nabla s\label{plotspecial_driving_stress}" alt="Equation 2"></div>
+$$
+\boldsymbol{\tau}_d = \rho g H\;\nabla s
+$$
 ```m
 >> plotmodel(md, 'data', 'driving_stress')
 ```

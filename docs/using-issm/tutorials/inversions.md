@@ -2,6 +2,7 @@
 title: Inversions
 layout: default
 parent: Tutorials
+math: mathjax3
 ---
 
 ## Inversions
@@ -12,15 +13,17 @@ parent: Tutorials
 - Understand the limitations of inversions
 
 ### Introduction
-Several model input parameters, such as the ice rigidity <img src="https://latex.codecogs.com/svg.latex?B" alt="Equation 1"> (`md.materials.rheology_B`) and basal friction <img src="https://latex.codecogs.com/svg.latex?\alpha" alt="Equation 2"> (`md.friction.coefficient`), are difficult to measure remotely and are critical controls on ice dynamics.
+Several model input parameters, such as the ice rigidity $$B$$ (`md.materials.rheology_B`) and basal friction $$\alpha$$ (`md.friction.coefficient`), are difficult to measure remotely and are critical controls on ice dynamics.
 
 To get a good guess of what these parameters are, we use **inversions**. Inversions consist in inferring unknown parameters using additional observations. Here, we use surface velocities to infer our unknown input parameters, by minimizing the misfit between the observed and modeled velocities.
 
 For example, our cost function could be:
 
-<div align="center"><img src="https://latex.codecogs.com/svg.latex?
-{\mathcal J\left({\bf v}\right)}=\int_{S} \dfrac{1}{2}\left(\left(v_x-v_x^{\text{obs}}\right)^{2}+\left(v_y-v_y^{\text{obs}}\right)^{2}\right) dS" alt="Equation 3"></div>
-And so we would optimize our unknown model input to minimize the cost function <img src="https://latex.codecogs.com/svg.latex?{\mathcal J}" alt="Equation 4">.
+$$
+{\mathcal J\left({\bf v}\right)}=\int_{S} \dfrac{1}{2}\left(\left(v_x-v_x^{\text{obs}}\right)^{2}+\left(v_y-v_y^{\text{obs}}\right)^{2}\right) dS
+$$
+
+And so we would optimize our unknown model input to minimize the cost function $${\mathcal J}$$.
 
 Inversions were first introduced to glaciology by [<a href="#references">*MacAyeal1993a*</a>] for an SSA model, and extended since to 3D models for other model parameters.
 
@@ -31,28 +34,30 @@ First, go to `<ISSM_DIR>/examples/Inversion/` and start MATLAB. We will start by
 ````
 >> runme
 ````
-You will see on the left our prescribed rigidity, <img src="https://latex.codecogs.com/svg.latex?B" alt="Equation 6">, and to the right the calculated velocities. We choose a pattern with 2 distinct values for <img src="https://latex.codecogs.com/svg.latex?B" alt="Equation 5"> for the upper left region, and stiffer ice for the lower right, with a sharp transition.
+You will see on the left our prescribed rigidity, $$B$$, and to the right the calculated velocities. We choose a pattern with 2 distinct values for $$B$$ for the upper left region, and stiffer ice for the lower right, with a sharp transition.
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step1.png" alt="Figure 1: step1"></div>In the next step, we are going to change the rigidity to something uniform, use our previously calculated velocities (from step 1) as observations, and see if we can recover that initial pattern that was used to generate the observations.
 
 #### Step 2: Initial guess and initial velocity
-We now change the rigidity, <img src="https://latex.codecogs.com/svg.latex?B" alt="Equation 7">, and make it uniform. The results of the previous step are taken as observations (but we will only use them in step 3). Open `runme.m` and set `step = 2`. Save the file and execute step 2 in MATLAB as above.
+We now change the rigidity, $$B$$, and make it uniform. The results of the previous step are taken as observations (but we will only use them in step 3). Open `runme.m` and set `step = 2`. Save the file and execute step 2 in MATLAB as above.
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step2.png" alt="Figure 2: step2"></div>We now see that the left panel is constant, and the velocity is symmetrical. This is our initial guess for <img src="https://latex.codecogs.com/svg.latex?B" alt="Equation 9"> and our initial modeled velocity. In the next step, we are going to tune <img src="https://latex.codecogs.com/svg.latex?B" alt="Equation 8">, so that the modeled velocity is as close as possible to the velocity of step 1.
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step2.png" alt="Figure 2: step2"></div>We now see that the left panel is constant, and the velocity is symmetrical. This is our initial guess for $$B$$ and our initial modeled velocity. In the next step, we are going to tune $$B$$, so that the modeled velocity is as close as possible to the velocity of step 1.
 
 #### Step 3: Inverting for B
-Here, we perform the inversion of <img src="https://latex.codecogs.com/svg.latex?B" alt="Equation 10">. Open `runme.m` and set the step as `step = 3`.
+Here, we perform the inversion of $$B$$. Open `runme.m` and set the step as `step = 3`.
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step3.png" alt="Figure 3: step3"></div>The general pattern is right (stiffer ice in the lower right), but it is noisy. Inverse problems are ill-posed: a solution might not exist, might not be unique, and might not depend continuously on input data. One of the consequences is that the inferred pattern for <img src="https://latex.codecogs.com/svg.latex?B" alt="Equation 11"> is not smooth, and these wiggles are **not** physical. Adding regularization that penalizes wiggles in the control parameter stabilizes the inversion.
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step3.png" alt="Figure 3: step3"></div>The general pattern is right (stiffer ice in the lower right), but it is noisy. Inverse problems are ill-posed: a solution might not exist, might not be unique, and might not depend continuously on input data. One of the consequences is that the inferred pattern for $$B$$ is not smooth, and these wiggles are **not** physical. Adding regularization that penalizes wiggles in the control parameter stabilizes the inversion.
 
 #### Step 4: Adding regularization
 Here, we would like to add a term of regularization to our cost function:
 
-<div align="center"><img src="https://latex.codecogs.com/svg.latex?
-{\mathcal J\left(B\right)}=\int_{S} w_1 \dfrac{1}{2}\left(\left(v_x-v_x^{\text{obs}}\right)^{2}+\left(v_y-v_y^{\text{obs}}\right)^{2}\right) dS+\int_{b} w_2 \dfrac{1}{2}\|\nabla B \|^{2}db" alt="Equation 12"></div>
-The second term, known as Tikhonov regularization, penalizes strong gradients in <img src="https://latex.codecogs.com/svg.latex?B" alt="Equation 14">. Since the inversion tries to minimize our cost function <img src="https://latex.codecogs.com/svg.latex?\mathcal J" alt="Equation 13">, the optimization algorithm will try to also reduce the second term.
+$$
+{\mathcal J\left(B\right)}=\int_{S} w_1 \dfrac{1}{2}\left(\left(v_x-v_x^{\text{obs}}\right)^{2}+\left(v_y-v_y^{\text{obs}}\right)^{2}\right) dS+\int_{b} w_2 \dfrac{1}{2}\|\nabla B \|^{2}db
+$$
 
-<img src="https://latex.codecogs.com/svg.latex?w_1" alt="Equation 18"> and <img src="https://latex.codecogs.com/svg.latex?w_2" alt="Equation 17"> are the weights associated with each component of the cost function. To have more regularization, one should increase <img src="https://latex.codecogs.com/svg.latex?w_2" alt="Equation 16"> (or decrease <img src="https://latex.codecogs.com/svg.latex?w_1" alt="Equation 15">), and vice versa.
+The second term, known as Tikhonov regularization, penalizes strong gradients in $$B$$. Since the inversion tries to minimize our cost function $$\mathcal J$$, the optimization algorithm will try to also reduce the second term.
+
+$$w_1$$ and $$w_2$$ are the weights associated with each component of the cost function. To have more regularization, one should increase $$w_2$$ (or decrease $$w_1$$), and vice versa.
 
 Set `step = 4` in the `runme.m` file and execute it. Your results should now look like this:
 
@@ -64,7 +69,7 @@ We would like to do the same twin experiment here, but invert for basal friction
 
 1. The mask is now all grounded
 1. Increase bed (`md.geometry.base`) and surface elevation (`md.geometry.surface`) by 100 meters
-1. <img src="https://latex.codecogs.com/svg.latex?B" alt="Equation 19"> (`md.materials.rheology_B`) is now uniform = 1.8x10<a href="#footnotes" target="_top"><sup>8</sup></a>
+1. $$B$$ (`md.materials.rheology_B`) is now uniform = 1.8x10<a href="#footnotes" target="_top"><sup>8</sup></a>
 1. Friction coefficient: 50, and 10 for 400,000`<`x`<`600,000
 1. Change the `plotmodel` command and plot `md.friction.coefficient` instead, between 0 and 100.
 After running step 1 again, you should get the following figure.
@@ -327,15 +332,17 @@ plotmodel(md, 'data', md.inversion.vel_obs + 1, 'data', md.results.Stressbalance
 #### Changing the cost function
 We want the cost function to include an additional term:
 
-<div align="center"><img src="https://latex.codecogs.com/svg.latex?
-{\mathcal J\left({\bf v}\right)}=\int_{S} w_1 \dfrac{1}{2}\left(\left(v_x-v_x^{\text{obs}}\right)^{2}+\left(v_y-v_y^{\text{obs}}\right)^{2}\right) dS+\int_{S} w_2 \left(\text{log}\left(\dfrac{\|{\bf v}\|+\varepsilon}{\|{\bf v}^{\text{obs}}\|+\varepsilon}\right) \right)^2 dS" alt="Equation 20"></div>
+$$
+{\mathcal J\left({\bf v}\right)}=\int_{S} w_1 \dfrac{1}{2}\left(\left(v_x-v_x^{\text{obs}}\right)^{2}+\left(v_y-v_y^{\text{obs}}\right)^{2}\right) dS+\int_{S} w_2 \left(\text{log}\left(\dfrac{\|{\bf v}\|+\varepsilon}{\|{\bf v}^{\text{obs}}\|+\varepsilon}\right) \right)^2 dS
+$$
+
 The 
 <a href="../advanced/inversions">'Advanced Features' &#8594; 'Inversions' page</a>
-lists all the cost functions available. We want here the cost function to include the absolute and relative misfits. Typing in MATLAB `md.inversion` will give you the numbers associated with these cost functions: `[101, 103]`. We also need to determine the weights associated with each cost function: <img src="https://latex.codecogs.com/svg.latex?w_1" alt="Equation 24"> and <img src="https://latex.codecogs.com/svg.latex?w_2" alt="Equation 23">. As a rule of thumb, it is generally preferable if the two components have the same order of magnitude at the end of the optimization. You can try with <img src="https://latex.codecogs.com/svg.latex?w_1=w_2=1" alt="Equation 22"> and run the inversion, look at their contribution at the end of the inversion and increase (or decrease) <img src="https://latex.codecogs.com/svg.latex?w_1" alt="Equation 21">. You need to change the following in step 3:
+lists all the cost functions available. We want here the cost function to include the absolute and relative misfits. Typing in MATLAB `md.inversion` will give you the numbers associated with these cost functions: `[101, 103]`. We also need to determine the weights associated with each cost function: $$w_1$$ and $$w_2$$. As a rule of thumb, it is generally preferable if the two components have the same order of magnitude at the end of the optimization. You can try with $$w_1=w_2=1$$ and run the inversion, look at their contribution at the end of the inversion and increase (or decrease) $$w_1$$. You need to change the following in step 3:
 
 1. We now want the cost functions 101 and 103
 1. The coefficients applied to each component of the cost functions have 2 columns (since there are 2 components)
-1. We want to increase <img src="https://latex.codecogs.com/svg.latex?w_1" alt="Equation 25"> to 3000
+1. We want to increase $$w_1$$ to 3000
 You should get the following results:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step3c.png" alt="Figure 9: step3c"></div>The solutions are below if you don't have the same figure. We now successfully reconstructed the zone of sliding! But again, the pattern is a little bit noisy, and we are going to add regularization.
@@ -371,13 +378,15 @@ plotmodel(md, 'axis#all', 'tight', 'data', md.results.StressbalanceSolution.Fric
 #### Adding regularization
 We want the cost function to include a regularization term:
 
-<div align="center"><img src="https://latex.codecogs.com/svg.latex?
-{\mathcal J}=\int_{S} w_1 \dfrac{1}{2}\left(\left(v_x-v_x^{\text{obs}}\right)^{2}+\left(v_y-v_y^{\text{obs}}\right)^{2}\right) dS+\int_{S} w_2 \left(\text{log}\left(\dfrac{\|{\bf v}\|+\varepsilon}{\|{\bf v}^{\text{obs}}\|+\varepsilon}\right) \right)^2 dS+\int_{B} w_3\dfrac{1}{2} \|\nabla \alpha \|^{2}dB" alt="Equation 26"></div>
+$$
+{\mathcal J}=\int_{S} w_1 \dfrac{1}{2}\left(\left(v_x-v_x^{\text{obs}}\right)^{2}+\left(v_y-v_y^{\text{obs}}\right)^{2}\right) dS+\int_{S} w_2 \left(\text{log}\left(\dfrac{\|{\bf v}\|+\varepsilon}{\|{\bf v}^{\text{obs}}\|+\varepsilon}\right) \right)^2 dS+\int_{B} w_3\dfrac{1}{2} \|\nabla \alpha \|^{2}dB
+$$
+
 You need to change the following in step 3:
 
 1. We now want the cost functions 101, 103 and 501
 1. The coefficients applied to each component of the cost functions have 3 columns (since there are 3 components)
-1. We want to set <img src="https://latex.codecogs.com/svg.latex?w_3" alt="Equation 27"> to 0.01
+1. We want to set $$w_3$$ to 0.01
 You should get the following results:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step4b.png" alt="Figure 10: step4b"></div>The zone of sliding is captured and the inferred friction is smooth!

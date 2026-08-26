@@ -2,6 +2,7 @@
 title: Jakobshavn Isbr&#230;
 layout: default
 parent: Tutorials
+math: mathjax3
 ---
 
 ## Modeling Jakobshavn Isbr&#230;
@@ -56,7 +57,7 @@ Then execute the first step:
 ````
 
 ### Step 2: Model parameterization
-In this step parameterize the model. We set for example the geometry and ice material parameters. We use the `setmask` command to define grounded and floating areas. All ice is considered grounded for now. Type `help setmask` to display documentation on how to use this command. The model is then parameterized using the `Jks.par` file. We soften the glacier's shear margins by reducing the model's ice hardness, <img src="https://latex.codecogs.com/svg.latex?B" alt="Equation 1">, in the area outlined by `WeakB.exp` to a factor 0.3.
+In this step parameterize the model. We set for example the geometry and ice material parameters. We use the `setmask` command to define grounded and floating areas. All ice is considered grounded for now. Type `help setmask` to display documentation on how to use this command. The model is then parameterized using the `Jks.par` file. We soften the glacier's shear margins by reducing the model's ice hardness, $$B$$, in the area outlined by `WeakB.exp` to a factor 0.3.
 
 Open `runme.m` and make sure that the second step is activated: `steps = [2];`
 ````
