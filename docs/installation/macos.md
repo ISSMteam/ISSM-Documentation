@@ -64,7 +64,7 @@ Unfortunately, both the Command Line Tools and Xcode lack a Fortran compiler, wh
 - <a href="https://github.com/fxcoudert/gfortran-for-macOS" target="_blank">FX Coudert's GitHub repository for macOS installers for GNU Fortran</a> (Preferred).
 - Via Homebrew with,
   ````
-brew install gfortran
+  brew install gfortran
   ````
 
 If you will be installing the PROJ external package, you can install dependencies via Homebrew with,
@@ -81,7 +81,7 @@ Download and install the desired version of MATLAB from the <a href="https://www
 <i id="macos-python-interface"></i>
 ### Python Interface
 **NOTE**:
-- We assume use of copy of Python 3 supplied by XCode.
+- We assume use of the copy of Python 3 supplied by Xcode.
 - There are various methods for installing the required packages. The following is our suggestion.
 
 Create a Python virtual environment for ISSM and activate it with,
@@ -112,7 +112,7 @@ pip install matplotlib netcdf4 nose numpy pyshp scipy setuptools wheel
 ````
 
 ## External Packages
-The following packages and installation scripts are recommended for a basic installation of ISSM on Linux,
+The following packages and installation scripts are recommended for a basic installation of ISSM on macOS,
 ````
 autotools		install-linux.sh
 cmake			install.sh
@@ -142,7 +142,7 @@ autoreconf -ivf
 
 Next, create a configuration file called `configure.sh` in `${ISSM_DIR}`. Its contents will depend on the interface you will be using, the external packages and capabilities you wish to use, and the location of certain libraries and executables on disk. 
 
-**NOTE**: Both of the following interface configurations refer to `<LIBGFORTRAN_PATH>`, which should be substituted for the path to the parent directory of `libgfortran`. Common locations of `<LIBGFORTRAN_PATH>` on macOS are,
+**NOTE**: Both of the following interface configurations refer to `<LIBGFORTRAN_PATH>`, which should be replaced with the path to the parent directory of `libgfortran`. Common locations of `<LIBGFORTRAN_PATH>` on macOS are,
 
 - `/usr/local/gfortran/lib` if you installed using one of the packages from FX Coudert's GitHub repository for macOS installers for GNU Fortran
 - `/opt/homebrew/lib/gcc/current` if you installed via Homebrew on a Silicon-based Mac
@@ -195,10 +195,10 @@ If the configuration completed without any errors, ISSM can now be compiled with
 make
 make install
 ````
-if you want to speed up the compilation, you can multithread make using
+If you want to speed up the compilation, you can multithread make using,
 ````
 make -j4
 ````
-change 4 to the number of threads you want to use.
+Change 4 to the number of threads you want to use.
 
 You are now ready to <a href="../using-issm/getting-started" target="_top">get started with ISSM</a>!

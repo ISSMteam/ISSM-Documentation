@@ -63,7 +63,7 @@ The 'News' page and posts rely on [Jekyll's built-in support for blogging](https
 ## More In-depth Development
 Various components of the default presentation of the site can be overridden by adding custom files to the appropriate directories (which may not yet exist and need to be created).
 
-For example, 
+For example,
 - a custom color scheme has been added to `_sass/color_schemes/issm.scss` (see also: [Just the Docs - Custom Schemes]).
 - custom SASS rules have been added to `_sass/custom/custom.scss` (see also: [Just the Docs - Custom Styles]).
 - custom layouts have been added to `_layouts/` (see also: [Jekyll - Layouts]). Of note, `default.html` was copied in full from Ruby Gem and modified so that `h1` headings do not have an anchor link attached to them.

@@ -18,10 +18,12 @@ where:
 - <img src="https://latex.codecogs.com/svg.latex?{\bf v}" alt="Equation 3"> is the velocity vector
 - <img src="https://latex.codecogs.com/svg.latex?\boldsymbol{\sigma}" alt="Equation 4"> is the Cauchy stress tensor
 - <img src="https://latex.codecogs.com/svg.latex?{\bf b}" alt="Equation 5"> is a body force
+
 Now if we assume that:
 
 - The ice motion is a Stokes flow (acceleration negligible)
 - The only body force is due to gravity (Coriolis effect negligible)
+
 The equation of momentum conservation is reduced to:
 
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
@@ -57,13 +59,14 @@ The effective strain rate is defined as:
 where <img src="https://latex.codecogs.com/svg.latex?\|\cdot\|_F" alt="Equation 18"> is the Frobenius norm.
 
 #### Full-Stokes (FS) field equations
-Without any further approximation, the previous system of equations are called the **Full-Stokes** model.
+Without any further approximation, the previous system of equations is called the **Full-Stokes** model.
 
 #### Higher-Order (HO) field equations
 We make two assumptions:
 
 1. Bridging effects are neglected
 1. Horizontal gradient of vertical velocities are neglected compared to vertical gradients of horizontal velocities
+
 With these two assumptions, the Full-Stokes equations are reduced to a system of 2 equations with 2 unknowns [<a href="#references">*Blatter1995, Pattyn2003*</a>]:
 
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
@@ -77,6 +80,7 @@ with:
 We make the following assumption:
 
 1. Vertical shear is negligible
+
 With this assumption, we have a system of 2 equations with 2 unknowns in the horizontal plane
 [<a href="#references">*Morland1987a, MacAyeal1989*</a>]:
 

@@ -8,7 +8,7 @@ nav_exclude: true #hide for now because it is not up to date
 
 # Contributors
 
-## Science PI's
+## Science PIs
 <ul class="contributors">
 	<li>
 		<img src="/ISSM-Documentation/assets/img/contributors/Eric_Larour.png" />
@@ -107,7 +107,7 @@ nav_exclude: true #hide for now because it is not up to date
 - John Schiermeier (JPL) (2008-2013, Dakota)
 - Jean Utke (ANL) (2012-2014, automatic differentiation)
 - Thiago Dias dos Santos (UNICAMP, 2016-2021, AMR)
-- Chris Borstad (2011-2020, Damage Mechanics)
+- Chris Borstad (2011-2020, damage mechanics)
 
 ## Active Collaborations
 - Winnie Chu (Georgia Tech)

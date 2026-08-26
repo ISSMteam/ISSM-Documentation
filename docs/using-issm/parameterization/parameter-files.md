@@ -58,7 +58,7 @@ As you can see, even though the file extension is `par`, it is really just a MAT
 >> md = parameterize(md, 'Parameters.par');
 ````
 
-For the Python interface, we similarly use Pickle files (`pkl`) and parameterize with,
+For the Python interface, we similarly use pickle files (`pkl`) and parameterize with,
 ````
 >>> md = parameterize(md, 'Parameters.pkl')
 ````
@@ -66,7 +66,6 @@ For the Python interface, we similarly use Pickle files (`pkl`) and parameterize
 {: .highlight-title }
 > Note
 >
-> - The parameterization must be done on a two dimensional mesh.
+> - The parameterization must be done on a two-dimensional mesh.
 > - The parameters will be automatically extruded if the mesh is extruded.
-
 

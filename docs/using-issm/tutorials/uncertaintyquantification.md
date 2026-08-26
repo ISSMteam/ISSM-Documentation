@@ -7,7 +7,7 @@ parent: Tutorials
 ## Uncertainty Quantification (UQ)
 ### Goals
 
-- Use ISSM to assess how errors in model inputs propagate through a 2D SSA steady state ice flow model
+- Use ISSM to assess how errors in model inputs propagate through a 2D SSA steady-state ice flow model
 - Use ISSM to assess how ice flow model diagnostics (e.g. velocity, mass flux, volume) can be affected by perturbations to input in other parts of the model domain
 - Become familiar with the uncertainty quantification (Dakota-based) tools available in ISSM
 
@@ -51,10 +51,12 @@ Mass fluxes will be computed in (Gt/yr) for all of these gates (using the depth-
 
 Run step 1 of the `runme.m` to plot the gates overlaid over the PIG surface velocities.
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/uncertaintyquantification/FluxGates.png" alt="Figure 4: FluxGates"></div>### Loading Cross-Over Errors
-For ice thickness errors we will use McCords cross-over errors from CReSIS. First you will load errors. Some of these errors are too large, too small, or need to be interpolated onto a larger domain (you will filter these out). Load cross overs `'../Data/CrossOvers2009.mat'`. Interpolate cross over errors over our mesh vertices. Avoid `NaN` values. Filter out unrealistic error ranges. Avoid large unrealistic values. Transform into absolute errors and setup a minimum error everywhere.
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/uncertaintyquantification/FluxGates.png" alt="Figure 4: FluxGates"></div>
 
-Run Step 2 in the `runme.m` to load the crossover errors.
+### Loading Cross-Over Errors
+For ice thickness errors we will use McCord's cross-over errors from CReSIS. First you will load errors. Some of these errors are too large, too small, or need to be interpolated onto a larger domain (you will filter these out). Load cross-overs `'../Data/CrossOvers2009.mat'`. Interpolate cross-over errors over our mesh vertices. Avoid `NaN` values. Filter out unrealistic error ranges. Avoid large unrealistic values. Transform into absolute errors and set up a minimum error everywhere.
+
+Run Step 2 in the `runme.m` to load the cross-over errors.
 ### Sampling Analysis
 In order to accomplish the sampling step, we must first partition the mesh into equal area partitions. We'll start with 50. You can try and play with the package for partitioning ('chaco' or 'linear'), the number of partitions, and weighting ('on' or 'off'):
 
@@ -67,7 +69,7 @@ To plot the corresponding partition over a plot of the mesh:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/uncertaintyquantification/Partitions-1.png" alt="Figure 5: Partitions-1"></div>Note that after using Chaco, your partitions may look different from those illustrated here, because there is a randomness to the Chaco algorithm, and results differ on different computer systems.
 
-Second, we must define our UQ input. Here, we will sample ice thickness (H), so we must define errors on each partition for H with a corresponding PDF (Probability Density Function). Here we calculate the crossover errors on each partition. In this example, we will sample a normal error distribution around every partition. To do so, we need to specify to Dakota that we want a normal sampling, and we must provide the standard deviation of error at every partition. Because crossover errors represent the full range of thickness errors, we assume this represents a 6-sigma normally distributed spread. Therefore, we set the standard deviation equal to the crossover error at a particular location, divided by 6:
+Second, we must define our UQ input. Here, we will sample ice thickness (H), so we must define errors on each partition for H with a corresponding PDF (Probability Density Function). Here we calculate the cross-over errors on each partition. In this example, we will sample a normal error distribution around every partition. To do so, we need to specify to Dakota that we want a normal sampling, and we must provide the standard deviation of error at every partition. Because cross-over errors represent the full range of thickness errors, we assume this represents a 6-sigma normally distributed spread. Therefore, we set the standard deviation equal to the cross-over error at a particular location, divided by 6:
 
 - See lines 74-82
 
@@ -135,14 +137,15 @@ Plot Sensitivity Results:
   - See lines 307-314
   - Run step 7, this step will result in two images. The first is the sensitivities (S), and the second in the importance factors (If, sensitivities scaled by input errors).
 
-<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/uncertaintyquantification/PlotSensitivities.png" alt="Figure 7: PlotSensitivities"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/uncertaintyquantification/ImportanceFactors.png" alt="Figure 7: ImportanceFactors"></div>### Additional Exercises
+<div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/uncertaintyquantification/PlotSensitivities.png" alt="Figure 7: PlotSensitivities"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/uncertaintyquantification/ImportanceFactors.png" alt="Figure 7: ImportanceFactors"></div>
+
+### Additional Exercises
 
 - Add diagnostic IceVolume or MaxVelocity
 - Sample with a uniform distribution (See `help uniform_uncertain`)
 - Sample additional variables (i.e. friction coefficient, ice rheology)
 - Try qmu on a different solution type
 - Change number of partitions. Note: for sensitivity this could take a while!
-
 
 ## References
 - Michael S. Eldred, Brian M. Adams, David M. Gay, Laura P. Swiler, Karen

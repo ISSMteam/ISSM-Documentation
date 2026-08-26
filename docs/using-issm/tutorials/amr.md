@@ -20,13 +20,13 @@ The `runme.m` file and `mismip.par` go through the steps and basic structure to 
 1. Transient solution with AMR
 
 ### Mesh Generation
-Run step 1 in `runme.m` to generate an unstructured coarse mesh on a 800 x 50 km domain with typical element edge length of 10,000 m (10 km).  This coarse mesh shown here has 820 elements and 496 vertices. To plot your coarse mesh, use `plotmodel(md, 'data', 'mesh', 'fontsize', 12);`:
+Run step 1 in `runme.m` to generate an unstructured coarse mesh on a 800 x 50 km domain with typical element edge length of 10,000 m (10 km).  This coarse mesh, shown here, has 820 elements and 496 vertices. To plot your coarse mesh, use `plotmodel(md, 'data', 'mesh', 'fontsize', 12);`:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/amr/amr_coarse_mesh.jpg" alt="Figure 1: amr_coarse_mesh"></div>
 ### Parameterization
 Run step 2 in `runme.m` to define the model parameters. First we call on standard parameters defined in the `mismip.par` file (bed and ice geometry, sliding velocity, material properties, etc.). Then we define AMR-specific parameters to run an AMR transient simulation (resolution at the grounding line, distance to the grounding line used as criterion, ratio between two consecutive edges, etc.).
 
-The MISMIP3d domain is initially set up as a 100 m thick slab of ice. The MISMIP3d bed is defined as <img src="https://latex.codecogs.com/svg.latex?r=-100-x/1000" alt="Equation 5"> (in [m], negative if below sea level). The surface mass balance is constant over the domain and equal to 0.5 m/yr. A Weertman-type friction law is applied on the grounded ice. The basal friction coefficient is uniform over the domain and equal to <img src="https://latex.codecogs.com/svg.latex?10^{7}\,\textrm{Pa}\,\textrm{m}^{-1/3}\textrm{s}^{1/3}" alt="Equation 4">. The ice viscosity parameter, <img src="https://latex.codecogs.com/svg.latex?B" alt="Equation 3"> (<img src="https://latex.codecogs.com/svg.latex?=A^{1/n}" alt="Equation 2"> is equal to <img src="https://latex.codecogs.com/svg.latex?2.15 \, \times \, 10^{8}\,\textrm{Pa}\,\textrm{s}^{-1/3}" alt="Equation 1">.
+The MISMIP3d domain is initially set up as a 100 m thick slab of ice. The MISMIP3d bed is defined as <img src="https://latex.codecogs.com/svg.latex?r=-100-x/1000" alt="Equation 5"> (in [m], negative if below sea level). The surface mass balance is constant over the domain and equal to 0.5 m/yr. A Weertman-type friction law is applied to the grounded ice. The basal friction coefficient is uniform over the domain and equal to <img src="https://latex.codecogs.com/svg.latex?10^{7}\,\textrm{Pa}\,\textrm{m}^{-1/3}\textrm{s}^{1/3}" alt="Equation 4">. The ice viscosity parameter, <img src="https://latex.codecogs.com/svg.latex?B" alt="Equation 3"> (<img src="https://latex.codecogs.com/svg.latex?=A^{1/n}" alt="Equation 2">) is equal to <img src="https://latex.codecogs.com/svg.latex?2.15 \, \times \, 10^{8}\,\textrm{Pa}\,\textrm{s}^{-1/3}" alt="Equation 1">.
 
 To look at the initial ice surface, you can plot it in MATLAB:
 ````
@@ -36,7 +36,7 @@ plotmodel(md, 'data', md.geometry.surface, 'title', 'Initial Surface Elevation [
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/amr/amr_surface_initial.png" alt="Figure 2: amr_surface_initial"></div>
 ### Transient solution with AMR
-In step 3, we specify which machine we want to run the model on, including number of processors to be used, define the model time step, final time, and prescribe the AMR frequency, i.e, how often the mesh needs to be updated. In this example, we run 500 yr forward in time to track the grounding line movement as soon as the initial thin ice slab starts to ground on the bedrock. The ice starts to ground at x=0, the boundary of the ice divide (vx=0 at x=0). We set the AMR frequency equal to 1, which means that the mesh is updated (refined/coarsened) every time step. In this example, a time step equal to 1 yr is imposed. The SSA equations are used as the flow model.
+In step 3, we specify which machine we want to run the model on, including number of processors to be used, define the model time step, final time, and prescribe the AMR frequency, i.e., how often the mesh needs to be updated. In this example, we run 500 yr forward in time to track the grounding line movement as soon as the initial thin ice slab starts to ground on the bedrock. The ice starts to ground at x=0, the boundary of the ice divide (vx=0 at x=0). We set the AMR frequency equal to 1, which means that the mesh is updated (refined/coarsened) every time step. In this example, a time step equal to 1 yr is imposed. The SSA equations are used as the flow model.
 
 Now that the set up is complete, we can run the model:
 ````
@@ -86,7 +86,7 @@ plotmodel(md, 'data', 'mesh', 'amr', 0, 'xlim', [0, 250000], 'title', 't=1 yr', 
 
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/amr/amr_meshes.jpg" alt="Figure 5: amr_meshes"></div>
-To watch the evolution through time in an animation, we print the results and the respective meshes in .VTK-type file format, see the folder `<ISSM_DIR>/examples/AMR/`. These files can be seen using <a href="https://www.paraview.org/" target="_blank">ParaView</a>.
+To watch the evolution through time in an animation, we print the results and the respective meshes in VTK-type file format, see the folder `<ISSM_DIR>/examples/AMR/`. These files can be seen using <a href="https://www.paraview.org/" target="_blank">ParaView</a>.
 
-In ParaView, you will select which result to animate, and can watch the mesh tracking the grounding line movement as soon as the ice starts to ground on the bedrock. The result and the mesh can be simultaneously displayed using selecting `Surface With Edges` in the box next to the field/result box selection.
+In ParaView, you will select which result to animate, and can watch the mesh tracking the grounding line movement as soon as the ice starts to ground on the bedrock. The result and the mesh can be simultaneously displayed by selecting `Surface With Edges` in the box next to the field/result box selection.
 

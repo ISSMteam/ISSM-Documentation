@@ -24,7 +24,7 @@ To correct this, you will have to have either Xcode Command Line Tools (preferre
 
 You will then need to modify the `CPATH` environment variable in your shell profile (e.g. `~/.bashrc`),
 
-- If you installed the Xcode Command Line Tools, 
+- If you installed the Xcode Command Line Tools,
   ````
 export CPATH="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc:/usr/include"
   ````
@@ -36,13 +36,13 @@ export CPATH="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platfo
 Then, source your shell profile again and rerun the installation script.
 
 ## PETSc
-## Error running make on <EXT\_PKG>
+### Error running make on <EXT\_PKG>
 When using PETSc to install an external package you may encounter a failure that reads,
 ````
 Error running make on <EXT_PKG>
 ````
 
-Inspection of `src/configure.log` should reveal a line similiar to,
+Inspection of `src/configure.log` should reveal a line similar to,
 ````
 Error running make on <EXT_PKG>: Could not execute "['<CMD_STRING>']":
 ````

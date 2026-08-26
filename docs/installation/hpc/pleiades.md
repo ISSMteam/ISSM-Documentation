@@ -1,5 +1,5 @@
 ---
-title: Pleiades 
+title: Pleiades
 layout: default
 parent: HPC
 ---
@@ -28,7 +28,7 @@ Then, the user needs to request an account with the following procedure,
 - provide the group ID for the PI that initiated the request
 - the PI will then receive an email to approve the request
 
-NOTE: All users must complete NASA's Basic IT Security Training
+**NOTE**: All users must complete NASA's Basic IT Security Training.
 
 ### Current Points of Contact
 {: .no_toc }
@@ -84,7 +84,7 @@ replacing `<ISSM_DIR>` with the path to the local copy of the ISSM code reposito
 {: .highlight-title }
 > Important
 >
-> ISSM and external packages should not be compiled on the Pleiades front end. Please refer to the NAS HECC knowledge base article <a href="https://www.nas.nasa.gov/hecc/support/kb/reserving-a-dedicated-compute-node_556.html" target="_blank">'Reserving a Dedicated Compute Node'</a> for instructions on reserving a and logging into a compute node for the purpose of compiling.
+> ISSM and external packages should not be compiled on the Pleiades front end. Please refer to the NAS HECC knowledge base article <a href="https://www.nas.nasa.gov/hecc/support/kb/reserving-a-dedicated-compute-node_556.html" target="_blank">'Reserving a Dedicated Compute Node'</a> for instructions on reserving and logging into a compute node for the purpose of compiling.
 
 {: .highlight-title }
 > Important

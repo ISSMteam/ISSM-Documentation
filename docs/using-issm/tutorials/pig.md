@@ -23,12 +23,12 @@ In this example, the main goal is to parameterize and model a real glacier. In o
 - Plot results
 - Run higher-order simulation
 
-Files needed for this tutorial can be found in `<ISSM_DIR>/examples/Pig/`. The `runme.m` file contains the structure of the simulation, while the `.par` file includes most parameters needed for the model set-up. The `.exp` files are shape files that define geometric boundaries of the simulation.
+Files needed for this tutorial can be found in `<ISSM_DIR>/examples/Pig/`. The `runme.m` file contains the structure of the simulation, while the `.par` file includes most parameters needed for the model setup. The `.exp` files are shape files that define geometric boundaries of the simulation.
 
 Observed datasets needed for the parameterization also need to be 
  <a href="datasets">downloaded</a>.
 ### Setting-up domain outline
-We first draw the domain outline of Pine Island Glacier based on observed velocity map. First, run `PigRegion.m` in MATLAB. It produces a figure with the observed velocities:
+We first draw the domain outline of Pine Island Glacier based on an observed velocity map. First, run `PigRegion.m` in MATLAB. It produces a figure with the observed velocities:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/pig/exptool.png" alt="Figure 1: exptool"></div>
 You can then use the `exptool` to draw the model domain:
@@ -53,7 +53,6 @@ The first step is to create the mesh of the model domain.
 
 In the `runme.m` file, the mesh is generated in a multi-step process. Open the `runme.m` file and make sure that the variable `steps`, at the top of the file, is set to `steps = [1]`. In the code, you will see that in step 1 the following actions are implemented:
 
-
 - a uniform mesh is created
 - the mesh is then refined using anisotropic mesh refinement. We use the surface velocity as a metric
 - Set the mesh parameters
@@ -66,7 +65,9 @@ In the `runme.m` file, the mesh is generated in a multi-step process. Open the `
 
 Execute the `runme.m` file to perform step 1. You should see the following figure:
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/pig/Mesh.png" alt="Figure 2: Mesh"></div>### Mask
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/pig/Mesh.png" alt="Figure 2: Mesh"></div>
+
+### Mask
 The second step of the `runme.m` creates the masks required to specify where there is ice in the domain, and where the ice is grounded.
 
 First, we specify where the ice is grounded and floating in the domain:
@@ -87,7 +88,9 @@ Open `runme.m` and set `steps = [2]`. Now, execute the `runme.m` file to run ste
 
 After executing step 2, you should see the following figure that represents the mask:
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/pig/Mask2.png" alt="Figure 3: Mask2"></div>### Parameterization
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/pig/Mask2.png" alt="Figure 3: Mask2"></div>
+
+### Parameterization
 Parameterization of models is usually done through a different file (`Pig.par`). Parameters which are unlikely to change for a given set of experiments are set there to lighten the `runme.m` file. In this example we use SeaRISE data to parameterize the following model fields:
 
 - Geometry
@@ -97,19 +100,18 @@ Parameterization of models is usually done through a different file (`Pig.par`).
 - Friction coefficient
 - Boundary conditions
 
-Some parameters are adjusted in `runme.m`, as they are likely to be changed during the simulation. This is the case for the stress balance equation that is set-up using `setflowequation`.
+Some parameters are adjusted in `runme.m`, as they are likely to be changed during the simulation. This is the case for the stress balance equation that is set up using `setflowequation`.
 
-Now, change the `runme.m` file as before, and run step 3 to perform the Parameterization.
+Now, change the `runme.m` file as before, and run step 3 to perform the parameterization.
 ### Inversion of basal friction
 The friction coefficient is inferred from the surface velocity using the following friction law:
 
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
 \mathbf{ \tau }_b = -\beta^{2} N^r \|\mathbf{v_b}\|^{s-1}\mathbf{v_b}" alt="Equation 1"></div>
 
-
 - <img src="https://latex.codecogs.com/svg.latex?\mathbf{ \tau }_b" alt="Equation 2"> : Basal drag
 - <img src="https://latex.codecogs.com/svg.latex?N" alt="Equation 3">: Effective pressure
-- <img src="https://latex.codecogs.com/svg.latex?v_b" alt="Equation 4">: Basal velocity (equal surface in SSA approximation)
+- <img src="https://latex.codecogs.com/svg.latex?v_b" alt="Equation 4">: Basal velocity (equal to surface in SSA approximation)
 - <img src="https://latex.codecogs.com/svg.latex?r" alt="Equation 6">: Exponent (equals <img src="https://latex.codecogs.com/svg.latex?q/p" alt="Equation 5"> of the parameter file)
 - <img src="https://latex.codecogs.com/svg.latex?s" alt="Equation 8">: Exponent (equals <img src="https://latex.codecogs.com/svg.latex?1/p" alt="Equation 7"> of the parameter file)
 
@@ -123,12 +125,16 @@ All the parameters that can be adjusted for the inversion are in `md.inversion`.
 
 Run step 4 and look at the results, they should be similar to the figure below:
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/pig/ControlMethod.png" alt="Figure 4: ControlMethod"></div>### Plot results
-Plotting ability are mainly based on `plotmodel` for simple graphs. However, you can also use or create your own routines.
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/pig/ControlMethod.png" alt="Figure 4: ControlMethod"></div>
+
+### Plot results
+Plotting abilities are mainly based on `plotmodel` for simple graphs. However, you can also use or create your own routines.
 
 Change the step to 5 and run the simulation. It should create the following figure:
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/pig/Plot.png" alt="Figure 5: Plot"></div>### Higher Order (HO) Ice Flow Model
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/pig/Plot.png" alt="Figure 5: Plot"></div>
+
+### Higher-Order (HO) Ice Flow Model
 The last step of this tutorial is to run a forward model of Pine Island Glacier with the Higher-Order stress balance approximation.
 
 The following steps need to be performed in `step 7` of the `runme.m` file:
@@ -150,7 +156,9 @@ If you need help, the solution is provided below.
 
 Step 7 provides a comparison of the Shelfy-Stream and Higher-Order approximations. The following figure should be created if you run step 7:
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/pig/VelocityComparison.png" alt="Figure 6: VelocityComparison"></div>### Solution for step 6
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/pig/VelocityComparison.png" alt="Figure 6: VelocityComparison"></div>
+
+### Solution for step 6
 ````
 if any(steps == 6)
 	md = loadmodel('./Models/PIG_Control_drag');

@@ -54,7 +54,7 @@ where <img src="https://latex.codecogs.com/svg.latex?\mathfrak{D}" alt="Equation
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
 \mathfrak{D} = \frac{h}{2}\left(\begin{array}{cc}\left|vx\right| & 0 \\\\0 & \left|vy\right|\end{array}\right)" alt="Equation 19"></div>
 
-There are other stabilization schemes available in ISSM: (1) Artificial Diffusion, (2) Streamline Upwinding, (3) Discontinuous Galerkin (DG), (4) Flux Corrected Transport (FCT), and (5) Streamline Upwind Petrov-Galerlin (SUPG). They can used by setting:
+There are other stabilization schemes available in ISSM: (1) Artificial Diffusion, (2) Streamline Upwinding, (3) Discontinuous Galerkin (DG), (4) Flux Corrected Transport (FCT), and (5) Streamline Upwind Petrov-Galerkin (SUPG). They can be used by setting:
 ````
 >> md.masstransport.stabilization = 1;
 ````
@@ -67,9 +67,9 @@ The parameters relevant to the mass transport solution can be displayed by runni
 
 
 - `md.masstransport.spcthickness`: thickness constraints (`NaN` means no constraint)
-- `md.masstransport.hydrostatic_adjustment`: adjustment of ice shelves upper and lower
+- `md.masstransport.hydrostatic_adjustment`: adjustment of ice shelves' upper and lower
   surfaces: `'Incremental'` or `'Absolute'`
-- `md.masstransport.stabilization`: 0: no stabilization, 1: artificial diffusion, 2: streamline upwinding 3:
+- `md.masstransport.stabilization`: 0: no stabilization, 1: artificial diffusion, 2: streamline upwinding, 3:
   discontinuous Galerkin, 4: flux corrected transport (FCT), 5: streamline upwind Petrov-Galerkin (SUPG)
 - `md.masstransport.penalty_factor`: offset used by penalties
 

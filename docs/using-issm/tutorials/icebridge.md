@@ -7,7 +7,7 @@ parent: Tutorials
 ## Modeling the Greenland Ice Sheet Using IceBridge Data
 ### Goals
 
-- Follow an example of how to improve a coarse Greenland model by adding higher resolution Operation Icebridge (OIB) data
+- Follow an example of how to improve a coarse Greenland model by adding higher-resolution Operation IceBridge (OIB) data
 - Learn how to use the ISSM meshing tools to refine the Jakobshavn Isbr&#230; (JI) basin
 - Learn how to insert higher resolution bedrock and surface elevation data from the OIB campaign into the model within the JI basin
 
@@ -16,7 +16,7 @@ Go to `<ISSM_DIR>/examples/IceBridge/` to do this tutorial.
 ### Introduction
 Tutorial steps to be taken:
 
-- Refine the Greenland mesh using given JI outline.
+- Refine the Greenland mesh using the given JI outline.
 - Parameterize the model, and include the high-resolution OIB bedrock and surface data.
 - Plot the ice base and surface data.
 - Stress Balance: run 2 inverse method runs to solve for control drag (20 steps recommended).
@@ -36,7 +36,7 @@ and improve from there. Run the first step in `runme.m` file to mesh the Greenla
 >> exptool('Jak_outline.exp');
 ````
 
-Next, we modify the `bamg` command by imposing a 3 km resolution within the JI area using `hmaxVertices`. Note that, to implement the changes noted above you must deactivate the first occurrence of the `bamg` command in step 1, as well as the `return` command. Do this by commenting out these lines, and running step 1 again. Plot the results.
+Next, we modify the `bamg` command by imposing a 3 km resolution within the JI area using `hmaxVertices`. Note that, to implement the changes noted above, you must deactivate the first occurrence of the `bamg` command in step 1, as well as the `return` command. Do this by commenting out these lines, and running step 1 again. Plot the results.
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/icebridge/Mesh2.png" alt="Figure 2: Mesh2"></div>Use MATLAB's zoom tool in the figure to make a close-up of the JI domain.
 ### Parameterization
@@ -102,15 +102,17 @@ Next, let's plot the surface elevation, the ice thickness, and base:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/icebridge/Thickness.png" alt="Figure 5: Thickness"></div><span style="display:block;width:100%;text-align:center"><small>plotmodel(md, 'data', md.geometry.thickness)</small></span>
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/icebridge/Base.png" alt="Figure 6: Base"></div><span style="display:block;width:100%;text-align:center"><small>plotmodel(md, 'data', md.geometry.base)</small></span>To plot the difference in the ice base topography between SeaRISE and OIB datasets do (1) modify the parameterization step in your `runme.m` file by commenting out all the above lines which insert the OIB data, and change the name the model is saved under from `Greenland.Parameterization2` to `Greenland.Parameterization` and run step 2 again. A difference in the fields can be plotted using:
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/icebridge/Base.png" alt="Figure 6: Base"></div><span style="display:block;width:100%;text-align:center"><small>plotmodel(md, 'data', md.geometry.base)</small></span>To plot the difference in the ice base topography between SeaRISE and OIB datasets, modify the parameterization step in your `runme.m` file by commenting out all the above lines which insert the OIB data, and change the name the model is saved under from `Greenland.Parameterization2` to `Greenland.Parameterization` and run step 2 again. A difference in the fields can be plotted using:
 ````
 >> md2 = loadmodel('Models/Greenland.Parameterization2')
->> md = loadmodel('Models/Greenland.Parameterization')
+>> md  = loadmodel('Models/Greenland.Parameterization')
 >> plotmodel(md, 'data', md2.geometry.base - md.geometry.base)
 ````
 Zoom to the JI basin for better visibility.
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/icebridge/Differences.png" alt="Figure 7: Differences"></div>### Stress Balance
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/icebridge/Differences.png" alt="Figure 7: Differences"></div>
+
+### Stress Balance
 We now use inverse control methods to solve for Greenland friction coefficient. The velocity map below contains some gaps. Exclude the gaps from the inversion by creating a new `*.exp` file that outlines all the gaps in velocity data using the exptool:
 ````
 >> exptool('data_gaps.exp')

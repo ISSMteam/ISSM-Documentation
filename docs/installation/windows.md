@@ -14,7 +14,7 @@ The quickest way to get started with ISSM is to download one of our precompiled 
 {: .highlight-title }
 > Note
 >
-> - ISSM is currently limited to basic capabilities on Windows. We will be working soon on supporting external packages such as Dakota and advanced capabilities like modelling of solid earth processes.
+> - ISSM is currently limited to basic capabilities on Windows. We will be working soon on supporting external packages such as Dakota and advanced capabilities like modelling of solid Earth processes.
 > - Currently, only the MATLAB interface to ISSM is supported on Windows.
 
 After downloading the distributable, unpack it with the 'Extract' feature and move it to the desired location on disk.
@@ -27,7 +27,7 @@ You are now ready to
 ## Compiling ISSM from Source
 The following instructions detail how to create an environment for compiling ISSM from source on Windows. We rely on MSYS2 to provide a Linux-like interface and the MinGW compiler chain to generate native Windows executables and libraries. There may be other methods for achieving the above, which we invite you to share on <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">GitHub Discussions</a>.
 
-**NOTE**: You will have to use an Administrator user account for some of the following to work as intended
+**NOTE**: You will have to use an Administrator user account for some of the following to work as intended.
 
 ## MSYS2
 ### Install MSYS2
@@ -54,10 +54,10 @@ The following instructions detail how to create an environment for compiling ISS
 ### Update the package database and install required packages
 
 - Double-click the 'MSYS2 MinGW 64-bit' desktop shortcut
-- At the resulting command prompt run, 
+- At the resulting command prompt run,
 ````
 $ pacman -Syu
- ````
+````
 to update the database and base packages, entering "Y" when prompted
 - The previous step will result in the window being closed, so double-click the 'MSYS2 MinGW 64-bit' desktop shortcut again
 - At the resulting command prompt run,
@@ -79,21 +79,21 @@ entering "Y" or simply hitting the return key as needed
 - (Optional) Install Vim text editor with,
 ````
 $ pacman -S vim
-  ````
+````
 
 ## Scripting Interfaces
 Follow the instructions for setting up the interface that you wish to use with ISSM.
 
-### MATLAB
+### MATLAB Interface
 Download and install the desired version of MATLAB from the <a href="https://www.mathworks.com" target="_blank">MathWorks website</a>. Make sure to install the optional 'Mapping Toolbox'.
 
-### Python
+### Python Interface
 The Python interface to ISSM on Windows is currently under development.
 
 ## Shell profile
 ### .bash\_profile
 
-- Open `/c/msys64/home/<USER>/.bash_profile` for editing (the easiest way to do this is with vim if you installed it in the previous step)
+- Open `/c/msys64/home/<USER>/.bash_profile` for editing (the easiest way to do this is with Vim if you installed it in the previous step)
 - Add the following to the bottom of the file,
 ````
 # Allow for NTFS symbolic links
@@ -117,7 +117,7 @@ export ISSM_DIR=<ISSM_PATH>
 export ISSM_DIR_WIN=$(cygpath -ms "${ISSM_DIR}") # Needed by MATLAB
 ```
 
-where `<MATLAB_VER>` is the version of MATLAB that you have installed (for example, "R2023b") and `<ISSM_DIR>` is the path to the copy of the ISSM source code that you checked out (e.g. `/c/Users/<USER>/ISSM/src`, where `<USER>` is your username)
+where `<MATLAB_VER>` is the version of MATLAB that you have installed (e.g. "R2023b") and `<ISSM_DIR>` is the path to the copy of the ISSM source code that you checked out (e.g. `/c/Users/<USER>/ISSM/src`, where `<USER>` is your username).
 
 ## Microsoft MPI
 
@@ -161,7 +161,7 @@ autoreconf -ivf
 
 **NOTE**:
 
-- Replace `<NUM_CPUS>` with the number of available CPU's
+- Replace `<NUM_CPUS>` with the number of available CPUs
 - `MATLAB_PATH` was defined previously in `bashrc`.
 - `MSMPI_ROOT` will be defined after running,
 ````
@@ -195,7 +195,7 @@ Again, you might need to make adjustments to the above configurations based on y
 - <a href="hpc" target="_top">'High-Performance Computing' page</a>
 - <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">GitHub Discussions</a>
 
-If the configuration completed without any errors, ISSM can now be compiled,
+If the configuration completed without any errors, ISSM can now be compiled with,
 ````
 $ cd ${ISSM_DIR}
 $ make
@@ -226,11 +226,11 @@ The specified service does not exist as an installed service.
 The MSYS2 sshd service is starting.
 The MSYS2 sshd service was started successfully.
 ````
-- You can test that the service and your log in are working correctly by running, 
+- You can test that the service and your login are working correctly by running, 
 ````
 ssh -l <UNPRIV_NAME> localhost
 ````
-where `<UNPRIV_NAME>` is the same user that we authorized to use the service. You should be prompted to accept an ECDSA fingerprint, you which you respond "yes". Then, enter the password for this account. If all goes well, you should now have a prompt that reads, 
+where `<UNPRIV_NAME>` is the same user that we authorized to use the service. You should be prompted to accept an ECDSA fingerprint, to which you respond "yes". Then, enter the password for this account. If all goes well, you should now have a prompt that reads, 
 
 ```bash
 <UNPRIV_NAME>@<HOSTNAME> MSYS ~
@@ -255,7 +255,7 @@ in order to log in to the MSYS2 MinGW 64-bit shell (other possible values are MS
 - select 'Port', then click the 'Next' button
 - select 'TCP'
 - select 'Specific local ports', set the field to "22", then click the 'Next' button
-- select 'Allow the connection' then click the 'Next' button (if you are using a third-party firewall application, it is up to you to determine how to open port 22)
+- select 'Allow the connection', then click the 'Next' button (if you are using a third-party firewall application, it is up to you to determine how to open port 22)
 - uncheck the 'Public' box (if a subsequent attempted connection stalls out or is denied, you may need to edit this rule, checking the 'Public' box, but try first without it), then click the 'Next' button
 - set the 'Name' field to "SSH", then click the 'Next' button
 - The `ssh-keygen` utility can be used to create a more secure SSH connection and to protect your Windows user password

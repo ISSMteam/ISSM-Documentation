@@ -6,7 +6,6 @@ parent: Tutorials
 
 ## Mesh Adaptation
 ### Goals
-In this tutorial, we show how to use the different meshers of ISSM:
 
 - Learn how to use the different meshers of ISSM:
   - `squaremesh` for square domains (ISMIP)
@@ -37,7 +36,9 @@ The previous command creates the mesh shown below:
 >> plotmodel(md, 'data', 'mesh');
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/mesh/mesh1.png" alt="Figure 1: mesh1"></div>### Roundmesh
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/mesh/mesh1.png" alt="Figure 1: mesh1"></div>
+
+### Roundmesh
 `roundmesh` generates unstructured uniform meshes for circular domains.
 
 #### Usage
@@ -57,6 +58,7 @@ The previous command creates the mesh shown below:
 ````
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/mesh/mesh2.png" alt="Figure 2: mesh2"></div>
+
 ### Triangle
 `triangle` is a very fast algorithm for mesh generation. Developed by <a href="http://www.cs.cmu.edu/~quake/triangle.html" target="_blank">J Shewchuk</a>, it generates unstructured triangular meshes.
 
@@ -85,7 +87,7 @@ BAMG stands for Bidimensional Anisotropic Mesh Generator. It was released in 200
 ````
 >> md = bamg(model, ...);
 ````
-`bamg` takes as it's first argument a model, and then pairs of options
+`bamg` takes as its first argument a model, and then pairs of options
 
 1. model
 1. pairs of options (type `help bamg` to get a full list of options)
@@ -102,7 +104,7 @@ The previous command will create the following mesh (use `plotmodel(md, 'data', 
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/mesh/mesh4.png" alt="Figure 4: mesh4"></div>Note that the nodes are not as randomly distributed as `triangle`. The strength of BAMG is not for uniform meshes but for automatic mesh adaptation based on a metric.
 
-#### Non-Uniform mesh
+#### Non-uniform mesh
 To create a non-uniform mesh, use the following options:
 
 1. `'domain'` followed by the domain name
@@ -116,6 +118,7 @@ In our example, `Square.exp` has 4 vertices. If we want a resolution of 0.2, exc
 Use the `plotmodel(md, 'data', 'mesh')` command to visualize the newly defined mesh:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/mesh/mesh5.png" alt="Figure 5: mesh5"></div>
+
 #### Mesh adaptation
 We can use observations to generate a mesh that is adapted to the solution we are trying to model. Given a solution field, `bamg` will calculate a metric based on the field's Hessian matrix (second derivative) to generate an anisotropic mesh that minimize the interpolation error (assuming that linear finite elements are used).
 
@@ -194,6 +197,7 @@ Now, we call `bamg` a third time, with the specified resolution for the vertices
 ````
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/mesh/refine2.png" alt="Figure 13: refine2"></div>
+
 #### Another example
 If you would like to try another example, you can use the function `circles.m` instead of
 `shock.m`. It is also a 1x1 square but with a pattern that includes five circles.

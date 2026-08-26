@@ -21,7 +21,7 @@ In this example, the main goal is to parameterize and model a real Greenland out
 
 Files needed for this tutorial can be found in `<ISSM_DIR>/examples/Helheim/`. The `runme.m` file contains the structure of the simulation, while the `.par` file includes most parameters needed for the model set-up. The `.exp` file contains coordinates that define the model domain boundaries.
 
-Observed datasets needed for the parameterization need to be downloaded.
+The observed datasets needed for the parameterization must be downloaded.
 
 ### Mesh
 The first step is to create the model domain outline and mesh.

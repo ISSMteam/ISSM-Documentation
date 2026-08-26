@@ -26,7 +26,6 @@ Run step 1 in `runme.m` to generate an unstructured mesh on a 1 km square with t
 ### Parameterization
 Run step 2 in `runme.m` to define the model parameters. First we call on standard parameters defined in the `moulin.par` file (bed and ice geometry, sliding velocity, material properties, etc.). Then we define hydrology-specific parameters for the SHAKTI model (initial hydraulic head, Reynolds number, subglacial gap height, boundary conditions, etc.).
 
-
 To look at the bed topography, ice surface, initial head, and initial gap height, you can plot them in MATLAB:
 ````
 plotmodel(md, ...
@@ -36,8 +35,8 @@ plotmodel(md, ...
 	'data', md.hydrology.gap_height, 'title', 'Initial Gap Height [m]')
 ````
 
-
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/shakti/moulin_initial.png" alt="Figure 2: moulin_initial"></div>
+
 ### Hydrology solution
 In step 3, we specify which machine we want to run the model on, including number of processors to be used, define the model time step, final time, and prescribe the moulin inputs. In this example, we put a steady moulin input of 4 m<img src="https://latex.codecogs.com/svg.latex?^3" alt="Equation 2"> s<img src="https://latex.codecogs.com/svg.latex?^{-1}" alt="Equation 1"> at the center of the domain (x=500 m, y=500 m). We also impose a no-flux "Type 2" (Neumann) boundary condition at all boundaries (except the outflow, where we have our Dirichlet condition defined already in step 2).
 
@@ -54,7 +53,6 @@ plotmodel(md, 'data', md.results.TransientSolution(end).EffectivePressure, 'titl
 	'data', md.results.TransientSolution(end).HydrologyGapHeight, 'title', 'Gap Height [m]')
 ````
 
-
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/shakti/moulin_final.png" alt="Figure 3: moulin_final"></div>
 You can see that a distinct pathway has formed from the moulin at the center to the outflow at the left. Hydraulic head (related to water pressure) is highest directly around the moulin, and the head is lower in the channel than in the areas above and below it in the y-direction.
 
@@ -64,7 +62,6 @@ plotmodel(md, 'data', 'transient_movie')
 ````
 
 You will be prompted to select which parameter to animate, and can watch an efficient subglacial channel emerge from the moulin to the outflow!
-
 
 ## References
 - A. Sommers, H. Rajaram, and M. Morlighem.

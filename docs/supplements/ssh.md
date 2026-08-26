@@ -5,10 +5,10 @@ parent: Supplements
 nav_order: 2
 ---
 
-## SSH
+# SSH
 There are many strategies for managing SSH connections that can help to reduce repeated actions and the amount of details that you have to remember.
 
-### Aliases
+## Aliases
 Entries in `~/.ssh/config` (and `/etc/ssh/ssh_config`) allow you to define reusable shortcuts for your SSH connections. For example, let's say you typically manually connect to a remote machine with,
 ````
 ssh <USER>@<HOST>
@@ -35,7 +35,7 @@ ssh-<ALIAS>
 
 **See also**: <a href="https://www.ssh.com/academy/ssh/config\#format-of-ssh-client-config-file-ssh_config" target="_blank">Format of SSH client config file ssh&#95;config | ssh.com</a>
 
-### Public Key Authentication
+## Public Key Authentication
 Some remote machines require public key authentication to establish an SSH connection. But it can also be used if it is available and you do not want to have to enter your password on each connection. To set up public key authentication, you will first need an SSH key pair. You may already have a default key pair at `~/.ssh/id_rsa[.pub]`, and it is perfectly acceptable to use this key for authenticating all of your SSH connections. That said, you may wish to create a separate key for each connection, which can be done with the `ssh-keygen` utility.
 
 After copying the public key to `~/.ssh` on the remote machine, either with the `ssh-copy-id` utility or by manually copying its contents to `~/.ssh/authorized_keys`, you can connect with,
@@ -51,7 +51,7 @@ You can also update any aliases you may have created for a connection to use pri
 
 **See also**: <a href="https://www.ssh.com/academy/ssh/public-key-authentication" target="_blank">What is SSH Public Key Authentication? | ssh.com</a>
 
-### Tunneling
+## Tunneling
 Another possibility is to establish an SSH tunnel between the local and remote machines. For example, running,
 ````
 $ ssh -L 1025:localhost:22 <USER>@<HOST>

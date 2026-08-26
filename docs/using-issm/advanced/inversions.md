@@ -98,7 +98,7 @@ The parameters relevant to the stress balance solution can be displayed by typin
 
 - `md.inversion.iscontrol`: 1 if inversion is activated, 0 for a forward run (default)
 - `md.inversion.incomplete_adjoint`: 1 linear viscosity, 0 non-linear viscosity
-- `md.inversion.control_parameters`: parameters that are inferred (ex: `{'FrictionCoefficient'}` or `{'MaterialsRheologyBbar'}`
+- `md.inversion.control_parameters`: parameters that are inferred (ex: `{'FrictionCoefficient'}` or `{'MaterialsRheologyBbar'}`)
 - `md.inversion.cost_functions`: list of individual cost functions that are summed to calculate the final cost function $$\mathcal J$$ to be minimized (ex: `[101, 501]`)
 - `md.inversion.cost_functions_coefficients`: weight of each individual cost function previously defined for each vertex (more/no weight can be put on certain regions)
 - `md.inversion.min_parameters`: minimum value for the inferred parameter
@@ -109,7 +109,7 @@ The parameters relevant to the stress balance solution can be displayed by typin
 - `md.inversion.thickness_obs`: measured ice thickness
 
 ### Minimization algorithms
-Depending on the class of `md.inversion`, several optimization algorithm are available:
+Depending on the class of `md.inversion`, several optimization algorithms are available:
 
 - Brent search algorithm (`md.inversion = inversion()`, the default)
 - Toolkit for Advanced Optimization (TAO) (`md.inversion = taoinversion()`)
@@ -121,7 +121,7 @@ Each minimizer has its own optimization parameters described below.
 ISSM has an interface to M1QN3 (Inria) [<a href="#references">*Gilbert1989*</a>]. This interface was largely based on [<a href="#references">*Nardi2009*</a>]. Here is a list of the relevant parameters:
 
 - `md.inversion.maxsteps`: maximum number of iterations (gradient computation)
-- `md.inversion.maxiter`: maximum number of Function evaluation (forward run)
+- `md.inversion.maxiter`: maximum number of function evaluations (forward run)
 - `md.inversion.dxmin`:  convergence criterion: two points less than dxmin from each other (sup-norm) are considered identical
 - `md.inversion.gttol`: gradient relative convergence criterion 2 (defined below)
 
@@ -141,8 +141,8 @@ $$
 ISSM has an interface to the Toolkit for Advanced Optimization (TAO) [<a href="#references">*Munson2012*</a>]. Here is a list of the relevant parameters:
 
 - `md.inversion.maxsteps`: maximum number of iterations (gradient computation)
-- `md.inversion.maxiter`: maximum number of Function evaluation (forward run)
-- `md.inversion.algorithm`: inimization algorithm. ex: `'tao_blmvm'`, `'tao_cg'`, `'tao_lmvm'`
+- `md.inversion.maxiter`: maximum number of function evaluations (forward run)
+- `md.inversion.algorithm`: minimization algorithm. ex: `'tao_blmvm'`, `'tao_cg'`, `'tao_lmvm'`
 - `md.inversion.fatol`: cost function absolute convergence criterion (defined below)
 - `md.inversion.frtol`: cost function relative convergence criterion (defined below)
 - `md.inversion.gatol`: gradient absolute convergence criterion (defined below)

@@ -7,7 +7,7 @@ parent: Capabilities
 ## Ice Front Migration (level-set method)
 UNDER CONSTRUCTION
 
-## Model parameters
+### Model parameters
 
 ````
 >> md.levelset
@@ -16,7 +16,7 @@ UNDER CONSTRUCTION
 
 - `stabilization`: ...
 
-## Running a simulation
+### Running a simulation
 To turn this module on in a simulation, use the following command:
 ````
 >> md.transient.ismovingfront = 1;

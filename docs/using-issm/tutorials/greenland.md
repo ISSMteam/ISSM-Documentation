@@ -11,10 +11,11 @@ parent: Tutorials
 - Follow an example to initialize a continental domain, with a given ARGUS (`*.exp`) file and to parameterize with the SeaRISE NetCDF dataset
 - Become familiar with how to set up and force transient input in ISSM
 - Plot results of forward simulation experiments
+
 Go to `<ISSM_DIR>/examples/Greenland/` to do this tutorial.
 
 ### Introduction
-In this tutorial, you will learn how to set up a continental Greenland model using the SeaRISE ice sheet model input dataset [<a href="#references">*Nowicki2013a*</a>]. In addition, you will gain experience in interpolation of datasets on to your continental ice sheet mesh and in setting up a transient forcing in ISSM. Finally, you will run a transient solution, resulting in a forward historical simulation of the Greenland Ice Sheet. Note that the model we set up here is coarse and is not recommended for use in a publication. A good use for this example it is use it as a starting point to learn how to use ISSM. You may wish to improve the model provided here by increasing the resolution of the ice sheet domain outline, increasing the mesh resolution, and choosing your own/improved datasets for model parameterization.
+In this tutorial, you will learn how to set up a continental Greenland model using the SeaRISE ice sheet model input dataset [<a href="#references">*Nowicki2013a*</a>]. In addition, you will gain experience in interpolation of datasets onto your continental ice sheet mesh and in setting up a transient forcing in ISSM. Finally, you will run a transient solution, resulting in a forward historical simulation of the Greenland Ice Sheet. Note that the model we set up here is coarse and is not recommended for use in a publication. A good use for this example is to use it as a starting point to learn how to use ISSM. You may wish to improve the model provided here by increasing the resolution of the ice sheet domain outline, increasing the mesh resolution, and choosing your own/improved datasets for model parameterization.
 
 #### Tutorial steps to be taken:
 
@@ -38,13 +39,13 @@ In Step 1, we create a mesh using the `triangle` method (lines 10-11). This crea
   - Set `hmax = 400000` and `hmin = 5000`
 - Convert x, y coordinates to lat/long and then save your model to a file
 
-Review the code used to create a continental Greenland mesh (lines 8-30) in the `readme.m` file. After creating the mesh and saving the model, the code uses `plotmodel` to plot a mesh visualization.
+Review the code used to create a continental Greenland mesh (lines 8-30) in the `runme.m` file. After creating the mesh and saving the model, the code uses `plotmodel` to plot a mesh visualization.
 
 Execute step 1 in the `runme.m` file. After doing so, you should see the figure below:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/Mesh.png" alt="Figure 1: Mesh"></div>
 ### Parameterization
-Call the `setmask` function with empty arguments, to denote that all ice is grounded. Then parameterize your mesh with file `Greenland.par`. Next, set your flow equation to SSA for all. Read through the parameter file `./Greenland.par`, which is similar to your PIG .par file, but for Greenland. Here, we are parameterizing a full continental domain, so all points along the domain boundary will be considered ice front. As a result, these boundaries do not need to be constrained, therefore the single point constraints variables will all be set to NaN.
+Call the `setmask` function with empty arguments, to denote that all ice is grounded. Then parameterize your mesh with file `Greenland.par`. Next, set your flow equation to SSA for all. Read through the parameter file `./Greenland.par`, which is similar to your PIG .par file, but for Greenland. Here, we are parameterizing a full continental domain, so all points along the domain boundary will be considered ice front. As a result, these boundaries do not need to be constrained, therefore the single point constraint variables will all be set to NaN.
 
 Run step 2. This will save your parameterized model. Now, plot the new model thickness and velocity. For example:
 ````
@@ -65,7 +66,7 @@ NOTE: Remember that `md.inversion` can be called for help!
   - Absolute value of surface velocity
   - Log of surface velocity
   - Drag coefficient gradient
-- Set cost functions coefficients to 350, 0.2, and`2 * 10^-6`
+- Set cost functions coefficients to 350, 0.2, and `2 * 10^-6`
 - Set gradient scaling to 50
 - Specify max inversion parameter = 200, min inversion parameter = 1
 - Solve a 30-step Stress Balance model in 2D, SSA
@@ -85,7 +86,7 @@ Specify a transient forcing by adding a time value to the end (in the end+1 posi
 >> md.smb.mass_balance = [md.smb.mass_balance; [10 20]]
 ````
 
-By default, ISSM will linearly interpolate surface mass balance between time 10 and time 20 in this example. Prior to first and after last imposed time, forcing values remain constant. In order to turn interpolation off (i.e. use a step function), you would set `md.timestepping.interp_forcings = 0`. If this values is set to 0, then your surface mass balance will change at the specified time, and will remain constant until a new value (column vector with time in the last row) is specified.
+By default, ISSM will linearly interpolate surface mass balance between time 10 and time 20 in this example. Prior to first and after last imposed time, forcing values remain constant. In order to turn interpolation off (i.e. use a step function), you would set `md.timestepping.interp_forcings = 0`. If this value is set to 0, then your surface mass balance will change at the specified time, and will remain constant until a new value (column vector with time in the last row) is specified.
 
 Steps to set up your transient:
 
@@ -117,9 +118,9 @@ To plot the relaxed version of the model that you just created, change step 5 to
 
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/Transient2.png" alt="Figure 8: Transient2"></div>
-To reach equilibrium, the model should run on the order of 3000 years. Since, 3000 years might take quite a long time to run on a personal computer, you may want to try running for 200 years instead.
+To reach equilibrium, the model should run on the order of 3000 years. Since 3000 years might take quite a long time to run on a personal computer, you may want to try running for 200 years instead.
 
-To accomplish this extended relaxation, alter step 7 to run for the extended time period (200 years instead of 20 years). In the last line of this step, save your model as `./Models/Greenland.HistoricTransient_200yr` instead of `./Models/Greenland.HistoricTransient`, to avoid overwriting the old model. Then, run step 7 again. This run of 200 years will take longer than your original 20 year run.
+To accomplish this extended relaxation, alter step 7 to run for the extended time period (200 years instead of 20 years). In the last line of this step, save your model as `./Models/Greenland.HistoricTransient_200yr` instead of `./Models/Greenland.HistoricTransient`, to avoid overwriting the old model. Then, run step 7 again. This run of 200 years will take longer than your original 20-year run.
 
 When you are done with step 7, complete step 8 on your own as an exercise. Fill in the required code to plot the results in step 8. Follow the comments, write the code to load the historic transient model, and create line plots of relaxation run (use Step 5 as a reference). Then, save surface mass balance by looping through 200 years (i.e. 1000 steps). Plot the surface mass balance time series in the first subplot. Title this plot "Mean Surface Mass Balance".
 
@@ -129,7 +130,7 @@ Lastly, save Ice Volume by looping through 1000 steps. Plot volume time series i
 
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/200TimeSeries.png" alt="Figure 9: 200TimeSeries"></div>
-In Step 9, we will use the 200 year relaxed ice sheet as a starting condition for a historic transient run. To do so we need to save the 200 year resulting geometry and velocities into the model state. To load your past results see lines 254-259.
+In Step 9, we will use the 200-year relaxed ice sheet as a starting condition for a historic transient run. To do so we need to save the 200 year resulting geometry and velocities into the model state. To load your past results see lines 254-259.
 
 Next, we load the Box time series saved earlier in mat file, `smbbox.mat`, and then (lines 261-300):
 
@@ -139,7 +140,7 @@ Next, we load the Box time series saved earlier in mat file, `smbbox.mat`, and t
 
 Run step 9, which will execute your historical transient forward simulation, monthly from 2003-2012.
 
-Then, run step 10 to plot a time series of total surface mass balance, max velocity, and ice volume. See Lines 305-329.
+Then, run step 10 to plot a time series of total surface mass balance, max velocity, and ice volume. See lines 305-329.
 
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/MassVelocityVolume.png" alt="Figure 10: MassVelocityVolume"></div>

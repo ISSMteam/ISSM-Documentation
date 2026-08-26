@@ -6,7 +6,7 @@ parent: Parameterization
 
 ## Empirical Scalar Tertiary Anisotropy Regime (ESTAR)
 ### Description
-The ESTAR (Empirical Scalar Tertiary Anisotropy Regime) flow relation [<a href="#references">*Budd2013,Graham2018*</a>] is a generalized constitutive relation for polycrystalline ice in steady-state (tertiary) flow. It is a scalar power law formulation based on tertiary creep rates from laboratory experiments of ice deformation under a variety of simple shear and compression stresses. While mathematically isotropic, the ESTAR flow relation describes the deformation of ice with a flow-compatible induced anisotropy &#8212; i.e. ice that has a developed anisotropic fabric that is a function of the underlying stress regime (i.e. the relative proportion of simple shear and compression stresses). The origins of ESTAR, including the laboratory experiments that contributed to its development, its derivation, and underlying assumptions are discussed in [<a href="#references">*Budd2013*</a>] and [<a href="#references">*Graham2018*</a>].
+The ESTAR (Empirical Scalar Tertiary Anisotropy Regime) flow relation [<a href="#references">*Budd2013,Graham2018*</a>] is a generalized constitutive relation for polycrystalline ice in steady-state (tertiary) flow. It is a scalar power-law formulation based on tertiary creep rates from laboratory experiments of ice deformation under a variety of simple shear and compression stresses. While mathematically isotropic, the ESTAR flow relation describes the deformation of ice with a flow-compatible induced anisotropy &#8212; i.e. ice that has a developed anisotropic fabric that is a function of the underlying stress regime (i.e. the relative proportion of simple shear and compression stresses). The origins of ESTAR, including the laboratory experiments that contributed to its development, its derivation, and underlying assumptions are discussed in [<a href="#references">*Budd2013*</a>] and [<a href="#references">*Graham2018*</a>].
 
 #### Equations
 Ice is treated as a purely viscous incompressible material [<a href="#references">*Cuffey2010*</a>], such that its material constitutive relation can be written:
@@ -16,7 +16,7 @@ Ice is treated as a purely viscous incompressible material [<a href="#references
 where:
 
 - <img src="https://latex.codecogs.com/svg.latex?{\boldsymbol\sigma'}" alt="Equation 2"> is the deviatoric stress tensor (Pa)
-- <img src="https://latex.codecogs.com/svg.latex?\mu" alt="Equation 3"> is the ice effective viscosity (Pa~s)
+- <img src="https://latex.codecogs.com/svg.latex?\mu" alt="Equation 3"> is the ice effective viscosity (Pa s)
 - <img src="https://latex.codecogs.com/svg.latex?\dot{ {\boldsymbol\varepsilon}}" alt="Equation 4"> is the strain rate tensor (s<a href="#footnotes" target="_top"><sup>-1</sup></a>)
 
 The ESTAR flow relation viscosity <img src="https://latex.codecogs.com/svg.latex?\mu" alt="Equation 5"> can be written:
@@ -36,7 +36,7 @@ Here, <img src="https://latex.codecogs.com/svg.latex?E_C" alt="Equation 20"> and
 
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
 \lambda_S=\frac{\dot{\varepsilon}'}{\dot{\varepsilon}_e}," alt="Equation 21"></div>
-where <img src="https://latex.codecogs.com/svg.latex?\dot{\varepsilon}'" alt="Equation 22"> (s<a href="#footnotes" target="_top"><sup>-1</sup></a>) is the magnitude of the shear strain rate on the local non-rotating shear plane. The local non-rotating shear plane contains the velocity vector and the vorticity vector associated solely with deformation, rather than local rigid body rotation. See [<a href="#references">*Graham2018*</a>] for details. 
+where <img src="https://latex.codecogs.com/svg.latex?\dot{\varepsilon}'" alt="Equation 22"> (s<a href="#footnotes" target="_top"><sup>-1</sup></a>) is the magnitude of the shear strain rate on the local non-rotating shear plane. The local non-rotating shear plane contains the velocity vector and the vorticity vector associated solely with deformation, rather than local rigid body rotation. See [<a href="#references">*Graham2018*</a>] for details.
 
 For comparison with the ESTAR viscosity, the Glen flow relation viscosity <img src="https://latex.codecogs.com/svg.latex?\mu" alt="Equation 23"> can be written:
 
@@ -99,4 +99,4 @@ in which <img src="https://latex.codecogs.com/svg.latex?B" alt="Equation 38"> is
 - Adam Treverrow, William F. Budd, Tim H. Jacka, and Roland C. Warner.
  The tertiary creep of polycrystalline ice: experimental evidence for
    stress-dependent levels of strain-rate enhancement.
- J. Glaciol., 58(208):301–314, 2012.
+ J. Glaciol., 58(208):301-314, 2012.

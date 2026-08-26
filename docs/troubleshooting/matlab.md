@@ -18,7 +18,7 @@ nav_order: 4
 >> md=model;
 ??? Undefined function or variable 'model'.
 ````
-This error message shows that ISSM tools have not been loaded by MATLAB. See the 
+This error message shows that ISSM tools have not been loaded by MATLAB. See the
  <a href="../using-issm/getting-started/loading-issm">'Loading ISSM' page</a>
 for more info.
 ## MATLAB complains about missing symbols
@@ -27,6 +27,7 @@ In some cases, MATLAB complains about missing symbols in MEX files. If your envi
 - Boost
 - HDF5
 - libgfortran
+
 but any library that MATLAB ships with could potentially cause a conflict. There are various options for fixing the above case, but you may want to first run,
 ````
 !ldd <PATH_TO_MEX_FILE>
@@ -80,11 +81,11 @@ This problem has been reported under macOS. There are two ways to fix this probl
 ### Option 1 (preferred)
 
 1. Locate where your `gfortran` library is (for example: `/usr/local/gfortran/lib/`).
-1. copy MATLAB's `.matlab7rc.sh` in your home directory. For example:
+1. Copy MATLAB's `.matlab7rc.sh` in your home directory. For example:
   ````
 cp /Applications/MATLAB_R2014b.app/bin/.matlab7rc.sh ~
   ````
-1. open `~/.matlab7rc.sh` with your favorite editor, you will see a `case` with different architecture: `glnx86/glnxa64` for Linux, `mac/maci/maci64` for macOS and `*` for other architectures (windows etc). 
+1. Open `~/.matlab7rc.sh` with your favorite editor, you will see a `case` with different architecture: `glnx86/glnxa64` for Linux, `mac/maci/maci64` for macOS and `*` for other architectures (Windows etc).
 1. Go to the case that corresponds to your machine's architecture and uncomment the following line:
   ````
 #           LDPATH_PREFIX='$MATLAB/sys/opengl/lib/$ARCH'
@@ -97,7 +98,7 @@ LDPATH_PREFIX='/usr/local/gfortran/lib/'
 Restart MATLAB and it should now work.
 
 ### Option 2 (requires admin privileges)
-The second fix consists of replacing MATLAB's library with the one that are on your system, but you will need to have admin privileges.
+The second fix consists of replacing MATLAB's library with the one that is on your system, but you will need to have admin privileges.
 
 We show here the steps for the following MATLAB path: `/Applications/MATLAB_R2013a.app/` and `libgfortran` path: `/usr/local/gfortran/lib/`.
 
@@ -172,7 +173,7 @@ Please check for error messages above or in the outlog
 ````
 In many cases, this does indeed indicate a runtime error caused by changes made to the source code. However, if you have an unmodified copy of ISSM and you are running one of our Windows configurations, the cause may actually be the equivalent of the previous issue.
 
-**NOTE**: The following is included in our 
+**NOTE**: The following is included in our
  <a href="../installation/windows">Windows installation instructions</a>.
 
 After starting a MSYS2 MinGW 64-bit shell instance, run,
@@ -218,7 +219,7 @@ Here is how you can fix this problem:
   ````
 cp /nasa/mw/2013b/bin/.matlab7rc.sh ~/ 
   ````
-1. open `~/.matlab7rc.sh` with your favorite editor, you will see a `case` with different architecture: `glnx86/glnxa64` for Linux, `mac/maci/maci64` for mac and `*` for other architectures (Windows etc). Go to the case that corresponds to your machine's architecture
+1. Open `~/.matlab7rc.sh` with your favorite editor, you will see a `case` with different architecture: `glnx86/glnxa64` for Linux, `mac/maci/maci64` for macOS and `*` for other architectures (Windows etc). Go to the case that corresponds to your machine's architecture
 1. Uncomment the following line:
   ````
 #           LDPATH_PREFIX='$MATLAB/sys/opengl/lib/$ARCH'
@@ -244,7 +245,7 @@ MPID_nem_tcp_get_business_card(420):
 MPID_nem_tcp_init(379).............: gethostbyname failed, MACHINENAME (errno 1)
 loading results from cluster
 ````
-This issue has been observed on more recent versions of MacOS, on both the precompiled and compiled-from-source versions of ISSM typically when users use a VPN. MPI does not know if you are running on your local machine or on a remote server. The fix involves modifying the hosts file, `sudo vi /etc/hosts` and adding a line that reads,
+This issue has been observed on more recent versions of macOS, on both the precompiled and compiled-from-source versions of ISSM typically when users use a VPN. MPI does not know if you are running on your local machine or on a remote server. The fix involves modifying the hosts file, `sudo vi /etc/hosts` and adding a line that reads,
 ````
 127.0.0.1	MACHINENAME
 ````

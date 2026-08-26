@@ -26,11 +26,11 @@ The routine `setflowequation` works like `plotmodel`: it requires an even number
 
 The first four options must be followed by one of the following arguments:
 
-- An ARGUS file containing a closed contour, the elements inside the contour will be assigned to the model given by the option.  If user wants to assign the model to the elements outside the domain, add '~' to the name of the domain file (ex: '~Pattyn.exp')
+- An ARGUS file containing a closed contour, the elements inside the contour will be assigned to the model given by the option. If the user wants to assign the model to the elements outside the domain, add '~' to the name of the domain file (ex: '~Pattyn.exp')
 - A vector of size `md.numberofelements` holding 0, and 1 on the elements that the user had flagged. The model given by the option will be assigned to the elements flagged only.
 - `'all'` if the user wants to assign the model to all the elements
 
-The last option `'fill'` must be followed by the name of the model that the user wants the other elements (that have not been flagged by the other options) assigned to. All options are not required to be used. The previous example assigns the model of Pattyn for the elements inside the contour `Pattyn.exp` and the model of  MacAyeal for the elements located on the ice shelf. The other elements are Hutter's elements. If the user wants to use MacAyeal's model only, type the following command: 
+The last option `'fill'` must be followed by the name of the model that the user wants the other elements (that have not been flagged by the other options) assigned to. All options are not required to be used. The previous example assigns the model of Pattyn for the elements inside the contour `Pattyn.exp` and the model of MacAyeal for the elements located on the ice shelf. The other elements are Hutter's elements. If the user wants to use MacAyeal's model only, type the following command:
 ````
 >> md = setflowequation(md, 'SSA', 'all');
 ````

@@ -29,10 +29,10 @@ where <img src="https://latex.codecogs.com/svg.latex?C_g" alt="Equation 14"> is 
 
 In the second case, the basal friction computed for partly grounded elements is integrated only on the part of the element that is grounded. This can be done simply by changing the integration area from the initial element to the grounded part of the element, over which the basal friction is unchanged. We refer to this type of grounding line parameterization as `'SubelementMigration2'`.
 
-The sub-element parameterizations are described in details in [<a href="#references">*Seroussi2014a*</a>].
+The sub-element parameterizations are described in detail in [<a href="#references">*Seroussi2014a*</a>].
 
 #### Contact mechanics
-Grounding line migration can be advantageously based on contact mechanics when solving the stress balance equations with a full-Stokes models [<a href="#references">*Nowicki2008,Durand2009*</a>].
+Grounding line migration can be advantageously based on contact mechanics when solving the stress balance equations with a full-Stokes model [<a href="#references">*Nowicki2008,Durand2009*</a>].
 
 This capability is currently under development.
 

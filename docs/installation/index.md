@@ -8,11 +8,11 @@ has_toc: false
 <h1>Installation</h1>
 Most users should navigate to the page corresponding to their operating system and choose to either download and install a precompiled distributable or follow the instructions for configuring, compiling, and installing ISSM from source.
 
-Known configurations and other notes for compiling and installing and running ISSM on a number of 
+Known configurations and other notes for compiling, installing, and running ISSM on a number of 
 <a href="hpc" target="_top">'High-Performance Computing (HPC)'</a>
 systems are available and updated as new configurations are discovered.
 
-Configuring and compiling ISSM with extended capabilities (e.g. solid-earth, automatic differentiation) or for development is covered in the
+Configuring and compiling ISSM with extended capabilities (e.g. solid-Earth, automatic differentiation) or for development is covered in the
 <a href="advanced" target="_top">'Advanced Features' page</a>.
 
 {: .highlight-title }

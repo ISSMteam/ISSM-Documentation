@@ -38,16 +38,18 @@ surface forcings parameters (SMB = accumulation - runoff - evaporation):
 - `md.smb.evaporation` : amount of ice lost to evaporative processes [m/yr ice eq]
 
 ### SMB melt components
-Like the SMBcomponents model, the SMBmeltcomponents model computes surface mass balance using the component parameters provided by the user. The components expected are: accumulation, evaporation, melt, and refreeze. All components are typically expected to be given as positive values.  In the model computation of surface mass balance, melt and evaporation are considered as mass lost while accumulation and refreeze are considered as mass gain.
+Like the SMBcomponents model, the SMBmeltcomponents model computes surface mass balance using the component parameters provided by the user. The components expected are: accumulation, evaporation, melt, and refreeze. All components are typically expected to be given as positive values. In the model computation of surface mass balance, melt and evaporation are considered as mass lost while accumulation and refreeze are considered as mass gain.
 
 The melt components model can be selected by running:
 ````
 >> md.smb = SMBmeltcomponents();
 ````
+
+One can display the following fields by running:
 ````
 >> md.smb
 ````
-surface forcings parameters with melt (SMB = accumulation - evaporation - melt + refreeze)
+surface forcings parameters with melt (SMB = accumulation - evaporation - melt + refreeze):
 
 - `md.smb.accumulation`: accumulated snow [m/yr ice eq]
 - `md.smb.evaporation` : amount of ice lost to evaporative processes [m/yr ice eq]
@@ -61,14 +63,16 @@ The gradients model can be selected by running:
 ````
 >> md.smb = SMBgradients();
 ````
+
+One can display the following fields by running:
 ````
 >> md.smb
 ````
 
-- `md.smb.href`  : reference elevation from which deviation is used to calculate SMB adjustment in smb (gradients method [m])
-- `md.smb.smbref`: reference smb from which deviation is calculated in smb (gradients method [mm/yr water equiv])
-- `md.smb.b_pos` : slope of hs - smb regression line for accumulation regime (required if smb gradients is activated)
-- `md.smb.b_neg` : slope of hs - smb regression line for ablation regime (required if smb gradients is activated)
+- `md.smb.href`  : reference elevation from which deviation is used to calculate SMB adjustment in SMB (gradients method [m])
+- `md.smb.smbref`: reference SMB from which deviation is calculated in SMB (gradients method [mm/yr water equiv])
+- `md.smb.b_pos` : slope of hs - SMB regression line for accumulation regime (required if SMB gradients is activated)
+- `md.smb.b_neg` : slope of hs - SMB regression line for ablation regime (required if SMB gradients is activated)
 
 
 ## References

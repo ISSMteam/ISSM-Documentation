@@ -69,11 +69,11 @@ The ratio of the lengths of two adjacent edges is controlled by the option `'gra
 ````
 
 #### anisomax
-The factor of anisotropy (ratio between the lengths of two edges belonging to the same triangle) can be changed by the option `'aniso'`. A factor of anisotropy equal to 1 will result in an isotropic mesh generation:
+The factor of anisotropy (ratio between the lengths of two edges belonging to the same triangle) can be changed by the option `'anisomax'`. A factor of anisotropy equal to 1 will result in an isotropic mesh generation:
 ````
 >> md = bamg(md, 'field', md.vel_obs, 'err', 1.5, 'anisomax', 1);
 ````
-NOTE: Users using Intel compilers (`icc`, `icpc`) shoud use the flag `-fp-model precise` to disable optimizations that are not value-safe on floating-point data. This will prevent bamg from being compiler dependent (see <a href="https://software.intel.com/en-us/node/522979" target="_blank">here</a>).
+NOTE: Users using Intel compilers (`icc`, `icpc`) should use the flag `-fp-model precise` to disable optimizations that are not value-safe on floating-point data. This will prevent bamg from being compiler dependent (see <a href="https://software.intel.com/en-us/node/522979" target="_blank">here</a>).
 
 ### Extrusion (3D)
 One can extrude the mesh, in order to use a three-dimensional model (Pattyn's higher order model and Full Stokes model). This step is not mandatory. If the user wants to keep a 2D model, skip this section.
@@ -100,6 +100,6 @@ The first argument is the model, as usual. The second argument is the number of 
  Triangle: Engineering a 2D Quality Mesh Generator and
    Delaunay Triangulator.
  In Ming C. Lin and Dinesh Manocha, editors, Applied
-   Computational Geometry: Towards Geometric Engineering, volume 1148 of   Lecture Notes in Computer Science, pages 203-222. Springer-Verlag, May
+   Computational Geometry: Towards Geometric Engineering, volume 1148 of Lecture Notes in Computer Science, pages 203-222. Springer-Verlag, May
    1996.
  From the First ACM Workshop on Applied Computational Geometry.

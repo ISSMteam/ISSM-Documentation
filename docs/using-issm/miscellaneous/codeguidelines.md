@@ -7,7 +7,7 @@ grand_parent: Using ISSM
 
 ## General guidelines
 
-- comment your code (everybody must understand what is being done)
+- Comment your code (everybody must understand what is being done)
 - NEVER more than one blank line please!
 - Align operators vertically to emphasize local program structure and semantics when possible
 - Do not use excessive blank spaces (especially in equations)
@@ -15,7 +15,7 @@ grand_parent: Using ISSM
 ## C/C++
 
 - if/for should follow this:
-- no space between if/for and its statement
+- No space between if/for and its statement
 - If an if/for holds on one line, then do not use brackets
 - Otherwise, use brackets
 
@@ -46,7 +46,7 @@ else{
 }
 ```
 
- - Comments should follow the code indentation and there should not be any blank line between a comment and the code it is referring to
+- Comments should follow the code indentation and there should not be any blank line between a comment and the code it is referring to
 
 ```c
    /*Assigning values of A*/
@@ -57,7 +57,7 @@ else{
    }
 ```
 
- - Function declaration should hold on one line only
+- Function declaration should hold on one line only
 
 ```c
 bool Test(int a,double b,char* c){
@@ -94,7 +94,7 @@ function outputs=hello()
 %      outputs=hello()
 ```
 
-## Vim Folding
+### Vim Folding
 Classes, functions, and other logical blocks of code should be folded (note the exact formatting used below):
 
 {% raw %}
@@ -112,7 +112,7 @@ end % }}}
 - We don't enforce the space after "#" for comments (E262, E265)
 - We still allow form module import * (F403) but we should avoid those if possible
 - We bypass warning on undefined function (F405) this can probably be removed if we take care of the one above
-flake8 allows you to track and highlight the syntax errors (through Elpy in Emacs, I guess it can be introduced in vim).
+flake8 allows you to track and highlight syntax errors (through Elpy in Emacs; it can likely be introduced in Vim as well).
 
 If you install flake8, you can also run it in standalone to check the files in a directory:
 
@@ -120,7 +120,7 @@ If you install flake8, you can also run it in standalone to check the files in a
 flake8  --ignore=E262,E265,F403,F405,E405,E501
 ```
 
-## Docstrings
+### Docstrings
 Adhering to [PEP 257 Docstring Conventions](https://www.python.org/dev/peps/pep-0257/) while attempting to mirror the conventions we follow under MATLAB, modules, functions, classes, and method definitions should be documented according to the following protocol:
 
 ```py
@@ -141,9 +141,9 @@ def FunctionName(inputs):
     """
 ```
 
-As with MATLAB, at the very least, the first line and the 'Usage' should be provided. Unlike MATLAB, use indentations of 4 and 8 spaces.
+As with MATLAB, at the very least, the first line and the Usage should be provided. Unlike MATLAB, use indentations of 4 and 8 spaces.
 
-## Vim Folding
+### Vim Folding
 Classes, functions, and other logical blocks of code should be folded (note the exact formatting used below):
 
 {% raw %}
@@ -161,7 +161,7 @@ The following is a list of MATLAB built-in equivalents in Python:
 |:-------|:-------|:------|
 | `s=num2str(A)` | `s=str(A)` | convert numbers to character array |
 
-## NumPy/SciPy 
+## NumPy/SciPy
 NumPy and SciPy are used extensively in the Python interface to ISSM to replicate MATLAB-native functionality. When translating modules or tests, for example, from MATLAB to Python, the following sources may come in handy:
 - [NumPy for Matlab users](https://numpy.org/devdocs/user/numpy-for-matlab-users.html)
 - [MATLAB to NumPy](http://mathesaurus.sourceforge.net/matlab-numpy.html)

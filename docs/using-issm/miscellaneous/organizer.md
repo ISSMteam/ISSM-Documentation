@@ -15,7 +15,7 @@ step while ensuring your previous steps remain saved.
 
 ### Initiating an organizer
 
-You can start by creating an instance of the `organizer` class. For example, the following code builds an organizer instance, where the model files will be stored in the './Models/' folder with `prefix` ‘Greenland_’ in the filename. The `prefix` can be used to conveniently organize different ISSM models. The `steps` input accepts a list of numerical ids that tells the organizer which steps to run.
+You can start by creating an instance of the `organizer` class. For example, the following code builds an organizer instance, where the model files will be stored in the './Models/' folder with `prefix` 'Greenland_' in the filename. The `prefix` can be used to conveniently organize different ISSM models. The `steps` input accepts a list of numerical ids that tells the organizer which steps to run.
 
 ```m
 org = organizer('repository','Models/', 'prefix', ['Greenland_'], 'steps', [1,2]);  
@@ -61,16 +61,16 @@ if perform(org,'Parameterization')
 	savemodel(org,md);
 end
 ```
-You can check the ids and step names by running your script once and then
-execute `org` in MATLAB, or setting `'steps'` to 0 and running your script. In both cases 
+You can check the IDs and step names by running your script once and then
+executing `org` in MATLAB, or by setting `'steps'` to 0 and running your script. In both cases
 all the step numbers and names will be printed to the screen.
 
 ### Saving and loading models
 
 The function `savemodel` takes in the organizer and model as inputs. It will
 save the model with the name prefix defined when creating the organizer,
- appended with the step name. For example, in the code above, the
- `savemodel(org,md);` will save the model in the filepath `./Models/Greenland_Mesh.mat`.
+appended with the step name. For example, in the code above, the
+`savemodel(org,md);` will save the model in the filepath `./Models/Greenland_Mesh.mat`.
 
 The function `loadmodel` takes in the organizer and the step name of the
 previously saved model. For example, in the code above,
@@ -121,5 +121,5 @@ end
 ```
 
 Once all the jobs are fully completed, you can set `loadonly = 1` and run the
-same loop, all the results will be downloaded and the model will be saved with
+same loop; all the results will be downloaded and the model will be saved with
 a unique name. Good luck!

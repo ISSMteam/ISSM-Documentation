@@ -31,14 +31,14 @@ For variables without ARMA implementation, stochasticity is applied as Gaussian 
 - `defaultdimension`: the number of subdomains with their separate stochastic perturbations. Note that different fields thus share the same division in subdomains. Only fields that are modeled as an ARMA process (see Section 2 below) can have their specific division in subdomains.
 - `default_id`: the identification number corresponding to a given subdomain (e.g., 1, 2, 3, etc.) for each element of the mesh.
 - `stochastictimestep`: this determines the frequency at which new stochastic perturbations are computed. For example, if it is set to 1 year, a stochastic perturbation is kept constant over a period of one year, after which a new stochastic perturbation is generated.
-- `covariance`: this is the covariance matrix for the stochastic perturbations (in Eq. (2)). If only a single variable is modeled as stochastic, and with only a single subdomain, then the covariance is of size 1×1 (equivalent to in Eq. (1)). If there are several subdomains and/or several stochastic variables, then the covariance should be of size D×D, where D is the number of subdomains times the number of stochastic variables. The marginal variance of each variable in a given subdomain are the diagonal terms of the covariance matrix. The off-diagonal terms capture the covariance between different variables and different subdomains.
+- `covariance`: this is the covariance matrix for the stochastic perturbations (in Eq. (2)). If only a single variable is modeled as stochastic, and with only a single subdomain, then the covariance is of size 1×1 (equivalent to in Eq. (1)). If there are several subdomains and/or several stochastic variables, then the covariance should be of size D×D, where D is the number of subdomains times the number of stochastic variables. The marginal variances of each variable in a given subdomain are the diagonal terms of the covariance matrix. The off-diagonal terms capture the covariance between different variables and different subdomains.
 
 ### ARMA processes
 As mentioned above, several variables (or 'fields') have an ARMA model implemented. In general, the ARMA models have the same configuration of variables. First, we can focus on the parameters that are similar to the variables of `md.stochasticforcing`,
 
 - `num_basins`: the number of subdomains for this particular variable (can be different than `md.stochasticforcing.defaultdimension`).
 - `basin_id`: the identification number corresponding to a given subdomain (e.g., 1, 2, 3, etc.) for each element of the mesh.
-- `arma_timestep`: the time resolution of the ARMA model. This thus corresponds to the temporal frequency at which Eq. (3) is recomputed. Note that epsilon in Eq. (3) is recomputed via Eq. (2) at the resolution given by `md.stochasticforcing.stochastictimestep`. Thus, Eq. (3) always uses the latest epsilon term computed. 
+- `arma_timestep`: the time resolution of the ARMA model. This thus corresponds to the temporal frequency at which Eq. (3) is recomputed. Note that epsilon in Eq. (3) is recomputed via Eq. (2) at the resolution given by `md.stochasticforcing.stochastictimestep`. Thus, Eq. (3) always uses the latest epsilon term computed.
 Note here that the covariance parameters determining the variability in an ARMA-modeled variable should be prescribed in `md.stochasticforcing.covariance`.
 Second, we can focus on the parameters that are specific to ARMA-modeled variables. The deterministic background term of the ARMA process (<img src="https://latex.codecogs.com/svg.latex?\mu_{t}" alt="Equation 22"> in Eq.(3)) can be modeled as a piecewise function in time. The order of the background term function with respect to time is set by the user, for example: constant, linear, quadratic, etc. Similarly, the number of breakpoints in the background term function is set by the user, for example: no breakpoint, 1 breakpoint, 2 breakpoints, etc. The remaining parameters to be defined in the model are therefore,
 
@@ -122,4 +122,4 @@ For more details about StISSM, please refer to [<a href="#references">*Verjans20
 - V. Verjans, A. A. Robel, H. Seroussi, L. Ultee, and A. F. Thompson.
  The Stochastic Ice-Sheet and Sea-Level System Model v1.0 (StISSM
    v1.0).
- Geosci. Model Dev., 15(22):8269 - 8293, 2022.
+ Geosci. Model Dev., 15(22):8269-8293, 2022.

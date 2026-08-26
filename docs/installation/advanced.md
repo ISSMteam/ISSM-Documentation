@@ -12,10 +12,10 @@ If you plan on making changes to your installation of ISSM and/or contributions 
 ````
 --enable-development
 ````
-This prevents MATLAB/Python scripts from being copied from their respective locations in `${ISSM_DIR}/src` to `${ISSM_DIR}/bin` when ISSM is recompiled
+This prevents MATLAB/Python scripts from being copied from their respective locations in `${ISSM_DIR}/src` to `${ISSM_DIR}/bin` when ISSM is recompiled.
 
 ## Debugging Build
-Debugging features can be enabled by adding the following to your ISSM configuration with,
+Debugging features can be enabled by adding the following to your ISSM configuration,
 ````
 --enable-debugging
 ````
@@ -58,7 +58,7 @@ and making the following additions to the ISSM configuration, reconfiguring, and
 ````
 
 ## Solid Earth
-Capabilities for modelling solid earth processes can be enabled by compiling and installing the following additional external packages,
+Capabilities for modelling solid Earth processes can be enabled by compiling and installing the following additional external packages,
 
 #### Linux
 ````
@@ -97,7 +97,7 @@ and making the following additions to the ISSM configuration, reconfiguring, and
 > If you will be using the Python interface to ISSM, use the `install-3-python.sh` script to compile GDAL.
 
 ## Automatic Differentiation
-Automatic differentiation is only supported under Linux and Mac. 
+Automatic differentiation is only supported under Linux and macOS. 
 
 ### CoDiPack installation (recommended)
 CoDiPack can be enabled by compiling and installing the following additional external packages,
@@ -137,7 +137,7 @@ export CXXFLAGS="-g -O3 -fPIC -std=c++11 -DCODI_ForcedInlines"
 	--with-medipack-dir="$ISSM_DIR/externalpackages/medipack/install"
 ````
 
-where `<NUM_CPUS>` is the number of available CPU's.
+where `<NUM_CPUS>` is the number of available CPUs.
 
 Reconfigure and recompile ISSM and it will now be fully adjoinable.
 
@@ -183,7 +183,7 @@ ISSM's kriging capability. The following is an example configuration script:
 	--with-ampi-dir=$ISSM_DIR/externalpackages/adjoinablempi/install
 ````
 
-where `<NUM_CPUS>` is the number of available CPU's.
+where `<NUM_CPUS>` is the number of available CPUs.
 
 Reconfigure and recompile ISSM and it will now be fully adjoinable.
 

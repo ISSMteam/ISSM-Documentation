@@ -17,9 +17,9 @@ possible causes:
 ~
 ````
 
-This message means that the MPI (Message Passing Interface) server, called mpd, is not running. Therefore, no parallel jobs can run on the cluster. To solve this issue, just type, at the command prompt on the server side (if, for example, your cluster has 8 CPU's),
+This message means that the MPI (Message Passing Interface) server, called mpd, is not running. Therefore, no parallel jobs can run on the cluster. To solve this issue, just type, at the command prompt on the server side (if, for example, your cluster has 8 CPUs),
 ````
 mpd --ncpus=8 &
 ````
-This will launch the MPI server to manage 8 CPU's on the cluster.
+This will launch the MPI server to manage 8 CPUs on the cluster.
 

@@ -40,7 +40,7 @@ The parameters relevant to the elastostatic adjustment (ESA) solution can be dis
 
 - `md.esa.deltathickness`: thickness change: ice height equivalent [m]
 - `md.solidearth.lovenumbers`: loads required Love numbers for solid Earth deformation
-- `md.esa.hemisphere`: North-south, East-west components of 2-D horiz displacement vector: -1 south, 1 north
+- `md.esa.hemisphere`: North-south, East-west components of 2-D horizontal displacement vector: -1 south, 1 north
 - `md.esa.degacc`: accuracy (default .01 deg) for numerical discretization of the Green's functions
 
 ### Running a simulation

@@ -37,11 +37,8 @@ Damage can be calculated using an inverse control method in the same manner as a
 - `md.inversion.control_parameters = {'DamageDbar'}` (MATLAB)
 - `md.inversion.control_parameters = ['DamageDbar']` (Python)
 
-The remainder of the inversion procedure is described
- on the <a href="../advanced/inversions">'Advanced Features' &#8594; 'Inversions' page</a>.
-This was the procedure followed by [<a href="#references">*Borstad2012*</a>] in determining the damage for the Larsen B ice shelf prior to its collapse (see the 
- <a href="../../publications">'Publications' page</a>
-for a link to the paper).
+The remainder of the inversion procedure is described on the <a href="../advanced/inversions">'Advanced Features' &#8594; 'Inversions' page</a>.
+This was the procedure followed by [<a href="#references">*Borstad2012*</a>] in determining the damage for the Larsen B ice shelf prior to its collapse (see the <a href="../../publications">'Publications' page</a> for a link to the paper).
 
 #### Post-processing to determine damage
 Damage can also be calculated from the results of an inverse method solution for ice rigidity <img src="https://latex.codecogs.com/svg.latex?B" alt="Equation 9">. This procedure uses the analytical solution for the strain rate of a damaged ice shelf, derived by [<a href="#references">*Borstad2013*</a>]:
@@ -70,9 +67,7 @@ Additionally, the scalar backstress can be calculated from the inversion results
 >> backstress = backstressfrominversion(md);
 ````
 
-This procedure for calculating damage and backstress was used in [<a href="#references">*Borstad2013*</a>] for the Larsen C ice shelf (see the 
- <a href="../../publications">'Publications' page</a>
-for a link to the paper).
+This procedure for calculating damage and backstress was used in [<a href="#references">*Borstad2013*</a>] for the Larsen C ice shelf (see the <a href="../../publications">'Publications' page</a> for a link to the paper).
 
 ### Damage Evolution (Under Construction)
 A differential equation describing damage evolution in time&#8212;both the advection of damage with ice flow as well as the evolution of damage as the stress state changes&#8212;is being implemented in ISSM. Check back for updates.

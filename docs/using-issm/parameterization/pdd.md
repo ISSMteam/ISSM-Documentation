@@ -8,7 +8,7 @@ parent: Parameterization
 
 ### Physical basis
 #### Positive degree day method
-A standard positive degree day (PDD) method is used to compute the surface masse balance (ice ablation and accumulation) from the temperature and precipitation fields. The hourly temperatures are assumed to have a normal distribution, of standard deviation <img src="https://latex.codecogs.com/svg.latex?\sigma_{PDD} = 5.5\,^{\circ}\mathrm{C}" alt="Equation 3">, around the monthly mean (T<img src="https://latex.codecogs.com/svg.latex?_m" alt="Equation 2">). The number of days for which the temperature is above <img src="https://latex.codecogs.com/svg.latex?0\,^{\circ}\mathrm{C}" alt="Equation 1"> in a year is computed as follows:
+A standard positive degree day (PDD) method is used to compute the surface mass balance (ice ablation and accumulation) from the temperature and precipitation fields. The hourly temperatures are assumed to have a normal distribution, of standard deviation <img src="https://latex.codecogs.com/svg.latex?\sigma_{PDD} = 5.5\,^{\circ}\mathrm{C}" alt="Equation 3">, around the monthly mean (T<img src="https://latex.codecogs.com/svg.latex?_m" alt="Equation 2">). The number of days for which the temperature is above <img src="https://latex.codecogs.com/svg.latex?0\,^{\circ}\mathrm{C}" alt="Equation 1"> in a year is computed as follows:
 
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
 \text{PDD} =\frac{1}{\sigma_{PDD}\sqrt{2\pi}}\int_{0}^{1year}\int_{0\,^{\circ}\mathrm{C}}^{T_m+2.5\sigma_{PDD}}T exp\left[\frac{-(T-T_m)^2}{2\sigma_{PDD}^2} \right] \;dT\,dt" alt="Equation 4"></div>
@@ -38,18 +38,20 @@ A normal distribution of the hourly temperature is also assumed to compute the a
 \frac{\text{accumulation}}{\text{precipitation}} =\frac{\rho_i}{\rho_w\sigma_{RS}\sqrt{2\pi}}\int_0^{1year}\int_{T_m-2.5\sigma_{RS}}^{0\,^{\circ}\mathrm{C}}exp\left[\frac{-(T-T_m)^2}{2\sigma_{RS}^2} \right] dTdt" alt="Equation 24"></div>
 
 #### Temperature and precipitation forcing (Under development)
-If precipitations come from another elevation than the surface elevation of the ice, it can be adjusted to take into account the elevation desertification effect.
+If precipitation comes from another elevation than the surface elevation of the ice, it can be adjusted to take into account the elevation desertification effect.
 
 If the forcing temperatures are provided for a constant altitude, a lapse rate of 6.5<img src="https://latex.codecogs.com/svg.latex?^\circ" alt="Equation 25">/km is used to adjust them to the surface elevation of each step.
 
 ### Model parameters
-The parameters relevant to the positive degree day and <img src="https://latex.codecogs.com/svg.latex?\delta^{18}O" alt="Equation 28"> parameterization methods can be displayed by typing: The lapse rate is computed as an weighted mean of the present day (<img src="https://latex.codecogs.com/svg.latex?rlaps" alt="Equation 27">) and LGM (<img src="https://latex.codecogs.com/svg.latex?rlapslgm" alt="Equation 26">) lapse rate as:
+The parameters relevant to the positive degree day and <img src="https://latex.codecogs.com/svg.latex?\delta^{18}O" alt="Equation 28"> parameterization methods can be displayed by typing:
+
+The lapse rate is computed as a weighted mean of the present-day (<img src="https://latex.codecogs.com/svg.latex?rlaps" alt="Equation 27">) and LGM (<img src="https://latex.codecogs.com/svg.latex?rlapslgm" alt="Equation 26">) lapse rate as:
 
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
 rtlaps=TdiffTime*rlapslgm + \left(1.-TdiffTime\right)*rlaps" alt="Equation 29"></div>
 where `TdiffTime` is the time interpolation parameter (`Tdiff`) at the integration time.
 
-The surface temperature (<img src="https://latex.codecogs.com/svg.latex?Tsurf" alt="Equation 31">) is the yearly average temperature computed from the monthly temperature tstar. tstar is computed as the present day temperature plus the temperature difference, <img src="https://latex.codecogs.com/svg.latex?tdiffh" alt="Equation 30">, between LGM and present day:
+The surface temperature (<img src="https://latex.codecogs.com/svg.latex?Tsurf" alt="Equation 31">) is the yearly average temperature computed from the monthly temperature tstar. tstar is computed as the present-day temperature plus the temperature difference, <img src="https://latex.codecogs.com/svg.latex?tdiffh" alt="Equation 30">, between LGM and present day:
 
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
 tstar = tdiffh + TemperaturesPresentday[imonth] - rtlaps \times \max{st,sealev \times 0.001};" alt="Equation 32"></div>
@@ -57,7 +59,7 @@ st is the difference between the surface elevation and the elevation from temper
 
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
 st=(s-s0t)/1000" alt="Equation 33"></div>
-and tdiffh is the weighted mean between the present day and lgm temperature:
+and tdiffh is the weighted mean between the present-day and LGM temperature:
 
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
 tdiffh = TdiffTime \times ( TemperaturesLgm[imonth] - TemperaturesPresentday[imonth] )" alt="Equation 34"></div>
@@ -67,22 +69,22 @@ tdiffh = TdiffTime \times ( TemperaturesLgm[imonth] - TemperaturesPresentday[imo
 ````
 
 
-- `isdelta18o`:  is temperature and precipitation delta18o parameterization activated (0 or 1, default is 0)
-- `desfac`:  desertification elevation factor (between 0 and 1, default is 0.5) (m)
-- `s0p`:  should be set to elevation from precipitation source (between 0 and a few 1000s m, default is 0) (m)
-- `s0t`:   should be set to elevation from temperature source (between 0 and a few 1000s m, default is 0) [m]
-- `rlaps`:  present day lapse rate (degree/km)
+- `isdelta18o`: whether temperature and precipitation delta18o parameterization is activated (0 or 1, default is 0)
+- `desfac`: desertification elevation factor (between 0 and 1, default is 0.5) (m)
+- `s0p`: should be set to elevation from precipitation source (between 0 and a few 1000s m, default is 0) (m)
+- `s0t`: should be set to elevation from temperature source (between 0 and a few 1000s m, default is 0) [m]
+- `rlaps`: present-day lapse rate (degree/km)
 - `rlapslgm`: LGM lapse rate (degree/km)
-- `Pfac`:  time interpolation parameter for precipitation, 1D (year)
+- `Pfac`: time interpolation parameter for precipitation, 1D (year)
 - `Tdiff`: time interpolation parameter for temperature, 1D (year)
-- `sealev`:  sea level (m)
-- `monthlytemperatures`:  monthly surface temperatures (K), required if pdd is activated and delta18o not activated
-- `precipitation`:  surface precipitation (m/yr water eq)
-- `temperatures_presentday`:  monthly present day surface temperatures (K), required if pdd is activated and delta18o activated
-- `temperatures_lgm`:  monthly LGM surface temperatures (K), required if pdd is activated and delta18o activated
-- `precipitations_presentday`:  monthly surface precipitation (m/yr water eq), required if pdd is activated and delta18o activated
-- `delta18o`:  delta18o, required if pdd is activated and delta18o activated
-- `delta18o_surface`:  surface elevation of the delta18o site, required if pdd is activated and delta18o activated
+- `sealev`: sea level (m)
+- `monthlytemperatures`: monthly surface temperatures (K), required if PDD is activated and delta18o not activated
+- `precipitation`: surface precipitation (m/yr water eq)
+- `temperatures_presentday`: monthly present-day surface temperatures (K), required if PDD is activated and delta18o activated
+- `temperatures_lgm`: monthly LGM surface temperatures (K), required if PDD is activated and delta18o activated
+- `precipitations_presentday`: monthly surface precipitation (m/yr water eq), required if PDD is activated and delta18o activated
+- `delta18o`: delta18o, required if PDD is activated and delta18o activated
+- `delta18o_surface`: surface elevation of the delta18o site, required if PDD is activated and delta18o activated
 
 ### Running a simulation
 To turn this module on in a simulation, use the following command:

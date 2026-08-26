@@ -7,10 +7,10 @@ parent: Capabilities
 ## Glacial Isostatic Adjustment (GIA) Solution
 
 ### Physical basis
-The ISSM/GIA model assumes that the ice sheet rests on top of the solid Earth, which is considered to be a simple two-layered incompressible continuum with upper elastic lithosphere floating on the viscoelastic (Maxwell material) mantle half-space. Coordinate transformations allow simple axisymmetric solutions for the deformation of pre-stressed solid Earth (subject to a normal surface traction of ice/ocean) to retrieve semi-analytical solutions of vertical displacement at the lithosphere surface.
+The ISSM/GIA model assumes that the ice sheet rests on top of the solid Earth, which is considered to be a simple two-layered incompressible continuum with an upper elastic lithosphere floating on the viscoelastic (Maxwell material) mantle half-space. Coordinate transformations allow simple axisymmetric solutions for the deformation of pre-stressed solid Earth (subject to a normal surface traction of ice/ocean) to retrieve semi-analytical solutions of vertical displacement at the lithosphere surface.
 
 ### Vertical surface displacement
-Vertical displacement at the lithosphere surface (i.e., ice/ocean-bedrock interface), <img src="https://latex.codecogs.com/svg.latex?w(r,t)" alt="Equation 1">, is the most relevant field variable for GIA assessment. For brevity, hereinafter, this is referred to as the GIA solution. Semi-analytical GIA solution is given by [<a href="#references">*Ivins1999*</a>]:
+Vertical displacement at the lithosphere surface (i.e., ice/ocean-bedrock interface), <img src="https://latex.codecogs.com/svg.latex?w(r,t)" alt="Equation 1">, is the most relevant field variable for GIA assessment. For brevity, hereinafter, this is referred to as the GIA solution. The semi-analytical GIA solution is given by [<a href="#references">*Ivins1999*</a>]:
 
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
 w(r,t) = \int_{0}^{\infty} { k \left[ \frac{4 \mu_1^{e} \alpha}{2k\mu_1^e + \rho_1 g} \,\hat{Q}_0(k,t) J_1(k\alpha) \right] J_0(kr) \, \text{d}k }," alt="Equation 2"></div>
@@ -68,6 +68,7 @@ where:
 - <img src="https://latex.codecogs.com/svg.latex?\eta" alt="Equation 38"> is the effective viscosity of mantle
 - <img src="https://latex.codecogs.com/svg.latex?\mu_2^e" alt="Equation 39"> is the shear modulus of elasticity of mantle
 - parameters with primes, e.g. <img src="https://latex.codecogs.com/svg.latex?c_0^{\prime}" alt="Equation 40">, are dimensionless (listed in Table 1)
+
 with the following dimensionless parameters:
 
 - <img src="https://latex.codecogs.com/svg.latex?d_2^{\prime} = b_0^{\prime} + b_1^{\prime} + b_2^{\prime} + b_3^{\prime} + b_4^{\prime} + b_5^{\prime} + b_6^{\prime} + b_7^{\prime}" alt="Equation 41">
@@ -76,6 +77,7 @@ with the following dimensionless parameters:
 - <img src="https://latex.codecogs.com/svg.latex?c_2^{\prime} = \left( a_0^{\prime} + a_1^{\prime} + a_2^{\prime} + a_3^{\prime} \right) / d_2^{\prime}" alt="Equation 44">
 - <img src="https://latex.codecogs.com/svg.latex?c_1^{\prime} = \left[ a_1^{\prime} + 2 \left( a_2^{\prime} + a_3^{\prime} \right) \right] / d_2^{\prime}" alt="Equation 45">
 - <img src="https://latex.codecogs.com/svg.latex?c_0^{\prime} = \left( a_2^{\prime} + a_3^{\prime} \right) / d_2^{\prime}" alt="Equation 46">
+
 where:
 
 - <img src="https://latex.codecogs.com/svg.latex?a_0^{\prime} = -2k^{\prime} \left\{ 1 + \text{e}^{2k^{\prime}} \left[ 1 + 2k^{\prime} \left( 1 + k^{\prime} \right)  \right] \right\}" alt="Equation 47">
@@ -91,7 +93,7 @@ where:
 - <img src="https://latex.codecogs.com/svg.latex?b_6^{\prime} = -2k^{\prime} \left( R_{\mu}^e \right)^2 R_{\rho}^2 \left( 1 - \text{e}^{4k^{\prime}} - 4k^{\prime} \, \text{e}^{2k^{\prime}} \right)" alt="Equation 57">
 - <img src="https://latex.codecogs.com/svg.latex?b_7^{\prime} = R_{\mu}^e R_{\rho}^1 R_{\rho}^- \left( 1 - \text{e}^{2k^{\prime}} \right)^2" alt="Equation 58">
 
-The following set of non-dimensionlized parameters are defined, as needed to express dimensionless terms listed in Table 2:
+The following set of non-dimensionalized parameters are defined, as needed to express dimensionless terms listed in Table 2:
 
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
 k^{\prime} = kh_1, R_{\mu}^{e} = \frac{\mu_1^e}{\mu_2^e}, R_{\rho}^1 = \frac{g h_1 \rho_1}{\mu_2^e}, R_{\rho}^2 = \frac{g h_1 \rho_2}{\mu_2^e}, R_{\rho}^+ = \frac{g h_1 \left( \rho_2 + \rho_1 \right)}{\mu_2^e}, R_{\rho}^- = \frac{g h_1 \left( \rho_2 - \rho_1 \right)}{\mu_2^e}," alt="Equation 59"></div>

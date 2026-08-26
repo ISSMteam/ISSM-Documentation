@@ -4,7 +4,7 @@ layout: default
 parent: Tutorials
 ---
 
-## Modeling Jakobshavn Isbr\ae
+## Modeling Jakobshavn Isbr&#230;
 ### Goals
 
 - Construct a 2-dimensional model of Jakobshavn Isbr&#230;, West Greenland
@@ -100,7 +100,7 @@ md.inversion.cost_functions_coefficients = ones(md.mesh.numberofvertices, 2);
 md.inversion.cost_functions_coefficients(:, 1) = 40;
 md.inversion.cost_functions_coefficients(:, 2) = 1;
 ````
-Our cost function is thus the sum of ``SurfaceAbsVelMisfit'`, the absolute of the velocity misfit, and ``SurfaceLogVelMisfit'`, the logarithm of the velocity misfit. We weigh the first cost function 40 times more than the latter one.
+Our cost function is thus the sum of `SurfaceAbsVelMisfit`, the absolute of the velocity misfit, and `SurfaceLogVelMisfit`, the logarithm of the velocity misfit. We weigh the first cost function 40 times more than the latter one.
 
 Open `runme.m`, make sure that the third step is activated (`steps = [3];`), then run `runme.m`:
 ````

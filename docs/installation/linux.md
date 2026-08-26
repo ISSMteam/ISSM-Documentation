@@ -39,7 +39,7 @@ export ISSM_DIR=<ISSM_PATH>
 setenv ISSM_DIR <ISSM_PATH>
 ```
 
-where `<ISSM_PATH>` is the path to the copy of the ISSM source code that you checked out in the previous step (ex: `${HOME}/ISSM/src`).
+where `<ISSM_PATH>` is the path to the copy of the ISSM source code that you checked out in the previous step (e.g. `${HOME}/ISSM/src`).
 
 ## System Packages
 **NOTE**: The following assumes use of the GNU compiler collection (i.e. `gcc`, `gfortran`), the APT package manager, and `sudo` privileges.

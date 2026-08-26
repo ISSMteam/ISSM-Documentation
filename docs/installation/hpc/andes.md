@@ -19,8 +19,7 @@ Go to <a href="https://dashboard.dartmouth.edu/research/hpc_account" target="_bl
   the Dartmouth Research Computing Accounts page.
 </a>
 
-
-you will need a Dartmouth NetID. If applicable, make sure you are added to the ICE DartFS Lab share and the ice Slurm account. Ask to make the ice Slurm account your default.
+You will need a Dartmouth NetID. If applicable, make sure you are added to the ICE DartFS Lab share and the ice Slurm account. Ask to make the ice Slurm account your default.
 
 ## ssh configuration
 You can add the following lines to `~/.ssh/config` on your local machine:
@@ -41,7 +40,7 @@ ssh andes
 ## Password-less ssh
 
 ### Generic Security Services Application Programming Interface (GSSAPI)
-Andes officially suggests using GSSAPI for passwordless access, see ​here.
+Andes officially suggests using GSSAPI for passwordless access, see here.
 
 On your local machine, you will need to enter:
 ```sh
@@ -53,8 +52,8 @@ with your NetID at username and the password for NetID to request a ticket for 7
 If you can't log in anymore (or if you get an error message about wrong permission for your home directory), you will need to destroy all active Kerberos authorization tickets. To do this:
 - Connect to andes: ```ssh NetID@andes8.dartmouth.edu```
 - Once on andes (even with the error thrown), do: ```kdestroy -A```
-- exit out of andes, go back to your ```~/.ssh/config``` and comment out the GSSAPI lines with a ```#```
-- on your computer (or totten, whichever you're using) run: ```kdestroy -A```
+- Exit out of andes, go back to your ```~/.ssh/config``` and comment out the GSSAPI lines with a ```#```
+- On your computer (or Totten, whichever you're using) run: ```kdestroy -A```
 - Now try to ```ssh``` into andes8 again with your password and it should work!
 
 In some instances, the return key produces `^M` and the password cannot be entered. If this happens, use the following command `stty sane`.
@@ -77,10 +76,10 @@ Use:
 ```sh
 source ~/.bashrc
 ```
-or Log out and log back in to apply this change.
+or log out and log back in to apply this change.
 
 ## Installing ISSM on Andes
-Andes will only be used to run the code, you will use your local machine for pre and post-processing, you will never use Andes's MATLAB. You can check out ISSM and install the following packages:
+Andes will only be used to run the code, you will use your local machine for pre- and post-processing, you will never use Andes's MATLAB. You can check out ISSM and install the following packages:
 
 - PETSc 3.21 (use the andes script, `install-3.21-andes.sh`)
 
@@ -104,7 +103,7 @@ export CXXFLAGS="-g -O3 -std=c++11 -fp-model=precise"
    --enable-development
 ```
 
-It is highly recommended to use batch or interactive job to compile ISSM, since the login node has very limited computational resources.
+It is highly recommended to use a batch or interactive job to compile ISSM, since the login node has very limited computational resources.
 
 To request resources for an interactive job:
 
@@ -113,7 +112,7 @@ srun --nodes=1 --ntasks-per-node=16 --pty /bin/bash
 ```
 
 ## Installing ISSM with CoDiPack (AD) on Andes
-You will need to install the following additional packages in the below order:
+You will need to install the following additional packages in the following order:
 
 - codipack
 - medipack
@@ -159,9 +158,9 @@ cluster.codepath='/Yourpath-to-ISSM-on-Andes/bin/';
 cluster.executionpath='/Yourpath-to-ISSM-on-Andes/execution/';
 ```
 
-use your NetID for the login and enter your code path and execution path. These settings will be picked up automatically by matlab when you do `md.cluster= andes()`
+use your NetID for the login and enter your code path and execution path. These settings will be picked up automatically by MATLAB when you do `md.cluster= andes()`.
 
-The file sytem on Andes is called DartFS (or DarFS-hpc). Your home directory on DartFS is only 50GB, it would be better to use the lab folder which has 1TB:
+The file system on Andes is called DartFS (or DartFS-hpc). Your home directory on DartFS is only 50GB, it would be better to use the lab folder which has 1TB:
 
 ```sh
 /dartfs/rc/lab/I/ICE/yourpath/
@@ -174,7 +173,7 @@ You can read more <a href="https://services.dartmouth.edu/TDClient/1806/Portal/K
 
 ## Running jobs on Andes
 
-On Andes, you can use up to 64 cores per node. The more nodes, memory, and the longer the requested time, the more you will have to wait in the queue. So choose your settings wisely:
+On Andes, you can use up to 64 cores per node. The more nodes, memory, and time requested, the longer you will have to wait in the queue. So choose your settings wisely:
 
 ```md.cluster = andes('numnodes',1,'cpuspernode',8);```
 
@@ -184,7 +183,7 @@ See cluster details <a href="https://services.dartmouth.edu/TDClient/1806/Portal
   here
 </a>.
 
-Each node has it's own time limit for jobs that are being run from the queue, but they tend to be 10 or 30 days. You can find the time limit of each node by entering on Andes:
+Each node has its own time limit for jobs that are being run from the queue, but they tend to be 10 or 30 days. You can find the time limit of each node by entering on Andes:
 
 ```sh
 sinfo
@@ -195,7 +194,7 @@ If you are running something interactively on Andes, there may be a credential l
 </a>.
 
 
-Now if you want to check the status of your job and the node you are using, type in the bash with the Andes session:
+Now, if you want to check the status of your job and the node you are using, type the following in your Andes session:
 
 ```sh
 squeue -u username
@@ -206,14 +205,14 @@ You can delete your job manually by typing:
 scancel JOBID
 ```
 
-where ```JOBID``` is the ID of your job (indicated in the Matlab session). Matlab indicates too the directory of your job where you can find the files ```JOBNAME.outlog``` and ```JOBNAME.errlog```. The outlog file contains the information that would appear if you were running your job on your local machine and the errlog file contains the error information in case the job encounters an error.
+where ```JOBID``` is the ID of your job (indicated in the MATLAB session). MATLAB also indicates the directory of your job, where you can find the files ```JOBNAME.outlog``` and ```JOBNAME.errlog```. The outlog file contains the information that would appear if you were running your job on your local machine and the errlog file contains the error information in case the job encounters an error.
 
-If you want to load results from the cluster manually (for example if you have an error due to an internet interruption), you find in the information Matlab gave you ```$ISSM_DIR/execution/LAUNCHSTRING/JOBNAME.lock```, you copy the LAUNCHSTRING and you type in MATLAB:
+If you want to load results from the cluster manually (for example, if you have an error due to an internet interruption), you will find ```$ISSM_DIR/execution/LAUNCHSTRING/JOBNAME.lock``` in the information that MATLAB gave you. Copy the LAUNCHSTRING and type in MATLAB:
 
 ```sh
 md=loadresultsfromcluster(md,'LAUNCHSTRING','JOBNAME');
 ```
-Obs.: in the case where md.settings.waitonlock>0 and you need to load manually (e.g., internet interruption), it is necessary to set md.private.runtimename=LAUNCHSTRING; before calling loadresultsfromcluster.
+Note: in the case where md.settings.waitonlock>0 and you need to load manually (e.g., internet interruption), it is necessary to set md.private.runtimename=LAUNCHSTRING; before calling loadresultsfromcluster.
 
 ## Other notes about running on Andes
 
@@ -222,20 +221,20 @@ If you want to use more than one node (not recommended), the current (temporary)
 - start the job
 - go to Andes and see which nodes andes is using (see squeue usage below)
 - cancel the job (see scancel usage below)
-- find the .queue script for your run and manually edit the start of the mpirun command to look like:
+- Find the .queue script for your run and manually edit the start of the mpirun command to look like:
 ```sh
 mpirun -n 40 --hosts $NODELIST
 ```
 where `$NODELIST` is the list of nodes separated by commas (e.g., q03,q09).
 
-- restart your run with:
+- Restart your run with:
 
 ```sh
 sbatch <filename>.queue
 ```
 If you do not do this, then your job will run on just one node.
 
-To get more information about your job while it's running, from Andes you can ssh into the node given by ```squeue -u username``` and then run ``htop``. Once in htop, if you want to see information for a specific user, type ```u`` and then start typing the user ID until the correct one is highlighted and hit ENTER. You can also get more information about a job by entering:
+To get more information about your job while it's running, from Andes you can ssh into the node given by ```squeue -u username``` and then run ``htop``. Once in htop, if you want to see information for a specific user, type ```u``` and then start typing the user ID until the correct one is highlighted and hit ENTER. You can also get more information about a job by entering:
 
 ```sh
 scontrol show job JOBID
@@ -247,11 +246,11 @@ If your job is in the queue for a long time, there may be several reasons for th
 #SBATCH --partition preemptable
 ```
 
-This may give you access to some idle nodes, but note that your job can be stopped if a higher priority job wants your resources.
+This may give you access to some idle nodes, but note that your job can be stopped if a higher-priority job wants your resources.
 
 ## slurm
 
-A comparison of PBS to Slurm commands can be found
+A comparison of PBS and Slurm commands can be found
 <a href="http://slurm.schedmd.com/rosetta.pdf" target="_blank">here</a>.
 
 An overview of Slurm is found
@@ -274,7 +273,7 @@ Get more information on jobs of user:
 sacct -u <username> --format=User,JobID,account,Timelimit,elapsed,ReqMem,MaxRss,ExitCode
 ```
 ## Running jobs with GPU
-Andes has 12 GPU nodes: g01-g12. To submit a job to these nodes, you will need to specify with
+Andes has 12 GPU nodes: g01-g12. To submit a job to these nodes, you will need to specify:
 ```sh
 #SBATCH --partition gpuq
 #SBATCH --gres=gpu:1

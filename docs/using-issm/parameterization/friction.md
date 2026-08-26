@@ -11,22 +11,22 @@ All friction laws in ISSM are implemented as:
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
 \boldsymbol{\tau}_b = -f\left({\bf v}_b,N\right) \frac{ {\bf v}_b}{\left|{\bf v}_b\right|}" alt="Equation 1"></div>
 where <img src="https://latex.codecogs.com/svg.latex?N" alt="Equation 4"> is the effective pressure, <img src="https://latex.codecogs.com/svg.latex?\boldsymbol{\tau}_b" alt="Equation 3"> and <img src="https://latex.codecogs.com/svg.latex?{\bf v}_b" alt="Equation 2"> are the basal stress and
-sliding velocities respectively. The friction laws described below are describing the norm of the
-basal stress for simplicity but all implementations are such that the oppose motion (i.e. the
+sliding velocities respectively. The friction laws described below describe the norm of the
+basal stress for simplicity, but all implementations are such that they oppose motion (i.e., the
 direction of the basal stress is the opposite of <img src="https://latex.codecogs.com/svg.latex?{\bf v}_b" alt="Equation 5">).
 
 Most friction laws use a switch to define how the effective pressure, <img src="https://latex.codecogs.com/svg.latex?N = p_{ice} - p_{water}" alt="Equation 6"> is
-calculated: `md.friction.coupling`:
+calculated (`md.friction.coupling`):
 
-- 0: <img src="https://latex.codecogs.com/svg.latex?p_{water} = -\rho_w g b" alt="Equation 7">  uniform sheet (negative water pressure ok, default)
+- 0: <img src="https://latex.codecogs.com/svg.latex?p_{water} = -\rho_w g b" alt="Equation 7"> uniform sheet (negative water pressure OK, default)
 - 1: <img src="https://latex.codecogs.com/svg.latex?p_{water} = 0" alt="Equation 9">, so that <img src="https://latex.codecogs.com/svg.latex?N=p_{ice}=\rho_i g H" alt="Equation 8"> is equal to the overburden pressure
 - 2: <img src="https://latex.codecogs.com/svg.latex?p_{water} = \max\left(0,-\rho_w g b\right)" alt="Equation 11">. Same as 0, but <img src="https://latex.codecogs.com/svg.latex?p_{water}\ge 0" alt="Equation 10">
-- 3: Use effective pressure prescrived in `md.friction.effective_pressure`
+- 3: Use effective pressure prescribed in `md.friction.effective_pressure`
 - 4: Use effective pressure dynamically calculated by the hydrology model (i.e., fully
   coupled)
 
-### Budd Friction law (friction)
-The default friction law is defined as [<a href="#references">*Paterson1994*</a>] (p 151):
+### Budd friction law (friction)
+The default friction law is defined as [<a href="#references">*Paterson1994*</a>] (p. 151):
 
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
 v_b \propto N^{-q} {\tau}_b^p" alt="Equation 12"></div>
@@ -43,7 +43,7 @@ In ISSM, this friction law is implemented in terms of basal stress, following [<
 \tau_b = C_b^2 N^r {v}_b^s" alt="Equation 18"></div>
 where:
 
-- <img src="https://latex.codecogs.com/svg.latex?C_b" alt="Equation 19"> friction coefficient
+- <img src="https://latex.codecogs.com/svg.latex?C_b" alt="Equation 19"> is the friction coefficient
 - <img src="https://latex.codecogs.com/svg.latex?r" alt="Equation 21"> and <img src="https://latex.codecogs.com/svg.latex?s" alt="Equation 20"> are friction law exponents:
 
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
@@ -60,7 +60,7 @@ The following fields need to be specified:
 - `md.friction.p`: p exponent
 - `md.friction.q`: q exponent
 
-### Weertman Friction law (weertmanfriction)
+### Weertman friction law (weertmanfriction)
 The Weertman friction [<a href="#references">*Weertman1957*</a>] law reads:
 
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
@@ -112,13 +112,13 @@ Sliding law from [<a href="#references">*Helanow2021*</a>]:
 \tau_b = \frac{C\, N\, u_b^{1/m}}{\left(u_b + (K\,N)^{m}\right)^{1/m}}" alt="Equation 32"></div>
 
 ### Friction Tsai (frictiontsai)
-from [<a href="#references">*Tsai2015*</a>]:
+From [<a href="#references">*Tsai2015*</a>]:
 
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
 \tau_b = \min\left(C ub^{m} , f N \right)" alt="Equation 33"></div>
 
 ### Friction Schoof (frictionschoof)
-from [<a href="#references">*Schoof2005,Gagliardini2007*</a>] (note that we use <img src="https://latex.codecogs.com/svg.latex?C_s^2" alt="Equation 34"> to make sure it is a positive number):
+From [<a href="#references">*Schoof2005,Gagliardini2007*</a>] (note that we use <img src="https://latex.codecogs.com/svg.latex?C_s^2" alt="Equation 34"> to make sure it is a positive number):
 
 <div align="center"><img src="https://latex.codecogs.com/svg.latex?
 \tau_b = \frac{C_s^2 v_b^{m}}{\left(1 + \left(\frac{C_s^2}{C_{max}N}\right)^{1/m} v_b\right)^{m}}," alt="Equation 35"></div>

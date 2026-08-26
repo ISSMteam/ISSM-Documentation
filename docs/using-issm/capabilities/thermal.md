@@ -15,7 +15,7 @@ $$
 $$
 
 where radiative sources have been neglected, and:
-- $${\bf v}$$  is the velocity vector
+- $${\bf v}$$ is the velocity vector
 - <img src="https://latex.codecogs.com/svg.latex?\dot{\boldsymbol{\varepsilon}}" alt="Equation 4"> is the strain rate tensor
 - <img src="https://latex.codecogs.com/svg.latex?E" alt="Equation 5"> is the internal energy density
 - <img src="https://latex.codecogs.com/svg.latex?\kappa" alt="Equation 6"> is the specific heat conductivity, which can depend on the heat density
@@ -39,6 +39,7 @@ where:
 
 - <img src="https://latex.codecogs.com/svg.latex?s" alt="Equation 12"> is the elevation of the ice upper surface
 - <img src="https://latex.codecogs.com/svg.latex?b" alt="Equation 13"> is the elevation of the floating ice lower surface
+
 When using the enthalpy formulation, the basal boundary condition scheme from [<a href="#references">*Aschwanden2012*</a>], figure 5 is used instead of the previous equation.
 
 NOTE: For regional model, make sure to set a Dirichlet condition on the inflow boundary (throughout the ice column) to avoid advection of noise.
@@ -53,8 +54,8 @@ where:
 - $$T_b$$ is the ice temperature on the ice shelf base
 - $$T_{pmp}$$ is the pressure melting point
 - $$\rho_w$$ is the sea water density
-- $$ c_{pM}$$ is the mixed layer specific heat capacity
-- $$\gamma$$ the thermal exchange velocity.
+- $$c_{pM}$$ is the mixed layer specific heat capacity
+- $$\gamma$$ is the thermal exchange velocity.
 
 #### Numerical implementation
 The heat equation is solved using linear finite elements in space, and implicit finite difference in time (time stepping should satisfy the CFL condition). To stabilize the equation, we either add an isotropic artificial diffusion to the left hand side:
@@ -105,7 +106,7 @@ This will compute **one time step only** of the thermal equation; use the
  <a href="transient">transient solution</a>
 for multiple time steps.
 
-To run a thermal steady-state simulation  (i.e., $\partial T/\partial t = 0$), you need to first set the time stepping as 0:
+To run a thermal steady-state simulation (i.e., $\partial T/\partial t = 0$), you need to first set the time stepping as 0:
 ````
 >> md.timestepping.time_step = 0
 >> md = solve(md, 'Thermal');

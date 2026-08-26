@@ -10,7 +10,7 @@ nav_order: 3
 ### New features/enhancements
 
 - Added support for more controls (Automatic Differentiation)
-- SHAKTI now works also with 3D meshes
+- SHAKTI now also works with 3D meshes
 - Added interpolation routines for common datasets in `src/m/modeldata`
 - GlaDS: added turbulent/laminar flag
 ### External packages
@@ -30,6 +30,7 @@ nav_order: 3
 ### New features/enhancements
 
 - Glacier Energy and Mass Balance (GEMB v1.0): A model of firn processes for cryosphere research
+
 Technical release, no other major change.
 
 ## ISSM 4.20 (Release 2022-06-01)
@@ -50,7 +51,7 @@ Technical release, no other major change.
 ### New features/enhancements
 
 - Improved ISSM's performance and scalability
-- Python 3 is now default python version
+- Python 3 is now the default Python version
 - Started stochastic forcings
 - Starting Julia interface
 ### External packages
@@ -59,7 +60,7 @@ Technical release, no other major change.
 - Added support for CoDiPack 2.0
 
 ## ISSM 4.18 (Release 2020-12-08)
-### Important Name change
+### Important name change
 
 - **NOTE**: we have simplified `md.mask` to accommodate sea level calculations `md.mask.groundedice_levelset` is now `md.mask.ocean_levelset` so that:
   - `md.mask.ocean_levelset > 0` and `md.mask.ice_levelset > 0` : ice-free land
@@ -71,7 +72,7 @@ Technical release, no other major change.
 - For the Schoof friction law, we now use <img src="https://latex.codecogs.com/svg.latex?C^2" alt="Equation 2"> instead of <img src="https://latex.codecogs.com/svg.latex?C" alt="Equation 1"> so make sure to take the square root of `md.friction.C` if you are loading an old model.
 ### External packages
 
-- Added support for PETSc 3.12, 3.13 and 3.14. mpich is now installed through PETSc
+- Added support for PETSc 3.12, 3.13 and 3.14. MPICH is now installed through PETSc
 ### Other
 
 - Added checkpointing capability for CoDiPack
@@ -80,7 +81,7 @@ Technical release, no other major change.
 ### Other
 
 - Entirely rewrote the management of inputs in the C++ code, which should significantly improve the efficiency of 3D models.
-- **NOTE**: You will need to recompile triangle in externalpackages).
+- **NOTE**: You will need to recompile triangle in externalpackages.
 
 ## ISSM 4.16 (Release 2019-11-01)
 ### New features
@@ -113,7 +114,7 @@ Technical release, no other major change.
 - **NOTE**: we now have to specify the melt and friction parameterization at the grounding line. You should use the defaults:
   - `md.groundingline.melt_interpolation = 'NoMeltOnPartiallyFloating';`
   - `md.groundingline.friction_interpolation = 'SubelementFriction1';`
-- **NOTE**: Python users are now responsible for using their own Python package and make sure that SciPy and NumPy are correctly installed. The respective directories in `externalpackages/` will be removed. We have updated the instructions on the installation page.
+- **NOTE**: Python users are now responsible for using their own Python package and making sure that SciPy and NumPy are correctly installed. The respective directories in `externalpackages/` will be removed. We have updated the instructions on the installation page.
 
 ## ISSM 4.13 (Release 2018-05-10)
 ### New features
@@ -271,7 +272,7 @@ md.friction.coefficient(find(md.mask.vertexonfloatingice)) = 0.;
     ````
 md.friction.coefficient(find(md.mask.groundedice_levelset < 0.)) = 0.;
     ````
-- we removed the `startup.m` file. you now need to add the path manually when you start MATLAB or use the following command:
+- we removed the `startup.m` file. You now need to add the path manually when you start MATLAB or use the following command:
   ````
 matlab -r "addpath ${ISSM_DIR}/bin/ ${ISSM_DIR}/lib/"
   ````
@@ -289,7 +290,7 @@ import sys; sys.path.append('${ISSM_DIR}/bin/'); sys.path.append('${ISSM_DIR}/li
 
 - `'googlemaps'` option for `plotmodel`, which overlays onto satellite image from Google.
 - New GIA model from Ivins et al.
-- Added support for PETSc 3.4 and mpich 3.0
+- Added support for PETSc 3.4 and MPICH 3.0
 - Sub-element support for grounding line dynamics
 ### Other
 

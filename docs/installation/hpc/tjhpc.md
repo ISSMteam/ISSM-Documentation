@@ -405,8 +405,9 @@ make install
 ```
 
 {: .highlight-title }
->  
-> NOTE: Do not use the Intel executable on AMD nodes or the AMD executable on Intel nodes.
+> Note
+>
+> Do not use the Intel executable on AMD nodes or the AMD executable on Intel nodes.
 
 ## `tjhpc_settings.m`
 

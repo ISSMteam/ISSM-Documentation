@@ -51,9 +51,9 @@ We turn on the coupling between SHAKTI and ISSM through `md.transient` and `md.f
 - To run stand-alone SHAKTI without evolving velocity, set `md.transient.isstressbalance = 0`.
 
 ### Run a winter simulation
-The final step before running is to define the time step and final time of the simulation. Note that the time step and final time set in years, so make sure to convert appropriately. Small time steps on the order of 1 hour are typically functional for SHAKTI, but feel free to experiment with this.
+The final step before running is to define the time step and final time of the simulation. Note that the time step and final time are set in years, so make sure to convert appropriately. Small time steps on the order of 1 hour are typically functional for SHAKTI, but feel free to experiment with this.
 
-The model will take a while to run, exactly how long will vary depending on your final time, time step, how many processors you are using, and mesh resolution. If you are running a long simulation, you might not want to save model output at every time step and can reduce the output file size through `md.settings.output_frequency` (for example, with a time step of 1 hour, you would set `md.settings.output_frequency = 24;` to save output once every day).
+The model will take a while to run; exactly how long will vary depending on your final time, time step, how many processors you are using, and mesh resolution. If you are running a long simulation, you might not want to save model output at every time step and can reduce the output file size through `md.settings.output_frequency` (for example, with a time step of 1 hour, you would set `md.settings.output_frequency = 24;` to save output once every day).
 
 The model you have set up currently specifies zero meltwater inputs (`md.hydrology.englacial_input` and `md.hydrology.moulin_inputs` are both zero everywhere). This represents winter conditions, when all water at the bed is generated via basal melt by geothermal flux, frictional heat from sliding, and turbulent dissipation.
 

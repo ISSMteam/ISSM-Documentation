@@ -5,9 +5,9 @@ parent: Advanced Features
 grand_parent: Using ISSM
 ---
 
-## Quantifications of Margins and Uncertainties (QMU) with Dakota
+## Quantification of Margins and Uncertainties (QMU) with Dakota
 ### Physical basis
-The methods for Quantification of Margins and Uncertainties (QMU) are based on the Design Analysis Kit for Optimization and Terascale Applications (Dakota) software [<a href="#references">*Eldred2008*</a>], which is embedded within ISSM [<a href="#references">*Larour2012b,Larour2012a*</a>].  Available Dakota analyses include sensitivity and sampling analyses, which we respectfully rely on to: 1) understand the sensitivity of model diagnostics to local variations in model fields and 2) identify how variations in model fields impact uncertainty in model diagnostics.  Diagnostics of interest include ice volume, maximum velocity, and mass flux across user-specified profiles.
+The methods for Quantification of Margins and Uncertainties (QMU) are based on the Design Analysis Kit for Optimization and Terascale Applications (Dakota) software [<a href="#references">*Eldred2008*</a>], which is embedded within ISSM [<a href="#references">*Larour2012b,Larour2012a*</a>].  Available Dakota analyses include sensitivity and sampling analyses, which we rely on, respectively, to: 1) understand the sensitivity of model diagnostics to local variations in model fields and 2) identify how variations in model fields impact uncertainty in model diagnostics.  Diagnostics of interest include ice volume, maximum velocity, and mass flux across user-specified profiles.
 
 #### Mesh Partitioning
 QMU analyses are carried out on partitions of the model domain. Each partition consists of a collection of vertices.  The ISSM partitioner is versatile. For example, the partitioner can assign one vertex for each partition (linear partitioning); the same number of vertices per partition (unweighted partitioning); or it can weight partitions by a specified amount (equal-area by default - to remove area-specific dependencies).  Advanced partitioning is accomplished using the Chaco Software for Partitioning Graphs [<a href="#references">*Hendrickson1995*</a>], prior to setting up the model parameters for QMU analysis.
@@ -42,7 +42,7 @@ First, Dakota calls one ISSM model solve for an un-perturbed control simulation.
 **Method outputs**: sensitivities (<img src="https://latex.codecogs.com/svg.latex?\theta_i" alt="Equation 25">) and importance factors for each <img src="https://latex.codecogs.com/svg.latex?x_i" alt="Equation 24"> at every partition
 
 #### Sampling
-Sampling analysis quantifies how input errors propagate through a model to impact a specified diagnostic, <img src="https://latex.codecogs.com/svg.latex?r" alt="Equation 26">. It a Monte-Carlo-style method that relies upon repeated execution (samples) of the same model, where input variables are perturbed by different amounts at each partition for each individual run. Resulting statistics (mean, standard deviations, cumulative distribution functions) are calculated after the specified number of samples are run.
+Sampling analysis quantifies how input errors propagate through a model to impact a specified diagnostic, <img src="https://latex.codecogs.com/svg.latex?r" alt="Equation 26">. It is a Monte-Carlo-style method that relies upon repeated execution (samples) of the same model, where input variables are perturbed by different amounts at each partition for each individual run. Resulting statistics (mean, standard deviations, cumulative distribution functions) are calculated after the specified number of samples are run.
 
 For a particular sample, every <img src="https://latex.codecogs.com/svg.latex?x_i" alt="Equation 27"> is perturbed by a different amount at each partition. Input values are perturbed randomly, per partition, within a prescribed range (described by a statistical distribution, e.g. normal or uniform). Once the variables are perturbed, the ISSM model solve is called.
 
@@ -72,7 +72,7 @@ The parameters relevant to uncertainty quantification can be displayed by typing
 - `md.qmu.responses`: arrays of each `diagnostics` class
 - `md.qmu.numberofresponses`: number of responses
 - `md.qmu.params`: array of method-independent parameters
-- `md.qmu.results`: holder class for information from dakota result files
+- `md.qmu.results`: holder class for information from Dakota result files
 - `md.qmu.partition`: user provided, the partition each vertex belongs to
 - `md.qmu.numberofpartitions`: number of partitions
 - `md.qmu.variabledescriptors`: list of user-defined descriptors for variables
@@ -195,7 +195,7 @@ The first argument is the model, the second is the nature of the simulation one 
 ## References
 - H. W. Coleman and W. G. Steele Jr.
  Experimentation and Uncertainties Analysis for Engineers.
- John Wiler, 1999.
+ John Wiley, 1999.
 
 - Michael S. Eldred, Brian M. Adams, David M. Gay, Laura P. Swiler, Karen
    Haskell, William J. Bohnhoff, John P. Eddy, William E. Hart, Jean-Paul

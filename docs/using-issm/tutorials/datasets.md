@@ -9,9 +9,9 @@ To run the tutorials, you will need to download a number of datasets. The easies
 ````
 ${ISSM_DIR}/scripts/DownloadExamplesDatasets.sh
 ````
-The default behavior of this script is to download the datasets to the `../examples/Data` relative to the location of the script. If you wish to download them to another location, supply the optional path argument.
+The default behavior of this script is to download the datasets to the `../examples/Data` directory relative to the location of the script. If you wish to download them to another location, supply the optional path argument.
 
-If you would prefer to download the datasets manually, use the following links, downloading each file to `${ISSM_DIR}/examples/Data`,
+If you would prefer to download the datasets manually, use the following links, downloading each file to `${ISSM_DIR}/examples/Data`:
 <!--DATASETS LIST START-->
 
 - <a href="https://issm.jpl.nasa.gov/files/workshop2014/SquareShelf.nc" target="_blank">Square ice shelf dataset</a>
