@@ -6,6 +6,14 @@ math: mathjax3
 ---
 
 # Basal Friction
+{: .no_toc }
+
+## Table of Contents
+{: .no_toc }
+1. TOC
+{:toc}
+----
+
 ## Introduction
 All friction laws in ISSM are implemented as:
 
