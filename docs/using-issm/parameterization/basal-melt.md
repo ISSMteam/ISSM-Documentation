@@ -14,10 +14,9 @@ math: mathjax3
 {:toc}
 ----
 
-## Physical basis
 Basal melt controls the mass balance of grounded ice in contact with subglacial water and, more importantly, of floating ice shelves in contact with the ocean. ISSM offers several parameterizations for it, ranging from a simple prescribed rate to physically based schemes that compute melt from far-field ocean temperature and salinity. The parameterization is selected by assigning the corresponding class to `md.basalforcings`.
 
-### Default/prescribed melt rate (basalforcings)
+## Default/prescribed melt rate (basalforcings)
 The simplest option prescribes the basal melting rate directly, uniformly or spatially/temporally varying, on grounded and floating ice separately:
 ````
 >> md.basalforcings = basalforcings();
@@ -28,7 +27,7 @@ The simplest option prescribes the basal melting rate directly, uniformly or spa
 - `md.basalforcings.perturbation_melting_rate`: (optional) perturbation in basal melting rate under floating ice [m/yr]
 - `md.basalforcings.geothermalflux`: geothermal heat flux [$$W/m^2$$]
 
-### Beckmann and Goosse (2003) parameterization (basalforcingsbeckmanngoosse)
+## Beckmann and Goosse (2003) parameterization (basalforcingsbeckmanngoosse)
 This parameterization, from [<a href="#references">*Beckmann2003*</a>], relates the melt rate under floating ice to the difference between the far-field ocean temperature $$T_{oc}$$ and the local freezing point $$T_f$$ at the depth of the ice-shelf base:
 
 $$
@@ -54,7 +53,7 @@ where $$S$$ is the local ocean salinity and $$z_b$$ is the ice-shelf draft eleva
 - `md.basalforcings.ocean_salinity`: far-field ocean salinity [psu] (used if `isthermalforcing` is 0)
 - `md.basalforcings.ocean_thermalforcing`: ocean thermal forcing, $$T_{oc} - T_f$$ [K] (used if `isthermalforcing` is 1)
 
-### ISMIP6 quadratic melt parameterization (basalforcingsismip6)
+## ISMIP6 quadratic melt parameterization (basalforcingsismip6)
 This parameterization, from [<a href="#references">*Jourdain2020*</a>], was designed for the ISMIP6 Antarctic ice sheet projections. Melt is a quadratic function of the thermal forcing $$TF$$ (the difference between the ocean temperature and the local freezing point at depth), evaluated either locally:
 
 $$
@@ -83,14 +82,19 @@ where $$\gamma_0$$ is a melt-rate coefficient calibrated against observed melt r
 - `md.basalforcings.groundedice_melting_rate`: basal melting rate applied to grounded ice (positive if melting) [m/yr]
 - `md.basalforcings.melt_anomaly`: floating-ice basal melt anomaly [m/yr]
 
-### PICO and PICOP (basalforcingspico)
+## PICO and PICOP (basalforcingspico)
 These parameterizations are described in [<a href="#references">*Reese2018*</a>] and [<a href="#references">*Pelle2019*</a>]. They calculate basal melt rates under ice shelves based only on far field ocean temperature and salinity.
 
 PICO is a box model of ocean circulation under ice shelf cavities. Each ice shelf is divided into a set of boxes, and the temperature ($$T_k$$) and salinity ($$S_k$$) of each box is given by:
 
 $$
-\begin{array}{l c l}\displaystyle q\left(T_{k-1} - T_k\right) - A_k m_k \frac{\rho_i}{\rho_w} \frac{L}{c_p}& =& 0\\\\q\left(S_{k-1} - S_k\right) - A_k m_k S_k & =& 0\end{array}
+\begin{array}{l c l}
+\displaystyle q\left(T_{k-1} - T_k\right) - A_k m_k \frac{\rho_i}{\rho_w} \frac{L}{c_p}& =& 0\\
+    \\
+    q\left(S_{k-1} - S_k\right) - A_k m_k S_k & =& 0
+\end{array}
 $$
+
 where:
 
 - $$A_k$$ is the surface area of box $$k$$
@@ -148,7 +152,7 @@ To run a simulation, use the following command:
 ````
 
 
-# References
+## References
 - A. Beckmann and H. Goosse.
  A parameterization of ice shelf-ocean interaction for climate models.
  Ocean Model., 5(2):157-170, 2003.
