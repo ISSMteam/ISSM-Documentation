@@ -5,11 +5,11 @@ parent: Parameterization
 math: mathjax3
 ---
 
-## Empirical Scalar Tertiary Anisotropy Regime (ESTAR)
-### Description
+# Empirical Scalar Tertiary Anisotropy Regime (ESTAR)
+## Description
 The ESTAR (Empirical Scalar Tertiary Anisotropy Regime) flow relation [<a href="#references">*Budd2013,Graham2018*</a>] is a generalized constitutive relation for polycrystalline ice in steady-state (tertiary) flow. It is a scalar power-law formulation based on tertiary creep rates from laboratory experiments of ice deformation under a variety of simple shear and compression stresses. While mathematically isotropic, the ESTAR flow relation describes the deformation of ice with a flow-compatible induced anisotropy &#8212; i.e. ice that has a developed anisotropic fabric that is a function of the underlying stress regime (i.e. the relative proportion of simple shear and compression stresses). The origins of ESTAR, including the laboratory experiments that contributed to its development, its derivation, and underlying assumptions are discussed in [<a href="#references">*Budd2013*</a>] and [<a href="#references">*Graham2018*</a>].
 
-#### Equations
+### Equations
 Ice is treated as a purely viscous incompressible material [<a href="#references">*Cuffey2010*</a>], such that its material constitutive relation can be written:
 
 $$
@@ -50,7 +50,7 @@ $$
 $$
 where $$E$$ is a constant enhancement factor. For the standard Glen flow relation (the `matice` class in ISSM), $$E=1$$; to specify values of $$E>1$$, the `matenhancedice` class can be used.
 
-### Model parameters
+## Model parameters
 The parameters relevant to the ESTAR flow relation (the `matestar` class in ISSM) can be displayed by running:
 ````
 >> md.materials
@@ -62,7 +62,7 @@ The parameters relevant to the ESTAR flow relation (the `matestar` class in ISSM
 - `md.materials.rheology_Es`: simple shear enhancement factor
 - `md.materials.rheology_law`: law for the temperature dependence of the rheology (`None` means no temperature dependence; default is `Paterson`)
 
-### Using the ESTAR flow relation
+## Using the ESTAR flow relation
 The ESTAR flow relation may be specified by:
 ````
 >> md.materials = matestar();
@@ -75,7 +75,7 @@ Alternatively, the ESTAR flow relation may be specified from conversion of a Gle
 ````
 The argument is the materials class of the model. This will set the same value for $$B$$ as for the Glen flow model default, with $$E_S=1$$ and $$E_C=1$$.
 
-### Using the enhanced Glen flow relation
+## Using the enhanced Glen flow relation
 It is possible to use an alternative Glen flow relation with an explicit enhancement factor, in a similar way to the ESTAR class, as follows:
 ````
 >> md.materials = matenhancedice();
@@ -87,7 +87,7 @@ in which $$B$$ and $$E$$ should be explicitly set, or as:
 in which $$B$$ is inherited from the default Glen flow model and $$E=1$$.
 
 
-## References
+# References
 - William F. Budd, Roland C. Warner, T. H. Jacka, Jun Li, and Adam Treverrow.
  Ice flow relations for stress and strain-rate components from
    combined shear and compression laboratory experiments.

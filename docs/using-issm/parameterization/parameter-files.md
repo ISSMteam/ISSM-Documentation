@@ -4,7 +4,7 @@ layout: default
 parent: Parameterization
 ---
 
-## Parameter Files
+# Parameter Files
 To run a simulation, the solution sequence needs many parameters: physical constants, number of iterations, relaxation constant, thickness and surface of the glacier, etc. All of this can be done during model setup in your `runme`. But for the sake of organization and/or reusability, you might want to store the parameterization commands in a separate file. For example, for the MATLAB interface, you might create a file `Parameters.par` with contents,
 ````
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% GEOMETRY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -5,8 +5,8 @@ parent: Tutorials
 math: mathjax3
 ---
 
-## Modeling the Greenland Ice Sheet (SeaRISE)
-### Goals
+# Modeling the Greenland Ice Sheet (SeaRISE)
+## Goals
 
 - Learn how to set up a coarse continental-scale Greenland model
 - Follow an example to initialize a continental domain, with a given ARGUS (`*.exp`) file and to parameterize with the SeaRISE NetCDF dataset
@@ -15,10 +15,10 @@ math: mathjax3
 
 Go to `<ISSM_DIR>/examples/Greenland/` to do this tutorial.
 
-### Introduction
+## Introduction
 In this tutorial, you will learn how to set up a continental Greenland model using the SeaRISE ice sheet model input dataset [<a href="#references">*Nowicki2013a*</a>]. In addition, you will gain experience in interpolation of datasets onto your continental ice sheet mesh and in setting up a transient forcing in ISSM. Finally, you will run a transient solution, resulting in a forward historical simulation of the Greenland Ice Sheet. Note that the model we set up here is coarse and is not recommended for use in a publication. A good use for this example is to use it as a starting point to learn how to use ISSM. You may wish to improve the model provided here by increasing the resolution of the ice sheet domain outline, increasing the mesh resolution, and choosing your own/improved datasets for model parameterization.
 
-#### Tutorial steps to be taken:
+### Tutorial steps to be taken:
 
 - Mesh Greenland with given `*.exp` file
 - Adapt mesh using SeaRISE velocity data
@@ -31,7 +31,7 @@ In this tutorial, you will learn how to set up a continental Greenland model usi
 - Plot transient results
 - Run an example exercise, forcing your Greenland model with historical SMB through time
 
-### Mesh
+## Mesh
 In Step 1, we create a mesh using the `triangle` method (lines 10-11). This creates a new model named `md` and meshes the model domain, defined by an outline file `'DomainOutline.exp'`, at a resolution of 20,000 meters. Next, we adapt the mesh based on SeaRISE velocities, where the minimum resolution will be 5 km in locations where the velocity gradient is large and 400 km where the velocity gradient is small. The velocity data we will use resides in `'../Data/Greenland_5km_dev1.2.nc'` (line 5). Step 1 consists of the following steps:
 
 - Fill the variable `vel` with the interpolated velocities (Hint: you need x and y velocities plus x and y coordinates from a NetCDF file)
@@ -45,7 +45,7 @@ Review the code used to create a continental Greenland mesh (lines 8-30) in the 
 Execute step 1 in the `runme.m` file. After doing so, you should see the figure below:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/Mesh.png" alt="Figure 1: Mesh"></div>
-### Parameterization
+## Parameterization
 Call the `setmask` function with empty arguments, to denote that all ice is grounded. Then parameterize your mesh with file `Greenland.par`. Next, set your flow equation to SSA for all. Read through the parameter file `./Greenland.par`, which is similar to your PIG .par file, but for Greenland. Here, we are parameterizing a full continental domain, so all points along the domain boundary will be considered ice front. As a result, these boundaries do not need to be constrained, therefore the single point constraint variables will all be set to NaN.
 
 Run step 2. This will save your parameterized model. Now, plot the new model thickness and velocity. For example:
@@ -58,7 +58,7 @@ Run step 2. This will save your parameterized model. Now, plot the new model thi
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/Thickness.png" alt="Figure 2: Thickness"></div>
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/Velocity.png" alt="Figure 3: Velocity"></div>
-### Stress Balance
+## Stress Balance
 Use control methods to inversely solve for Greenland FrictionCoefficient (Step 3, lines 44-81).
 
 NOTE: Remember that `md.inversion` can be called for help!
@@ -76,7 +76,7 @@ NOTE: Remember that `md.inversion` can be called for help!
 
 Review step 3 in the `runme.m` to verify that the parameters have been set properly. Run step 3 in the `runme.m` to perform the steps above.
 
-### Transient
+## Transient
 You are now ready to run a transient! In Step 4, we will simulate a simple constant warming trend over Greenland by forcing a temporal decrease in `md.smb.mass_balance`.
 
 
@@ -107,7 +107,7 @@ Now, run steps 4 and 5 to launch your transient and plot results.
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/ThicknessVelocity.png" alt="Figure 5: ThicknessVelocity"></div>
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/Transient.png" alt="Figure 6: Transient"></div>
-### Exercise
+## Exercise
 Now, let's run our transient with historical mass balance! Use Jason Box's surface mass balance (SMB) time series as forcing [<a href="#references">*Box2013a,Box2013b,Box2013c*</a>].<a href="#footnotes" target="_top"><sup>1</sup></a>
 
 First, format the SMB provided. In Step 6 of the `runme.m` file, we extract the SMB timeseries from the NetCDF file, and create a timeseries plot (lines 147-175). Execute step 6. This will result in the figure below:
@@ -145,7 +145,7 @@ Then, run step 10 to plot a time series of total surface mass balance, max veloc
 
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/greenland/MassVelocityVolume.png" alt="Figure 10: MassVelocityVolume"></div>
-### Solution for step 7
+## Solution for step 7
 ````
 if any(steps == 7)
 	disp('  Step 7: Historical Relaxation run');
@@ -182,7 +182,7 @@ if any(steps == 7)
 end
 ````
 
-### Solution for step 8
+## Solution for step 8
 ````
 if any(steps == 8)
 	%Load historic transient model
@@ -234,7 +234,7 @@ if any(steps == 8)
 end
 ````
 
-### Additional Exercises
+## Additional Exercises
 
 - Increase SMB instead of decrease over time
 - Create an instantaneous step in SMB forcing at 10 years instead of a steady change over time
@@ -244,12 +244,12 @@ end
 - Force another field transiently (e.g. friction coefficient)
 - Run the Box time series yearly or for a longer subset of time. This could take a while!
 
-### Footnotes
+## Footnotes
 
 1. <small>The year 1840-2012 Greenland near surface air temperature (T) and land ice SMB reconstruction after Box [2013] is calibrated to RACMO2 output [<a href="#references">*Meijgaard2008,Ettema2009,Broeke2009,Angelen2011*</a>]. The calibration for T and SMB components is based on the 53 year overlap period 1960-2012. The calibration for snow accumulation rate is shorter because ice core data availability drops after 1999. Calibration is made using linear regression coefficients for 5 km grid cells that match the average of the reconstruction to RACMO2. The RACMO2 data are resampled and reprojected from the native 0.1 deg ($$\sim$$10 km) grid to a 5 km grid better resolving areas where sharp gradients occur, especially near the ice margin where mass fluxes are largest. Several refinements are made to the Box [2013] temperature (T) and SMB reconstruction. Multiple station records now contribute to the near surface air temperature for each given year, month and grid cell in the domain while in Box [2013], data from the single highest correlating station yielded the reconstructed value. The estimation of values is made for a domain that includes land, sea, and ice. Box [2013] reconstructed T over only ice. A physically-based meltwater retention scheme [<a href="#references">*Pfeffer1990,Pfeffer1991*</a>] replaces the simpler approach used by Box [2013]. The RACMO2 data have a higher native resolution of 11 km as compared to the 24 km Polar MM5 data used by Box [2013] for air temperatures. The revised surface mass balance data end two years later in year 2012. The annual accumulation rates from ice cores are dispersed into a monthly temporal resolution by weighting the monthly fraction of the annual total for each grid cell in the domain evaluated using a 1960-2012 RACMO2 data.</small>
 
 
-## References
+# References
 - J. E. Box, N. Cressie, D. H. Bromwich, J.-H. Jung, M. van den Broeke, J. H. van
    Angelen, R. R. Forster, C. Miege, E. Mosley-Thompson, B. Vinther, and J. R.
    McConnell.

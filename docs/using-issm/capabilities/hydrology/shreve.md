@@ -5,12 +5,12 @@ parent: Hydrology Solution
 math: mathjax3
 ---
 
-### Hydrology Solution - Shreve Approximation
+# Hydrology Solution - Shreve Approximation
 
-#### Physical basis
+## Physical basis
 This model is the one described in [<a href="#references">*LeBrocq2009*</a>]. Here we present only the main equations.
 
-##### Water column
+### Water column
 The model applied here is the most simplistic form of the water-film model, as described by the Weertman theory [<a href="#references">*Weertman1957*</a>]. The model solves for the thickness $$w$$ of the water-film as follows:
 
 $$
@@ -43,7 +43,7 @@ where:
 - $$g$$ is the gravitational acceleration $$[m\,s^{-2}]$$
 - $$h$$ is the bedrock elevation $$[m]$$
 
-##### Numerical implementation
+### Numerical implementation
 To stabilize the equation, artificial diffusion might be added to the left hand side:
 
 $$
@@ -55,7 +55,7 @@ $$
 \mathfrak{D} = \frac{h}{2}\left(\begin{array}{cc}\left|vx\right| & 0 \\\\0 & \left|vy\right|\end{array}\right)
 $$
 
-#### Model parameters
+## Model parameters
 The parameters relevant to the water column solution can be displayed by running:
 ````
 >> md.hydrology
@@ -65,14 +65,14 @@ The parameters relevant to the water column solution can be displayed by running
 - `md.hydrology.spcwatercolumn`: water thickness constraints (`NaN` means no constraint) $$[m]$$
 - `md.hydrology.stabilization`: artificial diffusivity (default is 1).
 
-#### Running a simulation
+## Running a simulation
 To run a simulation, use the following command:
 ````
 >> md = solve(md, 'Hydrology');
 ````
 
 
-## References
+# References
 - A. M. Le Brocq, A. J. Payne, M. J. Siegert, and R. B. Alley.
  A subglacial water-flow model for West Antarctica.
  J. Glaciol., 55(193):879-888, 2009.

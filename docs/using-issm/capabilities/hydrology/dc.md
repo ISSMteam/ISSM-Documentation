@@ -5,11 +5,11 @@ parent: Hydrology Solution
 math: mathjax3
 ---
 
-### Hydrology Solution - Dual Continuum Porous Equivalent Approach
-#### Physical basis
+# Hydrology Solution - Dual Continuum Porous Equivalent Approach
+## Physical basis
 Using the dual continuum porous equivalent approach, the inefficient and efficient drainage components are both modeled as sediment layers with the use of a specific activation scheme for the efficient drainage system. This approach defines in a continuous manner the location where the efficient drainage system is most likely to develop.
 
-##### Water Distribution
+### Water Distribution
 The model consist of two analyses, one for the Inefficient Drainage System (IDS) and the other for the Efficient Drainage System(EDS). Each compute the water head by using a vertically integrated diffusion equation based on Darcy's law. The two are coupled through a transfer term, which is implicitly computed at the same time as the water head. In the following equation, the index $$j$$
 (subscript or superscript) may either refer to the IDS ($$j=\text{i}$$) or to the EDS ($$j=\text{e}$$):
 
@@ -43,7 +43,7 @@ where:
 - $$\beta_w$$ is the compressibility of water $$[Pa^{-1}]$$
 - $$\alpha$$ is the compressibility of the solid phase of the porous media $$[Pa^{-1}]$$
 
-##### Specificities of the IDS
+### Specificities of the IDS
 The main specificity of the IDS is that it allows us to set up a maximum limit for the water head. This is dealt with by a penalization method from which the residual is kept, in order to be re-injected into the EDS.
 
 The source term for the IDS is the sum of three possible sources:
@@ -52,7 +52,7 @@ The source term for the IDS is the sum of three possible sources:
 - local input at a given point representing moulin input $$[m^{-3}\,s^{-1}]$$
 - input due to the transfer between the two layers which is dealt with in an implicit matter (See Layer Transfer)
 
-##### Specificities of the EDS
+### Specificities of the EDS
 The model could be run without introducing this layer. In this case, it is possible that the model does not conserve the mass of water, depending on the setting of the upper limit for the IDS. If the layer is used, it is usually not active on the whole domain. The initial activation process is driven by the water head in the IDS and then by the water head in the EDS. More information about the activation process can be found in [<a href="#references">*Fleurian2014*</a>]. Improvements from the version presented in [<a href="#references">*Fleurian2014*</a>] include a varying thickness for the EDS layer, which allows us to close back the EDS when the water volume becomes too low and can be evacuated by the IDS only. The thickness evolution is defined as follows:
 
 $$
@@ -66,7 +66,7 @@ where:
 - $$B$$ is the ice hardness or rigidity $$[Pa\,s^{1/n}]$$
 - $$n$$ is Glen's flow law exponent, generally taken as equal to 3 $$[SU]$$
 
-#### Transfer equation
+## Transfer equation
 The transfer between the two layers is based on the water head difference in the two systems. The transfer term $$Q_t$$ is as follows:
 
 $$
@@ -78,17 +78,17 @@ where:
 
 The leakage time $$\varphi$$ is a characteristic time needed for the water to pass from one drainage system to the other. This corresponds to the crossing of a less permeable layer in between the inefficient and efficient layers.
 
-##### Boundary conditions
+### Boundary conditions
 The natural boundary condition is a no flow condition, which is what is kept on the upstream model boundaries. The water head is then fixed at the snouts of glaciers.
 
-#### Model parameters
+## Model parameters
 The parameters relevant to the hydrology solution can be displayed by typing:
 ````
 >> md.hydrology
 ````
 
 These parameters are of three different types:
-##### General parameters
+### General parameters
 
 - `md.hydrology.water_compressibility`: compressibility of water $$[Pa^-1]$$
 - `md.hydrology.isefficientlayer`: do we use an efficient drainage system (1: true; 0: false)
@@ -108,7 +108,7 @@ These parameters are of three different types:
 - `md.hydrology.basal_moulin_input`: water flux at a given point $$[m^3 s-1]$$
 
 
-##### IDS parameters
+### IDS parameters
 Also called sediment layer
 
 
@@ -118,7 +118,7 @@ Also called sediment layer
 - `md.hydrology.sediment_thickness`: sediment thickness $$[m]$$
 - `md.hydrology.sediment_transmitivity`: sediment transmitivity $$[m^2/s]$$
 
-##### EDS parameters
+### EDS parameters
 Also called EPL layer (Equivalent Porous Layer)
 
 
@@ -130,7 +130,7 @@ Also called EPL layer (Equivalent Porous Layer)
 - `md.hydrology.epl_max_thickness`: epl maximal thickness $$[m]$$
 - `md.hydrology.epl_conductivity`: epl conductivity $$[m^2/s]$$
 
-#### Running a simulation
+## Running a simulation
 To run a transient simulation, use the following command:
 ````
 >> md = solve(md, 'Transient');
@@ -155,7 +155,7 @@ Running a steady state simulation, is done with the following command:
 ````
 
 
-## References
+# References
 - B. de Fleurian, O. Gagliardini, T. Zwinger, G. Durand, E. Le Meur, D. Mair, and
    P. Raaback.
  A double continuum hydrological model for glacier applications.

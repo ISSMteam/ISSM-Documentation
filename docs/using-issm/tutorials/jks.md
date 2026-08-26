@@ -5,8 +5,8 @@ parent: Tutorials
 math: mathjax3
 ---
 
-## Modeling Jakobshavn Isbr&#230;
-### Goals
+# Modeling Jakobshavn Isbr&#230;
+## Goals
 
 - Construct a 2-dimensional model of Jakobshavn Isbr&#230;, West Greenland
 - Follow a simple tutorial exercise: create and parametrize an ISSM model
@@ -14,14 +14,14 @@ math: mathjax3
 
 Change into `<ISSM_DIR>/examples/Jakobshavn/` to do this tutorial.
 
-### Introduction
+## Introduction
 In this tutorial, we construct a 2-dimensional model of Jakobshavn Isbr&#230;, West Greenland, and use it to invert for the basal friction parameter.
 
-#### Download
+### Download
 For this tutorial, we will use a dataset from the <a href="https://scholarworks.umt.edu/cgi/viewcontent.cgi?params=/context/cs_pubs/article/1020/&path_info=Ice_sheet_model.pdf" target="_blank">SeaRISE Initiative</a>: `Greenland_5km_v1.2.nc`. This data should be saved in the `examples/Data` directory (see 
  <a href="datasets">dataset download</a> page).
 
-### runme file
+## runme file
 The `runme.m` file in `<ISSM_DIR>/examples/Jakobshavn/` is a list of commands to be run in sequence at the MATLAB command prompt. The tutorial is decomposed into 4 steps:
 
 1. Mesh generation (anisotropic adaptation)
@@ -30,7 +30,7 @@ The `runme.m` file in `<ISSM_DIR>/examples/Jakobshavn/` is a list of commands to
 1. Plotting of the results
 We will follow these steps one by one by changing the selected step at the top in `runme.m`.
 
-### Step 1: Mesh generation
+## Step 1: Mesh generation
 Open `runme.m` and make sure that the first step is activated:
 ````
 steps = [1];
@@ -56,7 +56,7 @@ Then execute the first step:
 		     new number of triangles = 3017
 ````
 
-### Step 2: Model parameterization
+## Step 2: Model parameterization
 In this step parameterize the model. We set for example the geometry and ice material parameters. We use the `setmask` command to define grounded and floating areas. All ice is considered grounded for now. Type `help setmask` to display documentation on how to use this command. The model is then parameterized using the `Jks.par` file. We soften the glacier's shear margins by reducing the model's ice hardness, $$B$$, in the area outlined by `WeakB.exp` to a factor 0.3.
 
 Open `runme.m` and make sure that the second step is activated: `steps = [2];`
@@ -79,7 +79,7 @@ Open `runme.m` and make sure that the second step is activated: `steps = [2];`
       no balancethickness.thickening_rate specified: values set as zero
 ````
 
-### Step 3: Control method
+## Step 3: Control method
 In the parameterization step, we applied a uniform friction coefficient of 30. Here, we use the basal friction coefficient as a control so that the modeled surface velocities match the observed ones. The mismatch between observation and modeled surface velocities is quantified by the value of a cost function. The type of cost function determines to a large degree the result of the inversion process. Different cost functions are available, type md.inversion to see a list of available cost functions:
 ````
 Available cost functions:
@@ -119,7 +119,7 @@ Open `runme.m`, make sure that the third step is activated (`steps = [3];`), the
 				  ....
 ````
 
-### Step 4: Display results
+## Step 4: Display results
 Here, we display the results. Open `runme.m` and make sure that step number 4 is activated. Your results should look like this:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/jks/JKSModel.png" alt="Figure 1: JKSModel"></div>

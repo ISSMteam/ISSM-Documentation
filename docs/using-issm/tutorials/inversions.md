@@ -5,14 +5,14 @@ parent: Tutorials
 math: mathjax3
 ---
 
-## Inversions
-### Goals
+# Inversions
+## Goals
 
 - Learn how to use the model to invert for ice rigidity (B) and basal friction from surface velocities
 - Choose the right cost functions, with the right weights
 - Understand the limitations of inversions
 
-### Introduction
+## Introduction
 Several model input parameters, such as the ice rigidity $$B$$ (`md.materials.rheology_B`) and basal friction $$\alpha$$ (`md.friction.coefficient`), are difficult to measure remotely and are critical controls on ice dynamics.
 
 To get a good guess of what these parameters are, we use **inversions**. Inversions consist in inferring unknown parameters using additional observations. Here, we use surface velocities to infer our unknown input parameters, by minimizing the misfit between the observed and modeled velocities.
@@ -28,8 +28,8 @@ And so we would optimize our unknown model input to minimize the cost function $
 Inversions were first introduced to glaciology by [<a href="#references">*MacAyeal1993a*</a>] for an SSA model, and extended since to 3D models for other model parameters.
 
 To illustrate this method, we are going to perform a twin experiment. We give ourselves a rigidity field (B) and use the modeled velocities as synthetic observation in a second run, where we start from another initial rigidity field, and see if we can recover the rigidity field that was used to generate the observations.
-### Hands on 1 (ice rigidity, B)
-#### Step 1: Generating Observations
+## Hands on 1 (ice rigidity, B)
+### Step 1: Generating Observations
 First, go to `<ISSM_DIR>/examples/Inversion/` and start MATLAB. We will start by creating a new model and generating our synthetic observations. Open the `runme.m` and ensure that `step = 1` at the top of the file. Execute this first step:
 ````
 >> runme
@@ -38,17 +38,17 @@ You will see on the left our prescribed rigidity, $$B$$, and to the right the ca
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step1.png" alt="Figure 1: step1"></div>In the next step, we are going to change the rigidity to something uniform, use our previously calculated velocities (from step 1) as observations, and see if we can recover that initial pattern that was used to generate the observations.
 
-#### Step 2: Initial guess and initial velocity
+### Step 2: Initial guess and initial velocity
 We now change the rigidity, $$B$$, and make it uniform. The results of the previous step are taken as observations (but we will only use them in step 3). Open `runme.m` and set `step = 2`. Save the file and execute step 2 in MATLAB as above.
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step2.png" alt="Figure 2: step2"></div>We now see that the left panel is constant, and the velocity is symmetrical. This is our initial guess for $$B$$ and our initial modeled velocity. In the next step, we are going to tune $$B$$, so that the modeled velocity is as close as possible to the velocity of step 1.
 
-#### Step 3: Inverting for B
+### Step 3: Inverting for B
 Here, we perform the inversion of $$B$$. Open `runme.m` and set the step as `step = 3`.
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step3.png" alt="Figure 3: step3"></div>The general pattern is right (stiffer ice in the lower right), but it is noisy. Inverse problems are ill-posed: a solution might not exist, might not be unique, and might not depend continuously on input data. One of the consequences is that the inferred pattern for $$B$$ is not smooth, and these wiggles are **not** physical. Adding regularization that penalizes wiggles in the control parameter stabilizes the inversion.
 
-#### Step 4: Adding regularization
+### Step 4: Adding regularization
 Here, we would like to add a term of regularization to our cost function:
 
 $$
@@ -62,10 +62,10 @@ $$w_1$$ and $$w_2$$ are the weights associated with each component of the cost f
 Set `step = 4` in the `runme.m` file and execute it. Your results should now look like this:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step4.png" alt="Figure 4: step4"></div>We successfully reconstructed the pattern of ice rigidity, but we could not capture the sharp transition between high and low rigidity because of the regularization that we had to introduce to stabilize the inversion.
-### Hands on 2 (friction)
+## Hands on 2 (friction)
 We would like to do the same twin experiment here, but invert for basal friction of a grounded glacier. Here, you are going to make additions and/or modifications to the `runme.m` script as described below.
 
-#### Changes to step 1
+### Changes to step 1
 
 1. The mask is now all grounded
 1. Increase bed (`md.geometry.base`) and surface elevation (`md.geometry.surface`) by 100 meters
@@ -76,7 +76,7 @@ After running step 1 again, you should get the following figure.
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step1b.png" alt="Figure 5: step1b"></div>If you don't, then double check your changes before looking at the solutions below. We are modeling here a glacier flowing over a region where there is a lot of sliding. We want to see if the inversion can reconstruct this region of low friction.
 
-#### Solutions to step 1 (MATLAB)
+### Solutions to step 1 (MATLAB)
 ````
 %Generate observations
 md = model;
@@ -109,7 +109,7 @@ plotmodel(md, 'axis#all', 'tight', 'data', md.friction.coefficient, 'caxis', [0 
 save model1 md
 ````
 
-#### Solutions to step 1 (Python)
+### Solutions to step 1 (Python)
 ````
 import numpy as np
 from model import *
@@ -251,7 +251,7 @@ if 5 in steps:
     plotmodel(md, 'axis#all', 'tight', 'data', md.results.StressbalanceSolution.FrictionCoefficient, 'caxis', [0, 100], 'title', 'inferred B', 'data', md.results.StressbalanceSolution.Vel, 'title', 'modeled velocities')
 ````
 
-#### Changes to step 2
+### Changes to step 2
 For step 2, we now want to set our new first guess for the basal friction to a uniform value.
 
 1. Set the friction (`md.friction.coefficient`) to a uniform value of 50
@@ -260,7 +260,7 @@ After running step 2, you should get the following figure:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step2b.png" alt="Figure 6: step2b"></div>If you don't, double check your changes. As you can see, the velocity does not show any fast-flowing ice stream in the center of the domain, as expected since the friction is uniform.
 
-#### Solutions to step 2
+### Solutions to step 2
 ````
 %Modify rheology, now constant
 loadmodel('model1.mat');
@@ -284,7 +284,7 @@ plotmodel(md, 'axis#all', 'tight', 'data', md.friction.coefficient, 'caxis', [0 
 save model2 md
 ````
 
-#### Changes to step 3
+### Changes to step 3
 We now want to invert for basal friction and see if we can reconstruct the zone of sliding. We need to change what we are inverting for, and change the optimization parameters:
 
 - We now invert for `'FrictionCoefficient'`
@@ -294,7 +294,7 @@ After running step 3, you should get the following figure:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step3b.png" alt="Figure 7: step3b"></div>If you don't, the solutions are as follows.
 
-#### Solutions to step 3
+### Solutions to step 3
 ````
 %invert for ice rigidity
 loadmodel('model2.mat');
@@ -329,7 +329,7 @@ plotmodel(md, 'data', md.inversion.vel_obs + 1, 'data', md.results.Stressbalance
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step3b_log.png" alt="Figure 8: step3b_log"></div>we clearly see the zone of fast sliding in the observations but not in the results from the inversion. So we need to change the cost function to add this information: we not only want the square of the difference between modeled and observed velocities to be minimized, but we also want their logs to be minimized.
 
-#### Changing the cost function
+### Changing the cost function
 We want the cost function to include an additional term:
 
 $$
@@ -347,7 +347,7 @@ You should get the following results:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step3c.png" alt="Figure 9: step3c"></div>The solutions are below if you don't have the same figure. We now successfully reconstructed the zone of sliding! But again, the pattern is a little bit noisy, and we are going to add regularization.
 
-#### Solutions to step 3b
+### Solutions to step 3b
 ````
 %invert for ice rigidity
 loadmodel('model2.mat');
@@ -375,7 +375,7 @@ plotmodel(md, 'axis#all', 'tight', 'data', md.results.StressbalanceSolution.Fric
 %CHANGES END
 ````
 
-#### Adding regularization
+### Adding regularization
 We want the cost function to include a regularization term:
 
 $$
@@ -391,7 +391,7 @@ You should get the following results:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step4b.png" alt="Figure 10: step4b"></div>The zone of sliding is captured and the inferred friction is smooth!
 
-#### Solutions to step 3c
+### Solutions to step 3c
 ````
 %invert for ice rigidity
 loadmodel('model2.mat');
@@ -421,7 +421,7 @@ plotmodel(md, 'axis#all', 'tight', 'data', md.results.StressbalanceSolution.Fric
 ````
 
 
-## References
+# References
 - D. R. MacAyeal.
  A tutorial on the use of control methods in ice-sheet modeling.
  J. Glaciol., 39(131):91-98, 1993.

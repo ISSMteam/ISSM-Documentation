@@ -4,8 +4,8 @@ layout: default
 parent: Tutorials
 ---
 
-## Mesh Adaptation
-### Goals
+# Mesh Adaptation
+## Goals
 
 - Learn how to use the different meshers of ISSM:
   - `squaremesh` for square domains (ISMIP)
@@ -15,9 +15,9 @@ parent: Tutorials
 - Use anisotropic mesh adaptation to optimize the mesh resolution spatially
 Go to `<ISSM_DIR>/examples/Mesh/` to do this tutorial.
 
-### Squaremesh
+## Squaremesh
 `squaremesh` generates structured uniform meshes for rectangular domains.
-#### Usage
+### Usage
 ````
 >> md = model;
 >> md = squaremesh(md, 100, 200, 15, 25);
@@ -30,7 +30,7 @@ Go to `<ISSM_DIR>/examples/Mesh/` to do this tutorial.
 1. number of nodes along the x axis
 1. number of nodes along the y axis
 
-#### Example
+### Example
 The previous command creates the mesh shown below:
 ````
 >> plotmodel(md, 'data', 'mesh');
@@ -38,10 +38,10 @@ The previous command creates the mesh shown below:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/mesh/mesh1.png" alt="Figure 1: mesh1"></div>
 
-### Roundmesh
+## Roundmesh
 `roundmesh` generates unstructured uniform meshes for circular domains.
 
-#### Usage
+### Usage
 ````
 >> md = roundmesh(model, 100, 10);
 ````
@@ -51,7 +51,7 @@ The previous command creates the mesh shown below:
 1. radius (meters)
 1. element size (meters)
 
-#### Example
+### Example
 The previous command creates the mesh shown below:
 ````
 >> plotmodel(md, 'data', 'mesh');
@@ -59,10 +59,10 @@ The previous command creates the mesh shown below:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/mesh/mesh2.png" alt="Figure 2: mesh2"></div>
 
-### Triangle
+## Triangle
 `triangle` is a very fast algorithm for mesh generation. Developed by <a href="http://www.cs.cmu.edu/~quake/triangle.html" target="_blank">J Shewchuk</a>, it generates unstructured triangular meshes.
 
-#### Usage
+### Usage
 ````
 >> md = triangle(model, 'Square.exp', .2);
 ````
@@ -80,10 +80,10 @@ The previous command creates the following mesh:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/mesh/mesh3.png" alt="Figure 3: mesh3"></div>You can change the resolution from `0.2` to `0.05` to get a higher resolution.
 
-### Bamg
+## Bamg
 BAMG stands for Bidimensional Anisotropic Mesh Generator. It was released in 2006 after more than 10 years of development by Frederic Hecht. It is now part of <a href="http://www.freefem.org/ff++/" target="_blank">FreeFEM++</a>. The algorithm that is available in ISSM is inspired by this software, but has been rewritten entirely.
 
-#### Usage
+### Usage
 ````
 >> md = bamg(model, ...);
 ````
@@ -92,7 +92,7 @@ BAMG stands for Bidimensional Anisotropic Mesh Generator. It was released in 200
 1. model
 1. pairs of options (type `help bamg` to get a full list of options)
 
-#### Uniform mesh
+### Uniform mesh
 To create a non-uniform mesh, use the following options:
 
 1. `'domain'` followed by the domain name
@@ -104,7 +104,7 @@ The previous command will create the following mesh (use `plotmodel(md, 'data', 
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/mesh/mesh4.png" alt="Figure 4: mesh4"></div>Note that the nodes are not as randomly distributed as `triangle`. The strength of BAMG is not for uniform meshes but for automatic mesh adaptation based on a metric.
 
-#### Non-uniform mesh
+### Non-uniform mesh
 To create a non-uniform mesh, use the following options:
 
 1. `'domain'` followed by the domain name
@@ -119,7 +119,7 @@ Use the `plotmodel(md, 'data', 'mesh')` command to visualize the newly defined m
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/mesh/mesh5.png" alt="Figure 5: mesh5"></div>
 
-#### Mesh adaptation
+### Mesh adaptation
 We can use observations to generate a mesh that is adapted to the solution we are trying to model. Given a solution field, `bamg` will calculate a metric based on the field's Hessian matrix (second derivative) to generate an anisotropic mesh that minimize the interpolation error (assuming that linear finite elements are used).
 
 For a first example, we are going to use the observations given by the function `shock.m`. It generates a discontinuity that requires the mesh to be highly refined along a circle.
@@ -168,7 +168,7 @@ Now, we call `bamg` a second time to adapt the mesh according the `vel`. We do n
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/mesh/shock4.png" alt="Figure 10: shock4"></div>You can also try to refine a mesh using the function `circles.m`, which is provided in the same directory.
 
-#### Mesh refinement in a specific region
+### Mesh refinement in a specific region
 It is sometimes necessary to specify a mesh resolution for an area of interest. We will use the same example as before. The first step consists of creating an ARGUS file that defines the region where we want to refine the mesh.
 
 We first plot `vel` and we call the function `exptool` to create a file `refinement.exp` that defines this region. Select `add a contour (closed)`. Draw a contour over a given region, hit enter when you are done, and then select quit. You should now see the `refinement.exp` file in the current directory.
@@ -198,7 +198,7 @@ Now, we call `bamg` a third time, with the specified resolution for the vertices
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/mesh/refine2.png" alt="Figure 13: refine2"></div>
 
-#### Another example
+### Another example
 If you would like to try another example, you can use the function `circles.m` instead of
 `shock.m`. It is also a 1x1 square but with a pattern that includes five circles.
 

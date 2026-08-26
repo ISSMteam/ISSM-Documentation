@@ -4,7 +4,7 @@ layout: default
 parent: Tutorials
 ---
 
-## Datasets
+# Datasets
 To run the tutorials, you will need to download a number of datasets. The easiest way to do this is to run,
 ````
 ${ISSM_DIR}/scripts/DownloadExamplesDatasets.sh

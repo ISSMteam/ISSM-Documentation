@@ -5,10 +5,10 @@ parent: Advanced Features
 grand_parent: Using ISSM
 ---
 
-## Rifts
+# Rifts
 ISSM allows for the simulation of rifts. This section explains how to create a model that includes rifts, and how to control their behavior.
 
-### Rifts creation
+## Rifts creation
 Rifts can be included right between the phase where the mesh is created, and the phase where the geography is set up. Rifts that should be included in the model must be present in an ARGUS type file. Each rift should be represented by an open loop set of points. An infinite number of rifts can be included, provided they do not intersect with the domain outline, or any other rift. This point is particularly important as there are no checks on intersections at the meshing phase. For example, a file including two straight rifts could look like, `Rifts.exp`:
 ````
 ## Name:Rift1
@@ -38,7 +38,7 @@ model with these rifts, one would do:
 ````
 The rest of the process is similar. This will create a `rifts` structure in the model `md`. The `rifts` structure holds as many members as there are rifts in `Rifts.exp`. The key fields in the rifts structure are the `fill` and `friction`. Fill can be either 1 (for water), 2 (for air), or 3 (for ice). Fill determines the pressure that is applied on each flank of the rifts. Friction is a coefficient between the shear stress exerted on the rift flanks and the differential tangential velocity between both flanks.
 
-### Rift tip refining
+## Rift tip refining
 Rifts in a mesh will not modify the type of meshing occurring during the mesh phase. To impact the mesh, one can use the `riftstiprefine.m` routine. This routine will ensure that the rift tips are correctly refined, to take into account the tip stress singularity. Use of this routine is as follows:
 ````
 >> md = model;
@@ -51,7 +51,7 @@ Rifts in a mesh will not modify the type of meshing occurring during the mesh ph
 the first argument is the model, the second argument the tip area resolution, and the third is the
 size of the circle around the tips where mesh refinement should occur.
 
-### Rifts in parameter file
+## Rifts in parameter file
 The structure of rifts can be modified in any parameter file. We do not advise touching anything except the fill and friction for each one of the rifts in the structure. For example, inclusion of the following lines in the parameter file should be enough:
 ````
 >> for i = 1:md.numrifts,
@@ -62,27 +62,27 @@ The structure of rifts can be modified in any parameter file. We do not advise t
 
 Of course, different frictions and fill could be applied, according to the physics being captured.
 
-### Solving for rifts
+## Solving for rifts
 Rifts are only allowed when using MacAyeal-type elements, in 2D meshes. For now, 3D meshes are not supported. Nothing is needed to take rifts into account in the solve phase. A simple:
 ````
 >> md = solve(md, 'Stressbalance');
 ````
 will suffice. Bear in mind that rifts are handled using penalty methods to ensure that penetration of rift flanks does not occur. This can be very computationally expensive, as penalty methods tend to lead to zigzagging of contact. A stable set of constraints strategy has been implemented, which should guarantee convergence, but can be slow. Users should also try to minimize zigzagging by refining the mesh where needed. In case zigzagging becomes too intense, locking of the zigzagging penalties will occur, which ensures convergence, but which can lead to bad results in a physical sense. Detecting penalty locking should give users an idea of where to refine the mesh.
 
-### Rifts plotting
+## Rifts plotting
 Rifts can be plotted using the following special plots:
 ````
 >> plotmodel(md, 'data', 'rifts', 'data', 'riftpenetration', 'data', 'riftvel', 'data', 'riftrelvel');
 ````
 these four plots will give users a view of which parts of the rifts are opening, closing, at which relative speed, etc.
 
-### Rifts when using Yams mesh adaptation
+## Rifts when using Yams mesh adaptation
 Rifts can be used in conjunction with the Yams mesh adaptation routine, by adding the `Rifts.exp` file defining rift contours to the `'riftoutline'` option of `yams`. For example:
 ````
 >> md = yams(md, 'domainoutline', 'DomainOutline.exp', 'riftoutline', 'Rifts.exp', 'velocities', 'vel.mat');
 ````
 
-### Adding rifts to an existing mesh
+## Adding rifts to an existing mesh
 In case users want to use an existing mesh, rifts can still be added on. The format for the rifts file is in this case slightly different:
 ````
 ## Name:ContourAroundRift1

@@ -5,8 +5,8 @@ parent: Parameterization
 math: mathjax3
 ---
 
-## Basal Friction
-### Introduction
+# Basal Friction
+## Introduction
 All friction laws in ISSM are implemented as:
 
 $$
@@ -27,7 +27,7 @@ calculated (`md.friction.coupling`):
 - 4: Use effective pressure dynamically calculated by the hydrology model (i.e., fully
   coupled)
 
-### Budd friction law (friction)
+## Budd friction law (friction)
 The default friction law is defined as [<a href="#references">*Paterson1994*</a>] (p. 151):
 
 $$
@@ -65,7 +65,7 @@ The following fields need to be specified:
 - `md.friction.p`: p exponent
 - `md.friction.q`: q exponent
 
-### Weertman friction law (weertmanfriction)
+## Weertman friction law (weertmanfriction)
 The Weertman friction [<a href="#references">*Weertman1957*</a>] law reads:
 
 $$
@@ -94,20 +94,20 @@ One can display the following fields by running:
 - `md.friction.C`: friction coefficient
 - `md.friction.m`: m exponent
 
-### Coulomb-limited sliding 1 (frictioncoulomb)
+## Coulomb-limited sliding 1 (frictioncoulomb)
 
 $$
 \tau_b = \min\left(C N ub , C_c^2 N \right)
 $$
 
-### Regularized Coulomb-limited sliding 1 (frictionregcoulomb)
+## Regularized Coulomb-limited sliding 1 (frictionregcoulomb)
 Sliding law from [<a href="#references">*Joughin2019*</a>]:
 
 $$
 \tau_b = \frac{C u_b^{1/m}\alpha^2 N}{\left(\frac{u_b}{u_0} + 1\right)^{1/m}}
 $$
 
-### Coulomb-limited sliding 2 (frictioncoulomb2)
+## Coulomb-limited sliding 2 (frictioncoulomb2)
 Coulomb-limited sliding law used in MISMIP+ [<a href="#references">*Cornford2020*</a>]:
 
 $$
@@ -115,31 +115,31 @@ $$
 $$
 where $$\alpha^2 = 0.5$$. Note that this friction law is exactly the same as `frictionschoof` described below, with $$C_{max} = 0.5$$.
 
-### Regularized Coulomb-limited sliding 2 (frictionregcoulomb2)
+## Regularized Coulomb-limited sliding 2 (frictionregcoulomb2)
 Sliding law from [<a href="#references">*Helanow2021*</a>]:
 
 $$
 \tau_b = \frac{C\, N\, u_b^{1/m}}{\left(u_b + (K\,N)^{m}\right)^{1/m}}
 $$
 
-### Friction Tsai (frictiontsai)
+## Friction Tsai (frictiontsai)
 From [<a href="#references">*Tsai2015*</a>]:
 
 $$
 \tau_b = \min\left(C ub^{m} , f N \right)
 $$
 
-### Friction Schoof (frictionschoof)
+## Friction Schoof (frictionschoof)
 From [<a href="#references">*Schoof2005,Gagliardini2007*</a>] (note that we use $$C_s^2$$ to make sure it is a positive number):
 
 $$
 \tau_b = \frac{C_s^2 v_b^{m}}{\left(1 + \left(\frac{C_s^2}{C_{max}N}\right)^{1/m} v_b\right)^{m}},
 $$
 
-### Friction PISM (frictionpism)
+## Friction PISM (frictionpism)
 Under construction
 
-### Thin water layer friction law (frictionwaterlayer)
+## Thin water layer friction law (frictionwaterlayer)
 The thin water layer friction law is similar to the default friction law except that the effective pressure includes a specified layer of water at the bed:
 
 $$
@@ -174,7 +174,7 @@ One can display all these fields by running:
 - `md.friction.water_layer`: thin water layer thickness (meters)
 
 
-## References
+# References
 - W. F. Budd, P. L. Keage, and N. A. Blundy.
  Empirical studies of ice sliding.
  J. Glaciol., 23:157-170, 1979.

@@ -4,9 +4,9 @@ layout: default
 parent: Parameterization
 ---
 
-## Surface Mass Balance (SMB)
+# Surface Mass Balance (SMB)
 
-### SMB (default)
+## SMB (default)
 The default surface mass balance model applies the surface mass balance that's provided by the model without any modifications. This model can be selected by running:
 ````
 >> md.smb = SMB();
@@ -19,7 +19,7 @@ One can display the following fields by running:
 
 - `md.smb.mass_balance`: surface mass balance (in m/yr ice equivalent)
 
-### SMB components
+## SMB components
 The `SMBcomponents` model computes surface mass balance using the component parameters provided. The components expected are: accumulation, runoff, and evaporation. All components are typically expected to be given as positive values. In the model computation of surface mass balance, runoff and evaporation are considered as mass lost and accumulation is considered as mass gain.
 
 The components model can be selected by running:
@@ -37,7 +37,7 @@ surface forcings parameters (SMB = accumulation - runoff - evaporation):
 - `md.smb.runoff`      : amount of ice melt lost from the ice column [m/yr ice eq]
 - `md.smb.evaporation` : amount of ice lost to evaporative processes [m/yr ice eq]
 
-### SMB melt components
+## SMB melt components
 Like the SMBcomponents model, the SMBmeltcomponents model computes surface mass balance using the component parameters provided by the user. The components expected are: accumulation, evaporation, melt, and refreeze. All components are typically expected to be given as positive values. In the model computation of surface mass balance, melt and evaporation are considered as mass lost while accumulation and refreeze are considered as mass gain.
 
 The melt components model can be selected by running:
@@ -56,7 +56,7 @@ surface forcings parameters with melt (SMB = accumulation - evaporation - melt +
 - `md.smb.melt`        : amount of ice melt in ice column [m/yr ice eq]
 - `md.smb.refreeze`    : amount of ice melt refrozen in ice column [m/yr ice eq]
 
-### SMB gradients method
+## SMB gradients method
 This surface mass balance model is based on the mass balance gradients method described in [<a href="#references">*Helsen2012*</a>]. To activate this method, the user must provide a climatology and a reference ice surface profile. The method will evolve the surface mass balance forcing through time, according to deviations of ice surface height. Required parameters include, at each vertex: (1) a reference surface mass balance field; (2) a reference ice elevation at each vertex; (3) a predetermined slope of the linear regression between positive surface mass balance and ice surface height; and (4) a predetermined slope of the linear regression between negative surface mass balance and ice surface height. Surface mass balance values are expected in units of millimeters of water equivalent per year and elevations are expected in meters.
 
 The gradients model can be selected by running:
@@ -75,7 +75,7 @@ One can display the following fields by running:
 - `md.smb.b_neg` : slope of hs - SMB regression line for ablation regime (required if SMB gradients is activated)
 
 
-## References
+# References
 - M. M. Helsen, R. S. W. van de Wal, M. R. van den Broeke, W. J. van de Berg, and
    J. Oerlemans.
  Coupling of climate models and ice sheet models by surface mass

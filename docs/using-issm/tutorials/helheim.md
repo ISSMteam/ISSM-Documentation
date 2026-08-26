@@ -5,13 +5,13 @@ parent: Tutorials
 math: mathjax3
 ---
 
-## Modeling Helheim Glacier
-### Goals
+# Modeling Helheim Glacier
+## Goals
 
 - Create an ice-flow model of Helheim Glacier (southeast Greenland)
 - Run an inversion model to infer basal friction
 
-### Introduction
+## Introduction
 In this example, the main goal is to parameterize and model a real Greenland outlet glacier. In order to build an operational simulation of Helheim Glacier, we will follow these steps:
 
 - Define the model region
@@ -24,7 +24,7 @@ Files needed for this tutorial can be found in `<ISSM_DIR>/examples/Helheim/`. T
 
 The observed datasets needed for the parameterization must be downloaded.
 
-### Mesh
+## Mesh
 The first step is to create the model domain outline and mesh.
 
 In the `runme.m` file, the mesh is generated in a multi-step process. Open the `runme.m` file and make sure that the variable `steps`, at the top of the file, is set to `steps = [1]`. In the code, you will see that in Step 1 the following actions are implemented:
@@ -48,7 +48,7 @@ You should see the following figure, with finer resolution in the two main branc
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/helheim/mesh.png" alt="Figure 1: mesh"></div>
 Try experimenting with different values in the mesh generation to create finer or coarser meshes.
 
-### Parameterization
+## Parameterization
 Most of the model parameterization is done through a different file (`Greenland.par`). In this example, we parameterize the following model fields:
 
 - Geometry (ice surface elevation and bed topography, using BedMachine)
@@ -59,7 +59,7 @@ Most of the model parameterization is done through a different file (`Greenland.
 
 Run step 2 in the `runme.m` file to perform the parameterization.
 
-### Inversion for basal friction
+## Inversion for basal friction
 The friction coefficient is inferred from the surface velocity using the following friction law:
 
 $$

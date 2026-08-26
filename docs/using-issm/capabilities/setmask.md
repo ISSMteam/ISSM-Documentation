@@ -4,7 +4,7 @@ layout: default
 parent: Capabilities
 ---
 
-## Setting a Mask
+# Setting a Mask
 The solver will use two different boundary conditions depending on the nature of the ice sheet system. An ice shelf will slide on the water whereas there is friction between an ice sheet and the bedrock for the grounded ice. The model must contain this field that tells whether the element is on an ice shelf or on an ice sheet. If the whole domain is an ice shelf, the following command may be used,
 ````
 >> md = setmask(md, 'all', '');

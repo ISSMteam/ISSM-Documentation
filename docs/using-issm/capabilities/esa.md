@@ -5,11 +5,11 @@ parent: Capabilities
 math: mathjax3
 ---
 
-## Elastostatic Adjustment Solution
-### Physical basis
+# Elastostatic Adjustment Solution
+## Physical basis
 Any redistribution of mass at the Earth's surface, such as snow, water, or atmosphere, loads and deforms the underlying solid Earth. At timescales that are comparable to those of the main tidal constituents, such as the near-annual periods, solid Earth deformation is excellently approximated as an elastic response. This module employs the classical Green's function approach to solving for interior Earth responses at the surface, following the so-called load Love number formalism for a radially stratified, seismologically constrained, elastically compressible Earth.
 
-### 3-D crustal motions
+## 3-D crustal motions
 Let $$U_i$$ (for $$i=1,2,3$$) be the components of the 3-D crustal displacement vector, $$\vec{U}(\theta,\phi,t)$$, evaluated at geographic coordinates $$(\theta,\phi)$$ at time $$t$$, where $$U_1$$ is the vertical displacement (up positive), $$U_2$$ is the north-south component of horizontal displacement (north positive), and $$U_3$$ is the east-west component of horizontal displacement (east positive).
 
 For a given surface load, $$H(\theta,\phi,t)$$, with dimensions of ice equivalent height, these displacement components may be computed theoretically as follows:
@@ -33,10 +33,10 @@ where:
 - $$P_n$$ are the Legendre polynomials of degree $$n$$
 - $$h'_n$$ and $$l'_n$$ are the load Love numbers
 
-### Numerical implementation
+## Numerical implementation
 We use Love numbers &#8212; provided by the International Association of Geodesy (available at http://www.srosat.com/iag-jsg/loveNb.php) &#8212; which are the solutions of the zero frequency momentum equations with self-gravitation for a spherically symmetric and seismologically constrained Earth structure model [see, e.g., Alterman et al., 1959]. Since $$h'_n$$ converges slowly toward a constant as $$n \rightarrow \infty$$, the requirement for generating an accurate solution for crustal deformation is stringent, demanding truncation of the series at high degree $$n = 10,000$$. See [<a href="#references">*Adhikari2017*</a>] for more details.
 
-### Model parameters
+## Model parameters
 The parameters relevant to the elastostatic adjustment (ESA) solution can be displayed by running:
 ````
 >> md.esa
@@ -47,14 +47,14 @@ The parameters relevant to the elastostatic adjustment (ESA) solution can be dis
 - `md.esa.hemisphere`: North-south, East-west components of 2-D horizontal displacement vector: -1 south, 1 north
 - `md.esa.degacc`: accuracy (default .01 deg) for numerical discretization of the Green's functions
 
-### Running a simulation
+## Running a simulation
 To run a simulation, use the following command:
 ````
 >> md = solve(md, 'Esa');
 ````
 The first argument is the model, the second is the nature of the simulation one wants to run.
 
-## References
+# References
 - S. Adhikari, E. R. Ivins, and E. Larour.
  Mass transport waves amplified by intense Greenland melt and
    detected in solid Earth deformation.

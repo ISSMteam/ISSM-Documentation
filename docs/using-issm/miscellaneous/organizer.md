@@ -5,7 +5,7 @@ parent: Miscellaneous wiki
 grand_parent: Using ISSM
 ---
 
-## ISSM Organizer
+# ISSM Organizer
 
 ISSM's `organizer` is a class that supports automatic saving and loading of
 multiple runs, and facilitates workflow in modeling scripts. It can save and load each step of constructing a
@@ -13,7 +13,7 @@ model and organize multiple ISSM models in bulk. Utilizing this structure
 modularizes the steps used to create a model, meaning you can start from any
 step while ensuring your previous steps remain saved.
 
-### Initiating an organizer
+## Initiating an organizer
 
 You can start by creating an instance of the `organizer` class. For example, the following code builds an organizer instance, where the model files will be stored in the './Models/' folder with `prefix` 'Greenland_' in the filename. The `prefix` can be used to conveniently organize different ISSM models. The `steps` input accepts a list of numerical ids that tells the organizer which steps to run.
 
@@ -21,7 +21,7 @@ You can start by creating an instance of the `organizer` class. For example, the
 org = organizer('repository','Models/', 'prefix', ['Greenland_'], 'steps', [1,2]);  
 ```
 
-### Organizing steps in constructing an ISSM model
+## Organizing steps in constructing an ISSM model
 
 After the organizer is created, it can associate step names (defined as
 strings) to each id in the `steps` array.
@@ -65,7 +65,7 @@ You can check the IDs and step names by running your script once and then
 executing `org` in MATLAB, or by setting `'steps'` to 0 and running your script. In both cases
 all the step numbers and names will be printed to the screen.
 
-### Saving and loading models
+## Saving and loading models
 
 The function `savemodel` takes in the organizer and model as inputs. It will
 save the model with the name prefix defined when creating the organizer,
@@ -77,7 +77,7 @@ previously saved model. For example, in the code above,
 `md=loadmodel(org,'Mesh')` will load the model saved in the filepath
 `./Models/Greenland_Mesh.mat`.
 
-### Use the organizer to submit multiple jobs for parameter space studies
+## Use the organizer to submit multiple jobs for parameter space studies
 
 To perform parameter space studies, we need to submit multiple jobs with a
 parameter that changes value. Here is how you can do that for basal friction

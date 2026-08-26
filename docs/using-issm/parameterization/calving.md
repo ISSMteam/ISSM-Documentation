@@ -5,8 +5,8 @@ parent: Parameterization
 math: mathjax3
 ---
 
-## Calving
-### Physical basis
+# Calving
+## Physical basis
 Calving (frontal ablation of icebergs) is one of the two processes, together with frontal melting, that determine the position of the ice front through time. In ISSM, calving is not resolved as a fracture process but is parameterized: at every time step, a calving rate $$c$$ [m/a] is computed everywhere along the ice front, from one of several calving laws described below. This rate then feeds into the level-set advection equation that tracks the ice front position (see the <a href="../capabilities/levelset">Ice Front Migration (Level Set Method)</a> page).
 
 The calving law is selected by assigning the corresponding class to `md.calving`. All laws share the same enabling switch:
@@ -14,7 +14,7 @@ The calving law is selected by assigning the corresponding class to `md.calving`
 >> md.transient.ismovingfront = 1;
 ````
 
-#### Default/prescribed calving rate (calving)
+### Default/prescribed calving rate (calving)
 The simplest option prescribes the calving rate directly, uniformly or spatially/temporally varying:
 ````
 >> md.calving = calving();
@@ -22,7 +22,7 @@ The simplest option prescribes the calving rate directly, uniformly or spatially
 
 - `md.calving.calvingrate`: calving rate at each vertex [m/a] (can be a time series)
 
-#### Von Mises stress calving law (calvingvonmises)
+### Von Mises stress calving law (calvingvonmises)
 This law, from [<a href="#references">*Morlighem2016*</a>], relates the calving rate to the tensile von Mises stress $$\sigma_{vm}$$ and the ice velocity:
 
 $$
@@ -40,7 +40,7 @@ where $$\sigma_{max}$$ is a threshold stress (calibrated separately for grounded
 
 `calvingdev2` implements the same von Mises law, but additionally requires the ice tongue to reach a minimum height above flotation before it is allowed to calve (`md.calving.height_above_floatation`).
 
-#### Levermann calving law (calvinglevermann)
+### Levermann calving law (calvinglevermann)
 This law, from [<a href="#references">*Levermann2012*</a>], makes the calving rate proportional to the product of the principal strain rates along and across the flow direction, $$\dot{\varepsilon}_{\parallel}$$ and $$\dot{\varepsilon}_{\perp}$$:
 
 $$
@@ -54,7 +54,7 @@ evaluated only where both strain rates are positive (extensional in both directi
 
 - `md.calving.coeff`: proportionality coefficient $$k$$ (default: $$2\times10^{13}$$)
 
-#### Crevasse-depth calving law (calvingcrevassedepth)
+### Crevasse-depth calving law (calvingcrevassedepth)
 This law follows the crevasse-penetration concept of [<a href="#references">*Nick2010,Otero2010*</a>]: calving occurs where the combined depth of surface and basal crevasses reaches the full ice thickness. Surface and basal crevasse depths are computed from a balance between the opening (tensile) stress and the ice overburden/water pressure resisting crevasse penetration. `md.calving.crevasse_opening_stress` selects how the opening stress is estimated:
 
 - 0: tensile deviatoric stress in the flow direction [<a href="#references">*Otero2010*</a>]
@@ -69,7 +69,7 @@ This law follows the crevasse-penetration concept of [<a href="#references">*Nic
 - `md.calving.crevasse_threshold`: fraction of the total ice thickness that the combined crevasse depth must reach for calving to occur (e.g., 0.75 for 75% of the thickness)
 - `md.calving.water_height`: water height filling surface crevasses [m], which reduces the resisting stress and promotes deeper crevasse penetration (hydrofracture)
 
-#### Height above flotation (calvinghab)
+### Height above flotation (calvinghab)
 Calving occurs wherever the ice tongue/shelf thins below a prescribed fraction of the flotation thickness at the terminus:
 ````
 >> md.calving = calvinghab();
@@ -77,7 +77,7 @@ Calving occurs wherever the ice tongue/shelf thins below a prescribed fraction o
 
 - `md.calving.flotation_fraction`: fraction of the flotation thickness allowed at the terminus before calving (default: 0.15)
 
-#### Minimum thickness (calvingminthickness)
+### Minimum thickness (calvingminthickness)
 Ice thinner than a prescribed threshold is removed from the domain:
 ````
 >> md.calving = calvingminthickness();
@@ -85,7 +85,7 @@ Ice thinner than a prescribed threshold is removed from the domain:
 
 - `md.calving.min_thickness`: minimum ice thickness allowed [m] (default: 100)
 
-#### Pollard and DeConto calving law (calvingpollard)
+### Pollard and DeConto calving law (calvingpollard)
 This law, from [<a href="#references">*Pollard2015*</a>], is based on a critical ratio between crevasse (or hydrofracture) depth and ice thickness:
 ````
 >> md.calving = calvingpollard();
@@ -93,7 +93,7 @@ This law, from [<a href="#references">*Pollard2015*</a>], is based on a critical
 
 - `md.calving.rc`: critical depth/thickness ratio (default: 0.75)
 
-#### CalvingMIP laws (calvingcalvingmip)
+### CalvingMIP laws (calvingcalvingmip)
 This class implements the standardized calving laws and coefficients used in the CalvingMIP intercomparison experiments:
 ````
 >> md.calving = calvingcalvingmip();
@@ -102,7 +102,7 @@ This class implements the standardized calving laws and coefficients used in the
 - `md.calving.experiment`: CalvingMIP experiment number
 - `md.calving.min_thickness`: minimum ice thickness allowed [m]
 
-### Frontal melt (undercutting)
+## Frontal melt (undercutting)
 In addition to calving, submarine/frontal melting contributes to the retreat (or slows the advance) of marine-terminating fronts. This is controlled by `md.frontalforcings`, independently of the calving law:
 ````
 >> md.frontalforcings = frontalforcings();
@@ -121,7 +121,7 @@ Alternatively, `frontalforcingsrignot` computes the frontal melt rate from ocean
 - `md.frontalforcings.subglacial_discharge`: subglacial discharge for each basin [$$m^3$$/d]
 - `md.frontalforcings.thermalforcing`: ocean thermal forcing [&#8451;]
 
-### Running a simulation
+## Running a simulation
 To turn on calving and ice front migration in a simulation, use:
 ````
 >> md.transient.ismovingfront = 1;
@@ -131,7 +131,7 @@ This also requires setting up the level-set function that tracks the ice front p
 >> md = solve(md, 'Transient');
 ````
 
-## References
+# References
 - M. Morlighem, J. Bondzio, H. Seroussi, E. Rignot, E. Larour, A. Humbert, and S. Rebuffi.
  Modeling of Store Gletscher's calving dynamics, West Greenland, in response to ocean thermal forcing.
  Geophys. Res. Lett., 43:2659-2666, 2016.

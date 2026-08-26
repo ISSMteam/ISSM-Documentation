@@ -5,14 +5,14 @@ parent: Miscellaneous wiki
 grand_parent: Using ISSM
 ---
 
-## General guidelines
+# General guidelines
 
 - Comment your code (everybody must understand what is being done)
 - NEVER more than one blank line please!
 - Align operators vertically to emphasize local program structure and semantics when possible
 - Do not use excessive blank spaces (especially in equations)
 
-## C/C++
+# C/C++
 
 - if/for should follow this:
 - No space between if/for and its statement
@@ -63,7 +63,7 @@ else{
 bool Test(int a,double b,char* c){
 ```
 
-## MATLAB
+# MATLAB
 
 All MATLAB routines should start with a help (Example and See Also are not mandatory):
 
@@ -94,7 +94,7 @@ function outputs=hello()
 %      outputs=hello()
 ```
 
-### Vim Folding
+## Vim Folding
 Classes, functions, and other logical blocks of code should be folded (note the exact formatting used below):
 
 {% raw %}
@@ -105,7 +105,7 @@ end % }}}
 ```
 {% endraw %}
 
-## Python
+# Python
 
 [PEP 8 compliance](https://www.python.org/dev/peps/pep-0008/) should be used throughout the code with the exceptions below (with flake8 codes):
 - We allow lines of any length (E501)
@@ -120,7 +120,7 @@ If you install flake8, you can also run it in standalone to check the files in a
 flake8  --ignore=E262,E265,F403,F405,E405,E501
 ```
 
-### Docstrings
+## Docstrings
 Adhering to [PEP 257 Docstring Conventions](https://www.python.org/dev/peps/pep-0257/) while attempting to mirror the conventions we follow under MATLAB, modules, functions, classes, and method definitions should be documented according to the following protocol:
 
 ```py
@@ -143,7 +143,7 @@ def FunctionName(inputs):
 
 As with MATLAB, at the very least, the first line and the Usage should be provided. Unlike MATLAB, use indentations of 4 and 8 spaces.
 
-### Vim Folding
+## Vim Folding
 Classes, functions, and other logical blocks of code should be folded (note the exact formatting used below):
 
 {% raw %}
@@ -154,14 +154,14 @@ def foo(): # {{{
 ```
 {% endraw %}
 
-## MATLAB Built-In Equivalents
+# MATLAB Built-In Equivalents
 The following is a list of MATLAB built-in equivalents in Python:
 
 | MATLAB | Python | Notes |
 |:-------|:-------|:------|
 | `s=num2str(A)` | `s=str(A)` | convert numbers to character array |
 
-## NumPy/SciPy
+# NumPy/SciPy
 NumPy and SciPy are used extensively in the Python interface to ISSM to replicate MATLAB-native functionality. When translating modules or tests, for example, from MATLAB to Python, the following sources may come in handy:
 - [NumPy for Matlab users](https://numpy.org/devdocs/user/numpy-for-matlab-users.html)
 - [MATLAB to NumPy](http://mathesaurus.sourceforge.net/matlab-numpy.html)
@@ -176,7 +176,7 @@ Some notable omissions in the above sources are as follows:
 | `B=sortrows(A,column)` | `B=A[A[:,column].argsort()]` | sort rows of matrix or table (MATLAB), or 2D array (NumPy) in ascending order based on the elements in 'column' |
 | `sqrt(A)` | `A ** 0.5` | Element-wise square root (math.sqrt can only be applied to scalars) |
 
-## Variable/Enum/Function Names
+# Variable/Enum/Function Names
 
 - variables should not use capital letters. Use underscores to make variables more understandable.
 - Function names and enums should not use any underscore. Use capital letters to make names more understandable.

@@ -5,26 +5,26 @@ parent: Tutorials
 math: mathjax3
 ---
 
-## Subglacial Channel Formation From a Single Moulin (SHAKTI)
-### Goals
+# Subglacial Channel Formation From a Single Moulin (SHAKTI)
+## Goals
 
 - Learn to set up a subglacial hydrology simulation using the SHAKTI model (Subglacial Hydrology and Kinetic, Transient Interactions, [<a href="#references">*Sommers2018*</a>]),
 - Run a test with steady input into a single moulin to see an efficient drainage pathway develop from the moulin to the outflow, and obtain the corresponding effective pressure, hydraulic head, and basal water flux distributions.
 
 Go to `<ISSM_DIR>/examples/shakti/` to do this tutorial.
-### Introduction
+## Introduction
 The `runme.m` file and `moulin.par` go through the steps and basic structure to set up and run a subglacial hydrology model with steady input into a single moulin at the center of a 1 km square, tilted slab of ice. These files can be altered to create simulations on different domains and geometries, with different meltwater inputs (distributed or into moulins, steady or time-varying). The `runme.m` script is set up as three distinct steps, saving the model at each stage:
 
 1. Mesh generation
 1. Parameterization
 1. Hydrology solution
 
-### Mesh Generation
+## Mesh Generation
 Run step 1 in `runme.m` to generate an unstructured mesh on a 1 km square with typical element edge length of 20 m. This mesh shown here has 4,032 elements and 2,096 vertices. To plot your mesh, use `plotmodel(md, 'data', 'mesh')`:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/shakti/moulin_mesh.png" alt="Figure 1: moulin_mesh"></div>
 
-### Parameterization
+## Parameterization
 Run step 2 in `runme.m` to define the model parameters. First we call on standard parameters defined in the `moulin.par` file (bed and ice geometry, sliding velocity, material properties, etc.). Then we define hydrology-specific parameters for the SHAKTI model (initial hydraulic head, Reynolds number, subglacial gap height, boundary conditions, etc.).
 
 To look at the bed topography, ice surface, initial head, and initial gap height, you can plot them in MATLAB:
@@ -38,7 +38,7 @@ plotmodel(md, ...
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/shakti/moulin_initial.png" alt="Figure 2: moulin_initial"></div>
 
-### Hydrology solution
+## Hydrology solution
 In step 3, we specify which machine we want to run the model on, including number of processors to be used, define the model time step, final time, and prescribe the moulin inputs. In this example, we put a steady moulin input of 4 m$$^3$$ s$$^{-1}$$ at the center of the domain (x=500 m, y=500 m). We also impose a no-flux "Type 2" (Neumann) boundary condition at all boundaries (except the outflow, where we have our Dirichlet condition defined already in step 2).
 
 Now that the set up is complete, we can run the model:
@@ -64,7 +64,7 @@ plotmodel(md, 'data', 'transient_movie')
 
 You will be prompted to select which parameter to animate, and can watch an efficient subglacial channel emerge from the moulin to the outflow!
 
-## References
+# References
 - A. Sommers, H. Rajaram, and M. Morlighem.
  SHAKTI: Subglacial Hydrology and Kinetic, Transient Interactions
    v1.0.

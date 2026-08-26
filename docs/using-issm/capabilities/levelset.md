@@ -5,8 +5,8 @@ parent: Capabilities
 math: mathjax3
 ---
 
-## Ice Front Migration (Level Set Method)
-### Physical basis
+# Ice Front Migration (Level Set Method)
+## Physical basis
 ISSM tracks the position of the calving front implicitly, using a level-set method [<a href="#references">*Bondzio2016*</a>]. The ice front is defined as the zero contour of a level-set function $$\phi$$, with the convention:
 
 - $$\phi<0$$ inside the ice domain
@@ -37,7 +37,7 @@ At every time step during which the moving front module is active, ISSM:
 6. Reinitializes the level-set function to a signed distance function, either after killing icebergs or every `reinit_frequency` time steps
 7. Updates the mask of vertices/elements that contain ice for the next time step
 
-### Model parameters
+## Model parameters
 This module is controlled through the `md.levelset` class. The following fields can be displayed by running:
 ````
 >> md.levelset
@@ -55,7 +55,7 @@ This module is controlled through the `md.levelset` class. The following fields 
 - `md.levelset.migration_max`: maximum allowed migration rate of the ice front [m/a], used to cap unrealistically fast advance or retreat
 - `md.levelset.fe`: finite element used to discretize the level-set function, `'P1'` (default) or `'P2'`
 
-### Running a simulation
+## Running a simulation
 To turn on ice front migration in a transient simulation, activate the moving front module:
 ````
 >> md.transient.ismovingfront = 1;
@@ -71,7 +71,7 @@ Finally, run the transient simulation:
 >> md = solve(md, 'Transient');
 ````
 
-## References
+# References
 - J. H. Bondzio, H. Seroussi, M. Morlighem, T. Kleiner, M. Ruckamp, A. Humbert, and E. Y. Larour.
  Modelling calving front dynamics using a level-set method: application to Jakobshavn Isbrae, West Greenland.
  Cryosphere, 10(2):497-510, 2016.

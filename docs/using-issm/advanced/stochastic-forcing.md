@@ -6,8 +6,8 @@ grand_parent: Using ISSM
 math: mathjax3
 ---
 
-## Stochastic Forcing with StISSM
-### Introduction
+# Stochastic Forcing with StISSM
+## Introduction
 The stochastic component of ISSM (StISSM) allows the user to include random time-dependent fluctuations in a range of ice sheet processes. When activated for a given variable or model parameter (or 'field'), stochastic perturbations are applied to this variable. The amplitude of stochastic variability and the frequency at which new perturbations are prescribed can be defined by the user and are independent of the simulation time steps. Stochastic perturbations are Gaussian noise terms. In other words, a stochastic variable is calculated as,
 
 $$
@@ -30,7 +30,7 @@ $$
 
 where $$\mu_{t}$$ is a deterministic function of time, $$\varphi$$ are the autoregressive (AR) coefficients, and $$\theta$$ are the moving-average coefficients (MA). The values of $$p$$ and $$q$$ are the orders of the AR and MA part of the ARMA model, respectively.
 
-### White noise stochasticity
+## White noise stochasticity
 For variables without ARMA implementation, stochasticity is applied as Gaussian white noise (i.e., without temporal correlation, following Eq. (1)). The model parameters can be displayed by running `md.stochasticforcing`. This class includes the following fields,
 
 - `isstochasticforcing`: determines whether the ISSM run allows for stochasticity (1) or not (0, default).
@@ -40,7 +40,7 @@ For variables without ARMA implementation, stochasticity is applied as Gaussian 
 - `stochastictimestep`: this determines the frequency at which new stochastic perturbations are computed. For example, if it is set to 1 year, a stochastic perturbation is kept constant over a period of one year, after which a new stochastic perturbation is generated.
 - `covariance`: this is the covariance matrix for the stochastic perturbations (in Eq. (2)). If only a single variable is modeled as stochastic, and with only a single subdomain, then the covariance is of size 1×1 (equivalent to in Eq. (1)). If there are several subdomains and/or several stochastic variables, then the covariance should be of size D×D, where D is the number of subdomains times the number of stochastic variables. The marginal variances of each variable in a given subdomain are the diagonal terms of the covariance matrix. The off-diagonal terms capture the covariance between different variables and different subdomains.
 
-### ARMA processes
+## ARMA processes
 As mentioned above, several variables (or 'fields') have an ARMA model implemented. In general, the ARMA models have the same configuration of variables. First, we can focus on the parameters that are similar to the variables of `md.stochasticforcing`,
 
 - `num_basins`: the number of subdomains for this particular variable (can be different than `md.stochasticforcing.defaultdimension`).
@@ -59,13 +59,13 @@ Second, we can focus on the parameters that are specific to ARMA-modeled variabl
 - `polynomialparams`: the parameters of the polynomial for the background term function. If several subdomains and one or more breakpoints are used, this parameter should be a three-dimensional array. The 1st dimension (along the rows) corresponds to the different subdomains. The 2nd dimension (along the columns) corresponds to the different periods separated by the breakpoints. The 3rd dimension corresponds to the polynomial terms and should be of the same size as specified in `num_params`.
 Note that on top of these parameters, ARMA schemes for different variables also have different parameters that are specific to the given variable. Below are the specific parameters for some of these variables.
 
-#### SMBarma
+### SMBarma
 This class allows for lapse rate adjustments applied to the SMB values (i.e., elevation gradients). This is prescribed with the parameters,
 
 - `elevationbins`: the different elevation ranges in which different lapse rate values apply. The `elevationbins` parameters are specific to the different basins of the SMBarma model.
 - `lapserates`: the basin-specific lapse rate values applied in their corresponding elevation bin. Note that this parameter can have a third dimension of size 12 if monthly-varying lapse rate values are used (1 value per month should be provided in this case).
 
-#### frontalforcingsrignotarma
+### frontalforcingsrignotarma
 This class uses the frontal melt parameterization of [<a href="#references">*Rignot2016*</a>] (similarly to class `frontalforcingsrignot`),
 
 $$
@@ -91,8 +91,8 @@ If it is activated, all the model parameters are the same as for a usual ARMA-mo
 The subglacial discharge also allows for a monthly refinement of the subglacial discharge values calculated with the ARMA model by using the parameter `sd_monthlyfrac`. As an example, the ARMA model can use a yearly step (`sd_arma_timestep = 1`) but the annual value is then adjusted for each month of the StISSM simulation as a function of `sd_monthlyfrac`. The parameter `sd_monthlyfrac` is the fraction of the annual subglacial discharge occurring in each month. It should have 12 entries per row, and one row per subdomain of the `frontalforcingsrignotarma` class. The 12 entries of each row must add up to 1. Suppose that the yearly ARMA-calculated subglacial discharge value is $$100$$m$$^{3}$$ d$$^{-1}$$ and the row entries of `sd_monthlyfrac` are `[0, 0, 0, 0, 0, 0.3, 0.5, 0.2, 0, 0, 0, 0]`. If the StISSM time step is in August, then the value of subglacial discharge is calculated as
 $$0.2\times 100 = 20$$ m$$^{3}$$ d$$^{-1}$$
 
-### Additional technical information
-#### Model Sequence
+## Additional technical information
+### Model Sequence
 Suppose that variables y and w are stochastic variables. At any timestep of ISSM, the following sequence is executed,
 
 - Determine if timestep t is a stochastic timestep or not (depends on `md.stochasticforcing.stochastictimestep`)
@@ -102,7 +102,7 @@ Suppose that variables y and w are stochastic variables. At any timestep of ISSM
 - Perturb variables: $$y_{t} = \overline{y}_{t}+\epsilon_{y,t}$$
 - All the other ISSM routines proceed as usual
 
-#### Computing the stochastic terms
+### Computing the stochastic terms
 We use the Cholesky decomposition of the covariance matrix to compute the stochastic terms drawn from the multivariate Gaussian distribution with the specified covariance matrix. Let $$L$$ be the Cholesky decomposition of $$\Sigma$$,
 
 $$
@@ -125,7 +125,7 @@ Note that the random number generator implemented in ISSM to draw random numbers
 
 For more details about StISSM, please refer to [<a href="#references">*Verjans2022*</a>].
 
-## References
+# References
 - E. Rignot, Y. Xu, D. Menemenlis, J. Mouginot, B. Scheuchl, X. Li, M. Morlighem,
    H. Seroussi, M. van den Broeke, I. Fenty, C. Cai, L. An, and B. de Fleurian.
  Modeling of ocean-induced ice melt rates of five West Greenland

@@ -4,7 +4,7 @@ layout: default
 parent: Tutorials
 ---
 
-## Square Ice Shelf
+# Square Ice Shelf
 This is an example of velocity computation in steady state for a square ice shelf. First, launch MATLAB. In the left sidebar, select `ISSM_DIR` (the directory in which ISSM is stored) as your Current Directory. Then, navigate to `examples/SquareIceshelf`, which you can also do via the left sidebar or by running the following in the MATLAB Command Window:
 ````
 >> cd examples/SquareIceShelf

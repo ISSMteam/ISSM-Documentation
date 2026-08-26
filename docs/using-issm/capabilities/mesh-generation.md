@@ -4,8 +4,8 @@ layout: default
 parent: Capabilities
 ---
 
-## Mesh Generation
-### ARGUS file format
+# Mesh Generation
+## ARGUS file format
 To mesh the domain, one needs a file containing all the coordinates of the domain outline in an <a href="http://www.argusint.com/" target="_blank">ARGUS</a> format. These files have a `*.exp` extension. Here is an example of such a file for a square glacier:
 ````
 ## Name:DomainOutline
@@ -20,7 +20,7 @@ To mesh the domain, one needs a file containing all the coordinates of the domai
 0 0
 ````
 The ARGUS format is used extensively by ISSM. One can use `exptool` to generate and manage <a href="http://www.argusint.com/" target="_blank">ARGUS</a> files.
-### triangle
+## triangle
 `triangle` is a wrapper of <a href="http://www.cs.cmu.edu/~quake/triangle.html" target="_blank">triangle</a> developed by <a href="http://www.cs.berkeley.edu/~jrs/" target="_blank">Jonathan Shewchuk</a> [<a href="#references">*Shewchuk1996*</a>]. It generates unstructured isotropic meshes:
 ````
 >> md = triangle(md, 'DomainOutline.exp', 5000);
@@ -32,27 +32,27 @@ The first argument is the model you are working on, the second argument is the f
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/capabilities/mesh/mesh.png" alt="Figure 1: mesh"></div><span style="display:block;width:100%;text-align:center"><small>Mesh</small></span>
 ISSM includes a mesh adaptation capability embedded in the code, inspired by <a href="https://people.math.sc.edu/Burkardt/data/bamg/bamg.html" target="_blank">BAMG</a> developed by Frederic Hecht [<a href="#references">*Hecht2006*</a>], and YAMS developed by Pascal Frey [<a href="#references">*Frey2001*</a>].
-### Bamg
-#### Domain
+## Bamg
+### Domain
 To mesh the domain, you need a file containing all the coordinates of the domain outline in an ARGUS format. Assuming that this file is `DomainOutline.exp`, run:
 ````
 >> md = bamg(md, 'DomainOutline.exp');
 ````
 
-#### hmin/hmax
+### hmin/hmax
 The minimum and maximum edge lengths can be specified by `'hmin'` and `'hmax'` options:
 ````
 >> md = bamg(md, 'DomainOutline.exp', 'hmax', 1000);
 ````
 
-#### hVertices
+### hVertices
 One can specify the edge length of domain outline vertices. Use `NaN` if an edge length value is not required/available:
 ````
 >> h = [1000 100 100 100];
 >> md = bamg(md, 'DomainOutline.exp', 'hmax', 1000, 'hVertices', h);
 ````
 
-#### field/err
+### field/err
 The option `'field'` can be used with the option `'err'` to generate a mesh adapted to the field given as input for the error given as input:
 ````
 >> md = bamg(md, 'field', md.inversion.vel_obs, 'err', 1.5);
@@ -62,20 +62,20 @@ Multiple fields can also be used:
 >> md = bamg(md, 'field', [md.inversion.vel_obs md.geometry.thickness], 'err', [1.5 20]);
 ````
 
-#### gradation
+### gradation
 The ratio of the lengths of two adjacent edges is controlled by the option `'gradation'`:
 ````
 >> md = bamg(md, 'field', md.inversion.vel_obs, 'err', 1.5, 'gradation', 3);
 ````
 
-#### anisomax
+### anisomax
 The factor of anisotropy (ratio between the lengths of two edges belonging to the same triangle) can be changed by the option `'anisomax'`. A factor of anisotropy equal to 1 will result in an isotropic mesh generation:
 ````
 >> md = bamg(md, 'field', md.vel_obs, 'err', 1.5, 'anisomax', 1);
 ````
 NOTE: Users using Intel compilers (`icc`, `icpc`) should use the flag `-fp-model precise` to disable optimizations that are not value-safe on floating-point data. This will prevent bamg from being compiler dependent (see <a href="https://software.intel.com/en-us/node/522979" target="_blank">here</a>).
 
-### Extrusion (3D)
+## Extrusion (3D)
 One can extrude the mesh, in order to use a three-dimensional model (Pattyn's higher order model and Full Stokes model). This step is not mandatory. If the user wants to keep a 2D model, skip this section.
 
 To extrude the mesh, run the following command:
@@ -86,7 +86,7 @@ The first argument is the model, as usual. The second argument is the number of 
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/capabilities/mesh/extrusion.png" alt="Figure 2: extrusion"></div><span style="display:block;width:100%;text-align:center"><small>Extruded mesh</small></span>
 
-## References
+# References
 - Pascal J. Frey.
  Yams, A fully Automatic Adaptive Isotropic Surface Remeshing
    Procedure.

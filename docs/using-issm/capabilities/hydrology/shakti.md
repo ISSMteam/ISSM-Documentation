@@ -5,11 +5,11 @@ parent: Hydrology Solution
 math: mathjax3
 ---
 
-### Hydrology Solution - SHAKTI
-#### Description
+# Hydrology Solution - SHAKTI
+## Description
 SHAKTI (Subglacial Hydrology and Kinetic, Transient Interactions) is a transient subglacial hydrology model that has flexible geometry and treats the entire domain with one set of governing equations, allowing for any drainage configuration to arise, which can include efficient (channelized) and inefficient (distributed) features. [<a href="#references">*Sommers2018*</a>]
 
-##### Equations
+### Equations
 The SHAKTI model is based upon governing equations that describe conservation of water mass, evolution of the system geometry, basal water flux (approximate momentum equation), and internal melt generation (approximate energy equation).
 
 
@@ -82,10 +82,10 @@ $$
 $$
 where the forcing ($$RHS$$) is a function of the relevant dependent variables. Within each time step, this nonlinear PDE is solved using a Picard iteration to establish the head ($$h$$) distribution.
 
-##### Boundary conditions
+### Boundary conditions
 Boundary conditions can be applied as either prescribed head (Dirichlet) conditions or as flux (Neumann) conditions. We typically apply a Dirichlet boundary condition of atmospheric pressure at the edge of the ice sheet, and Neumann boundary conditions (no flux or prescribed flux, which can be constant or time-varying) on the other boundaries of the subglacial drainage domain.
 
-#### Model parameters
+## Model parameters
 The parameters relevant to the SHAKTI (hydrologyshakti) solution can be displayed by running:
 ````
 >> md.hydrology
@@ -104,7 +104,7 @@ The parameters relevant to the SHAKTI (hydrologyshakti) solution can be displaye
 - `md.hydrology.relaxation` under-relaxation coefficient for nonlinear iteration
 - `md.hydrology.storage` englacial storage coefficient (void ratio)
 
-#### Running a simulation
+## Running a simulation
 To run a transient stand-alone subglacial hydrology simulation, use the following commands:
 ````
 md.transient = deactivateall(md.transient);
@@ -119,7 +119,7 @@ md = solve(md, 'Transient');
 ````
 
 
-## References
+# References
 - A. Sommers, H. Rajaram, and M. Morlighem.
  SHAKTI: Subglacial Hydrology and Kinetic, Transient Interactions
    v1.0.

@@ -4,7 +4,7 @@ layout: default
 parent: Capabilities
 ---
 
-## Glacial Flow Approximation
+# Glacial Flow Approximation
 ISSM has the capability to compute the flow of a glacier with 4 different models:
 
 - Shallow Ice Approximation (SIA, 2d and 3d)

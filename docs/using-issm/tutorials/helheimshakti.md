@@ -4,8 +4,8 @@ layout: default
 parent: Tutorials
 ---
 
-## Subglacial Hydrology of Helheim Glacier (SHAKTI)
-### Goals
+# Subglacial Hydrology of Helheim Glacier (SHAKTI)
+## Goals
 
 - Use SHAKTI model to simulate subglacial hydrology of Helheim Glacier in southeast Greenland
 - Follow an example of how to set up a SHAKTI hydrology simulation on a real-world glacier
@@ -13,7 +13,7 @@ parent: Tutorials
 - Run a coupled SHAKTI-ISSM simulation of winter base-state hydrology
 - Run a coupled SHAKTI-ISSM simulation with transient seasonal meltwater inputs (distributed and point inputs)
 
-### Introduction
+## Introduction
 In this example, the main goal is to set up a subglacial hydrology simulation using the SHAKTI model, coupled with ice velocity on a real Greenland outlet glacier. In order to build an operational simulation of Helheim Glacier as an example, we will follow these steps:
 
 - Load your Helheim Glacier model created in the 'Modeling Helheim Glacier' tutorial
@@ -25,10 +25,10 @@ In this example, the main goal is to set up a subglacial hydrology simulation us
 Files needed for this tutorial can be found in `<ISSM_DIR>/examples/HelheimSHAKTI/`. This tutorial begins from a model of Helheim Glacier generated in the 
 <a href="helheim">'Modeling Helheim Glacier' tutorial</a>.
 
-### Load model
+## Load model
 The first step in the `runme.m` file is to load the model of Helheim Glacier created in the previous tutorial. We turn off the inversion now.
 
-### Set up SHAKTI subglacial hydrology model
+## Set up SHAKTI subglacial hydrology model
 In the `runme.m` file, we set the hydrology model to SHAKTI:
 `md.hydrology = hydrologyshakti();`
 
@@ -42,7 +42,7 @@ Next, we initialize the SHAKTI-specific hydrological parameters:
 - Initial Reynolds number
 - Boundary conditions (prescribed head for thin ice and ice-free elements)
 
-### Define coupling and friction
+## Define coupling and friction
 We turn on the coupling between SHAKTI and ISSM through `md.transient` and `md.friction.coupling`. This tutorial uses the Budd-type sliding law.
 
 
@@ -50,7 +50,7 @@ We turn on the coupling between SHAKTI and ISSM through `md.transient` and `md.f
 - To solve for stress balance in the transient simulation, set `md.transient.isstressbalance = 1` and `md.friction.coupling = 4`.
 - To run stand-alone SHAKTI without evolving velocity, set `md.transient.isstressbalance = 0`.
 
-### Run a winter simulation
+## Run a winter simulation
 The final step before running is to define the time step and final time of the simulation. Note that the time step and final time are set in years, so make sure to convert appropriately. Small time steps on the order of 1 hour are typically functional for SHAKTI, but feel free to experiment with this.
 
 The model will take a while to run; exactly how long will vary depending on your final time, time step, how many processors you are using, and mesh resolution. If you are running a long simulation, you might not want to save model output at every time step and can reduce the output file size through `md.settings.output_frequency` (for example, with a time step of 1 hour, you would set `md.settings.output_frequency = 24;` to save output once every day).
@@ -72,7 +72,7 @@ plotmodel(md, 'data', log10(md.results.TransientSolution(end).HydrologyBasalFlux
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/helheimshakti/figure_q_h.png" alt="Figure 2: figure_q_h"></div>
 If you are interested in a steady state, check convergence to a steady winter state by comparing `md.results.TransientSolution(end).Vel` and `md.results.TransientSolution(end).EffectivePressure` with the previous time step. You will probably need to run for a year or two for the system to fully equilibrate.
 
-### Continuing a simulation
+## Continuing a simulation
 You may find it helpful to continue a simulation from the end state of a previous simulation. This can be useful for running long simulations in segments or exploring different forcing from a common initialized state. Use the script below to continue a previous simulation, which sets the relevant initial parameters accordingly:
 
 ````
@@ -104,7 +104,7 @@ md.verbose.solution = 1;
 md = solve(md, 'Transient');
 ````
 
-### Seasonal meltwater inputs
+## Seasonal meltwater inputs
 Meltwater inputs can be added through two options:
 
 - Distributed meltwater input (e.g. for highly crevassed regions): `md.hydrology.englacial_input` (units of m yr<a href="#footnotes" target="_top"><sup>-1</sup></a>)
@@ -148,12 +148,12 @@ md.hydrology.moulin_input(end, :) = timevec;
 md.hydrology.moulin_input(1:end-1, :) = **set values here, can vary spatially and temporally**
 ````
 
-### Resources
+## Resources
 For more details about the SHAKTI model and applications to Helheim Glacier, please see the
 following references: [<a href="#references">*Sommers2018,Sommers2023,Sommers2024*</a>].
 
 
-## References
+# References
 - A. Sommers, H. Rajaram, and M. Morlighem.
  SHAKTI: Subglacial Hydrology and Kinetic, Transient Interactions
    v1.0.

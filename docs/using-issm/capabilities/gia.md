@@ -5,12 +5,12 @@ parent: Capabilities
 math: mathjax3
 ---
 
-## Glacial Isostatic Adjustment (GIA) Solution
+# Glacial Isostatic Adjustment (GIA) Solution
 
-### Physical basis
+## Physical basis
 The ISSM/GIA model assumes that the ice sheet rests on top of the solid Earth, which is considered to be a simple two-layered incompressible continuum with an upper elastic lithosphere floating on the viscoelastic (Maxwell material) mantle half-space. Coordinate transformations allow simple axisymmetric solutions for the deformation of pre-stressed solid Earth (subject to a normal surface traction of ice/ocean) to retrieve semi-analytical solutions of vertical displacement at the lithosphere surface.
 
-### Vertical surface displacement
+## Vertical surface displacement
 Vertical displacement at the lithosphere surface (i.e., ice/ocean-bedrock interface), $$w(r,t)$$, is the most relevant field variable for GIA assessment. For brevity, hereinafter, this is referred to as the GIA solution. The semi-analytical GIA solution is given by [<a href="#references">*Ivins1999*</a>]:
 
 $$
@@ -117,10 +117,10 @@ where:
 
 - $$\rho_2$$ is the mantle density
 
-### Numerical implementation
+## Numerical implementation
 In the Cartesian frame of ISSM, we treat the size of ice load as the property of mesh element and compute the GIA solution at each node of the element [<a href="#references">*Adhikari2014*</a>]. Individual 2-D ($$xy$$-plane) mesh elements are defined as the equivalence of footprint (i.e., projection onto the $$xy$$-plane) of cylindrical disc loads, ensuring that the corresponding element and disc both share the same origin and plan-form area. The height of ice load is then assigned to each element such that the average normal tractional force on the corresponding area of bedrock is conserved. At each node within the domain, the final GIA solutions are computed by integrating the solutions due to individual disc loads, defined as the property of mesh elements.
 
-### Model parameters
+## Model parameters
 The parameters relevant to the GIA solution can be displayed by running:
 ````
 >> md.gia
@@ -140,20 +140,20 @@ The solution will also use the following model fields:
 - `md.timestepping.final_time`: $$t_J(>t)$$ in Figure 1 (in yr).
 - `md.geometry.thickness`: ice loading history in the $$J \times 2$$ matrix form; the $$j$$-th row, for example, should be defined as $$[h_{0j},t_j]$$ (cf. Figure 1).
 
-### ISSM Configuration
+## ISSM Configuration
 To activate the GIA model, add the following in the configuration script and compile ISSM:
 ````
 --with-math77-dir="${ISSM_DIR}/externalpackages/math77/install"
 ````
 
-### Running a simulation
+## Running a simulation
 To run a simulation, use the following command:
 ````
 >> md = solve(md, 'Gia');
 ````
 The first argument is the model, the second is the nature of the simulation one wants to run.
 
-## References
+# References
 - S. Adhikari, E. Ivins, E. Larour, H. Seroussi, M. Morlighem, and S. Nowicki.
  Future Antarctic bed topography and its implications for ice sheet
    dynamic.

@@ -6,8 +6,8 @@ nav_order: 1
 math: mathjax3
 ---
 
-## Plotting in MATLAB
-### plotmodel
+# Plotting in MATLAB
+## plotmodel
 `plotmodel` takes the model `md` as first argument and then an even number of options (as in the function `setelementstype`, or `solve`). To plot a given field, use the option `'data'` followed by the field one wants to plot. For the thickness:
 ```m
 >> plotmodel(md, 'data', md.geometry.thickness)
@@ -18,7 +18,7 @@ You can plot several fields at the same time but you have to add the argument `'
 ```
 
 <div style="display:flow-root"><img style="float:left;" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/plot.png" alt="Figure 1: plot"></div>This can work for any field of length `md.mesh.numberofelements` or `md.mesh.numberofvertices`.
-### Options
+## Options
 Options in `plotmodel` come as pairs: the option name must be followed by its value. For example, if one wants to remove the color bar, the option name is `'colorbar'` and the value `0`:
 ```m
 >> plotmodel(md, 'data', md.initialization.vel, 'colorbar', 0)
@@ -28,52 +28,52 @@ any options (except `'data'`) can be followed by `'#<i>'` where `<i>` is the sub
 >> plotmodel(md, 'data', md.initialization.vel, 'data', 'mesh', 'view#2', 3, 'colorbar#all', 'on', 'axis#1', 'off equal')
 ```
 
-#### axis
+### axis
 Same as standard <a href="http://www.mathworks.com/help/techdoc/ref/axis.html" target="_blank">axis</a> MATLAB option:
 ```m
 >> plotmodel(md, 'data', md.vel, 'axis', 'tight')
 ```
 
-#### view
+### view
 Same as standard <a href="http://www.mathworks.com/help/techdoc/ref/view.html" target="_blank">view</a> MATLAB option:
 ```m
 >> plotmodel(md, 'data', md.vel, 'view', 2)
 ```
 
-#### xlim, ylim, zlim
+### xlim, ylim, zlim
 Same as standard <a href="http://www.mathworks.com/help/techdoc/ref/xlim.html" target="_blank">xlim</a> MATLAB option:
 ```m
 >> plotmodel(md, 'data', md.vel, 'xlim', [10^5 2*10^5])
 ```
 
-#### caxis
+### caxis
 Same as standard <a href="http://www.mathworks.com/access/helpdesk/help/techdoc/index.html?/access/helpdesk/help/techdoc/ref/caxis.html" target="_blank">caxis</a> MATLAB option (control the extreme values of the colorbar):
 ```m
 >> plotmodel(md, 'data', md.vel, 'caxis', [0 1000])
 ```
 
 <div style="display:flow-root"><img style="float:left;" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/caxis.png" alt="Figure 2: caxis"></div>
-#### colorbar
+### colorbar
 This option is used to control the colorbar display (`'on'` or `'off'`):
 ```m
 >> plotmodel(md, 'data', md.vel, 'colorbar', 'off')
 ```
 
-#### colormap
+### colormap
 Same as standard <a href="http://www.mathworks.com/access/helpdesk/help/techdoc/index.html?/access/helpdesk/help/techdoc/ref/colormap.html" target="_blank">colormap</a> MATLAB option (control the extreme values of the colorbar):
 ```m
 >> plotmodel(md, 'data', md.vel, 'colormap', 'hsv')
 ```
 
 <div style="display:flow-root"><img style="float:left;" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/colormap.png" alt="Figure 3: colormap"></div>
-#### log
+### log
 To get a logarithmic colorbar, use the `'log'` option followed by `10` for a decimal logarithm:
 ```m
 >> plotmodel(md, 'data', md.vel, 'log', 10)
 ```
 
 <div style="display:flow-root"><img style="float:left;" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/log.png" alt="Figure 4: log"></div>
-#### contourlevels
+### contourlevels
 Contours of equi-value can be added to the plot by using the `'contourlevels'` option. The number of contours can be chosen by using the `'contourlevels'` options. The user can specify a number of levels or a cell containing the values of color changes. For example:
 ```m
 >> plotmodel(md, 'data', md.vel, 'contourlevels', 3)
@@ -84,20 +84,20 @@ Contours of equi-value can be added to the plot by using the `'contourlevels'` o
 ```
 
 <div style="display:flow-root"><img style="float:left;" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/contourcell.png" alt="Figure 6: contourcell"></div>
-#### contourticks
+### contourticks
 If the user does not want to display the contour levels ticks, use the `'contourticks'` set as `'off'`:
 ```m
 >> plotmodel(md, 'data', md.vel, 'contourlevels', {100, 200, 500, 1000, 2000, 2500}, 'contourticks', 'off')
 ```
 
 <div style="display:flow-root"><img style="float:left;" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/contourticks.png" alt="Figure 7: contourticks"></div>
-#### contouronly
+### contouronly
 If the user wants to display the contours only, use the `'contouronly'` set as `'on'`:
 ```m
 >> plotmodel(md, 'data', 'vel', 'contourlevels', {100, 200, 500, 1000, 2000, 2500}, 'contouronly', 'on')
 ```
 
-#### streamlines
+### streamlines
 Streamlines can be displayed by using the `'streamlines'` option followed by a number of streamlines or a cell containing the coordinates of seed points:
 ```m
 >> plotmodel(md, 'data', md.initialization.vel, 'streamlines', 50)
@@ -109,70 +109,70 @@ Streamlines can be displayed by using the `'streamlines'` option followed by a n
 <div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/streamlines50.png" alt="Figure 8: streamlines50"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/streamlinescell.png" alt="Figure 8: streamlinescell"></div>
 NOTE: Streamlines use the velocities that are in `md.initialization`. Make sure you transfer the calculated velocities to `md.initialization` if you want to display the calculated streamlines.
 
-#### edgecolor
+### edgecolor
 The mesh can be superimposed onto the plot by using the `'edgecolor'` option followed by a color:
 ```m
 >> plotmodel(md, 'data', md.initialization.vel, 'edgecolor', 'w')
 ```
 
 <div style="display:flow-root"><img style="float:left;" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/edgecolor.png" alt="Figure 9: edgecolor"></div>
-#### expdisp
+### expdisp
 Any ARGUS file can be displayed with the `'expdisp'` option followed by the name of the ARGUS file:
 ```m
 >> plotmodel(md, 'data', md.initialization.vel, 'expdisp', 'Iceshelves.exp')
 ```
 
-#### expstyle
+### expstyle
 The style of the ARGUS profile can be controlled with the `'expstyle'` option, followed by the desired line style. Here is an example for a yellow dotted line:
 ```m
 >> plotmodel(md, 'data', md.initialization.vel, 'expdisp', 'Iceshelves.exp', 'expstyle', '--y')
 ```
 
-#### mask
+### mask
 If one does not want to display the value of the field on a mask only, use the `'mask'` option followed by a vector that holds 0 for the vertices whose values are hidden:
 ```m
 >> plotmodel(md, 'data', md.initialization.vel, 'mask', md.mask.ocean_levelset < 0)
 ```
 
 <div style="display:flow-root"><img style="float:left;" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/mask.png" alt="Figure 10: mask"></div>
-#### northarrow
+### northarrow
 An arrow pointing North can be added with the `'northarrow'` option followed by `'on'`. The shape and position of the arrow can be controlled by using `[x0 y0 length [ratio [width]]]` 
 instead of `'on'`:
 ```m
 >> plotmodel(md, 'data', md.initialization.vel, 'northarrow', 'on')
 ```
 
-#### scaleruler
+### scaleruler
 A scale ruler can be added. As for the North arrow, the default display is done by `'on'` but the shape and position of the scale ruler can be controlled by `[x0 y0 length width numberofticks]` where (x0,y0) are the coordinates of the lower left corner:
 ```m
 >> plotmodel(md, 'data', md.initialization.vel, 'scaleruler', 'on')
 ```
 
-#### title
+### title
 Same as standard <a href="http://www.mathworks.com/help/techdoc/ref/title.html" target="_blank">title</a> MATLAB option:
 ```m
 >> plotmodel(md, 'data', md.vel, 'title', 'Ice velocity [m/yr]')
 ```
 
-#### fontsize
+### fontsize
 Same as standard <a href="http://www.mathworks.com/help/techdoc/ref/text_props.html" target="_blank">fontsize</a> MATLAB option:
 ```m
 >> plotmodel(md, 'data', md.vel, 'title', 'Ice velocity [m/yr]', 'fontsize', 8)
 ```
 
-#### fontweight
+### fontweight
 Same as standard <a href="http://www.mathworks.com/help/techdoc/ref/text_props.html" target="_blank">fontweight</a> MATLAB option:
 ```m
 >> plotmodel(md, 'data', md.vel, 'title', 'Ice velocity [m/yr]', 'fontweight', 'b')
 ```
 
-#### xlabel, ylabel
+### xlabel, ylabel
 Same as standard <a href="http://www.mathworks.com/help/techdoc/ref/xlabel.html" target="_blank">xlabel</a> MATLAB option:
 ```m
 >> plotmodel(md, 'data', md.vel, 'xlabel', 'x axis [m]')
 ```
-### Special plots
-#### basaldrag
+## Special plots
+### basaldrag
 The special plot `'basal_drag'` displays the norm of the basal drag friction in kPa following the formula:
 
 $$
@@ -187,7 +187,7 @@ Basal drag relies on the velocity provided in `md.initialization`. The x and y c
 ```
 
 <div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/basaldrag.png" alt="Figure 11: basaldrag"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/basaldragcomp.png" alt="Figure 11: basaldragcomp"></div><span style="display:block;width:100%;text-align:center"><small>Basal friction norm and Basal friction x-component</small></span>
-#### BC
+### BC
 The special plot `'BC'` displays all boundary conditions (Neumann and Dirichlet) for 2D and 3D meshes:
 ```m
 >> plotmodel(md, 'data', 'BC')
@@ -258,7 +258,7 @@ The special plot `'icefront'` displays the Neumann boundary conditions, i.e. all
 
 <div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/icefront2d.png" alt="Figure 21: icefront2d"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/icefront3d.png" alt="Figure 21: icefront3d"></div>
 
-#### mesh
+### mesh
 The special plot `'mesh'` displays the mesh of 2D or 3D model:
 ```m
 >> plotmodel(md, 'data', 'mesh')
@@ -266,14 +266,14 @@ The special plot `'mesh'` displays the mesh of 2D or 3D model:
 
 <div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/mesh2d.png" alt="Figure 22: mesh2d"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/mesh3d.png" alt="Figure 22: mesh3d"></div>
 
-### Quiver plot
+## Quiver plot
 For 2D or 3D fields, a generic color plot cannot be used (except component by component). The `'data'` used by the function `plotmodel` must be a matrix of 2 or 3 columns. For example:
 ```m
 >> plotmodel(md, 'data', [md.vx md.vy])
 ```
 
 <div style="display:flow-root"><img style="float:left;" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/plotquiver.png" alt="Figure 23: plotquiver"></div>
-#### ColorLevels
+### ColorLevels
 The number of colors can be chosen by using the `'colorlevels'` options. The user can specify a number of levels or a cell containing the values of color changes. For example:
 ```m
 >> plotmodel(md, 'data', [md.vx md.vy], 'colorlevels', 3)
@@ -289,7 +289,7 @@ The number of colors can be chosen by using the `'colorlevels'` options. The use
 
 <div style="display:flow-root"><img style="float:left;" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/colorcell.png" alt="Figure 25: colorcell"></div>
 
-#### Scaling
+### Scaling
 The arrows length can be modified with the `'scaling'` options. The default value is 0.4. A higher scaling value will result in longer arrows:
 ```m
 >> plotmodel(md, 'data', [md.vx md.vy], 'scaling', 1)
@@ -299,21 +299,21 @@ The arrows length can be modified with the `'scaling'` options. The default valu
 ```
 
 <div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/scaling1.png" alt="Figure 26: scaling1"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/scaling01.png" alt="Figure 26: scaling01"></div>
-#### Autoscale
+### Autoscale
 If the user wants all the arrows to have the same length, use the option `'autoscale'` set as `'off'`:
 ```m
 >> plotmodel(md, 'data', [md.vx md.vy], 'autoscale', 'off')
 ```
 
 <div style="display:flow-root"><img style="float:left;" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/autoscale.png" alt="Figure 27: autoscale"></div>
-#### Density
+### Density
 The number of arrows can be reduced with the option `'density'`. If the density is set as 3, only one arrow out of 3 will be displayed. This option is very useful when the mesh is very refined:
 ```m
 >> plotmodel(md, 'data', [md.vx md.vy], 'density', 3)
 ```
 
 <div style="display:flow-root"><img style="float:left;" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/density3.png" alt="Figure 28: density3"></div>
-### Cross section
+## Cross section
 The section plot can be used to display the value of a field on a given track. The option `'sectionvalue'` must be followed by the name of an ARGUS file which contained the coordinates of the points describing the profile (this file can be generated by `exptool.m`). The resulting plot will be a curve in 2D and a colored surface in 3D. For example:
 ```m
 >> plotmodel(md, 'data', md.vel, 'expdisp', 'track.exp')
@@ -325,7 +325,7 @@ The section plot can be used to display the value of a field on a given track. T
 ```
 
 <div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/2d.png" alt="Figure 30: 2d"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/getting-started/plotting/matlab/3d.png" alt="Figure 30: 3d"></div><span style="display:block;width:100%;text-align:center"><small>Section plot for 2D (left) and 3D (right) models</small></span>
-#### Resolution
+### Resolution
 The horizontal and vertical (in 3D) resolution can be specified by the `'resolution'` option. It must be a list with the horizontal resolution followed by the vertical resolution (in meters). When not specified, the default resolution is displayed:
 ```m
 >> plotmodel(md, 'data', md.vel, 'sectionvalue', 'track.exp', 'resolution', [2*10^4 0])
@@ -334,7 +334,7 @@ The horizontal and vertical (in 3D) resolution can be specified by the `'resolut
 >> plotmodel(md, 'data', md.vel, 'sectionvalue', 'track.exp', 'resolution', [10^3 0])
 ```
 
-#### Show section
+### Show section
 The profile used to create the section plot can be also plotted with the `'showsection'` option:
 ```m
 >> plotmodel(md, 'data', md.vel, 'showsection', 'on')

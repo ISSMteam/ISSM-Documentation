@@ -5,11 +5,11 @@ parent: Hydrology Solution
 math: mathjax3
 ---
 
-### Hydrology Solution - GlaDS
-#### Description
+# Hydrology Solution - GlaDS
+## Description
 The two-dimensional Glacier Drainage System model (GlaDS, [<a href="#references">*Werder2013*</a>]) couples a distributed water sheet model &#8212; a continuum description of a linked cavity drainage system [<a href="#references">*Hewitt2011*</a>] &#8212; with a channelized water flow model &#8212; modeled as R channels [<a href="#references">*Rothlisberger1972,Nye1976*</a>]. The coupled system collectively describes the evolution of hydraulic potential $$\phi$$, water sheet thickness $$h$$, and water channel cross-sectional area $$S$$. 
 
-##### Sheet model equations
+### Sheet model equations
 
 - Mass conservation: The mass conservation equation describes water storage changes over longer timescales (dictated by cavity opening due to sliding) as well as shorter timescales (e.g. due to surface melt water input):
 
@@ -46,7 +46,7 @@ The two-dimensional Glacier Drainage System model (GlaDS, [<a href="#references"
   $$
   where $$A$$ is the basal flow parameter (Pa<a href="#footnotes" target="_top"><sup>-3</sup></a>~s<a href="#footnotes" target="_top"><sup>-1</sup></a>), related to the ice hardness by $$B=A$$<a href="#footnotes" target="_top"><sup>-1/3</sup></a>, $$n$$ is the Glen flow relation exponent, and $$N= \phi_0-\phi$$ is the effective pressure. The overburden hydraulic potential is given by $$\phi_0 = \phi_m+p$$, with the ice pressure $$p = \rho_i g H$$ and elevation potential $$\phi_m = \rho_w g b$$, all of which are given in units of Pa.
 
-##### Channel model equations
+### Channel model equations
 
 - Channel discharge (along mesh edges):
 
@@ -102,7 +102,7 @@ The two-dimensional Glacier Drainage System model (GlaDS, [<a href="#references"
   \frac{\partial S}{\partial t} = \frac{\Xi - \Pi}{\rho_i L} - v_c.
   $$
 
-##### Boundary conditions
+### Boundary conditions
 Boundary conditions for the evolution of hydraulic potential $$\phi$$ are applied on the domain boundary $$\partial\Omega$$, as either a prescribed pressure or water flux. The Dirichlet boundary condition is:
 
 $$
@@ -120,7 +120,7 @@ q_N=-k_s h^{\alpha_s}|\nabla\phi|^{\beta_s-2}\Phi_N.
 $$
 Channels are defined only on element edges and are not allowed to cross the domain boundary, so we do not require flux conditions. Since the evolution equations for $$h$$ and $$S$$ do not contain their spatial derivatives, we do not require any boundary conditions for their evolution equations.
 
-#### Model parameters
+## Model parameters
 The parameters relevant to the GlaDS (`hydrologyglads`) solution can be displayed by running:
 ````
 >> md.hydrology
@@ -140,7 +140,7 @@ The parameters relevant to the GlaDS (`hydrologyglads`) solution can be displaye
 - `md.hydrology.requested_outputs`: additional outputs requested?
 - `md.hydrology.melt_flag`: User specified basal melt? 0: no (default), 1: use `md.basalforcings.groundedice_melting_rate`
 
-#### Running a simulation
+## Running a simulation
 To run a transient standalone subglacial hydrology simulation, use the following commands:
 ````
 md.transient = deactivateall(md.transient);
@@ -154,7 +154,7 @@ md = solve(md, 'Transient');
 ````
 
 
-## References
+# References
 - Ian J. Hewitt.
  Modelling distributed and channelized subglacial drainage: the
    spacing of channels.

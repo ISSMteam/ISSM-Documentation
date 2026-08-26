@@ -6,7 +6,7 @@ grand_parent: Using ISSM
 ---
 This is a list of solvers that have worked fairly consistently; **try them out locally**, and if the recovery solver is not activated, you should be safe for longer transient runs.
 
-## Biconjugate Gradient with block Jacobi preconditioner
+# Biconjugate Gradient with block Jacobi preconditioner
 
 ```m
 md.toolkits.DefaultAnalysis=bcgslbjacobioptions();
@@ -26,21 +26,21 @@ md.stressbalance.reltol=NaN; % no need
 md.stressbalance.abstol=NaN; % no need
 ```
 
-## GMRES with block Jacobi preconditioner
+# GMRES with block Jacobi preconditioner
 
 ```m
 md.toolkits.DefaultAnalysis=gmresbjacobioptions();
 md.toolkits.DefaultAnalysis.ksp_max_it=100;
 ```
 
-## ASM
+# ASM
 
 Primarily used for mass conservation but may work for other things:
 ```m
 md.toolkits.DefaultAnalysis=asmoptions();
 ```
 
-## Recovery mode and Misc
+# Recovery mode and Misc
 An iterative solver may work for one analysis and not another; you can assign a solver to each, like this:
 ```m
 md.toolkits.StressbalanceAnalysis = gmresbjacobioptions();

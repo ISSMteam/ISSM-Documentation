@@ -4,8 +4,8 @@ layout: default
 parent: Tutorials
 ---
 
-## Uncertainty Quantification (UQ)
-### Goals
+# Uncertainty Quantification (UQ)
+## Goals
 
 - Use ISSM to assess how errors in model inputs propagate through a 2D SSA steady-state ice flow model
 - Use ISSM to assess how ice flow model diagnostics (e.g. velocity, mass flux, volume) can be affected by perturbations to input in other parts of the model domain
@@ -13,7 +13,7 @@ parent: Tutorials
 
 Go to `<ISSM_DIR>/examples/UncertaintyQuantification/` to do this tutorial.
 
-### Introduction
+## Introduction
 This experiment will use the model of Pine Island Glacier that was saved in the previous 
  <a href="pig">Pine Island Glacier modeling tutorial</a>.
 It aims to use the ISSM-Dakota integrated model system to (1) quantify the uncertainties of model output in response to errors in model input and (2) quantify sensitivities of model output to spatial perturbations in model input.
@@ -44,7 +44,7 @@ gate 2.
 For manuscript examples of these studies, see
 [<a href="#references">*Larour2012a,Larour2012b,Schlegel2013,Schlegel2015*</a>].
 
-### Flux Gates
+## Flux Gates
 Flux gates are ARGUS (`*.exp`) files found in `./MassFluxes`. The gates are positioned across PIG at the inset of tributary glaciers.
 
 Mass fluxes will be computed in (Gt/yr) for all of these gates (using the depth-average ice velocity, ice thickness, and ice density).
@@ -53,11 +53,11 @@ Run step 1 of the `runme.m` to plot the gates overlaid over the PIG surface velo
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/uncertaintyquantification/FluxGates.png" alt="Figure 4: FluxGates"></div>
 
-### Loading Cross-Over Errors
+## Loading Cross-Over Errors
 For ice thickness errors we will use McCord's cross-over errors from CReSIS. First you will load errors. Some of these errors are too large, too small, or need to be interpolated onto a larger domain (you will filter these out). Load cross-overs `'../Data/CrossOvers2009.mat'`. Interpolate cross-over errors over our mesh vertices. Avoid `NaN` values. Filter out unrealistic error ranges. Avoid large unrealistic values. Transform into absolute errors and set up a minimum error everywhere.
 
 Run Step 2 in the `runme.m` to load the cross-over errors.
-### Sampling Analysis
+## Sampling Analysis
 In order to accomplish the sampling step, we must first partition the mesh into equal area partitions. We'll start with 50. You can try and play with the package for partitioning ('chaco' or 'linear'), the number of partitions, and weighting ('on' or 'off'):
 
 - See lines 69-72 in the `runme.m` file
@@ -107,7 +107,7 @@ Don't forget to deactivate inversion (`iscontrol = 0`), and to activate UQ run (
 - See lines 147-149
 
 Note that results will be in `md.results.dakota` and `md.qmu.results`.
-### Sensitivity Analysis
+## Sensitivity Analysis
 
   - See lines 178-190
 - To specify new sensitivity method, tell Dakota to use local reliability or `'nond_l'`:
@@ -118,7 +118,7 @@ We specify the same parallel CPU configuration, and we solve the same way as in 
 - See lines 239-252
 
 Run step 5 to launch the sensitivity runs.
-### Plot Results
+## Plot Results
 Plot Sampling Results: In order to plot the results, we extract the results for one of the mass flux gates, and display a histogram of the sampling results for that particular gate. ISSM has a plotting function for this, `'plot_hist_norm'`. Note that ISSM mass flux results are in mass flux in m<a href="#footnotes" target="_top"><sup>3</sup></a> water equiv/s. Here we convert to Gt/yr before we plot. Remember that your results may look different because of the randomness that is introduced into the partitions and algorithms; results may be different on different computer systems.
 
 - `runme.m` step 6 will plot the relative frequency histogram for mass flux gate 1.
@@ -139,7 +139,7 @@ Plot Sensitivity Results:
 
 <div style="display:flow-root"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/uncertaintyquantification/PlotSensitivities.png" alt="Figure 7: PlotSensitivities"><img style="float:left;width:50.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/uncertaintyquantification/ImportanceFactors.png" alt="Figure 7: ImportanceFactors"></div>
 
-### Additional Exercises
+## Additional Exercises
 
 - Add diagnostic IceVolume or MaxVelocity
 - Sample with a uniform distribution (See `help uniform_uncertain`)
@@ -147,7 +147,7 @@ Plot Sensitivity Results:
 - Try qmu on a different solution type
 - Change number of partitions. Note: for sensitivity this could take a while!
 
-## References
+# References
 - Michael S. Eldred, Brian M. Adams, David M. Gay, Laura P. Swiler, Karen
    Haskell, William J. Bohnhoff, John P. Eddy, William E. Hart, Jean-Paul
    Watson, Patricia D. Hough, and Tammy G. Kolda.

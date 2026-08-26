@@ -6,14 +6,14 @@ grand_parent: Using ISSM
 math: mathjax3
 ---
 
-## Quantification of Margins and Uncertainties (QMU) with Dakota
-### Physical basis
+# Quantification of Margins and Uncertainties (QMU) with Dakota
+## Physical basis
 The methods for Quantification of Margins and Uncertainties (QMU) are based on the Design Analysis Kit for Optimization and Terascale Applications (Dakota) software [<a href="#references">*Eldred2008*</a>], which is embedded within ISSM [<a href="#references">*Larour2012b,Larour2012a*</a>].  Available Dakota analyses include sensitivity and sampling analyses, which we rely on, respectively, to: 1) understand the sensitivity of model diagnostics to local variations in model fields and 2) identify how variations in model fields impact uncertainty in model diagnostics.  Diagnostics of interest include ice volume, maximum velocity, and mass flux across user-specified profiles.
 
-#### Mesh Partitioning
+### Mesh Partitioning
 QMU analyses are carried out on partitions of the model domain. Each partition consists of a collection of vertices.  The ISSM partitioner is versatile. For example, the partitioner can assign one vertex for each partition (linear partitioning); the same number of vertices per partition (unweighted partitioning); or it can weight partitions by a specified amount (equal-area by default - to remove area-specific dependencies).  Advanced partitioning is accomplished using the Chaco Software for Partitioning Graphs [<a href="#references">*Hendrickson1995*</a>], prior to setting up the model parameters for QMU analysis.
 
-#### Sensitivity
+### Sensitivity
 Sensitivity, or local reliability, analysis computes the local derivative of diagnostics with respect to model inputs. It is used to assess the spatial distribution of this derivative, for the purpose of spatially ranking the influence of various inputs.
 
 Given a response $$r$$ that is a function of multiple variables $$x_i$$ in a local reliability analysis [<a href="#references">*Coleman1999*</a>], we have:
@@ -47,7 +47,7 @@ First, Dakota calls one ISSM model solve for an un-perturbed control simulation.
 
 **Method outputs**: sensitivities ($$\theta_i$$) and importance factors for each $$x_i$$ at every partition
 
-#### Sampling
+### Sampling
 Sampling analysis quantifies how input errors propagate through a model to impact a specified diagnostic, $$r$$. It is a Monte-Carlo-style method that relies upon repeated execution (samples) of the same model, where input variables are perturbed by different amounts at each partition for each individual run. Resulting statistics (mean, standard deviations, cumulative distribution functions) are calculated after the specified number of samples are run.
 
 For a particular sample, every $$x_i$$ is perturbed by a different amount at each partition. Input values are perturbed randomly, per partition, within a prescribed range (described by a statistical distribution, e.g. normal or uniform). Once the variables are perturbed, the ISSM model solve is called.
@@ -66,7 +66,7 @@ For Transient simulations, $$P_i(p)$$ remains constant for the duration of a par
 
 **Method outputs**: For $$r$$, mean, standard deviations, and cumulative distribution functions resulting from errors due to $$x_1,x_2,...,x_n$$
 
-### Model parameters
+## Model parameters
 The parameters relevant to uncertainty quantification can be displayed by typing:
 ````
 >> md.qmu
@@ -89,7 +89,7 @@ The parameters relevant to uncertainty quantification can be displayed by typing
 - `md.qmu.adjacency`: adjacency matrix from connectivity table, partitioner computes it by default
 - `md.qmu.vertex_weight`: weight for each vertex, partitioner sets it from connectivity by default
 
-### Building the Chaco and Dakota packages
+## Building the Chaco and Dakota packages
 In order to run Dakota with ISSM, you must compile and install the external package Dakota (`${ISSM_DIR}/externalpackages/dakota`). In addition, for complex partitioning (more than one vertex per partition), you must compile and install the external package Chaco (`${ISSM_DIR}/externalpackages/chaco`).
 
 In addition, your configure script should include the following:
@@ -103,7 +103,7 @@ More recent versions of Dakota also require the external package Boost (`${ISSM_
 --with-boost-dir=${ISSM_DIR}/externalpackages/boost/install/ \
 ````
 
-### Partitioning a Mesh
+## Partitioning a Mesh
 To partition your mesh using Chaco, use the following commands:
 ````
 >> md.qmu.numberofpartitions = 1000; % Note: Chaco can crash if too large
@@ -117,8 +117,8 @@ or, for a 1-to-1 mapping of vertices to partitions:
 >> md = partitioner(md, 'package', 'linear');
 ````
 
-### Setting up the QMU
-#### For sensitivity
+## Setting up the QMU
+### For sensitivity
 ````
 >> md.qmu.method = dakota_method('nond_l');
 ````
@@ -127,7 +127,7 @@ This sets the method to local reliability (sensitivity). Other sensitivity setti
 >> md.qmu.params.fd_gradient_step_size = '0.1'; %finite difference step size, 0.001 by default
 ````
 
-#### For sampling
+### For sampling
 ````
 >> md.qmu.method = dakota_method('nond_samp');
 >> md.qmu.method(end) = ...
@@ -140,7 +140,7 @@ Other sampling settings:
 >> md.qmu.params.tabular_graphics_data = true; %Output all the information needed to create histograms of results
 ````
 
-#### Other simple default settings for both sampling and sensitivity
+### Other simple default settings for both sampling and sensitivity
 ````
 >> md.qmu.params.evaluation_concurrency = 1;
 >> md.qmu.params.analysis_driver = '';
@@ -148,7 +148,7 @@ Other sampling settings:
 >> md.qmu.params.direct = true;
 ````
 
-### Setting your QMU variables
+## Setting your QMU variables
 ````
 >> md.qmu.variables.drag_coefficient = normal_uncertain('scaled_FrictionCoefficient', 1, 0.1);
 ````
@@ -165,7 +165,7 @@ See also:
 >> help AreaAverageOntoPartition
 ````
 
-### Setting your diagnostics
+## Setting your diagnostics
 Example: Here, diagnostics of interest are (1) maximum velocity and (2) mass flux through two different gates. Mass flux gates are defined by the ARGUS files `'../Exp/MassFlux1.exp'` and `'../Exp/MassFlux2.exp'`:
 ````
 %responses
@@ -183,7 +183,7 @@ For more options see:
 >> help response_function
 ````
 
-### Running a simulation
+## Running a simulation
 Note: You must set your stress balance tolerance to $$10^{-5}$$ or smaller in order to avoid the accumulation of numerical residuals between consecutive samples:
 ````
 >> md.stressbalance.restol = 10^-5;
@@ -196,7 +196,7 @@ To initiate the analysis of choice, use the following commands:
 ````
 The first argument is the model, the second is the nature of the simulation one wants to run.
 
-## References
+# References
 - H. W. Coleman and W. G. Steele Jr.
  Experimentation and Uncertainties Analysis for Engineers.
  John Wiley, 1999.

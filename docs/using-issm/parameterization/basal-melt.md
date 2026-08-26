@@ -5,11 +5,11 @@ parent: Parameterization
 math: mathjax3
 ---
 
-## Basal Melt
-### Physical basis
+# Basal Melt
+## Physical basis
 This model is described in [<a href="#references">*Reese2018*</a>] and [<a href="#references">*Pelle2019*</a>]. It consists of calculating basal melt rates under ice shelves based only on far field ocean temperature and salinity.
 
-#### PICO
+### PICO
 PICO is a box model of ocean circulation under ice shelf cavities. Each ice shelf is divided into a set of boxes, and the temperature ($$T_k$$) and salinity ($$S_k$$) of each box is given by:
 
 $$
@@ -23,11 +23,11 @@ where:
 
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/parameterization/basal-melt/pico.png" alt="Figure 1: pico"></div><span style="display:block;width:100%;text-align:center"><small>Schematic view of the PICO model (taken from [<a href="#references">*Reese2018*</a>]).</small></span>
-#### PICOP
+### PICOP
 PICOP is described in [<a href="#references">*Pelle2019*</a>]. The idea is to use PICO to calculate the temperature and salinity in each box, but instead of using PICO's calculated melt, use these quantities to drive a plume model from [<a href="#references">*Lazeroms2018*</a>]:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/parameterization/basal-melt/picop.png" alt="Figure 2: picop"></div><span style="display:block;width:100%;text-align:center"><small>Melt calculation in PICOP, adapted from [<a href="#references">*Pelle2019*</a>].</small></span>
-### Model parameters
+## Model parameters
 To activate this melt parameterization, you need to use the class `basalforcingspico`:
 ````
 >> md.basalforcings = basalforcingspico();
@@ -47,7 +47,7 @@ The parameters relevant to the calculation can be displayed by running:
 - `md.basalforcings.farocean_salinity`: depth-averaged ocean salinity in front of the ice shelf for basin i [psu]
 - `md.basalforcings.isplume`: boolean to use buoyant plume melt rate parameterization from Lazeroms et al., 2018 (PICOP, default false)
 
-### Example: the Amundsen Sea
+## Example: the Amundsen Sea
 To set up a model of the Amundsen Sea using PICOP, we only need one basin:
 ````
 >> md.basalforcings = basalforcingspico();
@@ -73,7 +73,7 @@ To run a simulation, use the following command:
 ````
 
 
-## References
+# References
 - W. M. J. Lazeroms, A. Jenkins, G. H. Gudmundsson, and R. S. W. van de Wal.
  Modelling present-day basal melt rates for Antarctic ice shelves
    using a parametrization of buoyant meltwater plumes.

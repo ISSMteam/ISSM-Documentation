@@ -5,10 +5,10 @@ parent: Parameterization
 math: mathjax3
 ---
 
-## Positive Degree Day (PDD)
+# Positive Degree Day (PDD)
 
-### Physical basis
-#### Positive degree day method
+## Physical basis
+### Positive degree day method
 A standard positive degree day (PDD) method is used to compute the surface mass balance (ice ablation and accumulation) from the temperature and precipitation fields. The hourly temperatures are assumed to have a normal distribution, of standard deviation $$\sigma_{PDD} = 5.5\,^{\circ}\mathrm{C}$$, around the monthly mean (T$$_m$$). The number of days for which the temperature is above $$0\,^{\circ}\mathrm{C}$$ in a year is computed as follows:
 
 $$
@@ -42,12 +42,12 @@ $$
 \frac{\text{accumulation}}{\text{precipitation}} =\frac{\rho_i}{\rho_w\sigma_{RS}\sqrt{2\pi}}\int_0^{1year}\int_{T_m-2.5\sigma_{RS}}^{0\,^{\circ}\mathrm{C}}exp\left[\frac{-(T-T_m)^2}{2\sigma_{RS}^2} \right] dTdt
 $$
 
-#### Temperature and precipitation forcing (Under development)
+### Temperature and precipitation forcing (Under development)
 If precipitation comes from another elevation than the surface elevation of the ice, it can be adjusted to take into account the elevation desertification effect.
 
 If the forcing temperatures are provided for a constant altitude, a lapse rate of 6.5$$^\circ$$/km is used to adjust them to the surface elevation of each step.
 
-### Model parameters
+## Model parameters
 The parameters relevant to the positive degree day and $$\delta^{18}O$$ parameterization methods can be displayed by typing:
 
 The lapse rate is computed as a weighted mean of the present-day ($$rlaps$$) and LGM ($$rlapslgm$$) lapse rate as:
@@ -95,7 +95,7 @@ $$
 - `delta18o`: delta18o, required if PDD is activated and delta18o activated
 - `delta18o_surface`: surface elevation of the delta18o site, required if PDD is activated and delta18o activated
 
-### Running a simulation
+## Running a simulation
 To turn this module on in a simulation, use the following command:
 ````
 >> md.smb = SMBpdd();

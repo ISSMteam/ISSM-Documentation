@@ -4,8 +4,8 @@ layout: default
 parent: Tutorials
 ---
 
-## Ice Sheet Model Intercomparison Project (ISMIP) Tests
-### Goals
+# Ice Sheet Model Intercomparison Project (ISMIP) Tests
+## Goals
 
 - Test the ISSM skills that you have gained so far
 - Create ISSM models by following the given keyword instructions
@@ -13,14 +13,14 @@ parent: Tutorials
 
 Go to `<ISSM_DIR>/examples/ISMIP/` to do this tutorial.
 
-### Introduction/How To
+## Introduction/How To
 The `runme.m` file and `*.par` files give a layout of the simulation that has to be modified.
 
 - Each code line that has to be typed in is preceded by `%->`. Type the appropriate code below this symbol.
 - Keywords introduced by `#` should be typed in MATLAB to get more information, if necessary
 - See the solutions below if you get stuck.
 
-### Test A
+## Test A
 In Test A, we will generate a Square ice sheet flowing over a bumpy bed:
 
 - Sinusoidal bedrock
@@ -29,7 +29,7 @@ In Test A, we will generate a Square ice sheet flowing over a bumpy bed:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/ismip/SquareIceFlow.png" alt="Figure 1: SquareIceFlow"></div>
 
-### Simulation File Layout and Organization
+## Simulation File Layout and Organization
 The simulation file `runme.m` is organized into different steps, each with the same structure:
 
 - Model loading
@@ -38,7 +38,7 @@ The simulation file `runme.m` is organized into different steps, each with the s
 
 The step specifier `steps` is defined at the top of the `runme.m` file.
 
-### Mesh
+## Mesh
 In place of loading a preceding model we initialize one. The action here is the generation of a mesh. To do this, initialize `md` as a new model `(#help model)` and generate a `squaremesh` `(#help squaremesh)` with the following parameters. Afterward, plot the mesh and save the model.
 
 - Mesh size: 80,000 meters
@@ -52,7 +52,7 @@ In place of loading a preceding model we initialize one. The action here is the 
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/ismip/Mesh2.png" alt="Figure 3: Mesh2"></div>
 
-### Parameterization
+## Parameterization
 Load the preceding step. Next, parameterize the model `(#help parameterize)`. You will need to fill up the parameter file (given by the name ParamFile variable). Save the given model. It is important to note that the values are not relevant as we are dealing with a no-sliding flux. The values will be overridden by the basal boundary conditions. Take care of the size of the parameters.
 
 - Mesh size: 80,000 meters
@@ -63,7 +63,7 @@ Load the preceding step. Next, parameterize the model `(#help parameterize)`. Yo
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/ismip/Parameterize1.png" alt="Figure 4: Parameterize1"></div>
 
-### Extrusion
+## Extrusion
 Load the `Parameterization` model. The action here is to extrude the preceding mesh. Next, vertically extrude the preceding mesh `(#help extrude)` with only 5 layers exponent 1. Plot the 3D geometry and save the model.
 
 - Mesh size: 80,000 meters
@@ -75,7 +75,7 @@ Load the `Parameterization` model. The action here is to extrude the preceding m
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/ismip/Extrusion1.png" alt="Figure 5: Extrusion1"></div>
 
-### Flow Equation
+## Flow Equation
 Load the `Extrusion` model and set the approximation for the flow computation `(#help setflowequation)`. We will be using the Higher Order Model (HO). Save the model.
 
 - Mesh size: 80,000 meters
@@ -86,7 +86,7 @@ Load the `Extrusion` model and set the approximation for the flow computation `(
 - 5 layers extrusion
 - Flow model: HO
 
-### Boundary Conditions
+## Boundary Conditions
 Load the `SetFlow` model. Dirichlet boundary conditions are known as SPCs, where ice is frozen to the base with no velocity. SPCs are initialized at NaN, one value per vertex. Extract the node numbers at the base `(#md.mesh.vertexonbase)` and set the sliding to zero on the bed (Vx and Vy). Periodic boundaries have to be fixed on the sides. Create tabs with the side of the domain for x, and create maxX `(#help find)`. This command gives subsets of matrices based on boolean operations. Now create minX. For y, maxX and minX should be excluded. Now create minY. Set the node that should be paired together `(#md.stressbalance.vertex_pairing)`. If we are dealing with IsmipF, the solution is in masstransport. Save the given model. `(#md.masstransport.vertex_pairing = md.stressbalance.vertex_pairing)`.
 
 - Mesh size: 80,000 meters
@@ -97,7 +97,7 @@ Load the `SetFlow` model. Dirichlet boundary conditions are known as SPCs, where
 - 5 layer extrusion
 - Flow model: HO
 
-### Solve Model
+## Solve Model
 Load the `BoundaryCondition` model. Set the cluster `(#md.cluster)` with generic parameters `(#help generic)`. Set only the name and number of processes. Set which control message you want to see `(#help verbose)`. Solve `(#help solve)`. We are solving a StressBalance. Save the model, and plot the surface velocities.
 
 - Mesh size: 80,000 meters
@@ -110,7 +110,7 @@ Load the `BoundaryCondition` model. Set the cluster `(#md.cluster)` with generic
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/ismip/BoundaryCondition.png" alt="Figure 6: BoundaryCondition"></div>
 
-### Test F
+## Test F
 Square ice sheet flowing over a bump.
 
 - Gaussian bumped bedrock
@@ -120,7 +120,7 @@ Square ice sheet flowing over a bump.
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/ismip/RedSquareFlow.png" alt="Figure 7: RedSquareFlow"></div>
 
-#### Model Setup
+### Model Setup
 
 - Mesh size: 100,000 meters
 - Nodes in each direction: 30
@@ -130,7 +130,7 @@ Square ice sheet flowing over a bump.
 - 5 layers extrusion
 - Flow model: HO
 
-### Actual Work and Results
+## Actual Work and Results
 Load the preceding model under the path given by the organizer with the name of the given step. Set the cluster with generic parameters. Set only the name and number of the process. Set which control message you want to see. Set the transient model to ignore the thermal model `(#md.transient)`. Define the timestepping scheme. Everything here should be provided in years `(#md.timestepping)`. Give the length of the `time step` (4 years). Give the `final_time` (20 * 4 years time_steps). Now solve; we are solving for TransientSolution. Lastly, plot the surface velocities. Here is the upper surface velocity:
 
 Side view:
@@ -139,7 +139,7 @@ Side view:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/ismip/UpperSurfaceVelocity.png" alt="Figure 9: UpperSurfaceVelocity"></div>
 
-### Solution for runme.m (MATLAB)
+## Solution for runme.m (MATLAB)
 ````
 %which steps to perform; steps are from 1 to 8
 %step 7 is specific to ISMIPA
@@ -365,7 +365,7 @@ if any(steps == 8)
 	plotmodel(md, 'data', md.results.TransientSolution(20).Vel)
 end
 ````
-### Solution for runme.m (Python)
+## Solution for runme.m (Python)
 ````
 import numpy as np
 from model import *
@@ -597,7 +597,7 @@ if 8 in steps:
     #->
     plotmodel(md, 'data', md.results.TransientSolution[19].Vel, 'layer', 5, 'figure', 5)
 ````
-### Solution for IsmipA.par (MATLAB)
+## Solution for IsmipA.par (MATLAB)
 ````
 %Parameterization for ISMIP A experiment
 
@@ -652,12 +652,12 @@ disp('   Set boundary conditions');
 %->
 md = SetIceSheetBC(md);
 ````
-### Solution for IsmipA.py (Python)
+## Solution for IsmipA.py (Python)
 ````
 
 
 ````
-### Solution for IsmipF.par (MATLAB)
+## Solution for IsmipF.par (MATLAB)
 ````
 %Parameterization for ISMIP F experiment
 
@@ -726,7 +726,7 @@ md.initialization.vz = zeros(md.mesh.numberofvertices, 1);
 %->
 md.initialization.pressure = zeros(md.mesh.numberofvertices, 1);
 ````
-### Solution for IsmipF.py (Python)
+## Solution for IsmipF.py (Python)
 ````
 import numpy as np
 from plotmodel import plotmodel

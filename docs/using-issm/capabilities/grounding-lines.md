@@ -5,10 +5,10 @@ parent: Capabilities
 math: mathjax3
 ---
 
-## Grounding Line Migration
+# Grounding Line Migration
 
-### Physical basis
-#### Hydrostatic equilibrium
+## Physical basis
+### Hydrostatic equilibrium
 The position of the grounding line is determined by a flotation criterion: ice is floating if its thickness, $$H$$, is equal or lower than the floating height $$H_f$$ defined as:
 
 $$
@@ -37,12 +37,12 @@ In the second case, the basal friction computed for partly grounded elements is 
 
 The sub-element parameterizations are described in detail in [<a href="#references">*Seroussi2014a*</a>].
 
-#### Contact mechanics
+### Contact mechanics
 Grounding line migration can be advantageously based on contact mechanics when solving the stress balance equations with a full-Stokes model [<a href="#references">*Nowicki2008,Durand2009*</a>].
 
 This capability is currently under development.
 
-### Model parameters
+## Model parameters
 The parameters relevant to the grounding line migration can be displayed by running:
 ````
 >> md.groundingline
@@ -51,7 +51,7 @@ The parameters relevant to the grounding line migration can be displayed by runn
 - `md.groundingline.migration`: type of grounding line migration:
   `'SoftMigration'`, `'AgressiveMigration'`, `'SubelementMigration'`, `'SubelementMigration2'`, or `'None'`
 
-### Running a simulation
+## Running a simulation
 To compute grounding line migration, the transient solution must be used and all solutions except the grounding line migration must be deactivated (see 
  <a href="transient">transient solution</a>):
 ````
@@ -59,7 +59,7 @@ To compute grounding line migration, the transient solution must be used and all
 ````
 The first argument to `solve` is the model, the second is the nature of the simulation one wants to run.
 
-## References
+# References
 - G. Durand, O. Gagliardini, T. Zwinger, E. Le Meur, and R. C. A. Hindmarsh.
  Full Stokes modeling of marine ice sheets: influence of the grid
    size.

@@ -5,7 +5,7 @@ parent: Capabilities
 has_toc: false
 ---
 
-## Hydrology Solution
+# Hydrology Solution
 ISSM features various hydrology model and solution types,
  - <a href="dc">Dual Continuum Porous Equivalent Approach</a>
  - <a href="glads">GlaDS</a>

@@ -5,9 +5,9 @@ parent: Capabilities
 math: mathjax3
 ---
 
-## Thermal Solution
-### Physical basis
-#### Thermal state
+# Thermal Solution
+## Physical basis
+### Thermal state
 The heat transport equation is derived from the balance equation of internal energy $$E$$ combined with Fourier's law of heat transfer and reads:
 
 $$
@@ -27,7 +27,7 @@ $$
 \rho c_i \left(\frac{\partial T}{\partial t} + {\bf v} \cdot \nabla T \right)= - c_i \kappa \Delta T + \mbox{Tr} \left( \boldsymbol{\sigma} \cdot\dot{\boldsymbol{\varepsilon}}\right)
 $$
 
-#### Boundary conditions
+### Boundary conditions
 Dirichlet boundary conditions should be applied at the ice surface:
 
 $$
@@ -60,7 +60,7 @@ where:
 - $$c_{pM}$$ is the mixed layer specific heat capacity
 - $$\gamma$$ is the thermal exchange velocity.
 
-#### Numerical implementation
+### Numerical implementation
 The heat equation is solved using linear finite elements in space, and implicit finite difference in time (time stepping should satisfy the CFL condition). To stabilize the equation, we either add an isotropic artificial diffusion to the left hand side:
 
 $$
@@ -73,7 +73,7 @@ $$
 $$
 or rely on the Streamline upwind/Petrov-Galerkin formulation (SUPG) from [<a href="#references">*Franca2006*</a>].
 
-### Model parameters
+## Model parameters
 The parameters relevant to the heat equation solution can be displayed by running:
 ````
 >> md.thermal
@@ -103,7 +103,7 @@ The solution will also use the following model fields:
 - `md.basalforcings.meltingrate`: basal melting rate (in m/yr w.e.)
 - `md.timestepping.time_step`: length of time steps (in yrs)
 
-### Running a simulation
+## Running a simulation
 To run a simulation solving only the thermal state, use the following command:
 ````
 >> md = solve(md, 'Thermal');
@@ -118,7 +118,7 @@ To run a thermal steady-state simulation (i.e., $$\partial T/\partial t = 0$$), 
 >> md = solve(md, 'Thermal');
 ````
 
-## References
+# References
 - A. Aschwanden, E. Bueler, C. Khroulev, and H. Blatter.
  An enthalpy formulation for glaciers and ice sheets.
  J. Glaciol., 58(209):441-457, 2012.

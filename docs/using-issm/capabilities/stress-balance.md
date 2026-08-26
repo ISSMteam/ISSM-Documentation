@@ -5,10 +5,10 @@ parent: Capabilities
 math: mathjax3
 ---
 
-## Stress Balance Solution
+# Stress Balance Solution
 
-### Physical basis
-#### Conservation of linear momentum
+## Physical basis
+### Conservation of linear momentum
 The conservation of momentum reads:
 
 $$
@@ -31,13 +31,13 @@ The equation of momentum conservation is reduced to:
 $$
 \nabla \cdot \boldsymbol{\sigma} + \rho {\bf g} = {\bf 0}
 $$
-#### Conservation of angular momentum
+### Conservation of angular momentum
 For a non-polar material body, the balance of angular momentum imposes the stress tensor to be symmetrical:
 
 $$
 \boldsymbol{\sigma} = \boldsymbol{\sigma}^T
 $$
-#### Ice constitutive equations
+### Ice constitutive equations
 Ice is treated as a purely viscous incompressible material [<a href="#references">*Cuffey2010*</a>]. Its constitutive equation therefore only involves the deviatoric stress and the strain rate tensor:
 
 $$
@@ -65,10 +65,10 @@ $$
 $$
 where $$\|\cdot\|_F$$ is the Frobenius norm.
 
-#### Full-Stokes (FS) field equations
+### Full-Stokes (FS) field equations
 Without any further approximation, the previous system of equations is called the **Full-Stokes** model.
 
-#### Higher-Order (HO) field equations
+### Higher-Order (HO) field equations
 We make two assumptions:
 
 1. Bridging effects are neglected
@@ -85,7 +85,7 @@ $$
 \begin{array}{l}\dot{\boldsymbol{\varepsilon}}_{HO1} = \left[\begin{array}{c}2\dfrac{\partial v_x}{\partial x} +  \dfrac{\partial v_y}{\partial y}\\\\\dfrac{1}{2}\left(\dfrac{\partial v_x}{\partial y} + \dfrac{\partial v_y}{\partial x}\right)\\\\\dfrac{1}{2}\dfrac{\partial v_x}{\partial z}\end{array}\right]\quad\dot{\boldsymbol{\varepsilon}}_{HO2} =\left[\begin{array}{c}\dfrac{1}{2}\left(\dfrac{\partial v_x}{\partial y} + \dfrac{\partial v_y}{\partial x}\right)\\\\\dfrac{\partial v_x}{\partial x} + 2\dfrac{\partial v_y}{\partial y}\\\\\dfrac{1}{2}\dfrac{\partial v_y}{\partial z}\end{array}\right]\end{array}
 $$
 
-#### Shelfy-Stream Approximation (SSA) field equations
+### Shelfy-Stream Approximation (SSA) field equations
 We make the following assumption:
 
 1. Vertical shear is negligible
@@ -107,7 +107,7 @@ where:
 - $$H$$ is the ice thickness
 - $$\alpha$$ is the basal friction coefficient
 
-#### Boundary conditions
+### Boundary conditions
 At the surface of the ice sheet, $$\Gamma_s$$, we assume a stress-free boundary condition. A viscous friction law is applied at the base of the ice sheet, $$\Gamma_b$$, and water pressure is applied at the ice/water interface $$\Gamma_w$$. For FS, these boundary conditions are:
 
 $$
@@ -136,7 +136,7 @@ $$
 \begin{array}{rcl}2\bar{\mu}H\dot{\boldsymbol{\varepsilon}}_{SSA1} \cdot {\bf n} & = & \left(\frac{1}{2}\rho g H^2 - \frac{1}{2}\rho_w g b^2 \right) n_x \\\\2\bar{\mu}H\dot{\boldsymbol{\varepsilon}}_{SSA2} \cdot {\bf n} & = & \left(\frac{1}{2}\rho g H^2 - \frac{1}{2}\rho_w g b^2 \right) n_y\end{array}\text{ on } \Gamma_w
 $$
 
-### Model parameters
+## Model parameters
 The parameters relevant to the stress balance solution can be displayed by typing:
 ````
 >> md.stressbalance
@@ -171,7 +171,7 @@ The solution will also use the following model fields:
 - `md.initialization.vy`: y component of velocity (used as an initial guess)
 - `md.initialization.vz`: y component of velocity (used as an initial guess)
 
-### Running a simulation
+## Running a simulation
 To run a simulation, use the following command:
 ````
 >> md = solve(md, 'Stressbalance');
@@ -179,7 +179,7 @@ To run a simulation, use the following command:
 The first argument is the model, the second is the nature of the simulation one wants to run.
 
 
-## References
+# References
 - H. Blatter.
  Velocity And Stress-Fields In Grounded Glaciers: A Simple Algorithm
    For Including Deviatoric Stress Gradients.

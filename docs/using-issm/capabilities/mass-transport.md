@@ -5,10 +5,10 @@ parent: Capabilities
 math: mathjax3
 ---
 
-## Mass Transport Solution
+# Mass Transport Solution
 
-### Physical basis
-#### Conservation of mass
+## Physical basis
+### Conservation of mass
 The mass transport equation is derived from the depth-integrated form of the mass conservation equation and reads:
 
 $$
@@ -40,7 +40,7 @@ where:
 - $$\left(v_x\left(b\right),v_y\left(b\right),v_z\left(b\right)\right)$$ are the ice velocity
   components at the base $$b$$
 
-#### Boundary conditions
+### Boundary conditions
 Ice thickness is imposed at the inflow boundary:
 
 $$
@@ -49,7 +49,7 @@ $$
 
 For free surfaces models, both $$b$$ and $$s$$ are constrained at the inflow boundary.
 
-#### Numerical implementation
+### Numerical implementation
 Mass transport is solved using finite elements in space, and implicit finite difference in time. To stabilize the equation, a stabilization term might be added to the left hand side, for example:
 
 $$
@@ -66,7 +66,7 @@ There are other stabilization schemes available in ISSM: (1) Artificial Diffusio
 >> md.masstransport.stabilization = 1;
 ````
 
-### Model parameters
+## Model parameters
 The parameters relevant to the mass transport solution can be displayed by running:
 ````
 >> md.masstransport
@@ -98,7 +98,7 @@ The solution will also use the following model fields:
 - `md.smb.mass_balance`: surface mass balance (in meters/year ice equivalent)
 - `md.timestepping.time_step`: length of time steps (in years)
 
-### Running a simulation
+## Running a simulation
 To run a simulation, use the following command:
 ````
 >> md = solve(md,'Masstransport');

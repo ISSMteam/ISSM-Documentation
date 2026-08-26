@@ -5,26 +5,26 @@ parent: Tutorials
 math: mathjax3
 ---
 
-## Adaptive Mesh Refinement (AMR)
-### Goals
+# Adaptive Mesh Refinement (AMR)
+## Goals
 In this tutorial, we show how to use the mesher BAMG to run a simulation with AMR:
 
 - Learn how to set up the AMR properties and a refinement criterion;
 - Run a transient simulation with AMR using the MISMIP3d setup to track the grounding line migration.
 
 Go to `<ISSM_DIR>/examples/AMR/` to do this tutorial.
-### Introduction
+## Introduction
 The `runme.m` file and `mismip.par` go through the steps and basic structure to set up and run the MISMIP3d experiment with adaptive mesh refinement to track the grounding line positions. The `runme.m` script is set up as three distinct steps, saving the model at each stage:
 
 1. Mesh generation
 1. Parameterization
 1. Transient solution with AMR
 
-### Mesh Generation
+## Mesh Generation
 Run step 1 in `runme.m` to generate an unstructured coarse mesh on a 800 x 50 km domain with typical element edge length of 10,000 m (10 km).  This coarse mesh, shown here, has 820 elements and 496 vertices. To plot your coarse mesh, use `plotmodel(md, 'data', 'mesh', 'fontsize', 12);`:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/amr/amr_coarse_mesh.jpg" alt="Figure 1: amr_coarse_mesh"></div>
-### Parameterization
+## Parameterization
 Run step 2 in `runme.m` to define the model parameters. First we call on standard parameters defined in the `mismip.par` file (bed and ice geometry, sliding velocity, material properties, etc.). Then we define AMR-specific parameters to run an AMR transient simulation (resolution at the grounding line, distance to the grounding line used as criterion, ratio between two consecutive edges, etc.).
 
 The MISMIP3d domain is initially set up as a 100 m thick slab of ice. The MISMIP3d bed is defined as $$r=-100-x/1000$$ (in [m], negative if below sea level). The surface mass balance is constant over the domain and equal to 0.5 m/yr. A Weertman-type friction law is applied to the grounded ice. The basal friction coefficient is uniform over the domain and equal to $$10^{7}\,\textrm{Pa}\,\textrm{m}^{-1/3}\textrm{s}^{1/3}$$. The ice viscosity parameter, $$B$$ ($$=A^{1/n}$$) is equal to $$2.15 \, \times \, 10^{8}\,\textrm{Pa}\,\textrm{s}^{-1/3}$$.
@@ -36,7 +36,7 @@ plotmodel(md, 'data', md.geometry.surface, 'title', 'Initial Surface Elevation [
 
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/amr/amr_surface_initial.png" alt="Figure 2: amr_surface_initial"></div>
-### Transient solution with AMR
+## Transient solution with AMR
 In step 3, we specify which machine we want to run the model on, including number of processors to be used, define the model time step, final time, and prescribe the AMR frequency, i.e., how often the mesh needs to be updated. In this example, we run 500 yr forward in time to track the grounding line movement as soon as the initial thin ice slab starts to ground on the bedrock. The ice starts to ground at x=0, the boundary of the ice divide (vx=0 at x=0). We set the AMR frequency equal to 1, which means that the mesh is updated (refined/coarsened) every time step. In this example, a time step equal to 1 yr is imposed. The SSA equations are used as the flow model.
 
 Now that the set up is complete, we can run the model:
