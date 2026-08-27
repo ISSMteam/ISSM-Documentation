@@ -56,13 +56,13 @@ The following instructions detail how to create an environment for compiling ISS
 - Double-click the 'MSYS2 MinGW 64-bit' desktop shortcut
 - At the resulting command prompt run,
 ````
-$ pacman -Syu
+pacman -Syu
 ````
 to update the database and base packages, entering "Y" when prompted
 - The previous step will result in the window being closed, so double-click the 'MSYS2 MinGW 64-bit' desktop shortcut again
 - At the resulting command prompt run,
 ````
-$ pacman -Su
+pacman -Su
 ````
 until the resulting output is,
 ````
@@ -73,12 +73,12 @@ until the resulting output is,
 ````
 - Install necessary packages with,
 ````
-$ pacman -S --needed base-devel git openssh python python-setuptools subversion unzip mingw-w64-x86_64-autotools mingw-w64-x86_64-cmake mingw-w64-x86_64-gcc-fortran mingw-w64-x86_64-toolchain
+pacman -S --needed base-devel git openssh python python-setuptools subversion unzip mingw-w64-x86_64-autotools mingw-w64-x86_64-cmake mingw-w64-x86_64-gcc-fortran mingw-w64-x86_64-toolchain
 ````
 entering "Y" or simply hitting the return key as needed
 - (Optional) Install Vim text editor with,
 ````
-$ pacman -S vim
+pacman -S vim
 ````
 
 ## Scripting Interfaces
@@ -165,7 +165,7 @@ autoreconf -ivf
 - `MATLAB_PATH` was defined previously in `bashrc`.
 - `MSMPI_ROOT` will be defined after running,
 ````
-$ source ${ISSM_DIR}/etc/environment.sh
+source ${ISSM_DIR}/etc/environment.sh
 ````
 - You may need to update the path to `libgfortran` in the `--with-fortran-lib` option
 
