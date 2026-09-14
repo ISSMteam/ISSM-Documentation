@@ -12,7 +12,7 @@ Known configurations and other notes for compiling, installing, and running ISSM
 <a href="hpc" target="_top">'High-Performance Computing (HPC)'</a>
 systems are available and updated as new configurations are discovered.
 
-Configuring and compiling ISSM with extended capabilities (e.g. solid-Earth, automatic differentiation) or for development is covered in the
+Configuring and compiling ISSM with extended capabilities (e.g. solid-Earth, automatic differentiation, machine learning) or for development is covered in the
 <a href="advanced" target="_top">'Advanced Features' page</a>.
 
 {: .highlight-title }

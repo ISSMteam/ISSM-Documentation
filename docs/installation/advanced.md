@@ -187,3 +187,40 @@ where `<NUM_CPUS>` is the number of available CPUs.
 
 Reconfigure and recompile ISSM and it will now be fully adjoinable.
 
+## Machine Learning
+ISSM supports trained machine learning models through its Python integration. To use existing models or integrate your own, configure ISSM with Python and pybind11.
+
+When installing Python from source, include `--enable-shared` in Python's `./configure` command to build the shared Python library (`libpython`) that ISSM can link against. Create a virtual environment using this Python installation. In your Python virtual environment, install pybind11, NumPy, and a machine learning framework such as PyTorch or JAX. 
+
+The following example shows how to configure ISSM:
+````
+PYTHON_BUILD="$ISSM_DIR/../python-3.14.4/bin/python3.14"
+PYTHON_VENV="$ISSM_DIR/../venvs/ml_env/bin/python3"
+PYTHON_INC_DIR="$ISSM_DIR/../python-3.14.4/include/python3.14"
+
+export LIBS="${LIBS:-}"
+export LIBS+=" $($PYTHON_BUILD-config --embed --ldflags)"
+
+./configure \
+    --prefix=$ISSM_DIR \
+    --with-matlab-dir="/usr/local/MATLAB/R2026a" \
+    --with-triangle-dir="$ISSM_DIR/externalpackages/triangle/install" \
+    --with-metis-dir="$ISSM_DIR/externalpackages/petsc/install" \
+    --with-petsc-dir="$ISSM_DIR/externalpackages/petsc/install" \
+    --with-mpi-include="$ISSM_DIR/externalpackages/petsc/install/include"  \
+    --with-mpi-libflags="-L$ISSM_DIR/externalpackages/petsc/install/lib -lmpi -lmpicxx -lmpifort"\
+    --with-blas-lapack-dir="$ISSM_DIR/externalpackages/petsc/install" \
+    --with-scalapack-dir="$ISSM_DIR/externalpackages/petsc/install/" \
+    --with-mumps-dir="$ISSM_DIR/externalpackages/petsc/install/" \
+    --with-fortran-lib="-L/lib/x86_64-linux-gnu -lgfortran" \
+    --with-parmetis-dir="$ISSM_DIR/externalpackages/petsc/install" \
+    --with-numthreads=10 \
+    --enable-development \
+    --enable-debugging \
+    --with-python-version=3.14 \
+    --with-python=${PYTHON_VENV} \
+    --with-pybind11-include="-I${PYTHON_INC_DIR} -I$("$PYTHON_VENV" -c 'import pybind11; print(pybind11.get_include())')" \
+    --with-pybind11-libflags=" -Wl,-rpath,$($PYTHON_BUILD -c 'import sysconfig; print(sysconfig.get_config_var("LIBDIR"))')"
+````
+
+After compiling ISSM with this configuration, run `test5001` (which requires PyTorch) to verify your installation.
