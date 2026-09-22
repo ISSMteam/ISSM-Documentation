@@ -114,7 +114,7 @@ pip install matplotlib netcdf4 nose numpy pyshp scipy setuptools wheel
 ## External Packages
 The following packages and installation scripts are recommended for a basic installation of ISSM on macOS,
 ````
-autotools		install-linux.sh
+autotools		install-mac.sh
 cmake			install.sh
 petsc			install-3.22-mac.sh
 triangle		install-mac.sh

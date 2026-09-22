@@ -34,7 +34,7 @@ Dakota can be enabled by compiling and installing the following additional exter
 
 #### Linux
 ````
-gsl				install.sh
+gsl	        	install.sh
 boost			install-1.7-linux.sh
 dakota			install-6.2-linux.sh
 chaco			install-linux.sh
@@ -42,7 +42,7 @@ chaco			install-linux.sh
 
 #### macOS
 ````
-gsl				install.sh
+gsl	        	install.sh
 boost			install-1.7-mac.sh
 dakota			install-6.2-mac.sh
 chaco			install-mac.sh
@@ -68,7 +68,7 @@ netcdf			install-4.sh
 proj			install-6.sh
 gdal			install-3.sh
 gshhg			install.sh
-gmt				install-6-mac.sh
+gmt		        install-6-mac.sh
 gmsh			install-4-mac.sh
 ````
 
@@ -80,7 +80,7 @@ netcdf			install-4.sh
 proj			install-6.sh
 gdal			install-3.sh
 gshhg			install.sh
-gmt				install-6-linux.sh
+gmt		        install-6-linux.sh
 gmsh			install-4-linux.sh
 ````
 
@@ -103,7 +103,7 @@ Automatic differentiation is only supported under Linux and macOS.
 CoDiPack can be enabled by compiling and installing the following additional external packages,
 
 ````
-gsl				install.sh
+gsl		        install.sh
 codipack		install.sh
 medipack		install-linux.sh
 ````
@@ -147,13 +147,13 @@ ADOL-C can be enabled by compiling and installing the following additional exter
 #### Linux
 ````
 adjoinablempi	install-linux.sh
-ADOL-C			install.sh
+ADOL-C	        install.sh
 ````
 
 #### macOS
 ````
 adjoinablempi	install-mac.sh
-adolc			install.sh
+adolc	        install.sh
 ````
 
 Note that the PETSc libraries are incompatible with automatic differentiation, but we still use PETSc to install other external packages to solve linear systems. As such, we remove the `--with-petsc-dir` option from the ISSM configuration. You will also need to deactivate
@@ -192,7 +192,7 @@ ISSM supports trained machine learning models through its Python integration. To
 
 When installing Python from source, include `--enable-shared` in Python's `./configure` command to build the shared Python library (`libpython`) that ISSM can link against. Create a virtual environment using this Python installation. In your Python virtual environment, install pybind11, NumPy, and a machine learning framework such as PyTorch or JAX. 
 
-The following example shows how to configure ISSM:
+The following example shows how to configure ISSM on linux:
 ````
 PYTHON_BUILD="$ISSM_DIR/../python-3.14.4/bin/python3.14"
 PYTHON_VENV="$ISSM_DIR/../venvs/ml_env/bin/python3"
