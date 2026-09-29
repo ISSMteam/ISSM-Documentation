@@ -18,6 +18,8 @@ If you would prefer to download the datasets manually, use the following links, 
 - <a href="https://issm.jpl.nasa.gov/files/examples/Antarctica_5km_withshelves_v0.75.nc" target="_blank">SeaRISE Antarctica v0.75</a>
 - <a href="https://issm.jpl.nasa.gov/files/examples/Greenland_5km_dev1.2.nc" target="_blank">SeaRISE Greenland dev1.2</a>
 - <a href="https://issm.ess.uci.edu/files/tutorials/Antarctica_ice_velocity.nc" target="_blank">MEaSUREs Antarctic velocities</a>
+- <a href="https://issm.ess.uci.edu/files/tutorials/greenland_vel_mosaic250_vx_v1.tif" target="_blank">MEaSUREs Greenland velocities (vx, NSIDC-0670)</a>
+- <a href="https://issm.ess.uci.edu/files/tutorials/greenland_vel_mosaic250_vy_v1.tif" target="_blank">MEaSUREs Greenland velocities (vy, NSIDC-0670)</a>
 - <a href="https://issm.jpl.nasa.gov/files/workshop2014/CrossOvers2009.mat" target="_blank">Pine Island ice thickness cross overs (Dakota)</a>
 - <a href="https://issm.jpl.nasa.gov/files/examples/Box_Greenland_SMB_monthly_1840-2012_5km_cal_ver20141007.nc" target="_blank">Jason Box's SMB data</a>
 - <a href="https://data.cresis.ku.edu/data/grids/old_versions/Jakobshavn_2008_2011_Composite.zip" target="_blank">Jakobshavn Isbr&#230; bed map</a>  (we only need `grids/Jakobshavn_2008_2011_Composite_XYZGrid.txt`)
