@@ -7,6 +7,9 @@ math: mathjax3
 ---
 
 # Changelog
+
+Since 2023, the changes are available directly on [GitHub](https://github.com/ISSMteam/ISSM/releases).
+
 ## ISSM 4.23 (Release 2023-11-15)
 ### New features/enhancements
 
