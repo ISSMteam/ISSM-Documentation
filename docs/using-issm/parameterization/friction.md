@@ -121,7 +121,7 @@ Coulomb-limited sliding law used in MISMIP+ [<a href="#references">*Cornford2020
 $$
 \tau_b = \frac{C u_b^{m}\alpha^2 N}{\left(C^{1/m}u_b + (\alpha^2N)^{1/m}\right)^{m}},
 $$
-where $$\alpha^2 = 0.5$$. Note that this friction law is exactly the same as `frictionschoof` described below, with $$C_{max} = 0.5$$.
+where $$\alpha^2 = 0.5$$. Note that this friction law is exactly the same as `frictionschoof` described below, with $$C_{\max} = 0.5$$.
 
 ## Regularized Coulomb-limited sliding 2 (frictionregcoulomb2)
 Sliding law from [<a href="#references">*Helanow2021*</a>]:
@@ -141,7 +141,7 @@ $$
 From [<a href="#references">*Schoof2005,Gagliardini2007*</a>] (note that we use $$C_s^2$$ to make sure it is a positive number):
 
 $$
-\tau_b = \frac{C_s^2 v_b^{m}}{\left(1 + \left(\frac{C_s^2}{C_{max}N}\right)^{1/m} v_b\right)^{m}},
+\tau_b = \frac{C_s^2 v_b^{m}}{\left(1 + \left(\frac{C_s^2}{C_{\max}N}\right)^{1/m} v_b\right)^{m}},
 $$
 
 ## Friction PISM (frictionpism)
