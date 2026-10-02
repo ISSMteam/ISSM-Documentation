@@ -1,8 +1,8 @@
 ---
 title: Toolkits
 layout: default
-parent: Miscellaneous wiki
-grand_parent: Using ISSM
+parent: Wiki
+nav_order: 2
 ---
 This is a list of solvers that have worked fairly consistently; **try them out locally**, and if the recovery solver is not activated, you should be safe for longer transient runs.
 

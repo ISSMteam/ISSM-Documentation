@@ -1,8 +1,8 @@
 ---
 title: ISSM organizer
 layout: default
-parent: Miscellaneous wiki
-grand_parent: Using ISSM
+parent: Wiki
+nav_order: 3
 ---
 
 # ISSM Organizer

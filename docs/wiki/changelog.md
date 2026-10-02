@@ -1,9 +1,9 @@
 ---
 title: Changelog
 layout: default
-parent: Supplements
-nav_order: 3
 math: mathjax3
+parent: Wiki
+nav_order: 5
 ---
 
 # Changelog

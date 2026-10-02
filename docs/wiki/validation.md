@@ -1,8 +1,8 @@
 ---
 title: Validation Guide
 layout: default
-parent: Supplements
-nav_order: 4
+parent: Wiki
+nav_order: 6
 ---
 
 # Validation Guide

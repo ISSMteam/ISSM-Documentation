@@ -1,8 +1,8 @@
 ---
 title: Coding guidelines
 layout: default
-parent: Miscellaneous wiki
-grand_parent: Using ISSM
+parent: Wiki
+nav_order: 4
 ---
 
 # General guidelines

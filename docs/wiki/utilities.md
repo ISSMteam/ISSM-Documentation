@@ -1,7 +1,7 @@
 ---
 title: Utilities
 layout: default
-parent: Supplements
+parent: Wiki
 nav_order: 1
 ---
 

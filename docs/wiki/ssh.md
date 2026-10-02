@@ -1,8 +1,8 @@
 ---
 title: SSH
 layout: default
-parent: Supplements
-nav_order: 2
+parent: Wiki
+nav_order: 7
 ---
 
 # SSH
