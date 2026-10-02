@@ -2,7 +2,7 @@
 title: Advanced Features
 layout: default
 parent: Using ISSM
-nav_order: 5
+nav_order: 4
 has_toc: false
 ---
 

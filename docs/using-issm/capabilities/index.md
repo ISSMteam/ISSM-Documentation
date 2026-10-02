@@ -2,7 +2,7 @@
 title: Capabilities
 layout: default
 parent: Using ISSM
-nav_order: 3
+nav_order: 2
 has_toc: false
 ---
 

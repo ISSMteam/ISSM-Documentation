@@ -41,6 +41,7 @@ There are more build configurations and regression test suites on <a href="https
 ## Installation and Usage Documentation
 - <a href="installation">Installation</a>
 - <a href="using-issm">Using ISSM</a>
+- <a href="tutorials">Tutorials</a>
 - <a href="supplements">Supplements</a>
 - <a href="troubleshooting">Troubleshooting</a>
 

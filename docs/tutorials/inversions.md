@@ -36,17 +36,17 @@ First, go to `<ISSM_DIR>/examples/Inversion/` and start MATLAB. We will start by
 ````
 You will see on the left our prescribed rigidity, $$B$$, and to the right the calculated velocities. We choose a pattern with 2 distinct values for $$B$$ for the upper left region, and stiffer ice for the lower right, with a sharp transition.
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step1.png" alt="Figure 1: step1"></div>In the next step, we are going to change the rigidity to something uniform, use our previously calculated velocities (from step 1) as observations, and see if we can recover that initial pattern that was used to generate the observations.
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/inversion/step1.png" alt="Figure 1: step1"></div>In the next step, we are going to change the rigidity to something uniform, use our previously calculated velocities (from step 1) as observations, and see if we can recover that initial pattern that was used to generate the observations.
 
 ### Step 2: Initial guess and initial velocity
 We now change the rigidity, $$B$$, and make it uniform. The results of the previous step are taken as observations (but we will only use them in step 3). Open `runme.m` and set `step = 2`. Save the file and execute step 2 in MATLAB as above.
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step2.png" alt="Figure 2: step2"></div>We now see that the left panel is constant, and the velocity is symmetrical. This is our initial guess for $$B$$ and our initial modeled velocity. In the next step, we are going to tune $$B$$, so that the modeled velocity is as close as possible to the velocity of step 1.
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/inversion/step2.png" alt="Figure 2: step2"></div>We now see that the left panel is constant, and the velocity is symmetrical. This is our initial guess for $$B$$ and our initial modeled velocity. In the next step, we are going to tune $$B$$, so that the modeled velocity is as close as possible to the velocity of step 1.
 
 ### Step 3: Inverting for B
 Here, we perform the inversion of $$B$$. Open `runme.m` and set the step as `step = 3`.
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step3.png" alt="Figure 3: step3"></div>The general pattern is right (stiffer ice in the lower right), but it is noisy. Inverse problems are ill-posed: a solution might not exist, might not be unique, and might not depend continuously on input data. One of the consequences is that the inferred pattern for $$B$$ is not smooth, and these wiggles are **not** physical. Adding regularization that penalizes wiggles in the control parameter stabilizes the inversion.
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/inversion/step3.png" alt="Figure 3: step3"></div>The general pattern is right (stiffer ice in the lower right), but it is noisy. Inverse problems are ill-posed: a solution might not exist, might not be unique, and might not depend continuously on input data. One of the consequences is that the inferred pattern for $$B$$ is not smooth, and these wiggles are **not** physical. Adding regularization that penalizes wiggles in the control parameter stabilizes the inversion.
 
 ### Step 4: Adding regularization
 Here, we would like to add a term of regularization to our cost function:
@@ -61,7 +61,7 @@ $$w_1$$ and $$w_2$$ are the weights associated with each component of the cost f
 
 Set `step = 4` in the `runme.m` file and execute it. Your results should now look like this:
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step4.png" alt="Figure 4: step4"></div>We successfully reconstructed the pattern of ice rigidity, but we could not capture the sharp transition between high and low rigidity because of the regularization that we had to introduce to stabilize the inversion.
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/inversion/step4.png" alt="Figure 4: step4"></div>We successfully reconstructed the pattern of ice rigidity, but we could not capture the sharp transition between high and low rigidity because of the regularization that we had to introduce to stabilize the inversion.
 ## Hands on 2 (friction)
 We would like to do the same twin experiment here, but invert for basal friction of a grounded glacier. Here, you are going to make additions and/or modifications to the `runme.m` script as described below.
 
@@ -74,7 +74,7 @@ We would like to do the same twin experiment here, but invert for basal friction
 1. Change the `plotmodel` command and plot `md.friction.coefficient` instead, between 0 and 100.
 After running step 1 again, you should get the following figure.
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step1b.png" alt="Figure 5: step1b"></div>If you don't, then double check your changes before looking at the solutions below. We are modeling here a glacier flowing over a region where there is a lot of sliding. We want to see if the inversion can reconstruct this region of low friction.
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/inversion/step1b.png" alt="Figure 5: step1b"></div>If you don't, then double check your changes before looking at the solutions below. We are modeling here a glacier flowing over a region where there is a lot of sliding. We want to see if the inversion can reconstruct this region of low friction.
 
 ### Solutions to step 1 (MATLAB)
 ````
@@ -258,7 +258,7 @@ For step 2, we now want to set our new first guess for the basal friction to a u
 1. Change the `plotmodel` command and plot `md.friction.coefficient` instead, between 0 and 100.
 After running step 2, you should get the following figure:
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step2b.png" alt="Figure 6: step2b"></div>If you don't, double check your changes. As you can see, the velocity does not show any fast-flowing ice stream in the center of the domain, as expected since the friction is uniform.
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/inversion/step2b.png" alt="Figure 6: step2b"></div>If you don't, double check your changes. As you can see, the velocity does not show any fast-flowing ice stream in the center of the domain, as expected since the friction is uniform.
 
 ### Solutions to step 2
 ````
@@ -292,7 +292,7 @@ We now want to invert for basal friction and see if we can reconstruct the zone 
 - We want the parameter to be between 1 and 100
 After running step 3, you should get the following figure:
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step3b.png" alt="Figure 7: step3b"></div>If you don't, the solutions are as follows.
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/inversion/step3b.png" alt="Figure 7: step3b"></div>If you don't, the solutions are as follows.
 
 ### Solutions to step 3
 ````
@@ -327,7 +327,7 @@ As you can see, we get more sliding close to the front, but the rest of the doma
 plotmodel(md, 'data', md.inversion.vel_obs + 1, 'data', md.results.StressbalanceSolution.Vel + 1, 'log#all', 10, 'caxis#all', [1 400])
 ````
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step3b_log.png" alt="Figure 8: step3b_log"></div>we clearly see the zone of fast sliding in the observations but not in the results from the inversion. So we need to change the cost function to add this information: we not only want the square of the difference between modeled and observed velocities to be minimized, but we also want their logs to be minimized.
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/inversion/step3b_log.png" alt="Figure 8: step3b_log"></div>we clearly see the zone of fast sliding in the observations but not in the results from the inversion. So we need to change the cost function to add this information: we not only want the square of the difference between modeled and observed velocities to be minimized, but we also want their logs to be minimized.
 
 ### Changing the cost function
 We want the cost function to include an additional term:
@@ -337,7 +337,7 @@ $$
 $$
 
 The 
-<a href="../advanced/inversions">'Advanced Features' &#8594; 'Inversions' page</a>
+<a href="../using-issm/advanced/inversions">'Advanced Features' &#8594; 'Inversions' page</a>
 lists all the cost functions available. We want here the cost function to include the absolute and relative misfits. Typing in MATLAB `md.inversion` will give you the numbers associated with these cost functions: `[101, 103]`. We also need to determine the weights associated with each cost function: $$w_1$$ and $$w_2$$. As a rule of thumb, it is generally preferable if the two components have the same order of magnitude at the end of the optimization. You can try with $$w_1=w_2=1$$ and run the inversion, look at their contribution at the end of the inversion and increase (or decrease) $$w_1$$. You need to change the following in step 3:
 
 1. We now want the cost functions 101 and 103
@@ -345,7 +345,7 @@ lists all the cost functions available. We want here the cost function to includ
 1. We want to increase $$w_1$$ to 3000
 You should get the following results:
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step3c.png" alt="Figure 9: step3c"></div>The solutions are below if you don't have the same figure. We now successfully reconstructed the zone of sliding! But again, the pattern is a little bit noisy, and we are going to add regularization.
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/inversion/step3c.png" alt="Figure 9: step3c"></div>The solutions are below if you don't have the same figure. We now successfully reconstructed the zone of sliding! But again, the pattern is a little bit noisy, and we are going to add regularization.
 
 ### Solutions to step 3b
 ````
@@ -389,7 +389,7 @@ You need to change the following in step 3:
 1. We want to set $$w_3$$ to 0.01
 You should get the following results:
 
-<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/tutorials/inversion/step4b.png" alt="Figure 10: step4b"></div>The zone of sliding is captured and the inferred friction is smooth!
+<div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/inversion/step4b.png" alt="Figure 10: step4b"></div>The zone of sliding is captured and the inferred friction is smooth!
 
 ### Solutions to step 3c
 ````
