@@ -11,4 +11,3 @@ has_toc: false
 - <a href="capabilities" target="_top">Capabilities</a>
 - <a href="parameterization" target="_top">Parameterization</a>
 - <a href="advanced" target="_top">Advanced</a>
-- <a href="videos" target="_top">Videos</a>

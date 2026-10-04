@@ -1,7 +1,8 @@
 ---
 title: Development for ISSM
 layout: default
-parent: Videos
+parent: Wiki
+nav_order: 8
 ---
 
 # Development for ISSM Video Series

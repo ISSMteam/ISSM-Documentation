@@ -14,5 +14,7 @@ has_toc: false
 - Development
   - <a href="codeguidelines" target="_top">Code guidelines for developers</a>
   - <a href="changelog" target="_top">Changelog</a>
-- <a href="validation" target="_top">Validation Guide</a>
+  - <a href="development" target="_top">Development for ISSM (video series)</a>
+  - <a href="debugging" target="_top">Debugging</a>
 - <a href="ssh" target="_top">SSH</a>
+- <a href="validation" target="_top">Validation Guide</a>

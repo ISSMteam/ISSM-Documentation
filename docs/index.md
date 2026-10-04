@@ -40,10 +40,10 @@ There are more build configurations and regression test suites on <a href="https
 
 ## Installation and Usage Documentation
 - <a href="installation">Installation</a>
+- <a href="installation/troubleshooting">Troubleshooting</a>
 - <a href="using-issm">Using ISSM</a>
 - <a href="tutorials">Tutorials</a>
 - <a href="wiki">Wiki</a>
-- <a href="troubleshooting">Troubleshooting</a>
 
 ----
 

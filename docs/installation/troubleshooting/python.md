@@ -2,7 +2,7 @@
 title: Python
 layout: default
 parent: Troubleshooting
-nav_order: 5
+nav_order: 4
 ---
 
 # Python Interface

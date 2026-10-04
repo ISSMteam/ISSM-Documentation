@@ -48,7 +48,7 @@ corresponds to,
 ````
 docs/using-issm/getting-started/model-class/index.md
 ````
-A subdirectory may contain the default file (`index.md`) as well as additional sibling files. In these cases, the `index` file is just that: an index of the other files in the subdirectory (e.g. `docs/troubleshooting/index.md`).
+A subdirectory may contain the default file (`index.md`) as well as additional sibling files. In these cases, the `index` file is just that: an index of the other files in the subdirectory (e.g. `docs/installation/troubleshooting/index.md`).
 
 When built, pages are converted from Markdown to HTML and deployed to the `_site/` directory (default).
 

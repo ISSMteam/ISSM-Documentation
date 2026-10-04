@@ -24,7 +24,7 @@ This will make several additional fields available for inspecting program state 
 We can debug crashes during the solve phase by installing Valgrind using the appropriate installation script available at `${ISSM_DIR}/externalpackages/valgrind`.
 
 See the 
-<a href="../troubleshooting/debugging" target="_top">'Debugging' section</a>
+<a href="../wiki/debugging" target="_top">'Debugging' section</a>
 for more info.
 
 ## Dakota

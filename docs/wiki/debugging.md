@@ -1,8 +1,8 @@
 ---
 title: Debugging
 layout: default
-parent: Troubleshooting
-nav_order: 6
+parent: Wiki
+nav_order: 9
 ---
 
 # Debugging
