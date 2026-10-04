@@ -2,6 +2,7 @@
 title: Fingerprints
 layout: default
 parent: Tutorials
+nav_order: 18
 ---
 
 # Sea-Level Fingerprints (GRACE)

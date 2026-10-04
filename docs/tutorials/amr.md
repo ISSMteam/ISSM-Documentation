@@ -3,6 +3,7 @@ title: AMR
 layout: default
 parent: Tutorials
 math: mathjax3
+nav_order: 17
 ---
 
 # Adaptive Mesh Refinement (AMR)

@@ -3,6 +3,7 @@ title: Pine Island
 layout: default
 parent: Tutorials
 math: mathjax3
+nav_order: 9
 ---
 
 # Modeling Pine Island Glacier

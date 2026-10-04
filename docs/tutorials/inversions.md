@@ -3,6 +3,7 @@ title: Inversions
 layout: default
 parent: Tutorials
 math: mathjax3
+nav_order: 6
 ---
 
 # Inversions

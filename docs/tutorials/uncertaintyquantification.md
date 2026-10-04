@@ -2,6 +2,7 @@
 title: UQ
 layout: default
 parent: Tutorials
+nav_order: 11
 ---
 
 # Uncertainty Quantification (UQ)

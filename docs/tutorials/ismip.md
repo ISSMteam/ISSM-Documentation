@@ -2,6 +2,7 @@
 title: ISMIP
 layout: default
 parent: Tutorials
+nav_order: 5
 ---
 
 # Ice Sheet Model Intercomparison Project (ISMIP) Tests

@@ -2,6 +2,7 @@
 title: Mesh
 layout: default
 parent: Tutorials
+nav_order: 3
 ---
 
 # Mesh Adaptation

@@ -2,6 +2,7 @@
 title: Greenland OIB
 layout: default
 parent: Tutorials
+nav_order: 8
 ---
 
 # Modeling the Greenland Ice Sheet Using IceBridge Data

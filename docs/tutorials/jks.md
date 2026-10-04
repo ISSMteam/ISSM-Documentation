@@ -3,6 +3,7 @@ title: Jakobshavn Isbr&#230;
 layout: default
 parent: Tutorials
 math: mathjax3
+nav_order: 13
 ---
 
 # Modeling Jakobshavn Isbr&#230;

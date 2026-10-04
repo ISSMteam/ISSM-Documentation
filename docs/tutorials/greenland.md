@@ -3,6 +3,7 @@ title: Greenland SeaRISE
 layout: default
 parent: Tutorials
 math: mathjax3
+nav_order: 7
 ---
 
 # Modeling the Greenland Ice Sheet (SeaRISE)

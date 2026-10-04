@@ -3,6 +3,7 @@ title: SHAKTI Single Moulin
 layout: default
 parent: Tutorials
 math: mathjax3
+nav_order: 14
 ---
 
 # Subglacial Channel Formation From a Single Moulin (SHAKTI)

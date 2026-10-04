@@ -3,6 +3,7 @@ title: Pig StISSM
 layout: default
 parent: Tutorials
 math: mathjax3
+nav_order: 12
 ---
 
 # Pine Island Glacier Stochastic Forcing (StISSM)

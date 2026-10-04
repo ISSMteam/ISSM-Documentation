@@ -2,6 +2,7 @@
 title: Pig Sensitivity
 layout: default
 parent: Tutorials
+nav_order: 10
 ---
 
 # Pine Island Glacier Sensitivity Study

@@ -3,6 +3,7 @@ title: Helheim Glacier
 layout: default
 parent: Tutorials
 math: mathjax3
+nav_order: 15
 ---
 
 # Modeling Helheim Glacier
