@@ -65,6 +65,7 @@ TESTING: configureMPIEXEC from config.packages.MPI(config/BuildSystem/config/pac
   (2) your network may be misconfigured; see
   https://petsc.org/release/faq/#mpi-network-misconfigure
   (3) you may have VPN running whose network settings may not play nice with MPI
+********************************************************************************************
 ```
 
 The <a href="https://petsc.org/release/faq/#mpi-network-misconfigure" target="_top">PETSc FAQ page</a> indicates that it may be a missing entry in the `/etc/hosts` file. However, if the issue persists, run `export HWLOC_COMPONENTS=stop` (or add it to the PETSc installation script *before* the configure step) and then rerun the PETSc installation script. If this fixes the issue where MPI hangs, add the following to your shell profile (e.g. `~/.bash_profile`) to create a persistent fix for MPICH,
