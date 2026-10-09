@@ -5,7 +5,6 @@ theme: just-the-docs
 url: https://issmteam.github.io/ISSM-Documentation/
 
 color_scheme: issm
-color_scheme: wider
 
 # Site logo
 logo: "/assets/img/brand/ISSMlogo.png"

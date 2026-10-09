@@ -1,2 +1,5 @@
 $link-color: #5785d1;
 
+// Widen the main content area (just-the-docs default is 50rem).
+// Must use rem: the theme adds it to $nav-width (rem) in calc().
+$content-width: 75rem;
