@@ -54,7 +54,7 @@ module load mpi-hpe/mpt
 module load comp-intel/2020.4.304
 module load petsc/3.17.3_intel_mpt_py
 
-# Variables
+# Compilers
 export CC=mpicc
 export CXX=mpicxx
 export F77=mpif77
@@ -62,11 +62,13 @@ export MPICC_CC=icx
 export MPICXX_CXX=icpx
 export MPF90_F90=ifort
 
+# ISSM paths
 export ISSM_DIR="<ISSM_DIR>"
+source $ISSM_DIR/etc/environment.sh
 ```
-replacing `<ISSM_DIR>` with the path to the local copy of the ISSM code repository. Run `source ~/.bashrc` to apply these changes to the current session.
+replacing `<ISSM_DIR>` with the path to the local copy of the ISSM code repository. Run `source ~/.bashrc` to apply these changes (or log out and back in) to the current session.
 
-{: .highlight-title }
+{: .note-title }
 > NOTE
 >
 > If `~/.bashrc` is not loaded when on login, add a new file, `~/.bash_login`, with the following content,
@@ -74,24 +76,18 @@ replacing `<ISSM_DIR>` with the path to the local copy of the ISSM code reposito
 > if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
 > ```
 
-{: .highlight-title }
-> NOTE
->
-> The version of the `comp-intel` module as well as the corresponding value of variable `COMP_INTEL_ROOT` may need to be updated as recommended/available modules are updated on HECC. Please update this page or ask a project lead to do so when this occurs.
-
 ## Installing ISSM
 
 {: .highlight-title }
 > Important
 >
-> ISSM and external packages should not be compiled on the Pleiades front end. Please refer to the NAS HECC knowledge base article <a href="https://www.nas.nasa.gov/hecc/support/kb/reserving-a-dedicated-compute-node_556.html" target="_blank">'Reserving a Dedicated Compute Node'</a> for instructions on reserving and logging into a compute node for the purpose of compiling.
+> ISSM and external packages should not be compiled on the Pleiades front end. Please refer to the NAS HECC knowledge base article <a href="https://www.nas.nasa.gov/hecc/support/kb/reserving-a-dedicated-compute-node_556.html" target="_blank">'Reserving a Dedicated Compute Node'</a> for instructions on reserving and logging into a compute node for the purpose of compiling. Alternatively you can request an interactive node:
+> ```qsub -I -q devel -l select=1:ncpus=20:model=cas_ait -l walltime=0:20:00 -W group_list=s2013```
 
-{: .highlight-title }
+{: .warning-title }
 > Important
 >
 > Do *not* install `mpich` and `petsc`. The MPI implementation (MPT) provided by HECC *must* be used. Pleiades will *only* be used to run solutions and the user's local machine for pre- and post-processing.
-
-There are a number of configurations for ISSM provided below. Users may also refer to the recipes in `${ISSM_DIR}/jenkins/` prefixed with `pleiades-`.
 
 ### Installing ISSM with Basic Capabilities
 For an installation of ISSM with basic capabilities, the only external packages required are,
@@ -108,28 +104,27 @@ autoreconf -ivf
 
 Then use the following configuring script (adapting it as needed),
 ```sh
-export CFLAGS="-g -Ofast"
-export CXXFLAGS="-fp-model=precise -diag-disable=15009,10441,10121"
+export CFLAGS="-g -O3 -fp-model=precise"
+export CXXFLAGS="-g -O3 -fp-model=precise -diag-disable=15009,10441,10121"
 
 ./configure \
-	--prefix="${ISSM_DIR}" \
-	--enable-development \
-	--enable-standalone-libraries \
-	--with-wrappers=no \
-	--with-fortran-lib="-L/nasa/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin -lifcore -lifport -lgfortran" \
-	--with-mkl-libflags="-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_blacs_sgimpt_ilp64 -lmkl_scalapack_ilp64 -lmkl_core -lpthread -lm" \
-	--with-mpi-include="${MPI_ROOT}/include" \
-	--with-mpi-libflags="-L${MPI_ROOT}/lib -lmpi" \
-	--with-blas-lapack-lib="-L${COMP_INTEL_ROOT}/mkl/lib/intel64 -lmkl_blas95_lp64 -lmkl_lapack95_lp64" \
-	--with-metis-dir="${PETSC_DIR}" \
-	--with-parmetis-dir="${PETSC_DIR}" \
-	--with-scalapack-lib="-L${COMP_INTEL_ROOT}/mkl/lib/intel64/libmkl_scalapack_lp64.so" \
-	--with-mumps-dir="${PETSC_DIR}" \
-	--with-petsc-dir="${PETSC_DIR}" \
-	--with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install"
+   --prefix=$ISSM_DIR \
+   --with-wrappers=no \
+   --with-mpi-include="${MPI_ROOT}/include" \
+   --with-mpi-libflags="-L${MPI_ROOT}/lib -lmpi" \
+   --with-mkl-libflags="-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_blacs_sgimpt_ilp64 -lmkl_scalapack_ilp64 -lmkl_core -lpthread -lm" \
+   --with-fortran-lib="-L/nasa/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin -lifcore -lifport -lgfortran" \
+   --with-petsc-dir=${PETSC_DIR} \
+   --with-parmetis-dir=${PETSC_DIR} \
+   --with-metis-dir=${PETSC_DIR} \
+   --with-mumps-dir=${PETSC_DIR} \
+   --with-matlab-dir="/nasa/matlab/2024a" \
+   --with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install" \
+   --enable-development
 ```
+If you want MATLAB for ice-ocean coupling you will need to remove `--with-wrappers=no \ ` and add `--with-matlab-dir="/nasa/matlab/2024a"`
 
-### Installing ISSM with Dakota
+### Installing ISSM with Dakota (NEEDS TO BE UPDATED)
 For an installation of ISSM with Dakota, the following external packages are required,
 ```sh
 autotools	install-linux.sh
@@ -137,12 +132,6 @@ boost		install-1.7-linux.sh
 dakota		install-6.2-pleiades.sh
 chaco		install-linux.sh
 triangle	install-linux.sh
-```
-
-Before configuring ISSM, run,
-```sh
-cd $ISSM_DIR
-autoreconf -ivf
 ```
 
 Then use the following configuring script (adapting it as needed),
@@ -190,12 +179,6 @@ gmsh		install-4-pleiades.sh
 triangle	install-linux.sh
 ```
 
-Before configuring ISSM, run,
-```sh
-cd $ISSM_DIR
-autoreconf -ivf
-```
-
 Then use the following configuring script (adapting it as needed),
 ```sh
 export CFLAGS="-g -Ofast"
@@ -232,12 +215,6 @@ codipack
 medipack
 ```
 
-Before configuring ISSM, run,
-```sh
-cd $ISSM_DIR
-autoreconf -ivf
-```
-
 Then use the following configuring script (adapting it as needed),
 ```sh
 export CFLAGS="-g -Ofast -wd2196"
@@ -263,11 +240,6 @@ export CXXFLAGS="-g -Ofast -xCORE-AVX512,CORE-AVX2 -xAVX -std=c++11"
 	--with-codipack-lib="${ISSM_DIR}/externalpackages/codipack/install" \
 	--with-medipack-lib="${ISSM_DIR}/externalpackages/medipack/install"
 ```
-
-{: .highlight-title }
-> NOTE
->
-> You will get a lot of warnings while compiling (i.e. *warning #2196: routine is both "inline" and "noinline"*), which can be ignored.
 
 ## pfe_settings
 You will have to add a file titled `pfe_settings.m` (or `pfe_settings.py`) in `$ISSM_DIR/src/m` on the machine that you are doing model setup and results analysis on. This file will set up your personal settings so that that machine can send solution requests to Pleiades and retrieve results. For example, this file might include,

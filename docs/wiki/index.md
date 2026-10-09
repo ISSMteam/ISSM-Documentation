@@ -17,4 +17,5 @@ has_toc: false
   - <a href="development" target="_top">Development for ISSM (video series)</a>
   - <a href="debugging" target="_top">Debugging</a>
 - <a href="ssh" target="_top">SSH</a>
+- <a href="mccpfe" target="_top">Running MATLAB on Pleiades with mcc</a>
 - <a href="validation" target="_top">Validation Guide</a>

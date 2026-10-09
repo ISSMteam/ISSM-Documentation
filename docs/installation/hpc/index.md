@@ -2,7 +2,7 @@
 title: HPC
 layout: default
 parent: Installation
-nav_order: 4
+nav_order: 6
 has_toc: false
 ---
 
