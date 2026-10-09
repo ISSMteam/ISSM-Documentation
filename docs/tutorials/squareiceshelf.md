@@ -9,20 +9,15 @@ nav_order: 2
 
 This is an example of velocity computation in steady state for a square ice shelf. First, launch MATLAB or Python. Then, navigate to `examples/SquareIceShelf` in `ISSM_DIR` (the directory in which ISSM is stored). In MATLAB you can do this via the left sidebar or by running the following in the Command Window; in Python, run the commands from a shell, script, or notebook started in that directory:
 
-<div class="issm-api-tabs" markdown="1">
-```mat
->> cd examples/SquareIceShelf
+```sh
+cd $ISSM_DIR/examples/SquareIceShelf
 ```
-```py
-$ cd $ISSM_DIR/examples/SquareIceShelf
-```
-</div>
 
 You can create an empty model structure by running (in Python, first import the ISSM modules):
 
 <div class="issm-api-tabs" markdown="1">
 ```mat
->> md = model;
+>> md = model();
 ```
 ```py
 >>> from model import *
@@ -102,4 +97,4 @@ Finally, generate a plot of the velocity:
 ```
 </div>
 
-<div style="display:flow-root"><img style="float:middle;width:50.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/squareiceshelf/squarevel.png" alt="Figure 1: squarevel"></div>
+<div style="display:flow-root"><img src="/ISSM-Documentation/assets/img/docs/tutorials/squareiceshelf/squarevel.png" alt="Figure 1: squarevel"></div>
