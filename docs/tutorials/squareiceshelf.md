@@ -97,4 +97,4 @@ Finally, generate a plot of the velocity:
 ```
 </div>
 
-<div style="display:flow-root"><img src="/ISSM-Documentation/assets/img/docs/tutorials/squareiceshelf/squarevel.png" alt="Figure 1: squarevel"></div>
+<div style="text-align:center"><img src="/ISSM-Documentation/assets/img/docs/tutorials/squareiceshelf/squarevel.png" alt="Figure 1: squarevel"></div>
