@@ -124,6 +124,11 @@ export CXXFLAGS="-g -O3 -fp-model=precise -diag-disable=15009,10441,10121"
 ```
 If you want MATLAB for ice-ocean coupling you will need to remove `--with-wrappers=no \ ` and add `--with-matlab-dir="/nasa/matlab/2024a"`
 
+{: .warning-title }
+> Danger
+>
+> Everything below needs to be updated to reflect the OS upgrade
+
 ### Installing ISSM with Dakota (NEEDS TO BE UPDATED)
 For an installation of ISSM with Dakota, the following external packages are required,
 ```sh

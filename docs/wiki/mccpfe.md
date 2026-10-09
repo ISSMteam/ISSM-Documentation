@@ -1,5 +1,5 @@
 ---
-title: Running MATLAB on Pleiades (mcc)
+title: mcc
 layout: default
 parent: Wiki
 nav_order: 10
@@ -20,15 +20,15 @@ files = matlab.codetools.requiredFilesAndProducts(filename);
 %Create long string
 deps = [];
 for i=1:numel(files)
-	if contains(files{i},'normfit_issm.m')
-		continue
-	elseif contains(files{i},'dakota_moments.m')
-		continue
-	elseif contains(files{i},'dakota_out_parse.m')
-		continue
-	else
-		deps = [deps ' ' files{i}];
-	end
+   if contains(files{i},'normfit_issm.m')
+       continue
+   elseif contains(files{i},'dakota_moments.m')
+       continue
+   elseif contains(files{i},'dakota_out_parse.m')
+       continue
+   else
+       deps = [deps ' ' files{i}];
+   end
 end
 
 %Create command
