@@ -21,8 +21,11 @@
       var bar = document.createElement('div');
       bar.className = 'tab-bar';
       Array.prototype.slice.call(box.children).forEach(function (panel) {
+        // Rouge wraps known languages in div.language-X, but an unknown one
+        // (mat) is a bare <pre><code class="language-X">, so check both.
         var api = Object.keys(LABELS).filter(function (k) {
-          return panel.classList.contains('language-' + k);
+          return panel.classList.contains('language-' + k) ||
+                 panel.querySelector('code.language-' + k);
         })[0];
         if (!api) return;
         panel.dataset.api = api;

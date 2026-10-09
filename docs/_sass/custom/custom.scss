@@ -77,10 +77,11 @@ $api-py-accent: #3776ab;
 	}
 
 	// Hide inactive panels once JS has tagged them (all shown if JS is off)
-	div[data-api]:not(.active) { display: none; }
+	div[data-api]:not(.active), pre[data-api]:not(.active) { display: none; }
 
-	div.highlighter-rouge, pre { margin: 0; border-radius: 0; }
-	div.highlighter-rouge { box-shadow: none; }
-	div.language-mat, div.language-mat .highlight, div.language-mat pre, div.language-mat code { background-color: $api-mat-bg !important; }
-	div.language-py, div.language-py .highlight, div.language-py pre, div.language-py code { background-color: $api-py-bg !important; }
+	// Panels are div.highlighter-rouge (py) or a bare pre (mat)
+	div.highlighter-rouge, pre { margin: 0; border-radius: 0; box-shadow: none; }
+	pre[data-api] { padding: 1em; }
+	div[data-api=mat], pre[data-api=mat], [data-api=mat] .highlight, [data-api=mat] pre, [data-api=mat] code { background-color: $api-mat-bg !important; }
+	div[data-api=py], pre[data-api=py], [data-api=py] .highlight, [data-api=py] pre, [data-api=py] code { background-color: $api-py-bg !important; }
 }
