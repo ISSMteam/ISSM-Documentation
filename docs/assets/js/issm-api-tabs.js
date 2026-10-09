@@ -1,7 +1,9 @@
 // Builds MATLAB/Python tabs for every <div class="issm-api-tabs"> on the page.
-// The div just contains a ```mat block and a ```py block; see tutorials/squareiceshelf.md.
+// The div just contains a ```matlab block and a ```py block; see tutorials/squareiceshelf.md.
 (function () {
   var LABELS = { mat: 'MATLAB', py: 'Python' };
+  // Fence languages that map to each tab (rouge only highlights `matlab`, not `mat`)
+  var ALIASES = { mat: ['mat', 'matlab'], py: ['py', 'python'] };
   var KEY = 'issm-api';
 
   function show(api) {
@@ -21,11 +23,13 @@
       var bar = document.createElement('div');
       bar.className = 'tab-bar';
       Array.prototype.slice.call(box.children).forEach(function (panel) {
-        // Rouge wraps known languages in div.language-X, but an unknown one
-        // (mat) is a bare <pre><code class="language-X">, so check both.
+        // Rouge wraps highlighted languages in div.language-X; an unknown one
+        // is a bare <pre><code class="language-X">, so check both.
         var api = Object.keys(LABELS).filter(function (k) {
-          return panel.classList.contains('language-' + k) ||
-                 panel.querySelector('code.language-' + k);
+          return ALIASES[k].some(function (a) {
+            return panel.classList.contains('language-' + a) ||
+                   panel.querySelector('code.language-' + a);
+          });
         })[0];
         if (!api) return;
         panel.dataset.api = api;

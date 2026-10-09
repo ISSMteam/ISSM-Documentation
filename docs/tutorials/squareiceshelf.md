@@ -16,7 +16,7 @@ cd $ISSM_DIR/examples/SquareIceShelf
 You can create an empty model structure by running (in Python, first import the ISSM modules):
 
 <div class="issm-api-tabs" markdown="1">
-```mat
+```matlab
 >> md = model();
 ```
 ```py
@@ -34,7 +34,7 @@ You can create an empty model structure by running (in Python, first import the 
 Create a mesh of the domain outline with a resolution of 50,000 meters:
 
 <div class="issm-api-tabs" markdown="1">
-```mat
+```matlab
 >> md = triangle(md, 'DomainOutline.exp', 50000);
 ```
 ```py
@@ -45,7 +45,7 @@ Create a mesh of the domain outline with a resolution of 50,000 meters:
 Define the glacier system as an ice shelf (no island):
 
 <div class="issm-api-tabs" markdown="1">
-```mat
+```matlab
 >> md = setmask(md, 'all', '');
 ```
 ```py
@@ -56,7 +56,7 @@ Define the glacier system as an ice shelf (no island):
 Parameterize the model with the file `Square.par` in MATLAB or `Square.py` in Python (which you can see exists in the current directory):
 
 <div class="issm-api-tabs" markdown="1">
-```mat
+```matlab
 >> md = parameterize(md, 'Square.par');
 ```
 ```py
@@ -67,7 +67,7 @@ Parameterize the model with the file `Square.par` in MATLAB or `Square.py` in Py
 Define all elements as SSA:
 
 <div class="issm-api-tabs" markdown="1">
-```mat
+```matlab
 >> md = setflowequation(md, 'SSA', 'all');
 ```
 ```py
@@ -78,7 +78,7 @@ Define all elements as SSA:
 Compute the velocity field of the ice shelf:
 
 <div class="issm-api-tabs" markdown="1">
-```mat
+```matlab
 >> md = solve(md, 'Stressbalance');
 ```
 ```py
@@ -89,7 +89,7 @@ Compute the velocity field of the ice shelf:
 Finally, generate a plot of the velocity:
 
 <div class="issm-api-tabs" markdown="1">
-```mat
+```matlab
 >> plotmodel(md, 'data', md.results.StressbalanceSolution.Vel);
 ```
 ```py
