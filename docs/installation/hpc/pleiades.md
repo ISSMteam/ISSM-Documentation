@@ -165,7 +165,7 @@ export CXXFLAGS="-g -Ofast -xCORE-AVX512,CORE-AVX2 -xAVX -std=c++11"
 	--with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install" 
 ```
 
-### Installing ISSM with Solid Earth Capabilities
+### Installing ISSM with Solid Earth Capabilities (NEEDS To BE UPDATED)
 For an installation of ISSM with solid Earth capabilities, the following external packages are required,
 ```sh
 autotools	install-linux.sh
@@ -212,7 +212,45 @@ export CXXFLAGS="-g -Ofast -xCORE-AVX512,CORE-AVX2 -xAVX -std=c++11"
 	--with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install"
 ```
 
-### Installing ISSM with CoDiPack
+### Installing ISSM with MITgcm coupling
+You will need to use the same modules and compilers as MITgcm (which only runs
+on Electra, not Aitken). Change your environment to:
+```sh
+export LANG=C
+export LC_ALL=C
+module load python3/3.9.12
+module load comp-intel mpi-hpe
+module load hdf4/4.2.12 hdf5/1.8.18_mpt netcdf/4.4.1.1_mpt
+module load matlab
+
+export ISSM_DIR=...
+source  $ISSM_DIR/etc/environment.sh
+```
+You will need the following external packages:
+```sh
+autotools install-linux.sh
+petsc     install-3.26-pleiades.sh
+triangle  install-pleiades.sh
+```
+
+Then use the following configuring script (adapting it as needed),
+```sh
+./configure \
+   --prefix=$ISSM_DIR \
+   --with-matlab-dir="/nasa/matlab/2024a" \
+   --with-mpi-include="${MPI_ROOT}/include" \
+   --with-mpi-libflags="-L${MPI_ROOT}/lib -lmpi" \
+   --with-petsc-dir="$ISSM_DIR/externalpackages/petsc/install" \
+   --with-parmetis-dir="$ISSM_DIR/externalpackages/petsc/install" \
+   --with-blas-lapack-dir="$ISSM_DIR/externalpackages/petsc/install" \
+   --with-scalapack-dir="$ISSM_DIR/externalpackages/petsc/install" \
+   --with-metis-dir="$ISSM_DIR/externalpackages/petsc/install" \
+   --with-mumps-dir="$ISSM_DIR/externalpackages/petsc/install" \
+   --with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install" \
+   --enable-development
+```
+
+### Installing ISSM with CoDiPack  (NEEDS To BE UPDATED)
 For an installation of ISSM with CoDiPack, the following external packages are required,
 ```sh
 autotools	install-linux.sh
