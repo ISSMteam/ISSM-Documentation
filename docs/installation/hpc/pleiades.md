@@ -118,7 +118,6 @@ export CXXFLAGS="-g -O3 -fp-model=precise -diag-disable=15009,10441,10121"
    --with-parmetis-dir=${PETSC_DIR} \
    --with-metis-dir=${PETSC_DIR} \
    --with-mumps-dir=${PETSC_DIR} \
-   --with-matlab-dir="/nasa/matlab/2024a" \
    --with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install" \
    --enable-development
 ```
