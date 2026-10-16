@@ -25,9 +25,6 @@ mkdir YOURUSERNAME
 ```
 and replace YOURUSERNAME by your username. This is where you should checkout ISSM and do your work.
 
-## Password-less ssh
-{% include_relative shared/sshkey.md %}
-
 ## Environment
 On Babylon, add the following lines to ```~/.bashrc```:
 
@@ -55,12 +52,14 @@ Use the following configuration script (adapt to your needs):
 ```sh
 ./configure \
     --prefix=$ISSM_DIR \
+    --with-fortran-lib="-L/usr/lib/gcc/x86_64-linux-gnu/15 -lgfortran" \
     --with-matlab-dir="/thayerfs/apps/matlabR2026a/" \
     --with-triangle-dir="$ISSM_DIR/externalpackages/triangle/install" \
-    --with-metis-dir="$ISSM_DIR/externalpackages/petsc/install" \
-    --with-petsc-dir="$ISSM_DIR/externalpackages/petsc/install" \
     --with-mpi-include="/usr/lib/x86_64-linux-gnu/openmpi/include" \
-    --with-mpi-libflags="-L/usr/lib/x86_64-linux-gnu/openmpi/lib -lmpi" \
+    --with-mpi-libflags="-L/usr/lib/x86_64-linux-gnu/openmpi/lib -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -lmpi" \
+    --with-petsc-dir="$ISSM_DIR/externalpackages/petsc/install" \
+    --with-metis-dir="$ISSM_DIR/externalpackages/petsc/install" \
+    --with-parmetis-dir="$ISSM_DIR/externalpackages/petsc/install/" \
     --with-blas-lapack-dir="$ISSM_DIR/externalpackages/petsc/install" \
     --with-scalapack-dir="$ISSM_DIR/externalpackages/petsc/install/" \
     --with-mumps-dir="$ISSM_DIR/externalpackages/petsc/install/" \
