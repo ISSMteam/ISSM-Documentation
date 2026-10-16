@@ -15,16 +15,15 @@ Note as well that the 'local' machine in the above case may be one that is physi
 ## Configuration and Compiling ISSM
 
 ### Dartmouth
-- <a href="./andes">Dartmouth's Andes</a>
-- <a href="./epica">Dartmouth's Epica</a>
-- <a href="./babylon">Thayer's Babylon</a>
+- [Dartmouth's Andes](./andes)
+- [Dartmouth's Epica](./epica)
+- [Thayer's Babylon](./babylon)
 
 ### NASA Advanced Supercomputing (NAS)
-- <a href="./pleiades">NAS' Pleiades</a>
+- [NAS' Pleiades](./pleiades)
 
 ### Tongji University
-- <a href="./tjhpc">Tongji's HPC</a>
+- [Tongji's HPC](./tjhpc)
 
-Please see the <a href="https://issm.ess.uci.edu/trac/issm/wiki"
-target="_blank">ISSM Development Wiki</a> for notes on configuring and
+Please see the [ISSM Development Wiki](https://issm.ess.uci.edu/trac/issm/wiki){:target="_blank"} for notes on configuring and
 compiling on various HPC systems that have not been migrated yet.

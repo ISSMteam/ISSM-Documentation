@@ -15,9 +15,7 @@ parent: HPC
 
 
 ## Getting an account
-Go to <a href="https://dashboard.dartmouth.edu/research/hpc_account" target="_blank">
-  the Dartmouth Research Computing Accounts page.
-</a>
+Go to [the Dartmouth Research Computing Accounts page.](https://dashboard.dartmouth.edu/research/hpc_account){:target="_blank"}
 
 You will need a Dartmouth NetID. If applicable, make sure you are added to the ICE DartFS Lab share and the ice Slurm account. Ask to make the ice Slurm account your default.
 
@@ -166,9 +164,7 @@ The file system on Andes is called DartFS (or DartFS-hpc). Your home directory o
 /dartfs/rc/lab/I/ICE/yourpath/
 ```
 
-You can read more <a href="https://services.dartmouth.edu/TDClient/1806/Portal/KB/ArticleDet?ID=64619" target="_blank">
-  here
-</a>.
+You can read more [here](https://services.dartmouth.edu/TDClient/1806/Portal/KB/ArticleDet?ID=64619){:target="_blank"}.
 
 
 ## Running jobs on Andes
@@ -179,9 +175,7 @@ On Andes, you can use up to 64 cores per node. The more nodes, memory, and time 
 
 to have a job of 8 cores on one node.
 
-See cluster details <a href="https://services.dartmouth.edu/TDClient/1806/Portal/KB/ArticleDet?ID=134058" target="_blank">
-  here
-</a>.
+See cluster details [here](https://services.dartmouth.edu/TDClient/1806/Portal/KB/ArticleDet?ID=134058){:target="_blank"}.
 
 Each node has its own time limit for jobs that are being run from the queue, but they tend to be 10 or 30 days. You can find the time limit of each node by entering on Andes:
 
@@ -189,9 +183,7 @@ Each node has its own time limit for jobs that are being run from the queue, but
 sinfo
 ```
 
-If you are running something interactively on Andes, there may be a credential limit for the DartFS system of 10 hours. Read more <a href="https://services.dartmouth.edu/TDClient/1806/Portal/KB/ArticleDet?ID=76691" target="_blank">
-  here
-</a>.
+If you are running something interactively on Andes, there may be a credential limit for the DartFS system of 10 hours. Read more [here](https://services.dartmouth.edu/TDClient/1806/Portal/KB/ArticleDet?ID=76691){:target="_blank"}.
 
 
 Now, if you want to check the status of your job and the node you are using, type the following in your Andes session:
@@ -251,10 +243,10 @@ This may give you access to some idle nodes, but note that your job can be stopp
 ## slurm
 
 A comparison of PBS and Slurm commands can be found
-<a href="http://slurm.schedmd.com/rosetta.pdf" target="_blank">here</a>.
+[here](http://slurm.schedmd.com/rosetta.pdf){:target="_blank"}.
 
 An overview of Slurm is found
-<a href="https://services.dartmouth.edu/TDClient/1806/Portal/KB/ArticleDet?ID=132625" target="_blank">here</a>.
+[here](https://services.dartmouth.edu/TDClient/1806/Portal/KB/ArticleDet?ID=132625){:target="_blank"}.
 
 
 Useful commands:

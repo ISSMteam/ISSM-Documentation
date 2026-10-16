@@ -10,7 +10,7 @@ machine_name: "Babylon"
 ----
 
 ## Getting an account
-TBD (anyone with a Dartmouth NetID has an account?)
+Anyone with a Dartmouth NetID has an account. See [Thayer documentation](https://kb.thayer.dartmouth.edu/article/361-linux-services).
 
 Babylon's home directory is on a very small drive. Make sure to install ISSM in `/jumbo/ice/ISSM/` (Ask Colin to give you permission)`:
 

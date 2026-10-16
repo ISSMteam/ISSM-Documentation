@@ -6,7 +6,7 @@ parent: HPC
 
 # Pleiades (NASA NAS HECC)
 {: .no_toc }
-For comprehensive information on access to and use of NASA NAS High-End Computing Capability (HECC), please refer to <a href="https://www.nas.nasa.gov/hecc/support/kb" target="_blank">their knowledge base</a>.
+For comprehensive information on access to and use of NASA NAS High-End Computing Capability (HECC), please refer to [their knowledge base](https://www.nas.nasa.gov/hecc/support/kb){:target="_blank"}.
 
 ## Table of Contents
 {: .no_toc }
@@ -18,12 +18,12 @@ For comprehensive information on access to and use of NASA NAS High-End Computin
 New users will have to ask a NASA- or JPL-employed PI to request an account for them on NASA NAS HECC. They will need the group ID of the PI in order to submit this request.
 
 First, the PI should use the following procedure,
-- navigate to the <a href="https://www.nas.nasa.gov/hecc/portal/accounts" target="_blank">NASA NAS HECC 'Account Request System' page</a>
+- navigate to the [NASA NAS HECC 'Account Request System' page](https://www.nas.nasa.gov/hecc/portal/accounts){:target="_blank"}
 - select option '3. I want to request a NASA identity for one of my new users'
 - provide the requested information
 
 Then, the user needs to request an account with the following procedure,
-- navigate to the <a href="https://www.nas.nasa.gov/hecc/portal/accounts" target="_blank">NASA NAS HECC 'Account Request System' page</a>
+- navigate to the [NASA NAS HECC 'Account Request System' page](https://www.nas.nasa.gov/hecc/portal/accounts){:target="_blank"}
 - select option '2. I want to request and account for myself'
 - provide the group ID for the PI that initiated the request
 - the PI will then receive an email to approve the request
@@ -32,16 +32,16 @@ Then, the user needs to request an account with the following procedure,
 
 ### Current Points of Contact
 {: .no_toc }
-- Dartmouth security officer: <a href="mailto:Sean.R.McNamara@dartmouth.edu">Sean McNamara</a> (<a href="https://itc.dartmouth.edu/about/who-we-are/itc-leadership" target="_blank">Dartmouth ITC</a>)
-- JPL IT security officer: <a href="mailto:Tomas.J.Soderstrom@jpl.nasa.gov">Tomas Soderstrom</a>
-- UCI OIT security officer: <a href="mailto:jdrummon@uci.edu">Josh Drummond</a>
+- Dartmouth security officer: [Sean McNamara](mailto:Sean.R.McNamara@dartmouth.edu) ([Dartmouth ITC](https://itc.dartmouth.edu/about/who-we-are/itc-leadership){:target="_blank"})
+- JPL IT security officer: [Tomas Soderstrom](mailto:Tomas.J.Soderstrom@jpl.nasa.gov)
+- UCI OIT security officer: [Josh Drummond](mailto:jdrummon@uci.edu)
 
 ## Logging In
 Please refer to the following documentation pages to log into NAS systems and make subsequent logins more seamless,
-- <a href="https://www.nas.nasa.gov/hecc/support/kb/logging-into-nas-systems-for-the-first-time_539.html" target="_blank">Logging Into NAS Systems for the First Time</a>
-- <a href="https://www.nas.nasa.gov/hecc/support/kb/setting-up-public-key-authentication_230.html" target="_blank">Setting Up Public Key Authentication</a>
-- <a href="https://www.nas.nasa.gov/hecc/support/kb/setting-up-ssh-passthrough_232.html" target="_blank">Setting Up SSH Passthrough</a>
-- <a href="https://www.nas.nasa.gov/hecc/support/kb/one-step-connection-using-public-key-and-passthrough_62.html" target="_blank">One-Step Connection Using Public Key and Passthrough</a>
+- [Logging Into NAS Systems for the First Time](https://www.nas.nasa.gov/hecc/support/kb/logging-into-nas-systems-for-the-first-time_539.html){:target="_blank"}
+- [Setting Up Public Key Authentication](https://www.nas.nasa.gov/hecc/support/kb/setting-up-public-key-authentication_230.html){:target="_blank"}
+- [Setting Up SSH Passthrough](https://www.nas.nasa.gov/hecc/support/kb/setting-up-ssh-passthrough_232.html){:target="_blank"}
+- [One-Step Connection Using Public Key and Passthrough](https://www.nas.nasa.gov/hecc/support/kb/one-step-connection-using-public-key-and-passthrough_62.html){:target="_blank"}
 
 ## Checking Out a Copy of the ISSM Code Repository
 Users should clone the ISSM code repository to their `/nobackup/` directory where they can save a lot more files than in their home directory.
@@ -81,7 +81,7 @@ replacing `<ISSM_DIR>` with the path to the local copy of the ISSM code reposito
 {: .highlight-title }
 > Important
 >
-> ISSM and external packages should not be compiled on the Pleiades front end. Please refer to the NAS HECC knowledge base article <a href="https://www.nas.nasa.gov/hecc/support/kb/reserving-a-dedicated-compute-node_556.html" target="_blank">'Reserving a Dedicated Compute Node'</a> for instructions on reserving and logging into a compute node for the purpose of compiling. Alternatively you can request an interactive node:
+> ISSM and external packages should not be compiled on the Pleiades front end. Please refer to the NAS HECC knowledge base article ['Reserving a Dedicated Compute Node'](https://www.nas.nasa.gov/hecc/support/kb/reserving-a-dedicated-compute-node_556.html){:target="_blank"} for instructions on reserving and logging into a compute node for the purpose of compiling. Alternatively you can request an interactive node:
 > ```qsub -I -q devel -l select=1:ncpus=20:model=cas_ait -l walltime=0:20:00 -W group_list=s2013```
 
 {: .warning-title }
@@ -314,7 +314,7 @@ md.cluster.time=10;
 ```
 will request a maximum job time of 10 minutes and one Broadwell node. If the run lasts more than 10 minutes, it will be killed and you will not be able to retrieve your results.
 
-For more information on the available processor types, please refer to the NAS HECC knowledge base article <a href="https://www.nas.nasa.gov/hecc/support/kb/pleiades-configuration-details_77.html" target="_blank">'Pleiades Configuration Details'</a>.
+For more information on the available processor types, please refer to the NAS HECC knowledge base article ['Pleiades Configuration Details'](https://www.nas.nasa.gov/hecc/support/kb/pleiades-configuration-details_77.html){:target="_blank"}.
 
 If you want to check the status of your job and the queue that you are using, run,
 ```

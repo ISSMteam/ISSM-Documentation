@@ -39,11 +39,11 @@ Do not share the PETSc installation or compiled ISSM binaries between the AMD an
 
 ## Getting an account
 
-See the <a href="https://dev.tongji.edu.cn/hpc-doc/#/README" target="_blank">Tongji University Scientific Computing Platform documentation</a> for account application and access information.
+See the [Tongji University Scientific Computing Platform documentation](https://dev.tongji.edu.cn/hpc-doc/#/README){:target="_blank"} for account application and access information.
 
 ## SSH configuration
 
-Follow Tongji's <a href="https://dev.tongji.edu.cn/hpc-doc/#/pages/platformDes/account" target="_blank">account and SSH instructions</a>. Password-less SSH is recommended for remote job submission from ISSM.
+Follow Tongji's [account and SSH instructions](https://dev.tongji.edu.cn/hpc-doc/#/pages/platformDes/account){:target="_blank"}. Password-less SSH is recommended for remote job submission from ISSM.
 
 You may also define an SSH alias in `~/.ssh/config` on your local workstation:
 
@@ -149,16 +149,16 @@ The following upstream locations can be used to obtain the required packages. Wh
 
 Expected filename: `mpich-4.3.0.tar.gz`
 
-- <a href="https://github.com/pmodels/mpich/releases/download/v4.3.0/mpich-4.3.0.tar.gz" target="_blank">GitHub release</a>
-- <a href="https://www.mpich.org/static/downloads/4.3.0/mpich-4.3.0.tar.gz" target="_blank">MPICH download server</a>
-- <a href="https://web.cels.anl.gov/projects/petsc/download/externalpackages/mpich-4.3.0.tar.gz" target="_blank">PETSc external-package mirror</a>
+- [GitHub release](https://github.com/pmodels/mpich/releases/download/v4.3.0/mpich-4.3.0.tar.gz){:target="_blank"}
+- [MPICH download server](https://www.mpich.org/static/downloads/4.3.0/mpich-4.3.0.tar.gz){:target="_blank"}
+- [PETSc external-package mirror](https://web.cels.anl.gov/projects/petsc/download/externalpackages/mpich-4.3.0.tar.gz){:target="_blank"}
 
 #### fblaslapack
 
 Expected filename: `petsc-pkg-fblaslapack-e8a03f57d64c.tar.gz`
 
 - Repository: `git clone https://bitbucket.org/petsc/pkg-fblaslapack`
-- <a href="https://bitbucket.org/petsc/pkg-fblaslapack/get/v3.4.2-p3.tar.gz" target="_blank">Bitbucket release archive</a>
+- [Bitbucket release archive](https://bitbucket.org/petsc/pkg-fblaslapack/get/v3.4.2-p3.tar.gz){:target="_blank"}
 
 For example:
 
@@ -172,16 +172,16 @@ curl -L \
 
 Expected filename: `zlib-1.3.1.tar.gz`
 
-- <a href="http://www.zlib.net/zlib-1.3.1.tar.gz" target="_blank">zlib download server</a>
-- <a href="https://github.com/madler/zlib/releases/download/v1.3.1/zlib-1.3.1.tar.gz" target="_blank">GitHub release</a>
-- <a href="https://web.cels.anl.gov/projects/petsc/download/externalpackages/zlib-1.3.1.tar.gz" target="_blank">PETSc external-package mirror</a>
+- [zlib download server](http://www.zlib.net/zlib-1.3.1.tar.gz){:target="_blank"}
+- [GitHub release](https://github.com/madler/zlib/releases/download/v1.3.1/zlib-1.3.1.tar.gz){:target="_blank"}
+- [PETSc external-package mirror](https://web.cels.anl.gov/projects/petsc/download/externalpackages/zlib-1.3.1.tar.gz){:target="_blank"}
 
 #### METIS
 
 Expected filename: `petsc-pkg-metis-69fb26dd0428.tar.gz`
 
 - Repository: `git clone https://bitbucket.org/petsc/pkg-metis.git`
-- <a href="https://bitbucket.org/petsc/pkg-metis/get/v5.1.0-p12.tar.gz" target="_blank">Bitbucket release archive</a>
+- [Bitbucket release archive](https://bitbucket.org/petsc/pkg-metis/get/v5.1.0-p12.tar.gz){:target="_blank"}
 
 For example:
 
@@ -196,7 +196,7 @@ curl -L \
 Expected filename: `petsc-pkg-parmetis-f5e3aab04fd5.tar.gz`
 
 - Repository: `git clone https://bitbucket.org/petsc/pkg-parmetis.git`
-- <a href="https://bitbucket.org/petsc/pkg-parmetis/get/v4.0.3-p9.tar.gz" target="_blank">Bitbucket release archive</a>
+- [Bitbucket release archive](https://bitbucket.org/petsc/pkg-parmetis/get/v4.0.3-p9.tar.gz){:target="_blank"}
 
 For example:
 
@@ -210,15 +210,15 @@ curl -L \
 
 Expected filename: `MUMPS_5.7.3.tar.gz`
 
-- <a href="https://mumps-solver.org/MUMPS_5.7.3.tar.gz" target="_blank">MUMPS project server</a>
-- <a href="https://web.cels.anl.gov/projects/petsc/download/externalpackages/MUMPS_5.7.3.tar.gz" target="_blank">PETSc external-package mirror</a>
+- [MUMPS project server](https://mumps-solver.org/MUMPS_5.7.3.tar.gz){:target="_blank"}
+- [PETSc external-package mirror](https://web.cels.anl.gov/projects/petsc/download/externalpackages/MUMPS_5.7.3.tar.gz){:target="_blank"}
 
 #### ScaLAPACK
 
 Expected filename: `scalapack-0e8767285b7a201c7b1ff34d2c2bb009534145df.tar.gz`
 
 - Repository: `git clone https://github.com/Reference-ScaLAPACK/scalapack`
-- <a href="https://github.com/Reference-ScaLAPACK/scalapack/archive/0e8767285b7a201c7b1ff34d2c2bb009534145df.tar.gz" target="_blank">GitHub commit archive</a>
+- [GitHub commit archive](https://github.com/Reference-ScaLAPACK/scalapack/archive/0e8767285b7a201c7b1ff34d2c2bb009534145df.tar.gz){:target="_blank"}
 
 ### Downloading directly into the PETSc downloads directory
 
@@ -436,7 +436,7 @@ Set `cluster.codepath` and `cluster.executionpath` to the AMD installation unles
 
 ## Storage
 
-Your home directory has approximately 1.5 TB of storage. The higher-performance location `/ssdfs/datahome/USERNAME` has approximately 500 GB. Consult Tongji's <a href="https://dev.tongji.edu.cn/hpc-doc/#/pages/platformDes/dataTransfer" target="_blank">data transfer and storage documentation</a> before selecting the execution directory.
+Your home directory has approximately 1.5 TB of storage. The higher-performance location `/ssdfs/datahome/USERNAME` has approximately 500 GB. Consult Tongji's [data transfer and storage documentation](https://dev.tongji.edu.cn/hpc-doc/#/pages/platformDes/dataTransfer){:target="_blank"} before selecting the execution directory.
 
 For example:
 
@@ -454,7 +454,7 @@ md.cluster = tjhpc('numnodes', 1, 'cpuspernode', 8);
 
 Use the AMD partition or AMD resource type in the Tongji job configuration unless an Intel run is specifically required. Request only the resources needed by the model, because larger node counts, longer wall times, and larger memory requests may increase queueing time.
 
-See Tongji's documentation for <a href="https://dev.tongji.edu.cn/hpc-doc/#/pages/quickStart/resourceConfig" target="_blank">resource configuration</a> and <a href="https://dev.tongji.edu.cn/hpc-doc/#/pages/quickStart/jobSubmit" target="_blank">job submission</a>.
+See Tongji's documentation for [resource configuration](https://dev.tongji.edu.cn/hpc-doc/#/pages/quickStart/resourceConfig){:target="_blank"} and [job submission](https://dev.tongji.edu.cn/hpc-doc/#/pages/quickStart/jobSubmit){:target="_blank"}.
 
 ## Monitoring and cancelling jobs
 
@@ -495,4 +495,4 @@ md = loadresultsfromcluster(md, 'LAUNCHSTRING', 'JOBNAME');
 
 ## Slurm
 
-A comparison of PBS and Slurm commands is available in the <a href="https://slurm.schedmd.com/rosetta.pdf" target="_blank">Slurm Rosetta stone</a>. An overview of Slurm on Tongji HPC is available <a href="https://dev.tongji.edu.cn/hpc-doc/#/pages/quickStart/concept" target="_blank">here</a>.
+A comparison of PBS and Slurm commands is available in the [Slurm Rosetta stone](https://slurm.schedmd.com/rosetta.pdf){:target="_blank"}. An overview of Slurm on Tongji HPC is available [here](https://dev.tongji.edu.cn/hpc-doc/#/pages/quickStart/concept){:target="_blank"}.
