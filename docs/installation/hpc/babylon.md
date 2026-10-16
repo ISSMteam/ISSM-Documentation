@@ -7,11 +7,6 @@ machine_name: "Babylon"
 
 # Babylon (hosted by Thayer)
 {: .no_toc }
-
-## Table of Contents
-{: .no_toc }
-1. TOC
-{:toc}
 ----
 
 ## Getting an account
@@ -29,6 +24,10 @@ and replace YOURUSERNAME by your username. This is where you should checkout ISS
 On Babylon, add the following lines to ```~/.bashrc```:
 
 ```sh
+#Unload paraview to avoid mpi conflicts
+module unload paraview/6.1.0
+
+#ISSM
 export ISSM_DIR=PATHTODIR
 source $ISSM_DIR/etc/environment.sh
 
