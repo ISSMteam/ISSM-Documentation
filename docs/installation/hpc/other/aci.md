@@ -26,7 +26,7 @@ Host aci aci-b.aci.ics.psu.edu
     User <USERNAME>
     HostbasedAuthentication no
 ```
-and replacing `<USERNAME>` with your {{ page.machine_name }} username. Once this is done, you can SSH to {{ page.machine_name }} with,
+replacing `<USERNAME>` with your {{ page.machine_name }} username. Once this is done, you can SSH to {{ page.machine_name }} with,
 ```sh
 ssh aci
 ```
