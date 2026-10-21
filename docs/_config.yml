@@ -33,6 +33,7 @@ gh_edit_view_mode: "edit"
 #LaTeX Math support
 #math: mathjax3
 
+# Callout default content and styling
 callouts:
   note:
     title: Note
@@ -42,3 +43,6 @@ callouts:
     color: red
   highlight:
     color: yellow
+
+# Custom variables
+matlab_ver: "R2026b"

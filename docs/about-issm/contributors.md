@@ -11,27 +11,27 @@ nav_exclude: true #hide for now because it is not up to date
 ## Science PIs
 <ul class="contributors">
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Eric_Larour.png" />
+		<img src="/assets/img/contributors/Eric_Larour.png" />
 		<span>Eric Larour (JPL)</span>
 	</li>
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Mathieu_Morlighem.png" />
+		<img src="/assets/img/contributors/Mathieu_Morlighem.png" />
 		<span>Mathieu Morlighem (Dartmouth College)</span>
 	</li>
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Helene_Seroussi.png" />
+		<img src="/assets/img/contributors/Helene_Seroussi.png" />
 		<span>Helene Seroussi (Dartmouth College)</span>
 	</li>
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Nicole_Schlegel.jpg" />
+		<img src="/assets/img/contributors/Nicole_Schlegel.jpg" />
 		<span>Nicole Schlegel (NOAA)</span>
 	</li>
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Surendra_Adhikari.png" />
+		<img src="/assets/img/contributors/Surendra_Adhikari.png" />
 		<span>Surendra Adhikari (JPL)</span>
 	</li>
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Lambert_Caron.png" />
+		<img src="/assets/img/contributors/Lambert_Caron.png" />
 		<span>Lambert Caron (JPL)</span>
 	</li>
 </ul>
@@ -39,55 +39,55 @@ nav_exclude: true #hide for now because it is not up to date
 ## Active Developers
 <ul class="contributors">
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Surendra_Adhikari.png" />
+		<img src="/assets/img/contributors/Surendra_Adhikari.png" />
 		<span>Surendra Adhikari (JPL)</span>
 	</li>
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Lambert_Caron.png" />
+		<img src="/assets/img/contributors/Lambert_Caron.png" />
 		<span>Lambert Caron (JPL)</span>
 	</li>
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Daniel_Cheng.jpg" />
+		<img src="/assets/img/contributors/Daniel_Cheng.jpg" />
 		<span>Daniel Cheng (JPL)</span>
 	</li>
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Youngmin_Choi.jpeg" />
+		<img src="/assets/img/contributors/Youngmin_Choi.jpeg" />
 		<span>Youngmin Choi (UMD)</span>
 	</li>
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Josh_Cuzzone.png" />
+		<img src="/assets/img/contributors/Josh_Cuzzone.png" />
 		<span>Josh Cuzzone (UCLA Jifresse)</span>
 	</li>
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Eric_Larour.png" />
+		<img src="/assets/img/contributors/Eric_Larour.png" />
 		<span>Eric Larour (JPL)</span>
 	</li>
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Felicity_McCormack.png" />
+		<img src="/assets/img/contributors/Felicity_McCormack.png" />
 		<span>Felicity McCormack (University of Melbourne)</span>
 	</li>
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Mathieu_Morlighem.png" />
+		<img src="/assets/img/contributors/Mathieu_Morlighem.png" />
 		<span>Mathieu Morlighem (Dartmouth College)</span>
 	</li>
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Mattia_Poinelli.jpg" />
+		<img src="/assets/img/contributors/Mattia_Poinelli.jpg" />
 		<span>Mattia Poinelli (UCI)</span>
 	</li>
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Justin_Quinn.png" />
+		<img src="/assets/img/contributors/Justin_Quinn.png" />
 		<span>Justin Quinn (Tidbit Software)</span>
 	</li>
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Martin_Rueckamp.png" />
+		<img src="/assets/img/contributors/Martin_Rueckamp.png" />
 		<span>Martin Rückamp (BAdW)</span>
 	</li>
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Nicole_Schlegel.jpg" />
+		<img src="/assets/img/contributors/Nicole_Schlegel.jpg" />
 		<span>Nicole Schlegel (NOAA)</span>
 	</li>
 	<li>
-		<img src="/ISSM-Documentation/assets/img/contributors/Helene_Seroussi.png" />
+		<img src="/assets/img/contributors/Helene_Seroussi.png" />
 		<span>Helene Seroussi (Dartmouth College)</span>
 	</li>
 </ul>

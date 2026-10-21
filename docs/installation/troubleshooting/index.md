@@ -2,7 +2,7 @@
 title: Troubleshooting
 layout: default
 parent: Installation
-nav_order: 5
+nav_order: 7
 has_toc: false
 ---
 

@@ -104,7 +104,6 @@ pip install matplotlib netcdf4 nose numpy pyshp scipy setuptools wheel
 
 Alternatively, copy and paste the following to achieve all of the above,
 ```sh
-sudo apt install python3-dev python3-minimal python3-pip python3-venv
 mkdir ${HOME}/.venv
 python3 -m venv ${HOME}/.venv/ISSM
 source ${HOME}/.venv/ISSM/bin/activate
@@ -114,10 +113,10 @@ pip install matplotlib netcdf4 nose numpy pyshp scipy setuptools wheel
 ## External Packages
 The following packages and installation scripts are recommended for a basic installation of ISSM on macOS,
 ````
-autotools		install-mac.sh
-cmake			install.sh
-petsc			install-3.22-mac.sh
-triangle		install-mac.sh
+autotools    install-mac.sh
+cmake        install.sh
+petsc        install-3.25-mac.sh
+triangle     install-mac.sh
 ````
 
 {: .highlight-title }
@@ -153,36 +152,36 @@ The following examples can be used for an installation of ISSM with basic capabi
 ### MATLAB Interface
 ````
 ./configure \
-	--prefix=${ISSM_DIR} \
-	--with-matlab-dir="<MATLAB_PATH>" \
-	--with-fortran-lib="-L<LIBGFORTRAN_PATH> -lgfortran" \
-	--with-mpi-include="${ISSM_DIR}/externalpackages/petsc/install/include" \
-	--with-mpi-libflags="-L${ISSM_DIR}/externalpackages/petsc/install/lib -lmpi -lmpicxx -lmpifort" \
-	--with-metis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-	--with-parmetis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-	--with-blas-lapack-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-	--with-scalapack-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-	--with-mumps-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-	--with-petsc-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-	--with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install" 
+    --prefix=${ISSM_DIR} \
+    --with-matlab-dir="<MATLAB_PATH>" \
+    --with-fortran-lib="-L<LIBGFORTRAN_PATH> -lgfortran" \
+    --with-mpi-include="${ISSM_DIR}/externalpackages/petsc/install/include" \
+    --with-mpi-libflags="-L${ISSM_DIR}/externalpackages/petsc/install/lib -lmpi -lmpicxx -lmpifort" \
+    --with-metis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
+    --with-parmetis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
+    --with-blas-lapack-dir="${ISSM_DIR}/externalpackages/petsc/install" \
+    --with-scalapack-dir="${ISSM_DIR}/externalpackages/petsc/install" \
+    --with-mumps-dir="${ISSM_DIR}/externalpackages/petsc/install" \
+    --with-petsc-dir="${ISSM_DIR}/externalpackages/petsc/install" \
+    --with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install" 
 ````
 where `<MATLAB_PATH>` is the path to the MATLAB installation that you wish to use (e.g. `/Applications/MATLAB_R2024a.app`).
 
 ### Python Interface
 ````
 ./configure \
-	--prefix="${ISSM_DIR}" \
-	--with-python="${HOME}/.venv/issm/bin/python" \
-	--with-fortran-lib="-L<LIBGFORTRAN_PATH> -lgfortran" \
-	--with-mpi-include="${ISSM_DIR}/externalpackages/petsc/install/include" \
-	--with-mpi-libflags="-L${ISSM_DIR}/externalpackages/petsc/install/lib -lmpi -lmpicxx -lmpifort" \
-	--with-metis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-	--with-parmetis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-	--with-blas-lapack-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-	--with-scalapack-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-	--with-mumps-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-	--with-petsc-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-	--with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install"
+    --prefix="${ISSM_DIR}" \
+    --with-python="${HOME}/.venv/issm/bin/python" \
+    --with-fortran-lib="-L<LIBGFORTRAN_PATH> -lgfortran" \
+    --with-mpi-include="${ISSM_DIR}/externalpackages/petsc/install/include" \
+    --with-mpi-libflags="-L${ISSM_DIR}/externalpackages/petsc/install/lib -lmpi -lmpicxx -lmpifort" \
+    --with-metis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
+    --with-parmetis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
+    --with-blas-lapack-dir="${ISSM_DIR}/externalpackages/petsc/install" \
+    --with-scalapack-dir="${ISSM_DIR}/externalpackages/petsc/install" \
+    --with-mumps-dir="${ISSM_DIR}/externalpackages/petsc/install" \
+    --with-petsc-dir="${ISSM_DIR}/externalpackages/petsc/install" \
+    --with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install"
 ````
 
 Again, you might need to make adjustments to the above configurations based on your system and needs. We have a number of resources to help here:
