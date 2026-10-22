@@ -1,3 +1,9 @@
+---
+title: Submitting multiple jobs (parameter studies)
+layout: default
+parent: Wiki
+---
+
 To perform parameter space studies, we need to submit multiple jobs with a parameter that changes value. Here is how you can do that for basal friction changing from 50 to 100 by increments of 1 (as an example).
 
 We are going to use a variable in the MATLAB workspace called `friction` that will be changing within a loop. In your `runme.m` script, prepare your step with a dynamic step name:

@@ -1,11 +1,17 @@
+---
+title: Resources
+layout: default
+parent: Wiki
+---
+
 # ICESat-2 
- - [https://openaltimetry.org Openaltimetry] helps visualize ICESat-2 data
- - [https://demo.slideruleearth.io/ SlideRule] demo helps visualize ICESat-2 data, while [https://github.com/ICESat2-SlideRule/sliderule SlideRule] tools help download and process ICESat-2 data 
- - ICESat-2 hackweek [https://icesat-2-2023.hackweek.io/tutorials/index.html resources] and [https://github.com/ICESAT-2HackWeek/ICESat2_hackweek_tutorials github] with tutorials and notebooks
+ - [Openaltimetry](https://openaltimetry.org) helps visualize ICESat-2 data
+ - [SlideRule](https://demo.slideruleearth.io/) demo helps visualize ICESat-2 data, while [SlideRule](https://github.com/ICESat2-SlideRule/sliderule) tools help download and process ICESat-2 data 
+ - ICESat-2 hackweek [resources](https://icesat-2-2023.hackweek.io/tutorials/index.html) and [github](https://github.com/ICESAT-2HackWeek/ICESat2_hackweek_tutorials) with tutorials and notebooks
 
 # Computing
- - [https://hub.cryointhecloud.com/hub/login CryoCloud] cloud-based computing
- - [https://git.dartmouth.edu/research-itc-public/intro-containerization/ Docker/Containers] tutorial and resources
+ - [CryoCloud](https://hub.cryointhecloud.com/hub/login) cloud-based computing
+ - [Docker/Containers](https://git.dartmouth.edu/research-itc-public/intro-containerization/) tutorial and resources
 
 # Development for ISSM Video Series
 Dr. Eric Larour and members of the ISSM development team have put together a series of videos to introduce viewers to development for ISSM.
