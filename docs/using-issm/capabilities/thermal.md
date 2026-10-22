@@ -43,7 +43,7 @@ where:
 - $$s$$ is the elevation of the ice upper surface
 - $$b$$ is the elevation of the floating ice lower surface
 
-When using the enthalpy formulation, the basal boundary condition scheme from [<a href="#references">*Aschwanden2012*</a>], figure 5 is used instead of the previous equation.
+When using the enthalpy formulation, the basal boundary condition scheme from [[*Aschwanden2012*](#references)], figure 5 is used instead of the previous equation.
 
 NOTE: For regional model, make sure to set a Dirichlet condition on the inflow boundary (throughout the ice column) to avoid advection of noise.
 
@@ -71,7 +71,7 @@ where $$\mathfrak{D}$$ is the artificial diffusivity. We take:
 $$
 \mathfrak{D} = \frac{h}{2}\left(\begin{array}{ccc}\left|vx\right| & 0 & 0\\\\0 & \left|vy\right| & 0 \\\\0 & 0 & \left|vz\right|\end{array}\right)
 $$
-or rely on the Streamline upwind/Petrov-Galerkin formulation (SUPG) from [<a href="#references">*Franca2006*</a>].
+or rely on the Streamline upwind/Petrov-Galerkin formulation (SUPG) from [[*Franca2006*](#references)].
 
 ## Model parameters
 The parameters relevant to the heat equation solution can be displayed by running:
@@ -109,7 +109,7 @@ To run a simulation solving only the thermal state, use the following command:
 >> md = solve(md, 'Thermal');
 ````
 This will compute **one time step only** of the thermal equation; use the 
- <a href="transient">transient solution</a>
+ [transient solution](transient)
 for multiple time steps.
 
 To run a thermal steady-state simulation (i.e., $$\partial T/\partial t = 0$$), you need to first set the time stepping as 0:

@@ -26,7 +26,7 @@ $$
 
 And so we would optimize our unknown model input to minimize the cost function $${\mathcal J}$$.
 
-Inversions were first introduced to glaciology by [<a href="#references">*MacAyeal1993a*</a>] for an SSA model, and extended since to 3D models for other model parameters.
+Inversions were first introduced to glaciology by [[*MacAyeal1993a*](#references)] for an SSA model, and extended since to 3D models for other model parameters.
 
 To illustrate this method, we are going to perform a twin experiment. We give ourselves a rigidity field (B) and use the modeled velocities as synthetic observation in a second run, where we start from another initial rigidity field, and see if we can recover the rigidity field that was used to generate the observations.
 ## Hands on 1 (ice rigidity, B)
@@ -70,7 +70,7 @@ We would like to do the same twin experiment here, but invert for basal friction
 
 1. The mask is now all grounded
 1. Increase bed (`md.geometry.base`) and surface elevation (`md.geometry.surface`) by 100 meters
-1. $$B$$ (`md.materials.rheology_B`) is now uniform = 1.8x10<a href="#footnotes" target="_top"><sup>8</sup></a>
+1. $$B$$ (`md.materials.rheology_B`) is now uniform = 1.8x10[<sup>8</sup>](#footnotes){:target="_top"}
 1. Friction coefficient: 50, and 10 for 400,000`<`x`<`600,000
 1. Change the `plotmodel` command and plot `md.friction.coefficient` instead, between 0 and 100.
 After running step 1 again, you should get the following figure.
@@ -338,7 +338,7 @@ $$
 $$
 
 The 
-<a href="../using-issm/advanced/inversions">'Advanced Features' &#8594; 'Inversions' page</a>
+['Advanced Features' &#8594; 'Inversions' page](../using-issm/advanced/inversions)
 lists all the cost functions available. We want here the cost function to include the absolute and relative misfits. Typing in MATLAB `md.inversion` will give you the numbers associated with these cost functions: `[101, 103]`. We also need to determine the weights associated with each cost function: $$w_1$$ and $$w_2$$. As a rule of thumb, it is generally preferable if the two components have the same order of magnitude at the end of the optimization. You can try with $$w_1=w_2=1$$ and run the inversion, look at their contribution at the end of the inversion and increase (or decrease) $$w_1$$. You need to change the following in step 3:
 
 1. We now want the cost functions 101 and 103

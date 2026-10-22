@@ -16,12 +16,12 @@ Go to `<ISSM_DIR>/examples/UncertaintyQuantification/` to do this tutorial.
 
 ## Introduction
 This experiment will use the model of Pine Island Glacier that was saved in the previous 
- <a href="pig">Pine Island Glacier modeling tutorial</a>.
+ [Pine Island Glacier modeling tutorial](pig).
 It aims to use the ISSM-Dakota integrated model system to (1) quantify the uncertainties of model output in response to errors in model input and (2) quantify sensitivities of model output to spatial perturbations in model input.
 
 - Our model inputs: ice thickness, ice rigidity, and basal friction.
 - Our model outputs: mass flux at 13 flux gates across PIG.
-Our Uncertainty Quantification (UQ) methods are based on the Design Analysis Kit for Optimization and Terascale Applications (Dakota) software [<a href="#references">*Eldred2008*</a>], which is embedded in ISSM. The following diagram illustrates the relationship between ISSM and Dakota. The ISSM mesh must be partitioned (i.e. vertices can be grouped together so that Dakota varies them together - this is helpful when you want to vary equal areas over the unstructured mesh). To partition the mesh, you can do so linearly (one partition per vertex), or you can use an external package software like Chaco to weight vertices and create the partitions you desire. Dakota is responsible for varying the provided inputs in the user-defined way (uniform, normal, etc.) for each mesh partition and then launching an ISSM run with the perturbed forcing. Dakota is also responsible for creating statistics for output, which are also user defined. Output diagnostics include ice mass flux through defined gates and scalar output (e.g. Ice Volume, Total SMB, etc.).
+Our Uncertainty Quantification (UQ) methods are based on the Design Analysis Kit for Optimization and Terascale Applications (Dakota) software [[*Eldred2008*](#references)], which is embedded in ISSM. The following diagram illustrates the relationship between ISSM and Dakota. The ISSM mesh must be partitioned (i.e. vertices can be grouped together so that Dakota varies them together - this is helpful when you want to vary equal areas over the unstructured mesh). To partition the mesh, you can do so linearly (one partition per vertex), or you can use an external package software like Chaco to weight vertices and create the partitions you desire. Dakota is responsible for varying the provided inputs in the user-defined way (uniform, normal, etc.) for each mesh partition and then launching an ISSM run with the perturbed forcing. Dakota is also responsible for creating statistics for output, which are also user defined. Output diagnostics include ice mass flux through defined gates and scalar output (e.g. Ice Volume, Total SMB, etc.).
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/uncertaintyquantification/ISSMUQDiagram.png" alt="Figure 1: ISSMUQDiagram"></div>
 Tutorial steps to be taken:
@@ -38,12 +38,12 @@ Below is the resulting histogram for mass flux gate 2.
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/uncertaintyquantification/Sampling.png" alt="Figure 2: Sampling"></div>
 Sensitivity Analysis:
 Quantify sensitivities of model output to small spatial perturbations in model input. The figure below illustrates how this is accomplished. One by one, partition input is changed by a small percentage, and a model run is launched. For this specific run, changes in model diagnostics (output) are assessed by Dakota. This is done for each partition, such that the number of model runs is equal to the number of mesh partitions. In the end, every diagnostic is associated with a sensitivity value at every partition. In this way, we can make a map of sensitivities for each diagnostic. Sensitivities can also be ranked, for each diagnostic, in importance. One such example of Dakota output is the 'importance factor', or sensitivities scaled by error margins
-[<a href="#references">*Larour2012a, Larour2012b*</a>], illustrated below as UQ sensitivity analysis output for mass flux
+[[*Larour2012a, Larour2012b*](#references)], illustrated below as UQ sensitivity analysis output for mass flux
 gate 2.
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/uncertaintyquantification/Sensitivity.png" alt="Figure 3: Sensitivity"></div>
 For manuscript examples of these studies, see
-[<a href="#references">*Larour2012a,Larour2012b,Schlegel2013,Schlegel2015*</a>].
+[[*Larour2012a,Larour2012b,Schlegel2013,Schlegel2015*](#references)].
 
 ## Flux Gates
 Flux gates are ARGUS (`*.exp`) files found in `./MassFluxes`. The gates are positioned across PIG at the inset of tributary glaciers.
@@ -120,7 +120,7 @@ We specify the same parallel CPU configuration, and we solve the same way as in 
 
 Run step 5 to launch the sensitivity runs.
 ## Plot Results
-Plot Sampling Results: In order to plot the results, we extract the results for one of the mass flux gates, and display a histogram of the sampling results for that particular gate. ISSM has a plotting function for this, `'plot_hist_norm'`. Note that ISSM mass flux results are in mass flux in m<a href="#footnotes" target="_top"><sup>3</sup></a> water equiv/s. Here we convert to Gt/yr before we plot. Remember that your results may look different because of the randomness that is introduced into the partitions and algorithms; results may be different on different computer systems.
+Plot Sampling Results: In order to plot the results, we extract the results for one of the mass flux gates, and display a histogram of the sampling results for that particular gate. ISSM has a plotting function for this, `'plot_hist_norm'`. Note that ISSM mass flux results are in mass flux in m[<sup>3</sup>](#footnotes){:target="_top"} water equiv/s. Here we convert to Gt/yr before we plot. Remember that your results may look different because of the randomness that is introduced into the partitions and algorithms; results may be different on different computer systems.
 
 - `runme.m` step 6 will plot the relative frequency histogram for mass flux gate 1.
 - See lines 260-273

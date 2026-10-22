@@ -28,7 +28,7 @@ The simplest option prescribes the basal melting rate directly, uniformly or spa
 - `md.basalforcings.geothermalflux`: geothermal heat flux [$$W/m^2$$]
 
 ## Beckmann and Goosse (2003) parameterization (basalforcingsbeckmanngoosse)
-This parameterization, from [<a href="#references">*Beckmann2003*</a>], relates the melt rate under floating ice to the difference between the far-field ocean temperature $$T_{oc}$$ and the local freezing point $$T_f$$ at the depth of the ice-shelf base:
+This parameterization, from [[*Beckmann2003*](#references)], relates the melt rate under floating ice to the difference between the far-field ocean temperature $$T_{oc}$$ and the local freezing point $$T_f$$ at the depth of the ice-shelf base:
 
 $$
 m = e_0 \frac{\rho_w c_{p,w} \gamma_T}{\rho_i L}\left(T_{oc} - T_f\right)
@@ -54,7 +54,7 @@ where $$S$$ is the local ocean salinity and $$z_b$$ is the ice-shelf draft eleva
 - `md.basalforcings.ocean_thermalforcing`: ocean thermal forcing, $$T_{oc} - T_f$$ [K] (used if `isthermalforcing` is 1)
 
 ## ISMIP6 quadratic melt parameterization (basalforcingsismip6)
-This parameterization, from [<a href="#references">*Jourdain2020*</a>], was designed for the ISMIP6 Antarctic ice sheet projections. Melt is a quadratic function of the thermal forcing $$TF$$ (the difference between the ocean temperature and the local freezing point at depth), evaluated either locally:
+This parameterization, from [[*Jourdain2020*](#references)], was designed for the ISMIP6 Antarctic ice sheet projections. Melt is a quadratic function of the thermal forcing $$TF$$ (the difference between the ocean temperature and the local freezing point at depth), evaluated either locally:
 
 $$
 m = \gamma_0 \left(\frac{\rho_{sw} c_{p,w}}{\rho_i L}\right)^2 \max\left(TF + \delta T, 0\right)^2
@@ -83,7 +83,7 @@ where $$\gamma_0$$ is a melt-rate coefficient calibrated against observed melt r
 - `md.basalforcings.melt_anomaly`: floating-ice basal melt anomaly [m/yr]
 
 ## PICO and PICOP (basalforcingspico)
-These parameterizations are described in [<a href="#references">*Reese2018*</a>] and [<a href="#references">*Pelle2019*</a>]. They calculate basal melt rates under ice shelves based only on far field ocean temperature and salinity.
+These parameterizations are described in [[*Reese2018*](#references)] and [[*Pelle2019*](#references)]. They calculate basal melt rates under ice shelves based only on far field ocean temperature and salinity.
 
 PICO is a box model of ocean circulation under ice shelf cavities. Each ice shelf is divided into a set of boxes, and the temperature ($$T_k$$) and salinity ($$S_k$$) of each box is given by:
 
@@ -104,7 +104,7 @@ where:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/parameterization/basal-melt/pico.png" alt="Figure 1: pico"></div><span style="display:block;width:100%;text-align:center"><small>Schematic view of the PICO model (taken from [<a href="#references">*Reese2018*</a>]).</small></span>
 
-PICOP is described in [<a href="#references">*Pelle2019*</a>]. The idea is to use PICO to calculate the temperature and salinity in each box, but instead of using PICO's calculated melt, use these quantities to drive a plume model from [<a href="#references">*Lazeroms2018*</a>]:
+PICOP is described in [[*Pelle2019*](#references)]. The idea is to use PICO to calculate the temperature and salinity in each box, but instead of using PICO's calculated melt, use these quantities to drive a plume model from [[*Lazeroms2018*](#references)]:
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/parameterization/basal-melt/picop.png" alt="Figure 2: picop"></div><span style="display:block;width:100%;text-align:center"><small>Melt calculation in PICOP, adapted from [<a href="#references">*Pelle2019*</a>].</small></span>
 To activate this melt parameterization, you need to use the class `basalforcingspico`:

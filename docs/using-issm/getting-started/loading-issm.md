@@ -45,7 +45,7 @@ After starting MATLAB, you must tell it where to find ISSM's binaries and librar
 ````
 addpath <ISSM_PATH>/bin <ISSM_PATH>/lib
 ````
-again, where `<ISSM_PATH>` is the path to ISSM on disk. Alternatively, you can use the <a href="https://www.mathworks.com/help/matlab/matlab_env/what-is-the-matlab-search-path.html" target="_blank">'Set Path' dialog</a> to add these paths manually. If you installed ISSM by downloading one of our precompiled distributables, you will also need to run,
+again, where `<ISSM_PATH>` is the path to ISSM on disk. Alternatively, you can use the ['Set Path' dialog](https://www.mathworks.com/help/matlab/matlab_env/what-is-the-matlab-search-path.html){:target="_blank"} to add these paths manually. If you installed ISSM by downloading one of our precompiled distributables, you will also need to run,
 ````
 addpath <ISSM_PATH>/share
 ````

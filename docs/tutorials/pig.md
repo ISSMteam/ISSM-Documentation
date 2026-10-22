@@ -28,7 +28,7 @@ In this example, the main goal is to parameterize and model a real glacier. In o
 Files needed for this tutorial can be found in `<ISSM_DIR>/examples/Pig/`. The `runme.m` file contains the structure of the simulation, while the `.par` file includes most parameters needed for the model setup. The `.exp` files are shape files that define geometric boundaries of the simulation.
 
 Observed datasets needed for the parameterization also need to be 
- <a href="datasets">downloaded</a>.
+ [downloaded](datasets).
 ## Setting-up domain outline
 We first draw the domain outline of Pine Island Glacier based on an observed velocity map. First, run `PigRegion.m` in MATLAB. It produces a figure with the observed velocities:
 
@@ -39,7 +39,7 @@ You can then use the `exptool` to draw the model domain:
 ````
 
 NOTE: if you have not 
- <a href="datasets">downloaded the datasets</a>,
+ [downloaded the datasets](datasets),
 you will get the following error:
 ````
 Could not open ../Data/Antarctica_ice_velocity.nc

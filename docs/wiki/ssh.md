@@ -33,7 +33,7 @@ which would let you log in to the remote machine with, simply,
 ssh-<ALIAS>
 ````
 
-**See also**: <a href="https://www.ssh.com/academy/ssh/config\#format-of-ssh-client-config-file-ssh_config" target="_blank">Format of SSH client config file ssh&#95;config | ssh.com</a>
+**See also**: [Format of SSH client config file ssh&#95;config | ssh.com](https://www.ssh.com/academy/ssh/config\#format-of-ssh-client-config-file-ssh_config){:target="_blank"}
 
 ## Public Key Authentication
 Some remote machines require public key authentication to establish an SSH connection. But it can also be used if it is available and you do not want to have to enter your password on each connection. To set up public key authentication, you will first need an SSH key pair. You may already have a default key pair at `~/.ssh/id_rsa[.pub]`, and it is perfectly acceptable to use this key for authenticating all of your SSH connections. That said, you may wish to create a separate key for each connection, which can be done with the `ssh-keygen` utility.
@@ -49,7 +49,7 @@ You can also update any aliases you may have created for a connection to use pri
 - In the case of an SSH config file, use the `IdentityFile` property.
 - In the case of a shell configuration file, simply add `-i <PRIVATE_KEY>` to the alias command.
 
-**See also**: <a href="https://www.ssh.com/academy/ssh/public-key-authentication" target="_blank">What is SSH Public Key Authentication? | ssh.com</a>
+**See also**: [What is SSH Public Key Authentication? | ssh.com](https://www.ssh.com/academy/ssh/public-key-authentication){:target="_blank"}
 
 ## Tunneling
 Another possibility is to establish an SSH tunnel between the local and remote machines. For example, running,
@@ -60,4 +60,4 @@ will redirect all traffic from port 1025 on your machine to port 22 on remote ma
 
 Tunneling is especially useful on clusters with multi-stop authentication (e.g. authentication required by both login node and compute nodes).
 
-**See also**: <a href="https://www.ssh.com/academy/ssh/tunneling-example" target="_blank">SSH Tunneling: Examples, Command, Server Config | ssh.com</a>
+**See also**: [SSH Tunneling: Examples, Command, Server Config | ssh.com](https://www.ssh.com/academy/ssh/tunneling-example){:target="_blank"}

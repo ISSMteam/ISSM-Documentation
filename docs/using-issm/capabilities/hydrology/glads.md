@@ -7,7 +7,7 @@ math: mathjax3
 
 # Hydrology Solution - GlaDS
 ## Description
-The two-dimensional Glacier Drainage System model (GlaDS, [<a href="#references">*Werder2013*</a>]) couples a distributed water sheet model &#8212; a continuum description of a linked cavity drainage system [<a href="#references">*Hewitt2011*</a>] &#8212; with a channelized water flow model &#8212; modeled as R channels [<a href="#references">*Rothlisberger1972,Nye1976*</a>]. The coupled system collectively describes the evolution of hydraulic potential $$\phi$$, water sheet thickness $$h$$, and water channel cross-sectional area $$S$$. 
+The two-dimensional Glacier Drainage System model (GlaDS, [[*Werder2013*](#references)]) couples a distributed water sheet model &#8212; a continuum description of a linked cavity drainage system [[*Hewitt2011*](#references)] &#8212; with a channelized water flow model &#8212; modeled as R channels [[*Rothlisberger1972,Nye1976*](#references)]. The coupled system collectively describes the evolution of hydraulic potential $$\phi$$, water sheet thickness $$h$$, and water channel cross-sectional area $$S$$. 
 
 ### Sheet model equations
 
@@ -16,17 +16,17 @@ The two-dimensional Glacier Drainage System model (GlaDS, [<a href="#references"
   $$
   \frac{e_v}{\rho_w g}\frac{\partial\phi}{\partial t} + \frac{\partial h}{\partial t} - \nabla\cdot\boldsymbol{q} - m_b = 0,
   $$
-  where: $$e_v$$ is the englacial void ratio, $$\rho_w$$ is water density (kg~m<a href="#footnotes" target="_top"><sup>-3</sup></a>), $$g$$ is gravitational acceleration (kg~m<a href="#footnotes" target="_top"><sup>-3</sup></a>), $$\phi$$ is the hydraulic potential (Pa), and $$h$$ is the sheet thickness (m). The water discharge $$\boldsymbol{q}$$ (m<a href="#footnotes" target="_top"><sup>2</sup></a>~s<a href="#footnotes" target="_top"><sup>-1</sup></a>) is given by:
+  where: $$e_v$$ is the englacial void ratio, $$\rho_w$$ is water density (kg~m[<sup>-3</sup>](#footnotes){:target="_top"}), $$g$$ is gravitational acceleration (kg~m[<sup>-3</sup>](#footnotes){:target="_top"}), $$\phi$$ is the hydraulic potential (Pa), and $$h$$ is the sheet thickness (m). The water discharge $$\boldsymbol{q}$$ (m[<sup>2</sup>](#footnotes){:target="_top"}~s[<sup>-1</sup>](#footnotes){:target="_top"}) is given by:
 
   $$
   \boldsymbol{q}=-k_s\;h^{\alpha_s}\left|\nabla\phi\right|^{\beta_s-2}\nabla\phi,
   $$
-  where $$k_s$$ is the sheet conductivity (m~s~kg<a href="#footnotes" target="_top"><sup>-1</sup></a>), and $$\alpha_s=$$5/4 and $$\beta_s=$$3/2 are two constant exponents. Finally, the melt source term $$m_b$$ (m~s<a href="#footnotes" target="_top"><sup>-1</sup></a>) is given by:
+  where $$k_s$$ is the sheet conductivity (m~s~kg[<sup>-1</sup>](#footnotes){:target="_top"}), and $$\alpha_s=$$5/4 and $$\beta_s=$$3/2 are two constant exponents. Finally, the melt source term $$m_b$$ (m~s[<sup>-1</sup>](#footnotes){:target="_top"}) is given by:
 
   $$
   m_b=\frac{G+|\boldsymbol{\tau}_b\cdot\boldsymbol{u}_b|}{\rho_{i}L},
   $$
-  where $$G$$ is the geothermal heat flux (W~m<a href="#footnotes" target="_top"><sup>-2</sup></a>), $$|\boldsymbol{\tau}_b\cdot\boldsymbol{u}_b|$$ is the frictional heating (W~m<a href="#footnotes" target="_top"><sup>-2</sup></a>), for basal stress $$\boldsymbol{\tau}_b$$ (Pa), $$\rho_i$$ is ice density (kg~m<a href="#footnotes" target="_top"><sup>-3</sup></a>), and $$L$$ is latent heating (J~kg<a href="#footnotes" target="_top"><sup>-1</sup></a>).
+  where $$G$$ is the geothermal heat flux (W~m[<sup>-2</sup>](#footnotes){:target="_top"}), $$|\boldsymbol{\tau}_b\cdot\boldsymbol{u}_b|$$ is the frictional heating (W~m[<sup>-2</sup>](#footnotes){:target="_top"}), for basal stress $$\boldsymbol{\tau}_b$$ (Pa), $$\rho_i$$ is ice density (kg~m[<sup>-3</sup>](#footnotes){:target="_top"}), and $$L$$ is latent heating (J~kg[<sup>-1</sup>](#footnotes){:target="_top"}).
 
 
 - Sheet thickness:
@@ -34,17 +34,17 @@ The two-dimensional Glacier Drainage System model (GlaDS, [<a href="#references"
   $$
   \frac{\partial h}{\partial t} = w_s - v_s.
   $$
-  Here, $$w_s$$ is the cavity opening rate due to sliding over bed topography (m~s<a href="#footnotes" target="_top"><sup>-1</sup></a>), given by:
+  Here, $$w_s$$ is the cavity opening rate due to sliding over bed topography (m~s[<sup>-1</sup>](#footnotes){:target="_top"}), given by:
 
   $$
   w_s\left(h\right) =\begin{array}{ll}\displaystyle \frac{\left|\boldsymbol{u}_b\right|}{l_r}\left(h_r-h\right), & \text{if } h<h_r\\\\0, & \text{otherwise,}\end{array}
   $$
-  where $$h_r$$ and $$l_r$$ are both constants (m), and $$\boldsymbol{u}_b$$ is the basal sliding velocity vector (provided by the ice flow model). The cavity closing rate due to ice creep $$v_s$$ (m~s<a href="#footnotes" target="_top"><sup>-1</sup></a>), is given by:
+  where $$h_r$$ and $$l_r$$ are both constants (m), and $$\boldsymbol{u}_b$$ is the basal sliding velocity vector (provided by the ice flow model). The cavity closing rate due to ice creep $$v_s$$ (m~s[<sup>-1</sup>](#footnotes){:target="_top"}), is given by:
 
   $$
   v_s\left(h,\phi\right) = \frac{2A}{n^n}h\left|N\right|^{n-1}N,
   $$
-  where $$A$$ is the basal flow parameter (Pa<a href="#footnotes" target="_top"><sup>-3</sup></a>~s<a href="#footnotes" target="_top"><sup>-1</sup></a>), related to the ice hardness by $$B=A$$<a href="#footnotes" target="_top"><sup>-1/3</sup></a>, $$n$$ is the Glen flow relation exponent, and $$N= \phi_0-\phi$$ is the effective pressure. The overburden hydraulic potential is given by $$\phi_0 = \phi_m+p$$, with the ice pressure $$p = \rho_i g H$$ and elevation potential $$\phi_m = \rho_w g b$$, all of which are given in units of Pa.
+  where $$A$$ is the basal flow parameter (Pa[<sup>-3</sup>](#footnotes){:target="_top"}~s[<sup>-1</sup>](#footnotes){:target="_top"}), related to the ice hardness by $$B=A$$[<sup>-1/3</sup>](#footnotes){:target="_top"}, $$n$$ is the Glen flow relation exponent, and $$N= \phi_0-\phi$$ is the effective pressure. The overburden hydraulic potential is given by $$\phi_0 = \phi_m+p$$, with the ice pressure $$p = \rho_i g H$$ and elevation potential $$\phi_m = \rho_w g b$$, all of which are given in units of Pa.
 
 ### Channel model equations
 
@@ -53,7 +53,7 @@ The two-dimensional Glacier Drainage System model (GlaDS, [<a href="#references"
   $$
   \frac{\partial Q}{\partial s} + \frac{\Xi-\Pi}{L}\left(\frac{1}{\rho_i} - \frac{1}{\rho_w}\right) - v_c - m_c = 0,
   $$
-  where $$Q$$ is the channel discharge (m<a href="#footnotes" target="_top"><sup>3</sup></a>~s<a href="#footnotes" target="_top"><sup>-1</sup></a>), which evolves with respect to the horizontal coordinate along the channel $$s$$, $$\Xi$$ is the channel potential energy dissipated per unit length and time (W~m<a href="#footnotes" target="_top"><sup>-1</sup></a>), $$\Pi$$ is the channel pressure melting/refreezing (W~m<a href="#footnotes" target="_top"><sup>-1</sup></a>), $$v_c$$ is the channel closing rate (m<a href="#footnotes" target="_top"><sup>2</sup></a>~s<a href="#footnotes" target="_top"><sup>-1</sup></a>) and $$m_c$$ is the source term (m<a href="#footnotes" target="_top"><sup>2</sup></a>~s<a href="#footnotes" target="_top"><sup>-1</sup></a>). The discharge $$Q$$ is defined as:
+  where $$Q$$ is the channel discharge (m[<sup>3</sup>](#footnotes){:target="_top"}~s[<sup>-1</sup>](#footnotes){:target="_top"}), which evolves with respect to the horizontal coordinate along the channel $$s$$, $$\Xi$$ is the channel potential energy dissipated per unit length and time (W~m[<sup>-1</sup>](#footnotes){:target="_top"}), $$\Pi$$ is the channel pressure melting/refreezing (W~m[<sup>-1</sup>](#footnotes){:target="_top"}), $$v_c$$ is the channel closing rate (m[<sup>2</sup>](#footnotes){:target="_top"}~s[<sup>-1</sup>](#footnotes){:target="_top"}) and $$m_c$$ is the source term (m[<sup>2</sup>](#footnotes){:target="_top"}~s[<sup>-1</sup>](#footnotes){:target="_top"}). The discharge $$Q$$ is defined as:
 
   $$
   Q= -\underbrace{k_cS^{\alpha_c}\left|\frac{\partial\phi}{\partial s}\right|^{\beta_c-2}}_{K_c}\frac{\partial\phi}{\partial s},
@@ -63,7 +63,7 @@ The two-dimensional Glacier Drainage System model (GlaDS, [<a href="#references"
   $$
   v_c\left(S,\phi\right) = \frac{2A}{n^n}S\left|N\right|^{n-1}N,\\
   $$
-  where $$S$$ is the channel cross-sectional area (m<a href="#footnotes" target="_top"><sup>2</sup></a>). Finally, $$m_c$$, the channel source term balancing the flow of water out of the adjacent sheet, is: 
+  where $$S$$ is the channel cross-sectional area (m[<sup>2</sup>](#footnotes){:target="_top"}). Finally, $$m_c$$, the channel source term balancing the flow of water out of the adjacent sheet, is: 
 
   $$
   m_c = \boldsymbol{q}\cdot\boldsymbol{n}|_{\partial{\Omega_{i1}} } +\boldsymbol{q}\cdot\boldsymbol{n}|_{\partial{\Omega_{i2}} }.
@@ -76,7 +76,7 @@ The two-dimensional Glacier Drainage System model (GlaDS, [<a href="#references"
   $$
   \Xi(S,\phi)=\Biggl|Q\frac{\partial\phi}{\partial s}\Biggr| +\left|l_cq_c\frac{\partial\phi}{\partial s}\right|,
   $$
-  where $$l_c$$ is the channel width (m), and $$q_c$$ is the discharge in the sheet (flowing in the direction of the channel; m<a href="#footnotes" target="_top"><sup>2</sup></a>~s<a href="#footnotes" target="_top"><sup>-1</sup></a>), given by:
+  where $$l_c$$ is the channel width (m), and $$q_c$$ is the discharge in the sheet (flowing in the direction of the channel; m[<sup>2</sup>](#footnotes){:target="_top"}~s[<sup>-1</sup>](#footnotes){:target="_top"}), given by:
 
   $$
   q_c\left(h,\phi\right)= -\underbrace{k_s h^{\alpha_s} \left|\frac{\partial\phi}{\partial s}\right|^{\beta_s-2}}_{K_s}\frac{\partial\phi}{\partial s},
@@ -89,7 +89,7 @@ The two-dimensional Glacier Drainage System model (GlaDS, [<a href="#references"
   $$
   \Pi(S,\phi)=-c_tc_w\rho_w(Q+f l_c q_c)\frac{\partial\phi-\partial\phi_m}{\partial s},
   $$
-  Here, $$c_t$$ is the Clapeyron slope (K~Pa<a href="#footnotes" target="_top"><sup>-1</sup></a>), $$c_w$$ is the specific heat capacity of water (J~kg<a href="#footnotes" target="_top"><sup>-1</sup></a>~K<a href="#footnotes" target="_top"><sup>-1</sup></a>), and $$f$$ is a switch parameter that accounts for the fact that the channel area cannot be negative, turning off the sheet flow for refreezing as $$S\rightarrow0$$, i.e.:
+  Here, $$c_t$$ is the Clapeyron slope (K~Pa[<sup>-1</sup>](#footnotes){:target="_top"}), $$c_w$$ is the specific heat capacity of water (J~kg[<sup>-1</sup>](#footnotes){:target="_top"}~K[<sup>-1</sup>](#footnotes){:target="_top"}), and $$f$$ is a switch parameter that accounts for the fact that the channel area cannot be negative, turning off the sheet flow for refreezing as $$S\rightarrow0$$, i.e.:
 
   $$
   f =\left\{\begin{array}{ll}1, & \text{if }S>0 \text{ or } q_c\partial(\phi-\phi_m)\partial s>0\\0, & \text{otherwise}\end{array}\right.
@@ -127,15 +127,15 @@ The parameters relevant to the GlaDS (`hydrologyglads`) solution can be displaye
 ````
 
 
-- `md.hydrology.pressure_melt_coefficient`: Pressure melt coefficient ($$c_t$$) [K Pa<a href="#footnotes" target="_top"><sup>-1</sup></a>]
-- `md.hydrology.sheet_conductivity`: sheet conductivity ($$k$$) [m<a href="#footnotes" target="_top"><sup>7/4</sup></a> kg<a href="#footnotes" target="_top"><sup>-1/2</sup></a>]
+- `md.hydrology.pressure_melt_coefficient`: Pressure melt coefficient ($$c_t$$) [K Pa[<sup>-1</sup>](#footnotes){:target="_top"}]
+- `md.hydrology.sheet_conductivity`: sheet conductivity ($$k$$) [m[<sup>7/4</sup>](#footnotes){:target="_top"} kg[<sup>-1/2</sup>](#footnotes){:target="_top"}]
 - `md.hydrology.cavity_spacing`: cavity spacing ($$l_r$$) [m]
 - `md.hydrology.bump_height`: typical bump height ($$h_r$$) [m]
 - `md.hydrology.ischannels`: Do we allow for channels? 1: yes, 0: no
-- `md.hydrology.channel_conductivity`: channel conductivity ($$k_c$$) [m<a href="#footnotes" target="_top"><sup>3/2</sup></a> kg<a href="#footnotes" target="_top"><sup>-1/2</sup></a>]
+- `md.hydrology.channel_conductivity`: channel conductivity ($$k_c$$) [m[<sup>3/2</sup>](#footnotes){:target="_top"} kg[<sup>-1/2</sup>](#footnotes){:target="_top"}]
 - `md.hydrology.spcphi`: Hydraulic potential Dirichlet constraints [Pa]
-- `md.hydrology.neumannflux`: water flux applied along the model boundary (m<a href="#footnotes" target="_top"><sup>2</sup></a> s<a href="#footnotes" target="_top"><sup>-1</sup></a>)
-- `md.hydrology.moulin_input`: moulin input ($$Q_s$$) [m<a href="#footnotes" target="_top"><sup>3</sup></a> s<a href="#footnotes" target="_top"><sup>-1</sup></a>]
+- `md.hydrology.neumannflux`: water flux applied along the model boundary (m[<sup>2</sup>](#footnotes){:target="_top"} s[<sup>-1</sup>](#footnotes){:target="_top"})
+- `md.hydrology.moulin_input`: moulin input ($$Q_s$$) [m[<sup>3</sup>](#footnotes){:target="_top"} s[<sup>-1</sup>](#footnotes){:target="_top"}]
 - `md.hydrology.englacial_void_ratio`: englacial void ratio ($$e_v$$)
 - `md.hydrology.requested_outputs`: additional outputs requested?
 - `md.hydrology.melt_flag`: User specified basal melt? 0: no (default), 1: use `md.basalforcings.groundedice_melting_rate`

@@ -34,7 +34,7 @@ where:
 - $$h'_n$$ and $$l'_n$$ are the load Love numbers
 
 ## Numerical implementation
-We use Love numbers &#8212; provided by the International Association of Geodesy (available at http://www.srosat.com/iag-jsg/loveNb.php) &#8212; which are the solutions of the zero frequency momentum equations with self-gravitation for a spherically symmetric and seismologically constrained Earth structure model [see, e.g., Alterman et al., 1959]. Since $$h'_n$$ converges slowly toward a constant as $$n \rightarrow \infty$$, the requirement for generating an accurate solution for crustal deformation is stringent, demanding truncation of the series at high degree $$n = 10,000$$. See [<a href="#references">*Adhikari2017*</a>] for more details.
+We use Love numbers &#8212; provided by the International Association of Geodesy (available at http://www.srosat.com/iag-jsg/loveNb.php) &#8212; which are the solutions of the zero frequency momentum equations with self-gravitation for a spherically symmetric and seismologically constrained Earth structure model [see, e.g., Alterman et al., 1959]. Since $$h'_n$$ converges slowly toward a constant as $$n \rightarrow \infty$$, the requirement for generating an accurate solution for crustal deformation is stringent, demanding truncation of the series at high degree $$n = 10,000$$. See [[*Adhikari2017*](#references)] for more details.
 
 ## Model parameters
 The parameters relevant to the elastostatic adjustment (ESA) solution can be displayed by running:

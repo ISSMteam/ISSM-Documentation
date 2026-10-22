@@ -29,25 +29,25 @@ any options (except `'data'`) can be followed by `'#<i>'` where `<i>` is the sub
 ```
 
 ### axis
-Same as standard <a href="http://www.mathworks.com/help/techdoc/ref/axis.html" target="_blank">axis</a> MATLAB option:
+Same as standard [axis](http://www.mathworks.com/help/techdoc/ref/axis.html){:target="_blank"} MATLAB option:
 ```m
 >> plotmodel(md, 'data', md.vel, 'axis', 'tight')
 ```
 
 ### view
-Same as standard <a href="http://www.mathworks.com/help/techdoc/ref/view.html" target="_blank">view</a> MATLAB option:
+Same as standard [view](http://www.mathworks.com/help/techdoc/ref/view.html){:target="_blank"} MATLAB option:
 ```m
 >> plotmodel(md, 'data', md.vel, 'view', 2)
 ```
 
 ### xlim, ylim, zlim
-Same as standard <a href="http://www.mathworks.com/help/techdoc/ref/xlim.html" target="_blank">xlim</a> MATLAB option:
+Same as standard [xlim](http://www.mathworks.com/help/techdoc/ref/xlim.html){:target="_blank"} MATLAB option:
 ```m
 >> plotmodel(md, 'data', md.vel, 'xlim', [10^5 2*10^5])
 ```
 
 ### caxis
-Same as standard <a href="http://www.mathworks.com/access/helpdesk/help/techdoc/index.html?/access/helpdesk/help/techdoc/ref/caxis.html" target="_blank">caxis</a> MATLAB option (control the extreme values of the colorbar):
+Same as standard [caxis](http://www.mathworks.com/access/helpdesk/help/techdoc/index.html?/access/helpdesk/help/techdoc/ref/caxis.html){:target="_blank"} MATLAB option (control the extreme values of the colorbar):
 ```m
 >> plotmodel(md, 'data', md.vel, 'caxis', [0 1000])
 ```
@@ -60,7 +60,7 @@ This option is used to control the colorbar display (`'on'` or `'off'`):
 ```
 
 ### colormap
-Same as standard <a href="http://www.mathworks.com/access/helpdesk/help/techdoc/index.html?/access/helpdesk/help/techdoc/ref/colormap.html" target="_blank">colormap</a> MATLAB option (control the extreme values of the colorbar):
+Same as standard [colormap](http://www.mathworks.com/access/helpdesk/help/techdoc/index.html?/access/helpdesk/help/techdoc/ref/colormap.html){:target="_blank"} MATLAB option (control the extreme values of the colorbar):
 ```m
 >> plotmodel(md, 'data', md.vel, 'colormap', 'hsv')
 ```
@@ -149,25 +149,25 @@ A scale ruler can be added. As for the North arrow, the default display is done 
 ```
 
 ### title
-Same as standard <a href="http://www.mathworks.com/help/techdoc/ref/title.html" target="_blank">title</a> MATLAB option:
+Same as standard [title](http://www.mathworks.com/help/techdoc/ref/title.html){:target="_blank"} MATLAB option:
 ```m
 >> plotmodel(md, 'data', md.vel, 'title', 'Ice velocity [m/yr]')
 ```
 
 ### fontsize
-Same as standard <a href="http://www.mathworks.com/help/techdoc/ref/text_props.html" target="_blank">fontsize</a> MATLAB option:
+Same as standard [fontsize](http://www.mathworks.com/help/techdoc/ref/text_props.html){:target="_blank"} MATLAB option:
 ```m
 >> plotmodel(md, 'data', md.vel, 'title', 'Ice velocity [m/yr]', 'fontsize', 8)
 ```
 
 ### fontweight
-Same as standard <a href="http://www.mathworks.com/help/techdoc/ref/text_props.html" target="_blank">fontweight</a> MATLAB option:
+Same as standard [fontweight](http://www.mathworks.com/help/techdoc/ref/text_props.html){:target="_blank"} MATLAB option:
 ```m
 >> plotmodel(md, 'data', md.vel, 'title', 'Ice velocity [m/yr]', 'fontweight', 'b')
 ```
 
 ### xlabel, ylabel
-Same as standard <a href="http://www.mathworks.com/help/techdoc/ref/xlabel.html" target="_blank">xlabel</a> MATLAB option:
+Same as standard [xlabel](http://www.mathworks.com/help/techdoc/ref/xlabel.html){:target="_blank"} MATLAB option:
 ```m
 >> plotmodel(md, 'data', md.vel, 'xlabel', 'x axis [m]')
 ```

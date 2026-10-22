@@ -6,7 +6,7 @@ parent: Capabilities
 
 # Mesh Generation
 ## ARGUS file format
-To mesh the domain, one needs a file containing all the coordinates of the domain outline in an <a href="http://www.argusint.com/" target="_blank">ARGUS</a> format. These files have a `*.exp` extension. Here is an example of such a file for a square glacier:
+To mesh the domain, one needs a file containing all the coordinates of the domain outline in an [ARGUS](http://www.argusint.com/){:target="_blank"} format. These files have a `*.exp` extension. Here is an example of such a file for a square glacier:
 ````
 ## Name:DomainOutline
 ## Icon:0
@@ -19,9 +19,9 @@ To mesh the domain, one needs a file containing all the coordinates of the domai
 0 1000000
 0 0
 ````
-The ARGUS format is used extensively by ISSM. One can use `exptool` to generate and manage <a href="http://www.argusint.com/" target="_blank">ARGUS</a> files.
+The ARGUS format is used extensively by ISSM. One can use `exptool` to generate and manage [ARGUS](http://www.argusint.com/){:target="_blank"} files.
 ## triangle
-`triangle` is a wrapper of <a href="http://www.cs.cmu.edu/~quake/triangle.html" target="_blank">triangle</a> developed by <a href="http://www.cs.berkeley.edu/~jrs/" target="_blank">Jonathan Shewchuk</a> [<a href="#references">*Shewchuk1996*</a>]. It generates unstructured isotropic meshes:
+`triangle` is a wrapper of [triangle](http://www.cs.cmu.edu/~quake/triangle.html){:target="_blank"} developed by [Jonathan Shewchuk](http://www.cs.berkeley.edu/~jrs/){:target="_blank"} [[*Shewchuk1996*](#references)]. It generates unstructured isotropic meshes:
 ````
 >> md = triangle(md, 'DomainOutline.exp', 5000);
 ````
@@ -31,7 +31,7 @@ The first argument is the model you are working on, the second argument is the f
 ````
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/using-issm/capabilities/mesh/mesh.png" alt="Figure 1: mesh"></div><span style="display:block;width:100%;text-align:center"><small>Mesh</small></span>
-ISSM includes a mesh adaptation capability embedded in the code, inspired by <a href="https://people.math.sc.edu/Burkardt/data/bamg/bamg.html" target="_blank">BAMG</a> developed by Frederic Hecht [<a href="#references">*Hecht2006*</a>], and YAMS developed by Pascal Frey [<a href="#references">*Frey2001*</a>].
+ISSM includes a mesh adaptation capability embedded in the code, inspired by [BAMG](https://people.math.sc.edu/Burkardt/data/bamg/bamg.html){:target="_blank"} developed by Frederic Hecht [[*Hecht2006*](#references)], and YAMS developed by Pascal Frey [[*Frey2001*](#references)].
 ## Bamg
 ### Domain
 To mesh the domain, you need a file containing all the coordinates of the domain outline in an ARGUS format. Assuming that this file is `DomainOutline.exp`, run:
@@ -73,7 +73,7 @@ The factor of anisotropy (ratio between the lengths of two edges belonging to th
 ````
 >> md = bamg(md, 'field', md.vel_obs, 'err', 1.5, 'anisomax', 1);
 ````
-NOTE: Users using Intel compilers (`icc`, `icpc`) should use the flag `-fp-model precise` to disable optimizations that are not value-safe on floating-point data. This will prevent bamg from being compiler dependent (see <a href="https://software.intel.com/en-us/node/522979" target="_blank">here</a>).
+NOTE: Users using Intel compilers (`icc`, `icpc`) should use the flag `-fp-model precise` to disable optimizations that are not value-safe on floating-point data. This will prevent bamg from being compiler dependent (see [here](https://software.intel.com/en-us/node/522979){:target="_blank"}).
 
 ## Extrusion (3D)
 One can extrude the mesh, in order to use a three-dimensional model (Pattyn's higher order model and Full Stokes model). This step is not mandatory. If the user wants to keep a 2D model, skip this section.

@@ -8,10 +8,10 @@ math: mathjax3
 # Hydrology Solution - Shreve Approximation
 
 ## Physical basis
-This model is the one described in [<a href="#references">*LeBrocq2009*</a>]. Here we present only the main equations.
+This model is the one described in [[*LeBrocq2009*](#references)]. Here we present only the main equations.
 
 ### Water column
-The model applied here is the most simplistic form of the water-film model, as described by the Weertman theory [<a href="#references">*Weertman1957*</a>]. The model solves for the thickness $$w$$ of the water-film as follows:
+The model applied here is the most simplistic form of the water-film model, as described by the Weertman theory [[*Weertman1957*](#references)]. The model solves for the thickness $$w$$ of the water-film as follows:
 
 $$
 \frac{\partial w}{\partial t}=S - \nabla \cdot {\bf u}_{w} w
@@ -30,7 +30,7 @@ $$
 - $$\phi$$ is the hydraulic potential $$[Pa]$$
 - $$\mu$$ is the water viscosity $$[Pa\,s]$$
 
-In this model, the hydraulic potential $$\phi$$ is defined following the Shreve approximation [<a href="#references">*Shreve1972*</a>], which hypothesizes a null effective pressure. Assuming this null effective pressure gives the hydraulic potential gradient as follows:
+In this model, the hydraulic potential $$\phi$$ is defined following the Shreve approximation [[*Shreve1972*](#references)], which hypothesizes a null effective pressure. Assuming this null effective pressure gives the hydraulic potential gradient as follows:
 
 $$
 \nabla \phi=\rho_{ice} g \nabla s + \left(\rho_w - \rho_{ice}\right) g \nabla h

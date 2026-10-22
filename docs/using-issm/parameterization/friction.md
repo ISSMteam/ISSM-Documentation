@@ -36,7 +36,7 @@ calculated (`md.friction.coupling`):
   coupled)
 
 ## Budd friction law (friction)
-The default friction law is defined as [<a href="#references">*Paterson1994*</a>] (p. 151):
+The default friction law is defined as [[*Paterson1994*](#references)] (p. 151):
 
 $$
 v_b \propto N^{-q} {\tau}_b^p
@@ -48,7 +48,7 @@ where:
 - $$N$$ is the effective pressure
 - $$p$$ and $$q$$ are friction law exponents
 
-In ISSM, this friction law is implemented in terms of basal stress, following [<a href="#references">*Budd1979*</a>]:
+In ISSM, this friction law is implemented in terms of basal stress, following [[*Budd1979*](#references)]:
 
 $$
 \tau_b = C_b^2 N^r {v}_b^s
@@ -74,7 +74,7 @@ The following fields need to be specified:
 - `md.friction.q`: q exponent
 
 ## Weertman friction law (weertmanfriction)
-The Weertman friction [<a href="#references">*Weertman1957*</a>] law reads:
+The Weertman friction [[*Weertman1957*](#references)] law reads:
 
 $$
 v_b  = C_w {\tau}_b^m
@@ -109,14 +109,14 @@ $$
 $$
 
 ## Regularized Coulomb-limited sliding 1 (frictionregcoulomb)
-Sliding law from [<a href="#references">*Joughin2019*</a>]:
+Sliding law from [[*Joughin2019*](#references)]:
 
 $$
 \tau_b = \frac{C u_b^{1/m}\alpha^2 N}{\left(\frac{u_b}{u_0} + 1\right)^{1/m}}
 $$
 
 ## Coulomb-limited sliding 2 (frictioncoulomb2)
-Coulomb-limited sliding law used in MISMIP+ [<a href="#references">*Cornford2020*</a>]:
+Coulomb-limited sliding law used in MISMIP+ [[*Cornford2020*](#references)]:
 
 $$
 \tau_b = \frac{C u_b^{m}\alpha^2 N}{\left(C^{1/m}u_b + (\alpha^2N)^{1/m}\right)^{m}},
@@ -124,21 +124,21 @@ $$
 where $$\alpha^2 = 0.5$$. Note that this friction law is exactly the same as `frictionschoof` described below, with $$C_{\max} = 0.5$$.
 
 ## Regularized Coulomb-limited sliding 2 (frictionregcoulomb2)
-Sliding law from [<a href="#references">*Helanow2021*</a>]:
+Sliding law from [[*Helanow2021*](#references)]:
 
 $$
 \tau_b = \frac{C\, N\, u_b^{1/m}}{\left(u_b + (K\,N)^{m}\right)^{1/m}}
 $$
 
 ## Friction Tsai (frictiontsai)
-From [<a href="#references">*Tsai2015*</a>]:
+From [[*Tsai2015*](#references)]:
 
 $$
 \tau_b = \min\left(C ub^{m} , f N \right)
 $$
 
 ## Friction Schoof (frictionschoof)
-From [<a href="#references">*Schoof2005,Gagliardini2007*</a>] (note that we use $$C_s^2$$ to make sure it is a positive number):
+From [[*Schoof2005,Gagliardini2007*](#references)] (note that we use $$C_s^2$$ to make sure it is a positive number):
 
 $$
 \tau_b = \frac{C_s^2 v_b^{m}}{\left(1 + \left(\frac{C_s^2}{C_{\max}N}\right)^{1/m} v_b\right)^{m}},

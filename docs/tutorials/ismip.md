@@ -10,7 +10,7 @@ nav_order: 5
 
 - Test the ISSM skills that you have gained so far
 - Create ISSM models by following the given keyword instructions
-- Run tests from the Ice Sheet Model Intercomparison Project (ISMIP - Tests A and F) (see <a href="https://tc.copernicus.org/articles/2/95/2008/" target="_blank">publication</a> for more information about these tests)
+- Run tests from the Ice Sheet Model Intercomparison Project (ISMIP - Tests A and F) (see [publication](https://tc.copernicus.org/articles/2/95/2008/){:target="_blank"} for more information about these tests)
 
 Go to `<ISSM_DIR>/examples/ISMIP/` to do this tutorial.
 

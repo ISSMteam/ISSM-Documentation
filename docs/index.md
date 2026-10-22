@@ -20,38 +20,38 @@ Please feel free to let us know how this documentation could be improved. We als
 [![Ubuntu Python](https://github.com/ISSMteam/ISSM/actions/workflows/ubuntu-python.yml/badge.svg)](https://github.com/ISSMteam/ISSM/actions/workflows/ubuntu-python.yml)
 [![Ubuntu CodiPack](https://github.com/ISSMteam/ISSM/actions/workflows/ubuntu-codipack.yml/badge.svg)](https://github.com/ISSMteam/ISSM/actions/workflows/ubuntu-codipack.yml)
 
-There are more build configurations and regression test suites on <a href="https://ross.ics.uci.edu/jenkins/view/All/" target="_blank">ISSM's Jenkins server</a>.
+There are more build configurations and regression test suites on [ISSM's Jenkins server](https://ross.ics.uci.edu/jenkins/view/All/){:target="_blank"}.
 
 ----
 
 ## Contact
 - ISSM source code GitHub repository:
-  - <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">Discussions</a>
-  - <a href="https://github.com/ISSMteam/ISSM/issues" target="_blank">Bug Reports</a>
-  - <a href="https://github.com/ISSMteam/ISSM/discussions/113" target="_blank">ISSM Slack Workspace</a>
+  - [Discussions](https://github.com/ISSMteam/ISSM/discussions){:target="_blank"}
+  - [Bug Reports](https://github.com/ISSMteam/ISSM/issues){:target="_blank"}
+  - [ISSM Slack Workspace](https://github.com/ISSMteam/ISSM/discussions/113){:target="_blank"}
 
 ----
 
 ## About ISSM
-- <a href="about-issm/publications">Publications</a>
-- <a href="about-issm/development-status">Development Status</a>
+- [Publications](about-issm/publications)
+- [Development Status](about-issm/development-status)
 
 ----
 
 ## Installation and Usage Documentation
-- <a href="installation">Installation</a>
-- <a href="installation/troubleshooting">Troubleshooting</a>
-- <a href="using-issm">Using ISSM</a>
-- <a href="tutorials">Tutorials</a>
-- <a href="wiki">Wiki</a>
+- [Installation](installation)
+- [Troubleshooting](installation/troubleshooting)
+- [Using ISSM](using-issm)
+- [Tutorials](tutorials)
+- [Wiki](wiki)
 
 ----
 
 ## Projects
-- <a href="projects/gofm">Gulf of Mexico</a>
-- <a href="projects/vesl">Virtual Earth System Laboratory (VESL)</a>
+- [Gulf of Mexico](projects/gofm)
+- [Virtual Earth System Laboratory (VESL)](projects/vesl)
 
 ----
 
 ## Acknowledgements
-This site uses <a href="https://just-the-docs.com/" target="_blank">Just the Docs</a>, a documentation theme for Jekyll.
+This site uses [Just the Docs](https://just-the-docs.com/){:target="_blank"}, a documentation theme for Jekyll.

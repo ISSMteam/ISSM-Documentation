@@ -25,7 +25,7 @@ Each element of the mesh is either grounded or floating: flotation criterion is 
 
 Sub-element parameterization can also be used to track the position of the grounding line within an element and improve accuracy of the results. The floating condition is a 2D field and the grounding line position is determined by the line where $$H = H_f$$, so it is located anywhere within an element. Some elements are therefore partly grounded and partly floating. Two different schemes of sub-element parameterizations have been implemented.
 
-In the first case, the basal friction coefficient $$C$$ is reduced to match the amount of grounded ice in the element as proposed by [<a href="#references">*Pattyn2006*</a>] and [<a href="#references">*Gladstone2010*</a>] but for a 2D element:
+In the first case, the basal friction coefficient $$C$$ is reduced to match the amount of grounded ice in the element as proposed by [[*Pattyn2006*](#references)] and [[*Gladstone2010*](#references)] but for a 2D element:
 
 $$
 C_g = C \;\frac{A_g}{A}
@@ -35,10 +35,10 @@ where $$C_g$$ is the applied basal friction coefficient for the element partiall
 
 In the second case, the basal friction computed for partly grounded elements is integrated only on the part of the element that is grounded. This can be done simply by changing the integration area from the initial element to the grounded part of the element, over which the basal friction is unchanged. We refer to this type of grounding line parameterization as `'SubelementMigration2'`.
 
-The sub-element parameterizations are described in detail in [<a href="#references">*Seroussi2014a*</a>].
+The sub-element parameterizations are described in detail in [[*Seroussi2014a*](#references)].
 
 ### Contact mechanics
-Grounding line migration can be advantageously based on contact mechanics when solving the stress balance equations with a full-Stokes model [<a href="#references">*Nowicki2008,Durand2009*</a>].
+Grounding line migration can be advantageously based on contact mechanics when solving the stress balance equations with a full-Stokes model [[*Nowicki2008,Durand2009*](#references)].
 
 This capability is currently under development.
 
@@ -53,7 +53,7 @@ The parameters relevant to the grounding line migration can be displayed by runn
 
 ## Running a simulation
 To compute grounding line migration, the transient solution must be used and all solutions except the grounding line migration must be deactivated (see 
- <a href="transient">transient solution</a>):
+ [transient solution](transient)):
 ````
 >> md = solve(md, 'Transient');
 ````

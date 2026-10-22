@@ -7,13 +7,13 @@ parent: Capabilities
 # Transient Solution
 ## Physical basis
 The transient solution is a combination of all the other solutions and modules that allow us to run a model forward in time (between a start time and a final time) using finite differences in time. At each time step of the simulation the following steps are performed in the order noted below,
- 1. <a href="thermal">thermal solution</a>
- 1. <a href="hydrology">hydrology solution</a>
- 1. <a href="stress-balance">stress balance solution</a>
- 1. <a href="damage">damage mechanics</a>
- 1. <a href="mass-transport">mass transport solution</a>
- 1. <a href="grounding-lines">grounding line migration (and geometry update)</a>
- 1. <a href="gia">Glacial Isostatic Adjustment (GIA) solution</a>
+ 1. [thermal solution](thermal)
+ 1. [hydrology solution](hydrology)
+ 1. [stress balance solution](stress-balance)
+ 1. [damage mechanics](damage)
+ 1. [mass transport solution](mass-transport)
+ 1. [grounding line migration (and geometry update)](grounding-lines)
+ 1. [Glacial Isostatic Adjustment (GIA) solution](gia)
 
 Not all solutions have to be included in the transient runs, and each of these functionalities can be activated or deactivated prior to launching the simulation.
 

@@ -61,7 +61,7 @@ The previous command creates the mesh shown below:
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/mesh/mesh2.png" alt="Figure 2: mesh2"></div>
 
 ## Triangle
-`triangle` is a very fast algorithm for mesh generation. Developed by <a href="http://www.cs.cmu.edu/~quake/triangle.html" target="_blank">J Shewchuk</a>, it generates unstructured triangular meshes.
+`triangle` is a very fast algorithm for mesh generation. Developed by [J Shewchuk](http://www.cs.cmu.edu/~quake/triangle.html){:target="_blank"}, it generates unstructured triangular meshes.
 
 ### Usage
 ````
@@ -71,7 +71,7 @@ The previous command creates the mesh shown below:
 
 1. model
 1. ARGUS file of the domain outline (`.exp` extension, see the 
-<a href="../using-issm/capabilities/mesh-generation" target="_top">'Capabilities' &#8594; 'Mesh Generation' page</a>
+['Capabilities' &#8594; 'Mesh Generation' page](../using-issm/capabilities/mesh-generation){:target="_top"}
   for more details)
 1. average element size (meters)
 The previous command creates the following mesh:
@@ -82,7 +82,7 @@ The previous command creates the following mesh:
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/mesh/mesh3.png" alt="Figure 3: mesh3"></div>You can change the resolution from `0.2` to `0.05` to get a higher resolution.
 
 ## Bamg
-BAMG stands for Bidimensional Anisotropic Mesh Generator. It was released in 2006 after more than 10 years of development by Frederic Hecht. It is now part of <a href="http://www.freefem.org/ff++/" target="_blank">FreeFEM++</a>. The algorithm that is available in ISSM is inspired by this software, but has been rewritten entirely.
+BAMG stands for Bidimensional Anisotropic Mesh Generator. It was released in 2006 after more than 10 years of development by Frederic Hecht. It is now part of [FreeFEM++](http://www.freefem.org/ff++/){:target="_blank"}. The algorithm that is available in ISSM is inspired by this software, but has been rewritten entirely.
 
 ### Usage
 ````

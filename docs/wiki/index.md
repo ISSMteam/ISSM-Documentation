@@ -8,14 +8,18 @@ has_toc: false
 # Wiki
 
 - Modeling tools
-  - <a href="utilities" target="_top">Utilities</a>
-  - <a href="toolkits" target="_top">Preferred toolkits</a>
-  - <a href="organizer" target="_top">Organize different steps of constructing models</a>
+  - [Using organizers in runme.m](organizer)
+  - [Utilities](utilities)
+  - [Preferred toolkits](toolkits)
+  - [Submitting multiple jobs (parameter studies)](multiplejobs)
+  - [Submitting jobs without waiting](nowaitlock)
+  - [Running MATLAB on Pleiades with mcc](mccpfe)
 - Development
-  - <a href="codeguidelines" target="_top">Code guidelines for developers</a>
-  - <a href="changelog" target="_top">Changelog</a>
-  - <a href="development" target="_top">Development for ISSM (video series)</a>
-  - <a href="debugging" target="_top">Debugging</a>
-- <a href="ssh" target="_top">SSH</a>
-- <a href="mccpfe" target="_top">Running MATLAB on Pleiades with mcc</a>
-- <a href="validation" target="_top">Validation Guide</a>
+  - [Code guidelines for developers](codeguidelines)
+  - [How to debugging crashes](debugging)
+  - [Changelog](changelog)
+- Miscellaneous
+ - [SSH](ssh)
+ - [Kubeflow](kubeflow)
+ - [Resources](resources)
+ - [Validation Guide](validation)

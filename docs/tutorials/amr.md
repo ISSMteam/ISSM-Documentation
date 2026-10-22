@@ -88,7 +88,7 @@ plotmodel(md, 'data', 'mesh', 'amr', 0, 'xlim', [0, 250000], 'title', 't=1 yr', 
 
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/amr/amr_meshes.jpg" alt="Figure 5: amr_meshes"></div>
-To watch the evolution through time in an animation, we print the results and the respective meshes in VTK-type file format, see the folder `<ISSM_DIR>/examples/AMR/`. These files can be seen using <a href="https://www.paraview.org/" target="_blank">ParaView</a>.
+To watch the evolution through time in an animation, we print the results and the respective meshes in VTK-type file format, see the folder `<ISSM_DIR>/examples/AMR/`. These files can be seen using [ParaView](https://www.paraview.org/){:target="_blank"}.
 
 In ParaView, you will select which result to animate, and can watch the mesh tracking the grounding line movement as soon as the ice starts to ground on the bedrock. The result and the mesh can be simultaneously displayed by selecting `Surface With Edges` in the box next to the field/result box selection.
 

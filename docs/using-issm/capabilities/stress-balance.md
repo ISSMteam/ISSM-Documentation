@@ -38,7 +38,7 @@ $$
 \boldsymbol{\sigma} = \boldsymbol{\sigma}^T
 $$
 ### Ice constitutive equations
-Ice is treated as a purely viscous incompressible material [<a href="#references">*Cuffey2010*</a>]. Its constitutive equation therefore only involves the deviatoric stress and the strain rate tensor:
+Ice is treated as a purely viscous incompressible material [[*Cuffey2010*](#references)]. Its constitutive equation therefore only involves the deviatoric stress and the strain rate tensor:
 
 $$
 \boldsymbol{\sigma}' = 2\,\mu\dot{\boldsymbol{\varepsilon}}
@@ -48,7 +48,7 @@ where:
 - $$\boldsymbol{\sigma}'$$ is the deviatoric stress tensor ($$\boldsymbol{\sigma}' = \boldsymbol{\sigma} + p {\bf I}$$)
 - $$\mu$$ is the ice effective viscosity
 - $$\dot{\boldsymbol{\varepsilon}}$$ is the strain rate tensor
-Ice is a non-Newtonian fluid, its viscosity follows the generalized Glen's flow law [<a href="#references">*Glen1955*</a>]:
+Ice is a non-Newtonian fluid, its viscosity follows the generalized Glen's flow law [[*Glen1955*](#references)]:
 
 $$
 \mu = \frac{B}{2\,\dot{\varepsilon}_e^{\frac{n-1}{n}}}
@@ -74,7 +74,7 @@ We make two assumptions:
 1. Bridging effects are neglected
 1. Horizontal gradient of vertical velocities are neglected compared to vertical gradients of horizontal velocities
 
-With these two assumptions, the Full-Stokes equations are reduced to a system of 2 equations with 2 unknowns [<a href="#references">*Blatter1995, Pattyn2003*</a>]:
+With these two assumptions, the Full-Stokes equations are reduced to a system of 2 equations with 2 unknowns [[*Blatter1995, Pattyn2003*](#references)]:
 
 $$
 \begin{array}{l}\nabla\cdot\left(2\mu\dot{\boldsymbol{\varepsilon}}_{HO1}\right) = \rho g \dfrac{\partial s}{\partial x} \\\\\nabla\cdot\left(2\mu\dot{\boldsymbol{\varepsilon}}_{HO2}\right) = \rho g \dfrac{\partial s}{\partial y}\end{array}
@@ -91,7 +91,7 @@ We make the following assumption:
 1. Vertical shear is negligible
 
 With this assumption, we have a system of 2 equations with 2 unknowns in the horizontal plane
-[<a href="#references">*Morland1987a, MacAyeal1989*</a>]:
+[[*Morland1987a, MacAyeal1989*](#references)]:
 
 $$
 \begin{array}{l}\nabla\cdot\left(2\bar{\mu}H\dot{\boldsymbol{\varepsilon}}_{SSA1}\right) - \alpha^2 v_x= \rho g H \dfrac{\partial s}{\partial x} \\\\\nabla\cdot\left(2\bar{\mu}H\dot{\boldsymbol{\varepsilon}}_{SSA2}\right) - \alpha^2 v_y= \rho g H \dfrac{\partial s}{\partial y}\end{array}

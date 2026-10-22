@@ -6,5 +6,5 @@ has_toc: false
 ---
 
 # Projects
-- <a href="gofm" target="_top">Gulf of Mexico</a>
-- <a href="https://vesl.jpl.nasa.gov" target="_blank">Virtual Earth System Laboratory (VESL)</a>
+- [Gulf of Mexico](gofm){:target="_top"}
+- [Virtual Earth System Laboratory (VESL)](https://vesl.jpl.nasa.gov){:target="_blank"}

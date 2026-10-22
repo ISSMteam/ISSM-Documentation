@@ -7,9 +7,9 @@ has_toc: false
 ---
 
 # Advanced Features
- - <a href="inversions">Inversions</a>
- - <a href="rifts">Rifts</a>
- - <a href="amr">Adaptive Mesh Refinement (AMR)</a>
- - <a href="qmu-dakota">Quantification of Margins and Uncertainties (QMU) with Dakota</a>
- - <a href="stochastic-forcing">Stochastic Forcing with StISSM</a>
+ - [Inversions](inversions)
+ - [Rifts](rifts)
+ - [Adaptive Mesh Refinement (AMR)](amr)
+ - [Quantification of Margins and Uncertainties (QMU) with Dakota](qmu-dakota)
+ - [Stochastic Forcing with StISSM](stochastic-forcing)
 

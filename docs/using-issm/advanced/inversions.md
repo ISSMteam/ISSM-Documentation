@@ -118,7 +118,7 @@ Depending on the class of `md.inversion`, several optimization algorithms are av
 Each minimizer has its own optimization parameters described below.
 
 ### M1QN3 (recommended)
-ISSM has an interface to M1QN3 (Inria) [<a href="#references">*Gilbert1989*</a>]. This interface was largely based on [<a href="#references">*Nardi2009*</a>]. Here is a list of the relevant parameters:
+ISSM has an interface to M1QN3 (Inria) [[*Gilbert1989*](#references)]. This interface was largely based on [[*Nardi2009*](#references)]. Here is a list of the relevant parameters:
 
 - `md.inversion.maxsteps`: maximum number of iterations (gradient computation)
 - `md.inversion.maxiter`: maximum number of function evaluations (forward run)
@@ -138,7 +138,7 @@ $$
 $$
 
 ### Toolkit for Advanced Optimization (TAO)
-ISSM has an interface to the Toolkit for Advanced Optimization (TAO) [<a href="#references">*Munson2012*</a>]. Here is a list of the relevant parameters:
+ISSM has an interface to the Toolkit for Advanced Optimization (TAO) [[*Munson2012*](#references)]. Here is a list of the relevant parameters:
 
 - `md.inversion.maxsteps`: maximum number of iterations (gradient computation)
 - `md.inversion.maxiter`: maximum number of function evaluations (forward run)

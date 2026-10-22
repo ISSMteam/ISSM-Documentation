@@ -7,7 +7,7 @@ math: mathjax3
 
 # Hydrology Solution - SHAKTI
 ## Description
-SHAKTI (Subglacial Hydrology and Kinetic, Transient Interactions) is a transient subglacial hydrology model that has flexible geometry and treats the entire domain with one set of governing equations, allowing for any drainage configuration to arise, which can include efficient (channelized) and inefficient (distributed) features. [<a href="#references">*Sommers2018*</a>]
+SHAKTI (Subglacial Hydrology and Kinetic, Transient Interactions) is a transient subglacial hydrology model that has flexible geometry and treats the entire domain with one set of governing equations, allowing for any drainage configuration to arise, which can include efficient (channelized) and inefficient (distributed) features. [[*Sommers2018*](#references)]
 
 ### Equations
 The SHAKTI model is based upon governing equations that describe conservation of water mass, evolution of the system geometry, basal water flux (approximate momentum equation), and internal melt generation (approximate energy equation).
@@ -97,9 +97,9 @@ The parameters relevant to the SHAKTI (hydrologyshakti) solution can be displaye
 - `md.hydrology.bump_spacing` characteristic bedrock bump spacing (m)
 - `md.hydrology.bump_height` characteristic bedrock bump height (m)
 - `md.hydrology.englacial_input` liquid water input from englacial to subglacial system (m/yr)
-- `md.hydrology.moulin_input` liquid water input from moulins (at the vertices) to subglacial system (m<a href="#footnotes" target="_top"><sup>3</sup></a>/s)
+- `md.hydrology.moulin_input` liquid water input from moulins (at the vertices) to subglacial system (m[<sup>3</sup>](#footnotes){:target="_top"}/s)
 - `md.hydrology.reynolds` Reynolds' number
-- `md.hydrology.neumannflux` water flux applied along the model boundary (m<a href="#footnotes" target="_top"><sup>2</sup></a>/s)
+- `md.hydrology.neumannflux` water flux applied along the model boundary (m[<sup>2</sup>](#footnotes){:target="_top"}/s)
 - `md.hydrology.spchead` water head constraints (NaN means no constraint) (m)
 - `md.hydrology.relaxation` under-relaxation coefficient for nonlinear iteration
 - `md.hydrology.storage` englacial storage coefficient (void ratio)

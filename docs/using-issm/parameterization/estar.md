@@ -7,10 +7,10 @@ math: mathjax3
 
 # Empirical Scalar Tertiary Anisotropy Regime (ESTAR)
 ## Description
-The ESTAR (Empirical Scalar Tertiary Anisotropy Regime) flow relation [<a href="#references">*Budd2013,Graham2018*</a>] is a generalized constitutive relation for polycrystalline ice in steady-state (tertiary) flow. It is a scalar power-law formulation based on tertiary creep rates from laboratory experiments of ice deformation under a variety of simple shear and compression stresses. While mathematically isotropic, the ESTAR flow relation describes the deformation of ice with a flow-compatible induced anisotropy &#8212; i.e. ice that has a developed anisotropic fabric that is a function of the underlying stress regime (i.e. the relative proportion of simple shear and compression stresses). The origins of ESTAR, including the laboratory experiments that contributed to its development, its derivation, and underlying assumptions are discussed in [<a href="#references">*Budd2013*</a>] and [<a href="#references">*Graham2018*</a>].
+The ESTAR (Empirical Scalar Tertiary Anisotropy Regime) flow relation [[*Budd2013,Graham2018*](#references)] is a generalized constitutive relation for polycrystalline ice in steady-state (tertiary) flow. It is a scalar power-law formulation based on tertiary creep rates from laboratory experiments of ice deformation under a variety of simple shear and compression stresses. While mathematically isotropic, the ESTAR flow relation describes the deformation of ice with a flow-compatible induced anisotropy &#8212; i.e. ice that has a developed anisotropic fabric that is a function of the underlying stress regime (i.e. the relative proportion of simple shear and compression stresses). The origins of ESTAR, including the laboratory experiments that contributed to its development, its derivation, and underlying assumptions are discussed in [[*Budd2013*](#references)] and [[*Graham2018*](#references)].
 
 ### Equations
-Ice is treated as a purely viscous incompressible material [<a href="#references">*Cuffey2010*</a>], such that its material constitutive relation can be written:
+Ice is treated as a purely viscous incompressible material [[*Cuffey2010*](#references)], such that its material constitutive relation can be written:
 
 $$
 {\boldsymbol\sigma'} = 2 \mu \dot{ {\boldsymbol\varepsilon}},
@@ -19,7 +19,7 @@ where:
 
 - $${\boldsymbol\sigma'}$$ is the deviatoric stress tensor (Pa)
 - $$\mu$$ is the ice effective viscosity (Pa s)
-- $$\dot{ {\boldsymbol\varepsilon}}$$ is the strain rate tensor (s<a href="#footnotes" target="_top"><sup>-1</sup></a>)
+- $$\dot{ {\boldsymbol\varepsilon}}$$ is the strain rate tensor (s[<sup>-1</sup>](#footnotes){:target="_top"})
 
 The ESTAR flow relation viscosity $$\mu$$ can be written:
 
@@ -36,12 +36,12 @@ The most notable difference between the Glen and ESTAR flow relations is realize
 $$
 E(\lambda_S) = E_C + (E_S - E_C) \lambda_S^2.
 $$
-Here, $$E_C$$ and $$E_S$$ are the enhancement factors above the minimum (secondary) deformation rate for isotropic ice under compression alone or simple shear alone, respectively. Laboratory evidence suggests that a suitable ratio of $$E_C/E_S$$ is $$3/8$$ [<a href="#references">*Treverrow2012*</a>]. The shear fraction $$\lambda_S$$ characterizes the contribution of simple shear to the effective stress. The collinear nature of the ESTAR flow relation allows $$\lambda_S$$ to be expressed equivalently in terms of stresses and strain rates. The strain rate formulation is more convenient for Stokes flow modeling, and can be written:
+Here, $$E_C$$ and $$E_S$$ are the enhancement factors above the minimum (secondary) deformation rate for isotropic ice under compression alone or simple shear alone, respectively. Laboratory evidence suggests that a suitable ratio of $$E_C/E_S$$ is $$3/8$$ [[*Treverrow2012*](#references)]. The shear fraction $$\lambda_S$$ characterizes the contribution of simple shear to the effective stress. The collinear nature of the ESTAR flow relation allows $$\lambda_S$$ to be expressed equivalently in terms of stresses and strain rates. The strain rate formulation is more convenient for Stokes flow modeling, and can be written:
 
 $$
 \lambda_S=\frac{\dot{\varepsilon}'}{\dot{\varepsilon}_e},
 $$
-where $$\dot{\varepsilon}'$$ (s<a href="#footnotes" target="_top"><sup>-1</sup></a>) is the magnitude of the shear strain rate on the local non-rotating shear plane. The local non-rotating shear plane contains the velocity vector and the vorticity vector associated solely with deformation, rather than local rigid body rotation. See [<a href="#references">*Graham2018*</a>] for details.
+where $$\dot{\varepsilon}'$$ (s[<sup>-1</sup>](#footnotes){:target="_top"}) is the magnitude of the shear strain rate on the local non-rotating shear plane. The local non-rotating shear plane contains the velocity vector and the vorticity vector associated solely with deformation, rather than local rigid body rotation. See [[*Graham2018*](#references)] for details.
 
 For comparison with the ESTAR viscosity, the Glen flow relation viscosity $$\mu$$ can be written:
 

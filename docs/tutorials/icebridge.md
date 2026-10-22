@@ -26,7 +26,7 @@ Tutorial steps to be taken:
 
 ## Mesh
 We modify the experiment from 
-<a href="./greenland" target="_top">the Greenland SeaRISE tutorial</a>,
+[the Greenland SeaRISE tutorial](./greenland){:target="_top"},
 and improve from there. Run the first step in `runme.m` file to mesh the Greenland domain (similar to the previous tutorial), and plot the model. Note that the code in step 1 is interrupted after making the default mesh. Plot the model:
 ````
 >> plotmodel(md, 'data', 'mesh');
@@ -41,7 +41,7 @@ Next, we modify the `bamg` command by imposing a 3 km resolution within the JI a
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/icebridge/Mesh2.png" alt="Figure 2: Mesh2"></div>Use MATLAB's zoom tool in the figure to make a close-up of the JI domain.
 ## Parameterization
-We want to include high-resolution bedrock and surface elevation data acquired in the OIB mission. The data is accessible on University of Kansas' CReSIS <a href="https://data.cresis.ku.edu/data/grids/old_versions/Jakobshavn_2008_2011_Composite.zip" target="_blank">Open Polar Radar Data Products page</a>. Save the file in the `../Data/` directory.
+We want to include high-resolution bedrock and surface elevation data acquired in the OIB mission. The data is accessible on University of Kansas' CReSIS [Open Polar Radar Data Products page](https://data.cresis.ku.edu/data/grids/old_versions/Jakobshavn_2008_2011_Composite.zip){:target="_blank"}. Save the file in the `../Data/` directory.
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/icebridge/Jakobshavn.png" alt="Figure 3: Jakobshavn"></div>To do this, the bedrock data is read, transformed into a usable grid, and interpolated to the mesh in the parameter file `Greenland.par`:
 ````

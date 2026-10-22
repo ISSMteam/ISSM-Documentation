@@ -7,10 +7,10 @@ has_toc: false
 ---
 
 # Parameterization of Physical Processes
- - <a href="parameter-files">Parameter Files</a>
- - <a href="pdd">Positive Degree Day (PDD)</a>
- - <a href="smb">Surface Mass Balance (SMB)</a>
- - <a href="friction">Basal Friction</a>
- - <a href="calving">Calving</a>
- - <a href="basal-melt">Basal Melt</a>
- - <a href="estar">Empirical Scalar Tertiary Anisotropy Regime (ESTAR)</a>
+ - [Parameter Files](parameter-files)
+ - [Positive Degree Day (PDD)](pdd)
+ - [Surface Mass Balance (SMB)](smb)
+ - [Basal Friction](friction)
+ - [Calving](calving)
+ - [Basal Melt](basal-melt)
+ - [Empirical Scalar Tertiary Anisotropy Regime (ESTAR)](estar)

@@ -6,7 +6,7 @@ grand_parent: Using ISSM
 ---
 
 # Adaptive Mesh Refinement - AMR
-The adaptive mesh refinement (AMR) in ISSM relies on two independent meshers: BAMG and NeoPZ. BAMG is a bidimensional anisotropic mesh generator developed by <a href="http://www.ann.jussieu.fr/~hecht/" target="_blank">Frederic Hecht</a> [<a href="#references">*Hecht2006*</a>] and NeoPZ is a finite element package developed by <a href="https://github.com/labmec/neopz" target="_blank">Philippe Devloo</a> [<a href="#references">*Devloo1997*</a>].
+The adaptive mesh refinement (AMR) in ISSM relies on two independent meshers: BAMG and NeoPZ. BAMG is a bidimensional anisotropic mesh generator developed by [Frederic Hecht](http://www.ann.jussieu.fr/~hecht/){:target="_blank"} [[*Hecht2006*](#references)] and NeoPZ is a finite element package developed by [Philippe Devloo](https://github.com/labmec/neopz){:target="_blank"} [[*Devloo1997*](#references)].
 
 The current AMR is supported for 2D meshes (triangle elements) and for the SSA flow equations. The
 features of each one of these meshers are described below:
@@ -50,7 +50,7 @@ The ice front is another region where AMR can be applied. For this, the edge len
 ````
 Set `0` as the ice front distance if this refinement is not required.
 
-**Note:** users using Intel compilers (`icc`, `icpc`) should use the flag `-fp-model precise` to disable optimizations that are not value-safe on floating-point data. This will prevent `bamg` from being compiler dependent (see <a href="https://software.intel.com/en-us/node/522979" target="_blank">here</a>).
+**Note:** users using Intel compilers (`icc`, `icpc`) should use the flag `-fp-model precise` to disable optimizations that are not value-safe on floating-point data. This will prevent `bamg` from being compiler dependent (see [here](https://software.intel.com/en-us/node/522979){:target="_blank"}).
 
 ## AMR using NeoPZ (requires installation)
 The mesh refinement with NeoPZ is based on levels of refinement: the initial coarse mesh is refined according to the user requirement and only nested meshes are generated (it means that the initial vertices positions are kept unchanged during all the AMR simulation). NeoPZ is an external package that needs to be installed before using in ISSM. Once installed, it is necessary setting NeoPZ as the AMR package:

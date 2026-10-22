@@ -1,8 +1,8 @@
 To perform parameter space studies, we need to submit multiple jobs with a parameter that changes value. Here is how you can do that for basal friction changing from 50 to 100 by increments of 1 (as an example).
 
 We are going to use a variable in the MATLAB workspace called `friction` that will be changing within a loop. In your `runme.m` script, prepare your step with a dynamic step name:
-{{{
-#!m
+
+```m
 %Do we need to submit the job or download the results?
 loadonly = 0;
 
@@ -25,15 +25,14 @@ if perform(org,['FrictionTest_' num2str(friction) ])
       savemodel(org,md);
    end
 end
-}}}
+```
 
 Now, to submit jobs, set `loadonly = 0` and launch your jobs:
 
-{{{
-#!m
+```m
 for friction=50:100
    runme;
 end
-}}}
+```
 
 Once all the jobs are fully completed, you can set `loadonly = 1` and run the same loop, all the results will be downloaded and the model will be saved with a unique name. Good luck!

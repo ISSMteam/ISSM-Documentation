@@ -7,7 +7,7 @@ math: mathjax3
 
 # Calving
 ## Physical basis
-Calving (frontal ablation of icebergs) is one of the two processes, together with frontal melting, that determine the position of the ice front through time. In ISSM, calving is not resolved as a fracture process but is parameterized: at every time step, a calving rate $$c$$ [m/a] is computed everywhere along the ice front, from one of several calving laws described below. This rate then feeds into the level-set advection equation that tracks the ice front position (see the <a href="../capabilities/levelset">Ice Front Migration (Level Set Method)</a> page).
+Calving (frontal ablation of icebergs) is one of the two processes, together with frontal melting, that determine the position of the ice front through time. In ISSM, calving is not resolved as a fracture process but is parameterized: at every time step, a calving rate $$c$$ [m/a] is computed everywhere along the ice front, from one of several calving laws described below. This rate then feeds into the level-set advection equation that tracks the ice front position (see the [Ice Front Migration (Level Set Method)](../capabilities/levelset) page).
 
 The calving law is selected by assigning the corresponding class to `md.calving`. All laws share the same enabling switch:
 ````
@@ -23,7 +23,7 @@ The simplest option prescribes the calving rate directly, uniformly or spatially
 - `md.calving.calvingrate`: calving rate at each vertex [m/a] (can be a time series)
 
 ### Von Mises stress calving law (calvingvonmises)
-This law, from [<a href="#references">*Morlighem2016*</a>], relates the calving rate to the tensile von Mises stress $$\sigma_{vm}$$ and the ice velocity:
+This law, from [[*Morlighem2016*](#references)], relates the calving rate to the tensile von Mises stress $$\sigma_{vm}$$ and the ice velocity:
 
 $$
 c = \left|{\bf v}\right| \frac{\sigma_{vm}}{\sigma_{max}}
@@ -41,7 +41,7 @@ where $$\sigma_{max}$$ is a threshold stress (calibrated separately for grounded
 `calvingdev2` implements the same von Mises law, but additionally requires the ice tongue to reach a minimum height above flotation before it is allowed to calve (`md.calving.height_above_floatation`).
 
 ### Levermann calving law (calvinglevermann)
-This law, from [<a href="#references">*Levermann2012*</a>], makes the calving rate proportional to the product of the principal strain rates along and across the flow direction, $$\dot{\varepsilon}_{\parallel}$$ and $$\dot{\varepsilon}_{\perp}$$:
+This law, from [[*Levermann2012*](#references)], makes the calving rate proportional to the product of the principal strain rates along and across the flow direction, $$\dot{\varepsilon}_{\parallel}$$ and $$\dot{\varepsilon}_{\perp}$$:
 
 $$
 c = k \, \dot{\varepsilon}_{\parallel}\, \dot{\varepsilon}_{\perp}
@@ -55,10 +55,10 @@ evaluated only where both strain rates are positive (extensional in both directi
 - `md.calving.coeff`: proportionality coefficient $$k$$ (default: $$2\times10^{13}$$)
 
 ### Crevasse-depth calving law (calvingcrevassedepth)
-This law follows the crevasse-penetration concept of [<a href="#references">*Nick2010,Otero2010*</a>]: calving occurs where the combined depth of surface and basal crevasses reaches the full ice thickness. Surface and basal crevasse depths are computed from a balance between the opening (tensile) stress and the ice overburden/water pressure resisting crevasse penetration. `md.calving.crevasse_opening_stress` selects how the opening stress is estimated:
+This law follows the crevasse-penetration concept of [[*Nick2010,Otero2010*](#references)]: calving occurs where the combined depth of surface and basal crevasses reaches the full ice thickness. Surface and basal crevasse depths are computed from a balance between the opening (tensile) stress and the ice overburden/water pressure resisting crevasse penetration. `md.calving.crevasse_opening_stress` selects how the opening stress is estimated:
 
-- 0: tensile deviatoric stress in the flow direction [<a href="#references">*Otero2010*</a>]
-- 1: maximum principal stress [<a href="#references">*Todd2018*</a>]
+- 0: tensile deviatoric stress in the flow direction [[*Otero2010*](#references)]
+- 1: maximum principal stress [[*Todd2018*](#references)]
 - 2: a buttressing-based formulation
 
 ````
@@ -86,7 +86,7 @@ Ice thinner than a prescribed threshold is removed from the domain:
 - `md.calving.min_thickness`: minimum ice thickness allowed [m] (default: 100)
 
 ### Pollard and DeConto calving law (calvingpollard)
-This law, from [<a href="#references">*Pollard2015*</a>], is based on a critical ratio between crevasse (or hydrofracture) depth and ice thickness:
+This law, from [[*Pollard2015*](#references)], is based on a critical ratio between crevasse (or hydrofracture) depth and ice thickness:
 ````
 >> md.calving = calvingpollard();
 ````
@@ -111,7 +111,7 @@ In addition to calving, submarine/frontal melting contributes to the retreat (or
 - `md.frontalforcings.meltingrate`: frontal melt rate at each vertex [m/a] (can be a time series)
 - `md.frontalforcings.ablationrate`: total frontal ablation rate [m/a] (calving and melting combined), used instead of `meltingrate` when only the combined rate is known
 
-Alternatively, `frontalforcingsrignot` computes the frontal melt rate from ocean thermal forcing and subglacial discharge, following the parameterization of [<a href="#references">*Rignot2016*</a>]:
+Alternatively, `frontalforcingsrignot` computes the frontal melt rate from ocean thermal forcing and subglacial discharge, following the parameterization of [[*Rignot2016*](#references)]:
 ````
 >> md.frontalforcings = frontalforcingsrignot();
 ````
@@ -126,7 +126,7 @@ To turn on calving and ice front migration in a simulation, use:
 ````
 >> md.transient.ismovingfront = 1;
 ````
-This also requires setting up the level-set function that tracks the ice front position, described on the <a href="../capabilities/levelset">Ice Front Migration (Level Set Method)</a> page. Then run the transient simulation:
+This also requires setting up the level-set function that tracks the ice front position, described on the [Ice Front Migration (Level Set Method)](../capabilities/levelset) page. Then run the transient simulation:
 ````
 >> md = solve(md, 'Transient');
 ````

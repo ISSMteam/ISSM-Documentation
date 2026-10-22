@@ -8,15 +8,15 @@ math: mathjax3
 
 # Quantification of Margins and Uncertainties (QMU) with Dakota
 ## Physical basis
-The methods for Quantification of Margins and Uncertainties (QMU) are based on the Design Analysis Kit for Optimization and Terascale Applications (Dakota) software [<a href="#references">*Eldred2008*</a>], which is embedded within ISSM [<a href="#references">*Larour2012b,Larour2012a*</a>].  Available Dakota analyses include sensitivity and sampling analyses, which we rely on, respectively, to: 1) understand the sensitivity of model diagnostics to local variations in model fields and 2) identify how variations in model fields impact uncertainty in model diagnostics.  Diagnostics of interest include ice volume, maximum velocity, and mass flux across user-specified profiles.
+The methods for Quantification of Margins and Uncertainties (QMU) are based on the Design Analysis Kit for Optimization and Terascale Applications (Dakota) software [[*Eldred2008*](#references)], which is embedded within ISSM [[*Larour2012b,Larour2012a*](#references)].  Available Dakota analyses include sensitivity and sampling analyses, which we rely on, respectively, to: 1) understand the sensitivity of model diagnostics to local variations in model fields and 2) identify how variations in model fields impact uncertainty in model diagnostics.  Diagnostics of interest include ice volume, maximum velocity, and mass flux across user-specified profiles.
 
 ### Mesh Partitioning
-QMU analyses are carried out on partitions of the model domain. Each partition consists of a collection of vertices.  The ISSM partitioner is versatile. For example, the partitioner can assign one vertex for each partition (linear partitioning); the same number of vertices per partition (unweighted partitioning); or it can weight partitions by a specified amount (equal-area by default - to remove area-specific dependencies).  Advanced partitioning is accomplished using the Chaco Software for Partitioning Graphs [<a href="#references">*Hendrickson1995*</a>], prior to setting up the model parameters for QMU analysis.
+QMU analyses are carried out on partitions of the model domain. Each partition consists of a collection of vertices.  The ISSM partitioner is versatile. For example, the partitioner can assign one vertex for each partition (linear partitioning); the same number of vertices per partition (unweighted partitioning); or it can weight partitions by a specified amount (equal-area by default - to remove area-specific dependencies).  Advanced partitioning is accomplished using the Chaco Software for Partitioning Graphs [[*Hendrickson1995*](#references)], prior to setting up the model parameters for QMU analysis.
 
 ### Sensitivity
 Sensitivity, or local reliability, analysis computes the local derivative of diagnostics with respect to model inputs. It is used to assess the spatial distribution of this derivative, for the purpose of spatially ranking the influence of various inputs.
 
-Given a response $$r$$ that is a function of multiple variables $$x_i$$ in a local reliability analysis [<a href="#references">*Coleman1999*</a>], we have:
+Given a response $$r$$ that is a function of multiple variables $$x_i$$ in a local reliability analysis [[*Coleman1999*](#references)], we have:
 
 $$
 r=r(x_1,x_2,...,x_n)
@@ -36,7 +36,7 @@ $$
 
 where $$\sigma_i$$ is the standard deviation of $$x_i$$ and $$\sigma_r$$ is the standard deviation of $$r$$.
 
-**Importance factors** for each $$x_i$$ are determined by dividing the error propagation equation by $$\sigma$$<sub>r</sub><a href="#footnotes" target="_top"><sup>2</sup></a>. Note that the mean of the response is taken to be the response for the nominal value of each variable $$x_i$$.
+**Importance factors** for each $$x_i$$ are determined by dividing the error propagation equation by $$\sigma$$<sub>r</sub>[<sup>2</sup>](#footnotes){:target="_top"}. Note that the mean of the response is taken to be the response for the nominal value of each variable $$x_i$$.
 
 Sensitivities are computed from the function evaluations using finite differences. The finite difference step size is user-defined by a parameter in the ISSM model. This analysis imposes the finite-difference step size as a small perturbation to $$x_i$$. The resulting sensitivities quantify
 how the location of errors impact a specified model diagnostic ($$r$$).
@@ -56,7 +56,7 @@ For a particular sample, every $$x_i$$ is perturbed by a different amount at eac
 
 If a user chooses so, any $$x_i$$ can be treated as a scaled value. In this case, the distribution definitions are given in percentages, relative to a $$\mu_i$$ value of 1.
 
-For example, at the beginning of a particular sample for a scaled $$x_i$$, Dakota chooses a random percentage perturbation $$P_i(p)$$ at each partition $$p$$. The value of the random percentage will fall within the defined error distribution, and the new value of $$x_i$$ for duration of this sample run is perturbed by $$x_iP_i(p)$$. The generation algorithm for $$P_i(p)$$ is user-specified (e.g. Monte-Carlo or LHS [<a href="#references">*Swiler2004*</a>]).
+For example, at the beginning of a particular sample for a scaled $$x_i$$, Dakota chooses a random percentage perturbation $$P_i(p)$$ at each partition $$p$$. The value of the random percentage will fall within the defined error distribution, and the new value of $$x_i$$ for duration of this sample run is perturbed by $$x_iP_i(p)$$. The generation algorithm for $$P_i(p)$$ is user-specified (e.g. Monte-Carlo or LHS [[*Swiler2004*](#references)]).
 
 In the case where the user wants to sample $$n$$ variables at the same time, a $$P_i(p)$$ is chosen separately for each $$x_i$$ before a particular sample run. Resulting statistics reflect the combined effects of the errors due to $$x_1,x_2,...,x_n$$.
 

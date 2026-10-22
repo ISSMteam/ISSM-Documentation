@@ -7,7 +7,7 @@ math: mathjax3
 
 # Ice Front Migration (Level Set Method)
 ## Physical basis
-ISSM tracks the position of the calving front implicitly, using a level-set method [<a href="#references">*Bondzio2016*</a>]. The ice front is defined as the zero contour of a level-set function $$\phi$$, with the convention:
+ISSM tracks the position of the calving front implicitly, using a level-set method [[*Bondzio2016*](#references)]. The ice front is defined as the zero contour of a level-set function $$\phi$$, with the convention:
 
 - $$\phi<0$$ inside the ice domain
 - $$\phi>0$$ outside the ice domain (open ocean/no ice)
@@ -19,7 +19,7 @@ $$
 \frac{\partial \phi}{\partial t} + {\bf v_f}\cdot\nabla \phi = 0
 $$
 
-where $${\bf v_f}$$ is the frontal migration velocity, obtained by combining the horizontal ice velocity $${\bf v}$$ with the calving rate $$c$$ (see the <a href="../parameterization/calving">Calving</a> page) and the frontal melt rate $$m$$, both acting outward, normal to the front:
+where $${\bf v_f}$$ is the frontal migration velocity, obtained by combining the horizontal ice velocity $${\bf v}$$ with the calving rate $$c$$ (see the [Calving](../parameterization/calving) page) and the frontal melt rate $$m$$, both acting outward, normal to the front:
 
 $$
 {\bf v_f} = {\bf v} - \left(c + m\right)\frac{\nabla \phi}{\left|\nabla \phi\right|}
@@ -60,7 +60,7 @@ To turn on ice front migration in a transient simulation, activate the moving fr
 ````
 >> md.transient.ismovingfront = 1;
 ````
-You must also select a calving law (see the <a href="../parameterization/calving">Calving</a> page) and, if applicable, a frontal melt/undercutting parameterization (`md.frontalforcings`):
+You must also select a calving law (see the [Calving](../parameterization/calving) page) and, if applicable, a frontal melt/undercutting parameterization (`md.frontalforcings`):
 ````
 >> md.calving = calvingvonmises();
 >> md.frontalforcings = frontalforcings();

@@ -11,7 +11,7 @@ math: mathjax3
 The ISSM/GIA model assumes that the ice sheet rests on top of the solid Earth, which is considered to be a simple two-layered incompressible continuum with an upper elastic lithosphere floating on the viscoelastic (Maxwell material) mantle half-space. Coordinate transformations allow simple axisymmetric solutions for the deformation of pre-stressed solid Earth (subject to a normal surface traction of ice/ocean) to retrieve semi-analytical solutions of vertical displacement at the lithosphere surface.
 
 ## Vertical surface displacement
-Vertical displacement at the lithosphere surface (i.e., ice/ocean-bedrock interface), $$w(r,t)$$, is the most relevant field variable for GIA assessment. For brevity, hereinafter, this is referred to as the GIA solution. The semi-analytical GIA solution is given by [<a href="#references">*Ivins1999*</a>]:
+Vertical displacement at the lithosphere surface (i.e., ice/ocean-bedrock interface), $$w(r,t)$$, is the most relevant field variable for GIA assessment. For brevity, hereinafter, this is referred to as the GIA solution. The semi-analytical GIA solution is given by [[*Ivins1999*](#references)]:
 
 $$
 w(r,t) = \int_{0}^{\infty} { k \left[ \frac{4 \mu_1^{e} \alpha}{2k\mu_1^e + \rho_1 g} \,\hat{Q}_0(k,t) J_1(k\alpha) \right] J_0(kr) \, \text{d}k },
@@ -118,7 +118,7 @@ where:
 - $$\rho_2$$ is the mantle density
 
 ## Numerical implementation
-In the Cartesian frame of ISSM, we treat the size of ice load as the property of mesh element and compute the GIA solution at each node of the element [<a href="#references">*Adhikari2014*</a>]. Individual 2-D ($$xy$$-plane) mesh elements are defined as the equivalence of footprint (i.e., projection onto the $$xy$$-plane) of cylindrical disc loads, ensuring that the corresponding element and disc both share the same origin and plan-form area. The height of ice load is then assigned to each element such that the average normal tractional force on the corresponding area of bedrock is conserved. At each node within the domain, the final GIA solutions are computed by integrating the solutions due to individual disc loads, defined as the property of mesh elements.
+In the Cartesian frame of ISSM, we treat the size of ice load as the property of mesh element and compute the GIA solution at each node of the element [[*Adhikari2014*](#references)]. Individual 2-D ($$xy$$-plane) mesh elements are defined as the equivalence of footprint (i.e., projection onto the $$xy$$-plane) of cylindrical disc loads, ensuring that the corresponding element and disc both share the same origin and plan-form area. The height of ice load is then assigned to each element such that the average normal tractional force on the corresponding area of bedrock is conserved. At each node within the domain, the final GIA solutions are computed by integrating the solutions due to individual disc loads, defined as the property of mesh elements.
 
 ## Model parameters
 The parameters relevant to the GIA solution can be displayed by running:

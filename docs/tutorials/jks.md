@@ -19,8 +19,8 @@ Change into `<ISSM_DIR>/examples/Jakobshavn/` to do this tutorial.
 In this tutorial, we construct a 2-dimensional model of Jakobshavn Isbr&#230;, West Greenland, and use it to invert for the basal friction parameter.
 
 ### Download
-For this tutorial, we will use a dataset from the <a href="https://scholarworks.umt.edu/cgi/viewcontent.cgi?params=/context/cs_pubs/article/1020/&path_info=Ice_sheet_model.pdf" target="_blank">SeaRISE Initiative</a>: `Greenland_5km_v1.2.nc`. This data should be saved in the `examples/Data` directory (see 
- <a href="datasets">dataset download</a> page).
+For this tutorial, we will use a dataset from the [SeaRISE Initiative](https://scholarworks.umt.edu/cgi/viewcontent.cgi?params=/context/cs_pubs/article/1020/&path_info=Ice_sheet_model.pdf){:target="_blank"}: `Greenland_5km_v1.2.nc`. This data should be saved in the `examples/Data` directory (see 
+ [dataset download](datasets) page).
 
 ## runme file
 The `runme.m` file in `<ISSM_DIR>/examples/Jakobshavn/` is a list of commands to be run in sequence at the MATLAB command prompt. The tutorial is decomposed into 4 steps:

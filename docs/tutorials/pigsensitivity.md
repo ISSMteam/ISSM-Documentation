@@ -7,16 +7,16 @@ nav_order: 10
 
 # Pine Island Glacier Sensitivity Study
 ## Goals
-This example is adapted from the results presented in [<a href="#references">*Seroussi2014*</a>]. We model the impact of different external forcings on the dynamic evolution of Pine Island Glacier. The main objectives are to:
+This example is adapted from the results presented in [[*Seroussi2014*](#references)]. We model the impact of different external forcings on the dynamic evolution of Pine Island Glacier. The main objectives are to:
 
 - Run transient simulations (10 years) of a real glacier
 - Change external forcings
 - Compare the impact of changes on glacier dynamics and volume
 
 Files needed to run this tutorial are located in `<ISSM_DIR>/examples/PigSensitivity/`. This tutorial relies on experience gained from completing the 
- <a href="pig">Pine Island Glacier</a>
+ [Pine Island Glacier](pig)
 and 
- <a href="greenland">Greenland Ice Sheet</a>
+ [Greenland Ice Sheet](greenland)
 modeling tutorials, so make sure to complete them first.
 ## Evolution over 10 years
 We first run a simulation of Pine Island Glacier over a 10-year period, starting from the `Pig` tutorial.

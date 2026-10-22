@@ -9,7 +9,7 @@ nav_order: 14
 # Subglacial Channel Formation From a Single Moulin (SHAKTI)
 ## Goals
 
-- Learn to set up a subglacial hydrology simulation using the SHAKTI model (Subglacial Hydrology and Kinetic, Transient Interactions, [<a href="#references">*Sommers2018*</a>]),
+- Learn to set up a subglacial hydrology simulation using the SHAKTI model (Subglacial Hydrology and Kinetic, Transient Interactions, [[*Sommers2018*](#references)]),
 - Run a test with steady input into a single moulin to see an efficient drainage pathway develop from the moulin to the outflow, and obtain the corresponding effective pressure, hydraulic head, and basal water flux distributions.
 
 Go to `<ISSM_DIR>/examples/shakti/` to do this tutorial.

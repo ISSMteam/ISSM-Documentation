@@ -7,7 +7,7 @@ nav_order: 9
 
 # Debugging
 ## How to debug a crash in issm.exe?
-If there is a crash during the solve phase, we strongly suggest using <a href="http://valgrind.org" target="_blank">Valgrind</a>. Install Valgrind using one of the scripts in the directory `${ISSM_DIR}/externalpackages/valgrind`. Valgrind will subsequently be embedded in ISSM and can detect segmentation faults as well as memory leaks. To do so, set the model debugging field to 1 and use only one CPU,
+If there is a crash during the solve phase, we strongly suggest using [Valgrind](http://valgrind.org){:target="_blank"}. Install Valgrind using one of the scripts in the directory `${ISSM_DIR}/externalpackages/valgrind`. Valgrind will subsequently be embedded in ISSM and can detect segmentation faults as well as memory leaks. To do so, set the model debugging field to 1 and use only one CPU,
 ````
 md.debug.valgrind = 1;
 md.cluster.np = 1;

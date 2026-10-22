@@ -66,7 +66,7 @@ This class allows for lapse rate adjustments applied to the SMB values (i.e., el
 - `lapserates`: the basin-specific lapse rate values applied in their corresponding elevation bin. Note that this parameter can have a third dimension of size 12 if monthly-varying lapse rate values are used (1 value per month should be provided in this case).
 
 ### frontalforcingsrignotarma
-This class uses the frontal melt parameterization of [<a href="#references">*Rignot2016*</a>] (similarly to class `frontalforcingsrignot`),
+This class uses the frontal melt parameterization of [[*Rignot2016*](#references)] (similarly to class `frontalforcingsrignot`),
 
 $$
 \dot{m} = \left(A h_{w} q_{sg}^{\alpha} + B\right)\emph{TF}^{\beta}
@@ -123,7 +123,7 @@ $$
 
 Note that the random number generator implemented in ISSM to draw random numbers/vectors from univariate/multivariate Normal distributions is the linear congruential generator.
 
-For more details about StISSM, please refer to [<a href="#references">*Verjans2022*</a>].
+For more details about StISSM, please refer to [[*Verjans2022*](#references)].
 
 # References
 - E. Rignot, Y. Xu, D. Menemenlis, J. Mouginot, B. Scheuchl, X. Li, M. Morlighem,

@@ -104,6 +104,6 @@ To run a simulation, use the following command:
 >> md = solve(md,'Masstransport');
 ````
 The first argument is the model, the second is the nature of the simulation one wants to run. This will compute one time step of the mass transport equation; use the 
- <a href="transient">transient solution</a>
+ [transient solution](transient)
 for multiple time steps.
 

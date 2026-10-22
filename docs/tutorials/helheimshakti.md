@@ -24,7 +24,7 @@ In this example, the main goal is to set up a subglacial hydrology simulation us
 - Set up and run two-way coupled seasonal simulations with prescribed distributed meltwater input and point meltwater inputs
 
 Files needed for this tutorial can be found in `<ISSM_DIR>/examples/HelheimSHAKTI/`. This tutorial begins from a model of Helheim Glacier generated in the 
-<a href="helheim">'Modeling Helheim Glacier' tutorial</a>.
+['Modeling Helheim Glacier' tutorial](helheim).
 
 ## Load model
 The first step in the `runme.m` file is to load the model of Helheim Glacier created in the previous tutorial. We turn off the inversion now.
@@ -35,8 +35,8 @@ In the `runme.m` file, we set the hydrology model to SHAKTI:
 
 Next, we initialize the SHAKTI-specific hydrological parameters:
 
-- Distributed meltwater input ("englacial input") (m yr<a href="#footnotes" target="_top"><sup>-1</sup></a>)
-- Point meltwater input ("moulin input") (m<a href="#footnotes" target="_top"><sup>3</sup></a> s<a href="#footnotes" target="_top"><sup>-1</sup></a>)
+- Distributed meltwater input ("englacial input") (m yr[<sup>-1</sup>](#footnotes){:target="_top"})
+- Point meltwater input ("moulin input") (m[<sup>3</sup>](#footnotes){:target="_top"} s[<sup>-1</sup>](#footnotes){:target="_top"})
 - Initial hydraulic head (m)
 - Initial subglacial gap height (m)
 - Typical bed bump height and spacing (m)
@@ -108,8 +108,8 @@ md = solve(md, 'Transient');
 ## Seasonal meltwater inputs
 Meltwater inputs can be added through two options:
 
-- Distributed meltwater input (e.g. for highly crevassed regions): `md.hydrology.englacial_input` (units of m yr<a href="#footnotes" target="_top"><sup>-1</sup></a>)
-- Point inputs to represent discrete crevasses or moulins: `md.hydrology.moulin_input` (units of m<a href="#footnotes" target="_top"><sup>3</sup></a> s<a href="#footnotes" target="_top"><sup>-1</sup></a>)
+- Distributed meltwater input (e.g. for highly crevassed regions): `md.hydrology.englacial_input` (units of m yr[<sup>-1</sup>](#footnotes){:target="_top"})
+- Point inputs to represent discrete crevasses or moulins: `md.hydrology.moulin_input` (units of m[<sup>3</sup>](#footnotes){:target="_top"} s[<sup>-1</sup>](#footnotes){:target="_top"})
 
 Both types of meltwater input are spatially variable and can be prescribed as either constant in time (`size(md.mesh.numberofvertices, 1)`) or time-varying (`size(md.mesh.numberofvertices + 1, length(timevec))`). The sample code below includes example syntax for setting these meltwater inputs. Get creative and experiment with different combinations!
 ````
@@ -151,7 +151,7 @@ md.hydrology.moulin_input(1:end-1, :) = **set values here, can vary spatially an
 
 ## Resources
 For more details about the SHAKTI model and applications to Helheim Glacier, please see the
-following references: [<a href="#references">*Sommers2018,Sommers2023,Sommers2024*</a>].
+following references: [[*Sommers2018,Sommers2023,Sommers2024*](#references)].
 
 
 # References
