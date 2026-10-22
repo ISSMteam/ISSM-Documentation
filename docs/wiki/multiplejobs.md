@@ -1,8 +1,10 @@
 ---
-title: Submitting multiple jobs (parameter studies)
+title: Multiple jobs
 layout: default
 parent: Wiki
 ---
+
+#Submitting multiple jobs and parameter studies
 
 To perform parameter space studies, we need to submit multiple jobs with a parameter that changes value. Here is how you can do that for basal friction changing from 50 to 100 by increments of 1 (as an example).
 
