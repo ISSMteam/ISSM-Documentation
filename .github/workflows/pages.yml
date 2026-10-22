@@ -18,6 +18,7 @@ on:
       - "docs/supplements/**"
       - "docs/troubleshooting/**"
       - "docs/using-issm/**"
+      - "docs/wiki/**"
       - "docs/_config.yml"
       - "docs/Gemfile"
       - "docs/Gemfile.lock"
