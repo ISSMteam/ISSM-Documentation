@@ -116,7 +116,7 @@ export CXXFLAGS="-g -O3 -fPIC -std=c++11 -DCODI_ForcedInlines"
     --with-m1qn3-dir="${ISSM_DIR}/externalpackages/m1qn3/install" \
     --with-codipack-dir="${ISSM_DIR}/externalpackages/codipack/install" \
     --with-medipack-dir="${ISSM_DIR}/externalpackages/medipack/install" \
-    --with-gsl-dir="${ISSM_DIR}externalpackages/gsl/install" 
+    --with-gsl-dir="${ISSM_DIR}/externalpackages/gsl/install" 
 ```
 
 ## Installing ISSM with Solid Earth Capabilities
