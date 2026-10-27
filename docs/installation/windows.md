@@ -80,13 +80,15 @@ pacman -S vim
 ```
 
 ## Scripting Interfaces
-Follow the instructions for setting up the interface that you wish to use with ISSM.
-
-### MATLAB Interface
+Follow the instructions for setting up the interface that you wish to use with ISSM,
+<div class="issm-api-tabs">
+<div class="tab" data-api="matlab" markdown="1">
 Download and install the desired version of MATLAB from the <a href="https://www.mathworks.com" target="_blank">MathWorks website</a>. Make sure to install the optional 'Mapping Toolbox'.
-
-### Python Interface
+</div>
+<div class="tab" data-api="python" markdown="1">
 The Python interface to ISSM on Windows is currently under development.
+</div>
+</div>
 
 ## Edit Shell Profile Files
 
@@ -189,8 +191,8 @@ autoreconf -ivf
 ```
 
 Next, create a configuration file called `configure.sh` in `${ISSM_DIR}`. Its contents will depend on the interface you will be using, the external packages and capabilities you wish to use, and the location of certain libraries and executables on disk. The following examples can be used for an installation of ISSM with basic capabilities,
-
-### MATLAB Interface
+<div class="issm-api-tabs">
+<div class="tab" data-api="matlab" markdown="1">
 ```sh
 ./configure \
     --prefix="${ISSM_DIR}" \
@@ -208,12 +210,17 @@ Next, create a configuration file called `configure.sh` in `${ISSM_DIR}`. Its co
     --with-petsc-dir="${ISSM_DIR}/externalpackages/petsc/install" \
     --with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install"
 ```
+Recall that `MATLAB_PATH` was defined previously in `.bashrc`.
+</div>
+<div class="tab" data-api="python" markdown="1">
+The Python interface to ISSM on Windows is currently under development.
+</div>
+</div>
 
 {: .highlight-title }
 > Note
 >
 > - Replace `<NUM_CPUS>` with the number of available CPUs
-> - `MATLAB_PATH` was defined previously in `bashrc`.
 > - `MSMPI_ROOT` will be defined after running,
 > ```sh
 > source ${ISSM_DIR}/etc/environment.sh

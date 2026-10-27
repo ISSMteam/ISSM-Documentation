@@ -66,37 +66,35 @@ source ~/.bashrc
 or log out and log back in to apply this change.
 
 # Installing ISSM on {{ page.machine_name }}
-Babylon's home directory is on a very small drive. Make sure to install ISSM in `/jumbo/ice/ISSM/` (Ask Colin to give you permission)`:
-
+Babylon's home directory is on a very small drive. Make sure to install ISSM in `/jumbo/ice/ISSM/` (Ask Colin to give you permission),
 ```sh
 cd /jumbo/ice/ISSM/
-mkdir YOURUSERNAME
+mkdir <USERNAME>
 ```
-and replace YOURUSERNAME by your username. This is where you should clone ISSM and do your work.
+replacing `<USERNAME>` with your username. This is where you should clone ISSM and do your work.
 
 You can clone ISSM and install the following packages:
-- PETSc 3.26 (`./install-3.26-babylon.sh`) or later
-- triangle (`./install-linux.sh`)
+- PETSc 3.26    (`./install-3.26-babylon.sh` or later)
+- triangle      (`./install-linux.sh`)
 
 Use the following configuration script (adapt to your needs):
-
 ```sh
 ./configure \
-    --prefix=$ISSM_DIR \
-    --with-fortran-lib="-L/usr/lib/gcc/x86_64-linux-gnu/15 -lgfortran" \
-    --with-matlab-dir="/thayerfs/apps/matlabR2026a/" \
-    --with-triangle-dir="$ISSM_DIR/externalpackages/triangle/install" \
+    --prefix="${ISSM_DIR}" \
+    --enable-development \
+    --enable-debugging \
+    --with-numthreads=20 \
+    --with-matlab-dir="/thayerfs/apps/matlabR2026a" \
     --with-mpi-include="/usr/lib/x86_64-linux-gnu/openmpi/include" \
     --with-mpi-libflags="-L/usr/lib/x86_64-linux-gnu/openmpi/lib -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -lmpi" \
-    --with-petsc-dir="$ISSM_DIR/externalpackages/petsc/install" \
-    --with-metis-dir="$ISSM_DIR/externalpackages/petsc/install" \
-    --with-parmetis-dir="$ISSM_DIR/externalpackages/petsc/install/" \
-    --with-blas-lapack-dir="$ISSM_DIR/externalpackages/petsc/install" \
-    --with-scalapack-dir="$ISSM_DIR/externalpackages/petsc/install/" \
-    --with-mumps-dir="$ISSM_DIR/externalpackages/petsc/install/" \
-    --with-numthreads=20 \
-    --enable-development \
-    --enable-debugging
+    --with-fortran-lib="-L/usr/lib/gcc/x86_64-linux-gnu/15 -lgfortran" \
+    --with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install" \
+    --with-petsc-dir="${ISSM_DIR}/externalpackages/petsc/install" \
+    --with-metis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
+    --with-parmetis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
+    --with-blas-lapack-dir="${ISSM_DIR}/externalpackages/petsc/install" \
+    --with-scalapack-dir="${ISSM_DIR}/externalpackages/petsc/install" \
+    --with-mumps-dir="${ISSM_DIR}/externalpackages/petsc/install" \
 ```
 
 ## Installing ISSM with CoDiPack (AD)

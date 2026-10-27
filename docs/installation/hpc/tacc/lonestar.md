@@ -106,23 +106,36 @@ Use the following configuration script (adapt to your needs, making sure to *not
 ```
 
 ## Cluster Class Settings
-
-### MATLAB
-Create file `$ISSM_DIR/src/m/lonestar_settings.m` on the machine that you are doing model setup and results analysis on. This file will set up your personal settings so that that machine can send solution requests to {{ page.machine_name }} and retrieve results. For example, this file might include,
+In order to connect to {{ page.machine_name }} from the machine that you are doing model setup and results analysis on, you will need to create a cluster class settings file for your chosen scripting interface.
+<div class="issm-api-tabs">
+<div class="tab" data-api="mat" markdown="1">
+Create `$ISSM_DIR/src/m/lonestar_settings.m`, which might include,
 ```matlab
 cluster.login='<USERNAME>';
 cluster.codepath='<PATH_TO_ISSM_ON_CLUSTER>/bin/';
 cluster.executionpath='<PATH_TO_ISSM_ON_CLUSTER>/bin/execution';
 ```
-replacing `<USERNAME>` with your Dartmouth NetID and entering your code path and execution path. These settings will be picked up automatically by MATLAB when you run `md.cluster=lonestar()`.
+</div>
+<div class="tab" data-api="py" markdown="1">
+Cluster class `lonestar.py` still needs to be developed.
+</div>
+</div>
+replacing `<USERNAME>` with your TACC username and entering your code path and execution path. These settings will be picked up automatically when you run `md.cluster=lonestar()`.
 
 Note that the `executionpath' creates temporary binary files that can be removed once the job is complete. For this reason, you can set the path to be somewhere on the $SCRATCH filesystem, which provides unlimited temporary storage on {{ page.machine_name }}{{ page.machine_version }}.
 
 ## Running Jobs on {{ page.machine_name }}
 On {{ page.machine_name }}, each node has 24 cores and you can use any multiple of 24 for the total number of processors. The more nodes and the longer the requested time, the more you will have to wait in the queue, so choose your settings wisely. For example, use,
+<div class="issm-api-tabs">
+<div class="tab" data-api="mat" markdown="1">
 ```matlab
 md.cluster=lonestar('numnodes',2,'cpuspernode',12);
 ```
+</div>
+<div class="tab" data-api="py" markdown="1">
+Cluster class `lonestar.py` still needs to be developed.
+</div>
+</div>
 to have a job with 2 nodes and 12 CPUs per node for a total of 24 cores.
 
 Before you run your job, make sure to open a port first and enter the port number in `md.cluster`. Here is a handy alias,

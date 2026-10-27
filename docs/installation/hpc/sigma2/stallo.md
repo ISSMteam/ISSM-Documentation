@@ -104,18 +104,23 @@ make install
 ```
 
 ## Cluster Class Settings
-
-### Python
-Create file `$ISSM_DIR/src/py/stallo_settings.py` on the machine that you are doing model setup and results analysis on. This file will set up your personal settings so that that machine can send solution requests to {{ page.machine_name }} and retrieve results. For example, this file might include,
+In order to connect to {{ page.machine_name }} from the machine that you are doing model setup and results analysis on, you will need to create a cluster class settings file for your chosen scripting interface.
+<div class="issm-api-tabs">
+<div class="tab" data-api="mat" markdown="1">
+Cluster class `stallo.m` still needs to be developed.
+</div>
+<div class="tab" data-api="py" markdown="1">
+Create file `$ISSM_DIR/src/py/stallo_settings.py`, which might include,
 ```python
-def stallo_settings(md):
-    md.login='<USERNAME>'
-    md.queue='normal'
-    md.codepath='<PATH_TO_ISSM_ON_CLUSTER>/bin/'
-    md.executionpath='<PATH_TO_ISSM_ON_CLUSTER>/execution/'
-    md.accountname='nn4659k' # this is for ice2ice
-    md.numnodes=1
-    md.numprocess=16
+def hexagon_settings(md):
+    md.cluster.login='<USERNAME>'
+    md.cluster.queue='normal'
+    md.cluster.codepath='<PATH_TO_ISSM_ON_CLUSTER>/bin/'
+    md.cluster.executionpath='<PATH_TO_ISSM_ON_CLUSTER>/execution/'
+    md.cluster.accountname='bjerknes'
+    md.cluster.numnodes=1
     return md
 ```
-replacing `<USERNAME>` with your {{ page.machine_name }} username and entering your code path and execution path (`<PATH_TO_ISSM_ON_CLUSTER>` should be in `/global/work/<USERNAME>/`). These settings will be picked up automatically by MATLAB when you run `md.cluster=stallo()`.
+</div>
+</div>
+replacing `<USERNAME>` with your {{ page.machine_name }} username and entering your code path and execution path (`<PATH_TO_ISSM_ON_CLUSTER>` should be in `/global/work/<USERNAME>/`). These settings will be picked up automatically when you run `md.cluster=stallo()`.

@@ -56,13 +56,19 @@ Follow the [detailed instructions for compiling ISSM on Linux](../../linux), and
 ```
 
 ## Cluster Class Settings
-
-### MATLAB
-Create file `$ISSM_DIR/src/m/computecanada_settings.m` on the machine that you are doing model setup and results analysis on. This file will set up your personal settings so that that machine can send solution requests to {{ page.machine_name }} and retrieve results. For example, this file might include,
+In order to connect to {{ page.machine_name }} from the machine that you are doing model setup and results analysis on, you will need to create a cluster class settings file for your chosen scripting interface.
+<div class="issm-api-tabs">
+<div class="tab" data-api="mat" markdown="1">
+Create `$ISSM_DIR/src/m/computecanada_settings.m`, which might include,
 ```matlab
 cluster.login='<USERNAME>';
 cluster.port=0;
 cluster.codepath='<PATH_TO_ISSM_ON_CLUSTER>/bin/';
 cluster.executionpath='<PATH_TO_ISSM_ON_CLUSTER>/execution/';
 ```
-replacing `<USERNAME>` with your Dartmouth NetID and entering your code path and execution path. These settings will be picked up automatically by MATLAB when you run `md.cluster=computecanada()`.
+</div>
+<div class="tab" data-api="py" markdown="1">
+Cluster class `computecanada.py` still needs to be developed.
+</div>
+</div>
+replacing `<USERNAME>` with your CCDB username and entering your code path and execution path. These settings will be picked up automatically when you run `md.cluster=computecanada()`.

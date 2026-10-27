@@ -87,9 +87,10 @@ export CXXFLAGS="-DMPICH_IGNORE_CXX_SEEK -DMPICH_SKIP_MPICXX"
 ```
 
 ## Cluster Class Settings
-
-### MATLAB
-Create file `$ISSM_DIR/src/m/camhpc_settings.m` on the machine that you are doing model setup and results analysis on. This file will set up your personal settings so that that machine can send solution requests to {{ page.machine_name }} and retrieve results. For example, this file might include,
+In order to connect to {{ page.machine_name }} from the machine that you are doing model setup and results analysis on, you will need to create a cluster class settings file for your chosen scripting interface.
+<div class="issm-api-tabs">
+<div class="tab" data-api="mat" markdown="1">
+Create `$ISSM_DIR/src/m/camhpc_settings.m`, which might include,
 ```matlab
 cluster.login='<USERNAME>';
 cluster.partition='sandybridge';
@@ -101,14 +102,26 @@ cluster.numnodes=1;
 cluster.cpuspernode=3;
 cluster.time=2;
 ```
+</div>
+<div class="tab" data-api="py" markdown="1">
+Cluster class `camhpc.py` still needs to be developed.
+</div>
+</div>
 replacing `<USERNAME>` with your {{ page.machine_name }} username and entering your code path and execution path. These settings will be picked up automatically by MATLAB when you run `md.cluster=camhpc()`.
 
 ## Running Jobs on {{ page.machine_name }}
 On {{ page.machine_name }}, the more nodes and the longer the requested time, the more you will have to wait in the queue, so choose your settings accordingly. For example,
+<div class="issm-api-tabs">
+<div class="tab" data-api="mat" markdown="1">
 ```matlab
 md.cluster=camhpc('numnodes',1,'cpuspernode',8);
 md.cluster.time=10;
 ```
+</div>
+<div class="tab" data-api="py" markdown="1">
+Cluster class `camhpc.py` still needs to be developed.
+</div>
+</div>
 will request a maximum job time of 10 minutes and 8 cores on one node. If the run lasts longer than 10 minutes, it will be killed and you will not be able to retrieve your results.
 
 If you want to check the status of your job and the queue that you are using, run,

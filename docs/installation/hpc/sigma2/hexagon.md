@@ -105,20 +105,26 @@ if(!my_rank) printf("(website: %s contact: %s)\n",PACKAGE_URL,PACKAGE_BUGREPORT)
 ```
 
 ## Cluster Class Settings
-
-### Python
-Create file `$ISSM_DIR/src/py/hexagon_settings.py` on the machine that you are doing model setup and results analysis on. This file will set up your personal settings so that that machine can send solution requests to {{ page.machine_name }} and retrieve results. For example, this file might include,
+In order to connect to {{ page.machine_name }} from the machine that you are doing model setup and results analysis on, you will need to create a cluster class settings file for your chosen scripting interface.
+<div class="issm-api-tabs">
+<div class="tab" data-api="mat" markdown="1">
+Cluster class `hexagon.m` still needs to be developed.
+</div>
+<div class="tab" data-api="py" markdown="1">
+Create file `$ISSM_DIR/src/py/hexagon_settings.py`, which might include,
 ```python
 def hexagon_settings(md):
-    md.login='<USERNAME>'
-    md.queue='normal'
-    md.codepath='<PATH_TO_ISSM_ON_CLUSTER>/bin/'
-    md.executionpath='<PATH_TO_ISSM_ON_CLUSTER>/execution/'
-    md.accountname='bjerknes'
-    md.numnodes=1
+    md.cluster.login='<USERNAME>'
+    md.cluster.queue='normal'
+    md.cluster.codepath='<PATH_TO_ISSM_ON_CLUSTER>/bin/'
+    md.cluster.executionpath='<PATH_TO_ISSM_ON_CLUSTER>/execution/'
+    md.cluster.accountname='bjerknes'
+    md.cluster.numnodes=1
     return md
 ```
-replacing `<USERNAME>` with your {{ page.machine_name }} username and entering your code path and execution path. These settings will be picked up automatically by MATLAB when you run `md.cluster=hexagon()`.
+</div>
+</div>
+replacing `<USERNAME>` with your {{ page.machine_name }} username and entering your code path and execution path. These settings will be picked up automatically when you run `md.cluster=hexagon()`.
 
 ## Running Jobs on {{ page.machine_name }} (NEEDS TO BE UPDATED)
 {{ page.machine_name }} is intended for large jobs. As on Vilje, the accounting is done as if you are using 32 processes per nodes even if you are using less. So, if you don't need a large amount of memory for your model, try to restrict the number of nodes you are using. The scheduler also prioritizes jobs with high CPU counts. [Scheduler job priorities](https://www.sigma2.no/documentation/jobs/submitting/job_scheduling.html){:target="_blank"}.

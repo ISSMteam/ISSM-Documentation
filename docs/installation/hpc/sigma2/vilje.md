@@ -93,31 +93,33 @@ if(!my_rank) printf("(website: %s contact: %s)\n",PACKAGE_URL,PACKAGE_BUGREPORT)
 ```
 
 ## Cluster Class Settings
-
-### MATLAB
-Create file `$ISSM_DIR/src/m/vilje_settings.m` on the machine that you are doing model setup and results analysis on. This file will set up your personal settings so that that machine can send solution requests to {{ page.machine_name }} and retrieve results. For example, this file might include,
+In order to connect to {{ page.machine_name }} from the machine that you are doing model setup and results analysis on, you will need to create a cluster class settings file for your chosen scripting interface.
+<div class="issm-api-tabs">
+<div class="tab" data-api="mat" markdown="1">
+Create file `$ISSM_DIR/src/m/vilje_settings.m`, which might include,
 ```matlab
-cluster.login='<USERNAME>'
-cluster.queue='workq'
-cluster.codepath='<PATH_TO_ISSM_ON_CLUSTER>/bin/'
-cluster.executionpath='<PATH_TO_ISSM_ON_CLUSTER>/execution/'
-cluster.accountname='nn4659k' % this is for ice2ice
-cluster.numnodes=1
-cluster.numprocess=8
+cluster.login='<USERNAME>';
+cluster.queue='workq';
+cluster.codepath='<PATH_TO_ISSM_ON_CLUSTER>/bin/';
+cluster.executionpath='<PATH_TO_ISSM_ON_CLUSTER>/execution/';
+cluster.accountname='nn4659k'; % this is for ice2ice
+cluster.numnodes=1;
+cluster.numprocess=8;
 ```
-replacing `<USERNAME>` with your {{ page.machine_name }} username and entering your code path and execution path (`<PATH_TO_ISSM_ON_CLUSTER>` should be in `/work/<USERNAME>/`). These settings will be picked up automatically by MATLAB when you run `md.cluster=vlije()`.
-
-### Python
-Create file `$ISSM_DIR/src/py/vilje_settings.py` on the machine that you are doing model setup and results analysis on. This file will set up your personal settings so that that machine can send solution requests to {{ page.machine_name }} and retrieve results. For example, this file might include,
+</div>
+<div class="tab" data-api="py" markdown="1">
+Create file `$ISSM_DIR/src/py/vilje_settings.py`, which might include,
 ```py
 def vilje_settings(md):
-    md.login='<USERNAME>'
-    md.queue='workq'
-    md.codepath='<PATH_TO_ISSM_ON_CLUSTER>/bin/'
-    md.executionpath='<PATH_TO_ISSM_ON_CLUSTER>/execution/'
-    md.accountname='nn4659k' # this is for ice2ice
-    md.numnodes=1
-    md.numprocess=8
+    md.cluster.login='<USERNAME>'
+    md.cluster.queue='workq'
+    md.cluster.codepath='<PATH_TO_ISSM_ON_CLUSTER>/bin/'
+    md.cluster.executionpath='<PATH_TO_ISSM_ON_CLUSTER>/execution/'
+    md.cluster.accountname='nn4659k' # this is for ice2ice
+    md.cluster.numnodes=1
+    md.cluster.numprocess=8
     return md
 ```
+</div>
+</div>
 replacing `<USERNAME>` with your {{ page.machine_name }} username and entering your code path and execution path (`<PATH_TO_ISSM_ON_CLUSTER>` should be in `/work/<USERNAME>/`). These settings will be picked up automatically by MATLAB when you run `md.cluster=vlije()`.

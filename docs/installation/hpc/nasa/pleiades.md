@@ -286,9 +286,10 @@ export CXXFLAGS="-g -Ofast -xCORE-AVX512,CORE-AVX2 -xAVX -std=c++11"
 ```
 
 ## Cluster Class Settings
-
-### MATLAB
-Create file `$ISSM_DIR/src/m/pfe_settings.m` on the machine that you are doing model setup and results analysis on. This file will set up your personal settings so that that machine can send solution requests to {{ page.machine_name }} and retrieve results. For example, this file might include,
+In order to connect to {{ page.machine_name }} from the machine that you are doing model setup and results analysis on, you will need to create a cluster class settings file for your chosen scripting interface.
+<div class="issm-api-tabs">
+<div class="tab" data-api="mat" markdown="1">
+Create file `$ISSM_DIR/src/m/pfe_settings.m`, which might include,
 ```matlab
 cluster.login='<USERNAME>';
 cluster.queue='devel';
@@ -296,25 +297,48 @@ cluster.codepath='<PATH_TO_ISSM_ON_CLUSTER>/bin/';
 cluster.executionpath='<PATH_TO_ISSM_ON_CLUSTER>/execution/';
 cluster.grouplist='s5692';
 cluster.port=1099;
-cluster.modules={'mpi-hpe/mpt', 'comp-intel/2020.4.304', 'petsc/3.17.3_intel_mpt_py'};
+cluster.modules={'mpi-hpe/mpt' 'comp-intel/2020.4.304' 'petsc/3.17.3_intel_mpt_py'};
 ```
+</div>
+<div class="tab" data-api="py" markdown="1">
+Create file `$ISSM_DIR/src/py/pfe_settings.py`, which might include,
+```python
+def pfe_settings(md):
+    md.cluster.login='<USERNAME>'
+    md.cluster.queue='devel'
+    md.cluster.codepath='<PATH_TO_ISSM_ON_CLUSTER>/bin/'
+    md.cluster.executionpath='<PATH_TO_ISSM_ON_CLUSTER>/execution/'
+    md.cluster.grouplist='s5692'
+    md.cluster.port=1099
+    md.cluster.modules=['mpi-hpe/mpt', 'comp-intel/2020.4.304', 'petsc/3.17.3_intel_mpt_py']
+    return md
+```
+</div>
+</div>
 - `cluster.login` should be set to your NAS username
 - `cluster.codepath` should be set to the `bin` directory of the installation of ISSM on {{ page.machine_name }} that you wish to use (should be a subdirectory of `/nobackup/<USERNAME>/`)
 - `cluster.executionpath` should be set to where the job should be run on {{ page.machine_name }} (should not be you home directory due to disk use quotas; consider using subdirectory of `/nobackup/<USERNAME>/`)
 - `cluster.grouplist` should be set to the result of running `groups <USERNAME>` on {{ page.machine_name }}, where `<USERNAME>` is your NAS username
 - `cluster.modules` should include the same modules that we set above in the 'Environment' step for compiling ISSM
 
-The above settings will be found automatically by MATLAB when setting the cluster class for your model, i.e.,
-```matlab
-md.cluster=pfe();
-```
+These settings will be picked up automatically when you run `md.cluster=pfe()`.
 
 ## Running Jobs on {{ page.machine_name }}
 On {{ page.machine_name }}, the more nodes and time requested, the longer your job will have to wait in the queue, so choose your settings accordingly. For example,
+<div class="issm-api-tabs">
+<div class="tab" data-api="mat" markdown="1">
 ```matlab
 md.cluster=pfe('numnodes',1,'time',28,'processor','bro','queue','devel');
 md.cluster.time=10;
 ```
+</div>
+<div class="tab" data-api="py" markdown="1">
+```py
+md.cluster=pfe('numnodes',1,'time',28,'processor','bro','queue','devel')
+md.cluster.time=10
+```
+</div>
+</div>
 will request a maximum job time of 10 minutes and one Broadwell node. If the run lasts more than 10 minutes, it will be killed and you will not be able to retrieve your results.
 
 For more information on the available processor types, please refer to the NAS HECC knowledge base article ['{{ page.machine_name }} Configuration Details'](https://www.nas.nasa.gov/hecc/support/kb/pleiades-configuration-details_77.html){:target="_blank"}.

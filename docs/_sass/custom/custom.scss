@@ -1,3 +1,16 @@
+/**
+ * Variables
+ */
+$api-mat-bg: #fff4e5;
+$api-mat-fg: #c25e00;
+$api-mat-accent: #e97b00;
+$api-py-bg: #e8f1fb;
+$api-py-fg: #1f5fa8;
+$api-py-accent: #3776ab;
+
+/**
+ * Mixins
+ */
 @mixin clearfix {
 	&:after {
 		content: "";
@@ -6,6 +19,9 @@
 	}
 }
 
+/**
+ * Selectors
+ */
 .dev-status-prod {
 	background-color: green;
 }
@@ -19,37 +35,32 @@
 }
 
 /*
-	Code block styling
+	Rouge syntax highlighting
 */
-.language-mat,
-.language-py
-{
-	padding: 1em;
+
+// Applies to all elements with class that matches language-*
+div[class^="language-"] {
 	border-radius: 0.5em;
 	display: block;
 	overflow-x: auto;
 }
 
-.language-mat {
-	background-color: #fff7f0 !important; // Light orange
+.language-mat,
+.language-matlab {
+	background-color: $api-mat-bg !important;
 	color: #1a1a1a;
 }
 
-.language-py {
-	background-color: #f0fff4 !important; // Light greenish
+.language-py,
+.language-python {
+	background-color: $api-py-bg !important;
 	color: #1a1a1a;
 }
 
 /*
-	MATLAB/Python tabbed code blocks (see assets/js/issm-api-tabs.js)
+	ISSM scripting interface tabbed code blocks (see 
+	../assets/js/issm-api-tabs.js)
 */
-$api-mat-bg: #fff4e5;
-$api-mat-fg: #c25e00;
-$api-mat-accent: #e97b00;
-$api-py-bg: #e8f1fb;
-$api-py-fg: #1f5fa8;
-$api-py-accent: #3776ab;
-
 .issm-api-tabs {
 	border: 1px solid #d0d7de;
 	border-radius: 6px;
@@ -71,17 +82,45 @@ $api-py-accent: #3776ab;
 			color: #555;
 			border-bottom: 3px solid transparent;
 
-			&[data-api=mat].active { background: $api-mat-bg; color: $api-mat-fg; border-bottom-color: $api-mat-accent; }
-			&[data-api=py].active { background: $api-py-bg; color: $api-py-fg; border-bottom-color: $api-py-accent; }
+			&[data-api=mat].active {
+				background: $api-mat-bg;
+				color: $api-mat-fg;
+				border-bottom-color: $api-mat-accent;
+			}
+
+			&[data-api=py].active {
+				background: $api-py-bg;
+				color: $api-py-fg;
+				border-bottom-color: $api-py-accent;
+			}
 		}
 	}
 
-	// Hide inactive panels once JS has tagged them (all shown if JS is off)
-	div[data-api]:not(.active), pre[data-api]:not(.active) { display: none; }
+	// Hide inactive tabs once JS has tagged them (all shown if JS is off)
+	// TODO: Fix this now that JS has been modified
+	.tab {
+		padding: 0.75rem; // Matches left/right padding of div.highlight-rouge,div.highlighter
 
-	// Panels are div.highlighter-rouge (py) or a bare pre (mat)
-	div.highlighter-rouge, pre { margin: 0; border-radius: 0; box-shadow: none; }
-	pre[data-api] { padding: 1em; }
-	div[data-api=mat], pre[data-api=mat], [data-api=mat] .highlight, [data-api=mat] pre, [data-api=mat] code { background-color: $api-mat-bg !important; }
-	div[data-api=py], pre[data-api=py], [data-api=py] .highlight, [data-api=py] pre, [data-api=py] code { background-color: $api-py-bg !important; }
+		&:not(.active) {
+			display: none;
+		}
+
+		&[data-api=mat] {
+			background-color: $api-mat-bg !important;
+		}
+
+		&[data-api=py] {
+			background-color: $api-py-bg !important;
+		}
+
+		> * {
+			&:first-child {
+				margin-top: 0;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
 }

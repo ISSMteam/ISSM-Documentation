@@ -146,16 +146,16 @@ cd ${ISSM_DIR}
 autoreconf -ivf
 ```
 
-Next, create a configuration file called `configure.sh` in `${ISSM_DIR}`. Its contents will depend on the interface you will be using, the external packages and capabilities you wish to use, and the location of certain libraries and executables on disk. The following examples can be used for an installation of ISSM with basic capabilities:
-
-### MATLAB Interface
+Next, create a configuration file called `configure.sh` in `${ISSM_DIR}`. Its contents will depend on the interface you will be using, the external packages and capabilities you wish to use, and the location of certain libraries and executables on disk. The following examples can be used for an installation of ISSM with basic capabilities,
+<div class="issm-api-tabs">
+<div class="tab" data-api="matlab" markdown="1">
 ```sh
 ./configure \
-    --prefix=${ISSM_DIR} \
+    --prefix="${ISSM_DIR}" \
     --with-matlab-dir="<MATLAB_PATH>" \
-    --with-fortran-lib="-L/usr/local/gfortran/lib -lgfortran" \
     --with-mpi-include="${ISSM_DIR}/externalpackages/petsc/install/include" \
     --with-mpi-libflags="-L${ISSM_DIR}/externalpackages/petsc/install/lib -lmpi -lmpicxx -lmpifort" \
+    --with-fortran-lib="-L/usr/local/gfortran/lib -lgfortran" \
     --with-metis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
     --with-parmetis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
     --with-blas-lapack-dir="${ISSM_DIR}/externalpackages/petsc/install" \
@@ -164,16 +164,16 @@ Next, create a configuration file called `configure.sh` in `${ISSM_DIR}`. Its co
     --with-petsc-dir="${ISSM_DIR}/externalpackages/petsc/install" \
     --with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install"
 ```
-where `<MATLAB_PATH>` is the path to the MATLAB installation that you wish to use (e.g. `/usr/local/MATLAB/R2024a`).
-
-### Python Interface
+where `<MATLAB_PATH>` is the path to the MATLAB installation that you wish to use (e.g. `/usr/local/MATLAB/{{ site.matlab_ver }}`).
+</div>
+<div class="tab" data-api="python" markdown="1">
 ```sh
 ./configure \
     --prefix="${ISSM_DIR}" \
     --with-python="${HOME}/.venv/issm/bin/python" \
-    --with-fortran-lib="-L/usr/local/gfortran/lib -lgfortran" \
     --with-mpi-include="${ISSM_DIR}/externalpackages/petsc/install/include" \
     --with-mpi-libflags="-L${ISSM_DIR}/externalpackages/petsc/install/lib -lmpi -lmpicxx -lmpifort" \
+    --with-fortran-lib="-L/usr/local/gfortran/lib -lgfortran" \
     --with-metis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
     --with-parmetis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
     --with-blas-lapack-dir="${ISSM_DIR}/externalpackages/petsc/install" \
@@ -182,8 +182,10 @@ where `<MATLAB_PATH>` is the path to the MATLAB installation that you wish to us
     --with-petsc-dir="${ISSM_DIR}/externalpackages/petsc/install" \
     --with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install"
 ```
+</div>
+</div>
 
-Again, you might need to make adjustments to the above configurations based on your system and needs. We have a number of resources to help here:
+Again, you might need to make adjustments to the above configuration based on your system and needs. We have a number of resources to help here:
 - Various external package install scripts and configurations in `${ISSM_DIR}/jenkins`
 - <a href="hpc" target="_top">'High-Performance Computing' page</a>
 - <a href="https://github.com/ISSMteam/ISSM/discussions" target="_blank">GitHub Discussions</a>

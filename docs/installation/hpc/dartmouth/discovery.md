@@ -126,23 +126,36 @@ Use the following configuration script (adapt to your needs, making sure to *not
 ```
 
 ## Cluster Class Settings
-
-### MATLAB
-Create file `$ISSM_DIR/src/m/discovery_settings.m` on the machine that you are doing model setup and results analysis on. This file will set up your personal settings so that that machine can send solution requests to {{ page.machine_name }} and retrieve results. For example, this file might include,
+In order to connect to {{ page.machine_name }} from the machine that you are doing model setup and results analysis on, you will need to create a cluster class settings file for your chosen scripting interface.
+<div class="issm-api-tabs">
+<div class="tab" data-api="mat" markdown="1">
+Create `$ISSM_DIR/src/m/discovery_settings.m`, which might include,
 ```matlab
 cluster.login='<USERNAME>';
 cluster.codepath='<PATH_TO_ISSM_ON_CLUSTER>/bin/';
 cluster.executionpath='<PATH_TO_ISSM_ON_CLUSTER>/execution/';
 ```
-replacing `<USERNAME>` with your Dartmouth NetID and entering your code path and execution path (`<PATH_TO_ISSM_ON_CLUSTER>` should be in `/dartfs/rc/lab/I/ICE/`). These settings will be picked up automatically by MATLAB when you run `md.cluster=discovery()`.
+</div>
+<div class="tab" data-api="py" markdown="1">
+Cluster class `discovery.py` still needs to be developed.
+</div>
+</div>
+replacing `<USERNAME>` with your Dartmouth NetID and entering your code path and execution path (`<PATH_TO_ISSM_ON_CLUSTER>` should be in `/dartfs/rc/lab/I/ICE/`). These settings will be picked up automatically when you run `md.cluster=discovery()`.
 
 The file system on {{ page.machine_name }} is called DartFS (or DarFS-hpc). Your home directory on DartFS is only 50GB, so it is better to use the lab folder, `/dartfs/rc/lab/I/ICE`, which has 1TB. More about [Research Computing accounts](https://services.dartmouth.edu/TDClient/1806/Portal/KB/Article/64619/Research-Computing-Accounts){:target="_blank"}.
 
 ## Running Jobs on {{ page.machine_name }}
 On {{ page.machine_name }}, you can use up to 64 cores per node. The more nodes and the longer the requested time, the more you will have to wait in the queue, so choose your settings wisely. For example, use,
+<div class="issm-api-tabs">
+<div class="tab" data-api="mat" markdown="1">
 ```matlab
 md.cluster=discovery('numnodes',1,'cpuspernode',8);
 ```
+</div>
+<div class="tab" data-api="py" markdown="1">
+Cluster class `discovery.py` still needs to be developed.
+</div>
+</div>
 to have a job of 8 cores on one node.
 
 More about [cluster details](https://services.dartmouth.edu/TDClient/1806/Portal/KB/ArticleDet?ID=134058){:target="_blank"} (requires Dartmouth NetID).

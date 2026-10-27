@@ -366,16 +366,22 @@ make install
 > Do not use the Intel executable on AMD nodes or the AMD executable on Intel nodes.
 
 ## Cluster Class Settings
-
-### MATLAB
-Create file `$ISSM_DIR/src/m/tjhpc_settings.m` on the machine that you are doing model setup and results analysis on. This file will set up your personal settings so that that machine can send solution requests to {{ page.machine_name }} and retrieve results. For example, this file might include,
+In order to connect to {{ page.machine_name }} from the machine that you are doing model setup and results analysis on, you will need to create a cluster class settings file for your chosen scripting interface.
+<div class="issm-api-tabs">
+<div class="tab" data-api="mat" markdown="1">
+Create `$ISSM_DIR/src/m/tjhpc_settings.m`, which might include,
 ```matlab
 cluster.login = '<USERNAME>';
 cluster.emailname = '<EMAIL>';
 cluster.codepath = '<PATH_TO_ISSM_ON_CLUSTER>/bin/';
 cluster.executionpath = '<PATH_TO_ISSM_ON_CLUSTER>/execution/';
 ```
-replacing `<USERNAME>` with your {{ page.machine_name }} username, `<EMAIL>` with the email address that you would like to receive notifications to when your job has completed, and entering your code path and execution path. These settings will be picked up automatically by MATLAB when you run `md.cluster = tjhpc()`.
+</div>
+<div class="tab" data-api="py" markdown="1">
+Cluster class `tjhpc.py` still needs to be developed.
+</div>
+</div>
+replacing `<USERNAME>` with your {{ page.machine_name }} username, `<EMAIL>` with the email address that you would like to receive notifications to when your job has completed, and entering your code path and execution path. These settings will be picked up automatically when you run `md.cluster = tjhpc()`.
 
 If you receive any runtime errors, ensure the `tjhpc` cluster class is available at `$ISSM_DIR/src/m/classes/clusters/tjhpc.m`.
 
@@ -391,9 +397,16 @@ mkdir -p /ssdfs/datahome/<USERNAME>/ISSM/execution
 
 ## Running Jobs on {{ page.machine_name }}
 For example, to request one node and eight CPU cores from MATLAB, use,
+<div class="issm-api-tabs">
+<div class="tab" data-api="mat" markdown="1">
 ```matlab
 md.cluster = tjhpc('numnodes', 1, 'cpuspernode', 8);
 ```
+</div>
+<div class="tab" data-api="py" markdown="1">
+Cluster class `tjhpc.py` still needs to be developed.
+</div>
+</div>
 
 Use the AMD partition or AMD resource type in the {{ page.machine_name }} job configuration unless an Intel run is specifically required. Request only the resources needed by the model because larger node counts, longer wall times, and larger memory requests may increase queuing time.
 

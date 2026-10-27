@@ -114,20 +114,38 @@ Then, you will need to add the following lines to your configuration script,
 ```
 
 ## Cluster Class Settings
-
-### MATLAB
-Create file `$ISSM_DIR/src/m/pfe_settings.m` on the machine that you are doing model setup and results analysis on. This file will set up your personal settings so that that machine can send solution requests to {{ page.machine_name }} and retrieve results. For example, this file might include,
+In order to connect to {{ page.machine_name }} from the machine that you are doing model setup and results analysis on, you will need to create a cluster class settings file for your chosen scripting interface.
+<div class="issm-api-tabs">
+<div class="tab" data-api="mat" markdown="1">
+Create file `$ISSM_DIR/src/m/pfe_settings.m`, which might include,
 ```matlab
 cluster.login='<USERNAME>';
 cluster.name='discover.nccs.nasa.gov';
 cluster.queue='nccs';
-modules={'comp/intel/2021.4.0' 'mpi/impi/2021.4.0' 'cmake/3.28.2'};
+cluster.modules={'comp/intel/2021.4.0' 'mpi/impi/2021.4.0' 'cmake/3.28.2'};
 cluster.codepath='<PATH_TO_ISSM_ON_CLUSTER>/bin';
 cluster.executionpath='<PATH_TO_ISSM_ON_CLUSTER>/execution/';
 cluster.grouplist='s5692';
 cluster.port=1099;
 ```
-replacing `<USERNAME>` with your {{ page.machine_name }} username and entering your code path and execution path (`<PATH_TO_ISSM_ON_CLUSTER>` should be in `/cluster/work/users/<USERNAME>/`). These settings will be picked up automatically by MATLAB when you run `md.cluster=discover()`.
+</div>
+<div class="tab" data-api="py" markdown="1">
+Create file `$ISSM_DIR/src/py/pfe_settings.py`, which might include,
+```py
+def pfe_settings(md):
+    md.cluster.login='<USERNAME>'
+    md.cluster.name='discover.nccs.nasa.gov'
+    md.cluster.queue='nccs'
+    md.cluster.modules=['comp/intel/2021.4.0', 'mpi/impi/2021.4.0', 'cmake/3.28.2']
+    md.cluster.codepath='<PATH_TO_ISSM_ON_CLUSTER>/bin'
+    md.cluster.executionpath='<PATH_TO_ISSM_ON_CLUSTER>/execution/'
+    md.cluster.grouplist='s5692'
+    md.cluster.port=1099
+    return md
+```
+</div>
+</div>
+replacing `<USERNAME>` with your {{ page.machine_name }} username and entering your code path and execution path (`<PATH_TO_ISSM_ON_CLUSTER>` should be in `/cluster/work/users/<USERNAME>/`). These settings will be picked up automatically when you run `md.cluster=discover()`.
 
 To determine your `grouplist`, on {{ page.machine_name }} run,
 ```sh
@@ -137,12 +155,22 @@ groups <USERNAME>
 Make sure your `modules` list matches those set in `~/.bashrc` on {{ page.machine_name }}.
 
 ## Running Jobs on {{ page.machine_name }}
-On {{ page.machine_name }}, the more nodes and time requested, the longer your job will have to wait in the queue, so choose your settings accordingly. For example,
+On {{ page.machine_name }}, the more nodes and time requested, the longer your job will have to wait in the queue, so choose your settings accordingly. For , use,
+<div class="issm-api-tabs">
+<div class="tab" data-api="mat" markdown="1">
 ```matlab
 md.cluster=discover('numnodes',8,'time',30,'processor','west','queue','debug');
 md.cluster.time=10;
 ```
-to have a maximum job time of 10 minutes and 8 westmere nodes. If the run lasts longer than 10 minutes, it will be killed and you will not be able to retrieve your results.
+</div>
+<div class="tab" data-api="py" markdown="1">
+```py
+md.cluster=discover('numnodes',8,'time',30,'processor','west','queue','debug')
+md.cluster.time=10
+```
+</div>
+</div>
+to have a maximum job time of 10 minutes and 8 `westmere` nodes. If the run lasts longer than 10 minutes, it will be killed and you will not be able to retrieve your results.
 
 More info about [available queues on {{ page.machine_name }}](https://www.nccs.nasa.gov/discover-qos/){:target="_blank"}.
 

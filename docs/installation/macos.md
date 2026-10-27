@@ -6,18 +6,17 @@ nav_order: 2
 ---
 
 # macOS
+
 ## Precompiled Distributable
 The quickest way to get started with ISSM is to download one of our precompiled distributables. They have been tested on the latest version of macOS.
 
 Note that for the Python interface, you will also need to follow the setup instructions in the <a href="#macos-python-interface" target="_top">'Scripting Interfaces' &#8594; 'Python Interface' section</a>.
 
 ### Silicon-based Macs
-
 - <a href="https://ross.ics.uci.edu/ISSM-macOS-Silicon-MATLAB.zip" target="_blank">MATLAB</a>
 - <a href="https://ross.ics.uci.edu/ISSM-macOS-Silicon-Python-3.zip" target="_blank">Python 3</a> (currently compiled against Python 3.11)
 
 ### Intel-based Macs
-
 - <a href="https://ross.ics.uci.edu/ISSM-macOS-Intel-MATLAB.zip" target="_blank">MATLAB</a>
 - <a href="https://ross.ics.uci.edu/ISSM-macOS-Intel-Python-3.zip" target="_blank">Python 3</a> (currently compiled against Python 3.11)
 
@@ -75,40 +74,33 @@ brew install sqlite3
 ## Scripting Interfaces
 Follow the instructions for setting up the interface that you wish to use with ISSM.
 
-### MATLAB Interface
+<div class="issm-api-tabs">
+<div class="tab" data-api="matlab" markdown="1">
 Download and install the desired version of MATLAB from the <a href="https://www.mathworks.com" target="_blank">MathWorks website</a>. Make sure to install the optional 'Mapping Toolbox'.
+</div>
+<div class="tab" data-api="python" markdown="1">
+There are various methods for installing the required packages. The following is our suggestion:
 
-<i id="macos-python-interface"></i>
-### Python Interface
-**NOTE**:
-- We assume use of the copy of Python 3 supplied by Xcode.
-- There are various methods for installing the required packages. The following is our suggestion.
-
-Create a Python virtual environment for ISSM and activate it with,
-````
+- Create a Python virtual environment for ISSM and activate it with,
+```sh
 mkdir ${HOME}/.venv
 python3 -m venv ${HOME}/.venv/ISSM
 source ${HOME}/.venv/ISSM/bin/activate
-````
-
-{: .highlight-title }
-> Important
->
-> - You can create your virtual environment anywhere on disk that you have permission to write to.
-> - You will have to activate this virtual environment for each session that you want to run ISSM in. Alternatively, you can add the activation command to your shell configuration file.
-
-Then, use pip to install NumPy, SciPy, and dependencies,
-````
+```
+You can create your virtual environment anywhere on disk that you have permission to write to. You will have to activate this virtual environment for each session that you want to run ISSM in. Alternatively, you can add the activation command to your shell configuration file.
+- Then, use pip to install NumPy, SciPy, and dependencies,
+```sh
 pip install matplotlib netcdf4 nose numpy pyshp scipy setuptools wheel
-````
-
-Alternatively, copy and paste the following to achieve all of the above,
+```
+- Alternatively, copy and paste the following to achieve all of the above,
 ```sh
 mkdir ${HOME}/.venv
 python3 -m venv ${HOME}/.venv/ISSM
 source ${HOME}/.venv/ISSM/bin/activate
 pip install matplotlib netcdf4 nose numpy pyshp scipy setuptools wheel
-````
+```
+</div>
+</div>
 
 ## External Packages
 The following packages and installation scripts are recommended for a basic installation of ISSM on macOS,
@@ -147,16 +139,16 @@ Next, create a configuration file called `configure.sh` in `${ISSM_DIR}`. Its co
 - `/opt/homebrew/lib/gcc/current` if you installed via Homebrew on a Silicon-based Mac
 - `/usr/local/Cellar/gcc/<VER>/lib/gcc/current` (where `<VER>` is the version of `gcc`) if you installed via Homebrew on an Intel-based Mac
 
-The following examples can be used for an installation of ISSM with basic capabilities:
-
-### MATLAB Interface
-````
+ The following examples can be used for an installation of ISSM with basic capabilities,
+<div class="issm-api-tabs">
+<div class="tab" data-api="matlab" markdown="1">
+```sh
 ./configure \
     --prefix=${ISSM_DIR} \
     --with-matlab-dir="<MATLAB_PATH>" \
-    --with-fortran-lib="-L<LIBGFORTRAN_PATH> -lgfortran" \
     --with-mpi-include="${ISSM_DIR}/externalpackages/petsc/install/include" \
     --with-mpi-libflags="-L${ISSM_DIR}/externalpackages/petsc/install/lib -lmpi -lmpicxx -lmpifort" \
+    --with-fortran-lib="-L<LIBGFORTRAN_PATH> -lgfortran" \
     --with-metis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
     --with-parmetis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
     --with-blas-lapack-dir="${ISSM_DIR}/externalpackages/petsc/install" \
@@ -164,17 +156,17 @@ The following examples can be used for an installation of ISSM with basic capabi
     --with-mumps-dir="${ISSM_DIR}/externalpackages/petsc/install" \
     --with-petsc-dir="${ISSM_DIR}/externalpackages/petsc/install" \
     --with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install" 
-````
-where `<MATLAB_PATH>` is the path to the MATLAB installation that you wish to use (e.g. `/Applications/MATLAB_R2024a.app`).
-
-### Python Interface
-````
+```
+where `<MATLAB_PATH>` is the path to the MATLAB installation that you wish to use (e.g. `/usr/local/MATLAB/{{ site.matlab_ver }}`).
+</div>
+<div class="tab" data-api="python" markdown="1">
+```sh
 ./configure \
     --prefix="${ISSM_DIR}" \
     --with-python="${HOME}/.venv/issm/bin/python" \
-    --with-fortran-lib="-L<LIBGFORTRAN_PATH> -lgfortran" \
     --with-mpi-include="${ISSM_DIR}/externalpackages/petsc/install/include" \
     --with-mpi-libflags="-L${ISSM_DIR}/externalpackages/petsc/install/lib -lmpi -lmpicxx -lmpifort" \
+    --with-fortran-lib="-L<LIBGFORTRAN_PATH> -lgfortran" \
     --with-metis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
     --with-parmetis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
     --with-blas-lapack-dir="${ISSM_DIR}/externalpackages/petsc/install" \
@@ -182,7 +174,9 @@ where `<MATLAB_PATH>` is the path to the MATLAB installation that you wish to us
     --with-mumps-dir="${ISSM_DIR}/externalpackages/petsc/install" \
     --with-petsc-dir="${ISSM_DIR}/externalpackages/petsc/install" \
     --with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install"
-````
+```
+</div>
+</div>
 
 Again, you might need to make adjustments to the above configurations based on your system and needs. We have a number of resources to help here:
 - Various external package install scripts and configurations in `${ISSM_DIR}/jenkins`

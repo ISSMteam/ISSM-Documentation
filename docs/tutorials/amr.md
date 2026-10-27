@@ -7,6 +7,7 @@ nav_order: 17
 ---
 
 # Adaptive Mesh Refinement (AMR)
+
 ## Goals
 In this tutorial, we show how to use the mesher BAMG to run a simulation with AMR:
 
@@ -14,6 +15,7 @@ In this tutorial, we show how to use the mesher BAMG to run a simulation with AM
 - Run a transient simulation with AMR using the MISMIP3d setup to track the grounding line migration.
 
 Go to `<ISSM_DIR>/examples/AMR/` to do this tutorial.
+
 ## Introduction
 The `runme.m` file and `mismip.par` go through the steps and basic structure to set up and run the MISMIP3d experiment with adaptive mesh refinement to track the grounding line positions. The `runme.m` script is set up as three distinct steps, saving the model at each stage:
 
@@ -35,7 +37,6 @@ To look at the initial ice surface, you can plot it in MATLAB:
 plotmodel(md, 'data', md.geometry.surface, 'title', 'Initial Surface Elevation [m]', 'fontsize', 12);
 ````
 
-
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/amr/amr_surface_initial.png" alt="Figure 2: amr_surface_initial"></div>
 ## Transient solution with AMR
 In step 3, we specify which machine we want to run the model on, including number of processors to be used, define the model time step, final time, and prescribe the AMR frequency, i.e., how often the mesh needs to be updated. In this example, we run 500 yr forward in time to track the grounding line movement as soon as the initial thin ice slab starts to ground on the bedrock. The ice starts to ground at x=0, the boundary of the ice divide (vx=0 at x=0). We set the AMR frequency equal to 1, which means that the mesh is updated (refined/coarsened) every time step. In this example, a time step equal to 1 yr is imposed. The SSA equations are used as the flow model.
@@ -56,7 +57,6 @@ finalstep = len(md.results.TransientSolution) - 1
 plotmodel(md, 'data', md.results.TransientSolution[-1].Surface, 'title', 'Surface Elevation [m]', 'amr', finalstep, 'xlim', [0, 250000], 'fontsize', 12, 'figure', 1)
 ````
 
-
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/amr/amr_surface_final.png" alt="Figure 3: amr_surface_final"></div>
 Here, we are plotting the mask grounded level set, which indicates if the ice is grounded (positive) or floating (negative). The value 0 indicates the position of the grounding line:
 ````
@@ -68,7 +68,6 @@ or in Python:
 plotmodel(md, 'data', md.results.TransientSolution[-1].MaskOceanLevelset,
 'title', 'Mask Grounded [m]', 'amr', finalstep, 'xlim', [0, 250000], 'caxis', [-150, 100], 'fontsize', 12, 'figure', 2)
 ````
-
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/amr/amr_mask_final.png" alt="Figure 4: amr_mask_final"></div>
 You can see the grounding line position is about x=170 km at the end of this example. To visualize the adaptive meshes, you can plot them at any saved time specifying the corresponding step:
@@ -86,9 +85,7 @@ plotmodel(md, 'data', 'mesh', 'amr', 0, 'xlim', [0, 250000], 'title', 't=1 yr', 
 	'data', 'mesh', 'amr', 50, 'xlim', [0, 250000], 'title', 't=500 yr', 'fontsize', 12, 'figure', 3)
 ````
 
-
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/amr/amr_meshes.jpg" alt="Figure 5: amr_meshes"></div>
 To watch the evolution through time in an animation, we print the results and the respective meshes in VTK-type file format, see the folder `<ISSM_DIR>/examples/AMR/`. These files can be seen using [ParaView](https://www.paraview.org/){:target="_blank"}.
 
 In ParaView, you will select which result to animate, and can watch the mesh tracking the grounding line movement as soon as the ice starts to ground on the bedrock. The result and the mesh can be simultaneously displayed by selecting `Surface With Edges` in the box next to the field/result box selection.
-
