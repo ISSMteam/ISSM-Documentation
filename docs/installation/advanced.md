@@ -225,4 +225,4 @@ export LIBS+=" $($PYTHON_BUILD-config --embed --ldflags)"
     --with-pybind11-libflags=" -Wl,-rpath,$($PYTHON_BUILD -c 'import sysconfig; print(sysconfig.get_config_var("LIBDIR"))')"
 ```
 
-After compiling ISSM with this configuration, run `test5001` (which requires PyTorch) to verify your installation.
+After compiling ISSM with this configuration, run `test5001` (which requires PyTorch) to verify your installation. For details on coupling ISSM with machine learning models, see [Liu et al. (2026)](https://doi.org/10.5194/egusphere-2026-6193).
