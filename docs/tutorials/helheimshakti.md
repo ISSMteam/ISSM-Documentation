@@ -7,7 +7,6 @@ nav_order: 16
 
 # Subglacial Hydrology of Helheim Glacier (SHAKTI)
 ## Goals
-
 - Use SHAKTI model to simulate subglacial hydrology of Helheim Glacier in southeast Greenland
 - Follow an example of how to set up a SHAKTI hydrology simulation on a real-world glacier
 - Learn how to run a two-way coupled hydrology&#8212;velocity model with SHAKTI-ISSM
@@ -16,7 +15,6 @@ nav_order: 16
 
 ## Introduction
 In this example, the main goal is to set up a subglacial hydrology simulation using the SHAKTI model, coupled with ice velocity on a real Greenland outlet glacier. In order to build an operational simulation of Helheim Glacier as an example, we will follow these steps:
-
 - Load your Helheim Glacier model created in the 'Modeling Helheim Glacier' tutorial
 - Set the hydrology model to SHAKTI and set up friction coupling
 - Set SHAKTI-specific hydrology parameters
@@ -26,15 +24,16 @@ In this example, the main goal is to set up a subglacial hydrology simulation us
 Files needed for this tutorial can be found in `<ISSM_DIR>/examples/HelheimSHAKTI/`. This tutorial begins from a model of Helheim Glacier generated in the 
 ['Modeling Helheim Glacier' tutorial](helheim).
 
-## Load model
+## Load Model
 The first step in the `runme.m` file is to load the model of Helheim Glacier created in the previous tutorial. We turn off the inversion now.
 
-## Set up SHAKTI subglacial hydrology model
-In the `runme.m` file, we set the hydrology model to SHAKTI:
-`md.hydrology = hydrologyshakti();`
+## Set Up SHAKTI Subglacial Hydrology Model
+In the `runme.m` file, we set the hydrology model to SHAKTI,
+```matlab
+md.hydrology = hydrologyshakti();
+```
 
 Next, we initialize the SHAKTI-specific hydrological parameters:
-
 - Distributed meltwater input ("englacial input") (m yr[<sup>-1</sup>](#footnotes){:target="_top"})
 - Point meltwater input ("moulin input") (m[<sup>3</sup>](#footnotes){:target="_top"} s[<sup>-1</sup>](#footnotes){:target="_top"})
 - Initial hydraulic head (m)
@@ -43,40 +42,39 @@ Next, we initialize the SHAKTI-specific hydrological parameters:
 - Initial Reynolds number
 - Boundary conditions (prescribed head for thin ice and ice-free elements)
 
-## Define coupling and friction
-We turn on the coupling between SHAKTI and ISSM through `md.transient` and `md.friction.coupling`. This tutorial uses the Budd-type sliding law.
-
-
+## Define Coupling and Friction
+We turn on the coupling between SHAKTI and ISSM through `md.transient` and `md.friction.coupling`. This tutorial uses the Budd-type sliding law:
 - To turn on SHAKTI, set `md.transient.ishydrology = 1`.
 - To solve for stress balance in the transient simulation, set `md.transient.isstressbalance = 1` and `md.friction.coupling = 4`.
 - To run stand-alone SHAKTI without evolving velocity, set `md.transient.isstressbalance = 0`.
 
-## Run a winter simulation
+## Run a Winter Simulation
 The final step before running is to define the time step and final time of the simulation. Note that the time step and final time are set in years, so make sure to convert appropriately. Small time steps on the order of 1 hour are typically functional for SHAKTI, but feel free to experiment with this.
 
 The model will take a while to run; exactly how long will vary depending on your final time, time step, how many processors you are using, and mesh resolution. If you are running a long simulation, you might not want to save model output at every time step and can reduce the output file size through `md.settings.output_frequency` (for example, with a time step of 1 hour, you would set `md.settings.output_frequency = 24;` to save output once every day).
 
 The model you have set up currently specifies zero meltwater inputs (`md.hydrology.englacial_input` and `md.hydrology.moulin_inputs` are both zero everywhere). This represents winter conditions, when all water at the bed is generated via basal melt by geothermal flux, frictional heat from sliding, and turbulent dissipation.
 
-You can examine the output spatially by plotting different quantities. For example, here are plots of velocity, effective pressure, basal water flux, and hydraulic head after 30 days:
-````
+You can examine the output spatially by plotting different quantities. For example, here are plots of velocity, effective pressure, basal water flux, and hydraulic head after 30 days,
+```matlab
 plotmodel(md, 'data', md.results.TransientSolution(end).Vel, 'title', 'Velocity (m/yr)', ...
-	'data', md.results.TransientSolution(end).EffectivePressure, 'title', 'Effective Pressure (Pa)')
-````
+    'data', md.results.TransientSolution(end).EffectivePressure, 'title', 'Effective Pressure (Pa)')
+```
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/helheimshakti/figure_vel_N.png" alt="Figure 1: figure_vel_N"></div>
-````
+
+```matlab
 plotmodel(md, 'data', log10(md.results.TransientSolution(end).HydrologyBasalFlux), 'title', 'log_{10}(Basal Water Flux) (m^2 s^{-1})', ...
-	'data', md.results.TransientSolution(end).HydrologyHead, 'title', 'Head (m)')
-````
+    'data', md.results.TransientSolution(end).HydrologyHead, 'title', 'Head (m)')
+```
 
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/helheimshakti/figure_q_h.png" alt="Figure 2: figure_q_h"></div>
+
 If you are interested in a steady state, check convergence to a steady winter state by comparing `md.results.TransientSolution(end).Vel` and `md.results.TransientSolution(end).EffectivePressure` with the previous time step. You will probably need to run for a year or two for the system to fully equilibrate.
 
-## Continuing a simulation
-You may find it helpful to continue a simulation from the end state of a previous simulation. This can be useful for running long simulations in segments or exploring different forcing from a common initialized state. Use the script below to continue a previous simulation, which sets the relevant initial parameters accordingly:
-
-````
+## Continuing a Simulation
+You may find it helpful to continue a simulation from the end state of a previous simulation. This can be useful for running long simulations in segments or exploring different forcing from a common initialized state. Use the script below to continue a previous simulation, which sets the relevant initial parameters accordingly,
+```matlab
 % runme script to continue a coupled SHAKTI-ISSM simulation, continuing from
 % end state of a previous simulation
 
@@ -103,16 +101,15 @@ md.settings.output_frequency = 24;
 md.cluster = generic('np', 8);
 md.verbose.solution = 1;
 md = solve(md, 'Transient');
-````
+```
 
-## Seasonal meltwater inputs
+## Seasonal Meltwater Inputs
 Meltwater inputs can be added through two options:
-
 - Distributed meltwater input (e.g. for highly crevassed regions): `md.hydrology.englacial_input` (units of m yr[<sup>-1</sup>](#footnotes){:target="_top"})
 - Point inputs to represent discrete crevasses or moulins: `md.hydrology.moulin_input` (units of m[<sup>3</sup>](#footnotes){:target="_top"} s[<sup>-1</sup>](#footnotes){:target="_top"})
 
-Both types of meltwater input are spatially variable and can be prescribed as either constant in time (`size(md.mesh.numberofvertices, 1)`) or time-varying (`size(md.mesh.numberofvertices + 1, length(timevec))`). The sample code below includes example syntax for setting these meltwater inputs. Get creative and experiment with different combinations!
-````
+Both types of meltwater input are spatially variable and can be prescribed as either constant in time (`size(md.mesh.numberofvertices, 1)`) or time-varying (`size(md.mesh.numberofvertices + 1, length(timevec))`). The sample code below includes example syntax for setting these meltwater inputs. Get creative and experiment with different combinations,
+```matlab
 % Time-stepping
 md.timestepping.time_step = 3600 / md.constants.yts; % Time step (in years)
 md.timestepping.final_time = 365 / 365;
@@ -147,27 +144,12 @@ md.hydrology.moulin_input(he) = highieb;
 md.hydrology.moulin_input = zeros(md.mesh.numberofvertices + 1, length(timevec));
 md.hydrology.moulin_input(end, :) = timevec;
 md.hydrology.moulin_input(1:end-1, :) = **set values here, can vary spatially and temporally**
-````
+```
 
 ## Resources
-For more details about the SHAKTI model and applications to Helheim Glacier, please see the
-following references: [[*Sommers2018,Sommers2023,Sommers2024*](#references)].
-
+For more details about the SHAKTI model and applications to Helheim Glacier, please see the following references: [[*Sommers2018,Sommers2023,Sommers2024*](#references)].
 
 # References
-- A. Sommers, H. Rajaram, and M. Morlighem.
- SHAKTI: Subglacial Hydrology and Kinetic, Transient Interactions
-   v1.0.
- Geosci. Model Dev., 11(7):2955-2974, 2018.
-
-- A. N. Sommers, C. R. Meyer, K. Poinar, J. Mejia, M. Morlighem, H. Rajaram,
-   K. L. P. Warburton, and W. Chu.
- Velocity of Greenland's Helheim Glacier Controlled Both by Terminus
-   Effects and Subglacial Hydrology With Distinct Realms of Influence.
- Geophys. Res. Lett., 51(15):e2024GL109168, 2024.
-
-- Aleah Sommers, Colin Meyer, Mathieu Morlighem, Harihar Rajaram, Kristin Poinar,
-   Winnie Chu, and Jessica Mejia.
- Subglacial hydrology modeling predicts high winter water pressure
-   and spatially variable transmissivity at Helheim Glacier, Greenland.
- J. Glaciol., page 1–13, 2023.
+- A. Sommers, H. Rajaram, and M. Morlighem. SHAKTI: Subglacial Hydrology and Kinetic, Transient Interactions v1.0. Geosci. Model Dev., 11(7):2955-2974, 2018.
+- A. N. Sommers, C. R. Meyer, K. Poinar, J. Mejia, M. Morlighem, H. Rajaram, K. L. P. Warburton, and W. Chu. Velocity of Greenland's Helheim Glacier Controlled Both by Terminus Effects and Subglacial Hydrology With Distinct Realms of Influence. Geophys. Res. Lett., 51(15):e2024GL109168, 2024.
+- Aleah Sommers, Colin Meyer, Mathieu Morlighem, Harihar Rajaram, Kristin Poinar, Winnie Chu, and Jessica Mejia. Subglacial hydrology modeling predicts high winter water pressure and spatially variable transmissivity at Helheim Glacier, Greenland. J. Glaciol., page 1–13, 2023.

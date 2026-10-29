@@ -130,8 +130,4 @@ In the previous steps, we investigated the impact of changes in external forcing
 <div style="display:flow-root"><img style="float:left;width:100.00%" src="/ISSM-Documentation/assets/img/docs/tutorials/pigsensitivity/EvolutionVAF.png" alt="Figure 5: EvolutionVAF"></div>
 
 # References
-- H. Seroussi, M. Morlighem, E. Rignot, J. Mouginot, E. Larour, M. P. Schodlok,
-   and A. Khazendar.
- Sensitivity of the dynamics of Pine Island Glacier, West
-   Antarctica, to climate forcing for the next 50 years.
- Cryosphere, 8(5):1699-1710, 2014.
+- H. Seroussi, M. Morlighem, E. Rignot, J. Mouginot, E. Larour, M. P. Schodlok, and A. Khazendar. Sensitivity of the dynamics of Pine Island Glacier, West Antarctica, to climate forcing for the next 50 years. Cryosphere, 8(5):1699-1710, 2014.
