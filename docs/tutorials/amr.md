@@ -86,17 +86,17 @@ You can see the grounding line position is about x=170 km at the end of this exa
 <div class="tab" data-api="mat" markdown="1">
 ```matlab
 >> plotmodel(md, 'data', 'mesh', 'amr', 1, 'xlim', [0 250000], 'title', 't=1 yr', 'fontsize', 12, ...
-	'data', 'mesh', 'amr', 16, 'xlim', [0 250000], 'title', 't=150 yr', 'fontsize', 12, ...
-	'data', 'mesh', 'amr', 31, 'xlim', [0 250000], 'title', 't=300 yr', 'fontsize', 12, ...
-	'data', 'mesh', 'amr', 51, 'xlim', [0 250000], 'title', 't=500 yr', 'fontsize', 12);
+    'data', 'mesh', 'amr', 16, 'xlim', [0 250000], 'title', 't=150 yr', 'fontsize', 12, ...
+    'data', 'mesh', 'amr', 31, 'xlim', [0 250000], 'title', 't=300 yr', 'fontsize', 12, ...
+    'data', 'mesh', 'amr', 51, 'xlim', [0 250000], 'title', 't=500 yr', 'fontsize', 12);
 ```
 </div>
 <div class="tab" data-api="py" markdown="1">
 ```python
 plotmodel(md, 'data', 'mesh', 'amr', 0, 'xlim', [0, 250000], 'title', 't=1 yr', 'fontsize', 12,
-	'data', 'mesh', 'amr', 15, 'xlim', [0, 250000], 'title', 't=150 yr', 'fontsize', 12,
-	'data', 'mesh', 'amr', 30, 'xlim', [0, 250000], 'title', 't=300 yr', 'fontsize', 12,
-	'data', 'mesh', 'amr', 50, 'xlim', [0, 250000], 'title', 't=500 yr', 'fontsize', 12, 'figure', 3)
+    'data', 'mesh', 'amr', 15, 'xlim', [0, 250000], 'title', 't=150 yr', 'fontsize', 12,
+    'data', 'mesh', 'amr', 30, 'xlim', [0, 250000], 'title', 't=300 yr', 'fontsize', 12,
+    'data', 'mesh', 'amr', 50, 'xlim', [0, 250000], 'title', 't=500 yr', 'fontsize', 12, 'figure', 3)
 ```
 </div>
 </div>

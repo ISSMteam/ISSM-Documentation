@@ -293,9 +293,9 @@ md.materials.rheology_B(:) = 1.8 * 10^8;
 
 %results of previous run are taken as observations
 md.inversion = m1qn3inversion();
-md.inversion.vx_obs		= md.results.StressbalanceSolution.Vx;
-md.inversion.vy_obs		= md.results.StressbalanceSolution.Vy;
-md.inversion.vel_obs	= md.results.StressbalanceSolution.Vel;
+md.inversion.vx_obs  = md.results.StressbalanceSolution.Vx;
+md.inversion.vy_obs  = md.results.StressbalanceSolution.Vy;
+md.inversion.vel_obs = md.results.StressbalanceSolution.Vel;
 
 %CHANGES START
 md.friction.coefficient(:) = 50;
@@ -304,7 +304,7 @@ md.friction.coefficient(:) = 50;
 md = solve(md, 'Stressbalance');
 %CHANGES START
 plotmodel(md, 'axis#all', 'tight', 'data', md.friction.coefficient, 'caxis', [0 100], 'title', 'coeff first guess', ...
-	'data', md.results.StressbalanceSolution.Vel, 'title', 'modeled velocities')
+    'data', md.results.StressbalanceSolution.Vel, 'title', 'modeled velocities')
 %CHANGES END
 save model2 md
 ```
@@ -355,7 +355,7 @@ md.verbose = verbose(0);
 md = solve(md, 'Stressbalance');
 %CHANGES START
 plotmodel(md, 'axis#all', 'tight', 'data', md.results.StressbalanceSolution.FrictionCoefficient, 'caxis' , [0 100], 'title', 'inferred coeff', ...
-	'data', md.results.StressbalanceSolution.Vel, 'title', 'modeled velocities')
+    'data', md.results.StressbalanceSolution.Vel, 'title', 'modeled velocities')
 %CHANGES END
 ```
 </div>
@@ -422,7 +422,7 @@ md.verbose=verbose(0);
 md = solve(md, 'Stressbalance');
 %CHANGES START
 plotmodel(md, 'axis#all', 'tight', 'data', md.results.StressbalanceSolution.FrictionCoefficient, 'caxis', [0 100], 'title', 'inferred coeff', ...
-	'data', md.results.StressbalanceSolution.Vel, 'title', 'modeled velocities')
+    'data', md.results.StressbalanceSolution.Vel, 'title', 'modeled velocities')
 %CHANGES END
 ```
 </div>
@@ -480,7 +480,7 @@ md.inversion.max_parameters = 100 * ones(md.mesh.numberofvertices, 1);
 md.verbose = verbose(0);
 md = solve(md, 'Stressbalance');
 plotmodel(md, 'axis#all', 'tight', 'data', md.results.StressbalanceSolution.FrictionCoefficient, 'caxis', [0 100], 'title', 'inferred coeff', ...
-	'data', md.results.StressbalanceSolution.Vel, 'title', 'modeled velocities')
+    'data', md.results.StressbalanceSolution.Vel, 'title', 'modeled velocities')
 ```
 </div>
 <div class="tab" data-api="py" markdown="1">
