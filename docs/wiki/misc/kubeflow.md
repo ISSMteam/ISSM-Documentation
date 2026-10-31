@@ -1,7 +1,8 @@
 ---
 title: Kubeflow
 layout: default
-parent: Wiki
+parent: Miscellaneous
+nav_order: 3
 has_toc: false
 ---
 
@@ -15,11 +16,9 @@ has_toc: false
 ----
 
 ## Rancher Desktop
-
 <a href="https://rancherdesktop.io" target="_blank">Download Rancher Desktop</a> to your local machine, install it, and open it. 
 
 ## Docker Hub Account
-
 <a href="https://app.docker.com/signup" target="_blank">Create a Docker Hub account</a>. You will also want to create a repository to push the custom images you build. Call it "deepxde".
 
 Remember to log in to your Docker Hub account from your desktop. To do so, run,
@@ -29,7 +28,6 @@ docker login
 then enter your password. You will only have to do this once. 
 
 ## Building a Custom Image
-
 Make `deepxde/` your working directory, then create a `dockerfile` called "Dockerfile" with contents,
 ```sh
 FROM public.ecr.aws/j1r0q0g6/notebooks/notebook-servers/jupyter-tensorflow-cuda-full:v1.3.0-rc.1
@@ -52,7 +50,7 @@ RUN python3 -m pip install -r /tmp/requirements.txt --quiet --no-cache-dir  -f \
  && rm -f /tmp/requirements.txt
 ```
 
-In the same directory, create another file called "requirements.txt" with contents,
+In the same directory, create another file called `requirements.txt` with contents,
 ```sh
 ipython
 numpy
@@ -87,13 +85,10 @@ docker buildx build --platform linux/amd64 -t <USERNAME>/deepxde:<TAG> .
 replacing `<USERNAME>` with your Docker Hub username and `<TAG>` with the image tag of your choosing. For example, your image tag could be "v1" to indicate version one of the image you are building.
 
 ## Pushing to Docker Hub
-
 After building the image, push to Docker Hub with,
 ```sh
 docker push <USERNAME>/deepxde:<TAG>
 ```
 
 ## Kubeflow
-
 Go to the Notebooks tab and create a new server. Select 'custom image' and enter `<USERNAME>/deepxde:<TAG>`. Choose the number of CPUs and GPUs (NVIDIA) you wish to use, and select your existing volume. Once this is done, you will be able to launch the server.
-

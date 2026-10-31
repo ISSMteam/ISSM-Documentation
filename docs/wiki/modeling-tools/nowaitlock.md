@@ -1,15 +1,14 @@
 ---
-title: Submitting jobs
+title: Submitting Jobs
 layout: default
-parent: Wiki
+parent: Modeling Tools
+nav_order: 5
 ---
 
-#Submitting jobs without waiting
-
-It is sometimes convenient to submit jobs and let them run in the background (e.g., no ssh passthrough possible). The easiest way to do this is to run the same step twice, with a variable `loadonly` that indicates whether we want to submit the job (when it is 0) or load results once the job is completed (1).
-It is also convenient to set `'runtimename'` to 0 so that the directory name is predictable since it will only be the model name, without the date and time (make sure to change the model name so that it is unique tough, submitting another job with the same name will overwrite the directory entirely).
-
-```m
+# Submitting Jobs Without Waiting
+It is sometimes convenient to submit jobs and let them run in the background (e.g., no SSH passthrough possible). The easiest way to do this is to run the same step twice, with a variable `loadonly` that indicates whether we want to submit the job (when it is 0) or load results once the job is completed (1).
+It is also convenient to set `'runtimename'` to 0 so that the directory name is predictable since it will only be the model name, without the date and time (make sure to change the model name so that it is unique tough, submitting another job with the same name will overwrite the directory entirely),
+```matlab
 %Do we need to submit the job or download the results?
 loadonly = 0;
 

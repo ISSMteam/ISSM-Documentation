@@ -6,20 +6,24 @@ has_toc: false
 ---
 
 # Wiki
-
-- Modeling tools
-  - [Using organizers in runme.m](organizer)
-  - [Utilities](utilities)
-  - [Preferred toolkits](toolkits)
-  - [Submitting multiple jobs (parameter studies)](multiplejobs)
-  - [Submitting jobs without waiting](nowaitlock)
-  - [Running MATLAB on Pleiades with mcc](mccpfe)
+- Modeling Tools
+  - [Using Organizers in runme.m](./modeling-tools/organizer)
+  - [Utilities](./modeling-tools/utilities)
+  - [Preferred Toolkits](./modeling-tools/toolkits)
+  - [Submitting Multiple Jobs (Parameter Studies)](./modeling-tools/multiple-jobs)
+  - [Submitting Jobs Without Waiting](./modeling-tools/nowaitlock)
+  - [Running MATLAB on Pleiades with `mcc`](./modeling-tools/mccpfe)
 - Development
-  - [Code guidelines for developers](codeguidelines)
-  - [How to debugging crashes](debugging)
-  - [Changelog](changelog)
+  - [Code Guidelines for Developers](./development/code-guidelines)
+  - [ISSM' Architecture](./development/architecture)
+  - [How to Debug Crashes](./development/debugging)
+  - [Regression Tests](./development/regression-tests)
+  - [Adding a New Field](./development/add-field)
+  - [Adding a New Enum](./development/add-enum)
+  - [Changelog](./development/changelog)
 - Miscellaneous
- - [SSH](ssh)
- - [Kubeflow](kubeflow)
- - [Resources](resources)
- - [Validation Guide](validation)
+  - [Coding Tips](./misc/coding-tips)
+  - [SSH](./misc/ssh)
+  - [Kubeflow](./misc/kubeflow)
+  - [Resources](./misc/resources)
+  - [Validation Guide](./misc/validation)

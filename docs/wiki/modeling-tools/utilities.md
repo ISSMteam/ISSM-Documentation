@@ -1,15 +1,14 @@
 ---
 title: Utilities
 layout: default
-parent: Wiki
-nav_order: 1
+parent: Modeling Tools
+nav_order: 2
 ---
 
 # Utilities
 Several utilities are available to help the user to set up models and analyze results. Many of these tools are described below. More in-depth information can be found by running `help <FUNCTION>` in the MATLAB prompt where `<FUNCTION>` is any of the following function names. Note that many of these utilities are also available in Python, but that coverage is not 100&#37;.
 
 ## Mesh
-
 - `triangle` generate a mesh from a domain outline
 - `bamg` anisotropic mesh generation and adaptation
 - `yams` anisotropic mesh adaptation
@@ -18,8 +17,7 @@ Several utilities are available to help the user to set up models and analyze re
 - `MeshQuality` compute mesh quality
 - `rifttiprefine` refine mesh near rift tips
 
-## Model parameterization
-
+## Model Parameterization
 - `extrude` vertically extrude a model
 - `setmask` establish boundaries between grounded and floating ice
 - `modelextract` extract the model over a subdomain
@@ -33,7 +31,6 @@ Several utilities are available to help the user to set up models and analyze re
 - `SetMarineIceSheetBC` set marine ice sheet boundary conditions
 
 ## Mask
-
 - `contourenvelope` create a list of segments enveloping an ARGUS contour
 - `ContourToMesh` get elements and/or nodes inside an ARGUS contour
 - `GetAreas` compute the area of each element
@@ -42,20 +39,17 @@ Several utilities are available to help the user to set up models and analyze re
 - `utm2ll` convert UTM to lat/lon
 
 ## Interpolation
-
 - `InterpFromGridToMesh` interpolation from a grid to a list of (x,y)
 - `InterpFromMeshToGrid` interpolation from a 2D mesh to a grid
 - `InterpFromMeshToMesh2d` interpolation from a 2D mesh to a list of (x,y)
 
-## ARGUS files
-
+## ARGUS Files
 - `expcoarsen` coarsen or refine the resolution a contour
 - `exptool` create and manage ARGUS files
 - `expread` read an ARGUS file
 - `expwrite` write an ARGUS file
 
-## Results analysis
-
+## Results Analysis
 - `averaging` data averaging over a mesh
 - `basalstress` compute the basal stress
 - `contourmassbalance` compute the mass balance of a contour

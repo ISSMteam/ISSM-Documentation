@@ -1,21 +1,21 @@
 ---
 title: Resources
 layout: default
-parent: Wiki
+parent: Miscellaneous
+nav_order: 4
 ---
 
-# ICESat-2 
- - [Openaltimetry](https://openaltimetry.org) helps visualize ICESat-2 data
- - [SlideRule](https://demo.slideruleearth.io/) demo helps visualize ICESat-2 data, while [SlideRule](https://github.com/ICESat2-SlideRule/sliderule) tools help download and process ICESat-2 data 
- - ICESat-2 hackweek [resources](https://icesat-2-2023.hackweek.io/tutorials/index.html) and [github](https://github.com/ICESAT-2HackWeek/ICESat2_hackweek_tutorials) with tutorials and notebooks
+# ICESat-2
+- [Openaltimetry](https://openaltimetry.org) helps visualize ICESat-2 data
+- [SlideRule](https://demo.slideruleearth.io/) demo helps visualize ICESat-2 data, while [SlideRule](https://github.com/ICESat2-SlideRule/sliderule) tools help download and process ICESat-2 data 
+- ICESat-2 hackweek [resources](https://icesat-2-2023.hackweek.io/tutorials/index.html) and [github](https://github.com/ICESAT-2HackWeek/ICESat2_hackweek_tutorials) with tutorials and notebooks
 
 # Computing
- - [CryoCloud](https://hub.cryointhecloud.com/hub/login) cloud-based computing
- - [Docker/Containers](https://git.dartmouth.edu/research-itc-public/intro-containerization/) tutorial and resources
+- [CryoCloud](https://hub.cryointhecloud.com/hub/login) cloud-based computing
+- [Docker/Containers](https://git.dartmouth.edu/research-itc-public/intro-containerization/) tutorial and resources
 
 # Development for ISSM Video Series
-Dr. Eric Larour and members of the ISSM development team have put together a series of videos to introduce viewers to development for ISSM.
-
+Dr. Eric Larour and members of the ISSM development team have put together a series of videos to introduce viewers to development for ISSM:
 - Building ISSM
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/a7WorVjnYZc?si=n-y59DueCo-btINT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 - Message Passing Interface (MPI)
