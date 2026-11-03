@@ -67,7 +67,6 @@ Follow the [detailed instructions for compiling ISSM on Linux](../../linux), and
     --enable-development \
     --enable-debugging \
     --with-numthreads=32 \
-    --without-kml \
     --with-matlab-dir="/usr/local/MATLAB/{{ site.matlab_ver }}" \
     --with-mpi-include="$ISSM_DIR/externalpackages/petsc/install/include" \
     --with-mpi-libflags="-L$ISSM_DIR/externalpackages/petsc/install/lib -lmpi -lmpifort"\
@@ -78,7 +77,6 @@ Follow the [detailed instructions for compiling ISSM on Linux](../../linux), and
     --with-blas-lapack-dir="$ISSM_DIR/externalpackages/petsc/install" \
     --with-scalapack-dir="$ISSM_DIR/externalpackages/petsc/install" \
     --with-mumps-dir="$ISSM_DIR/externalpackages/petsc/install/" \
-    --with-m1qn3-dir="$ISSM_DIR/externalpackages/m1qn3/install" \
     --with-parmetis-dir="$ISSM_DIR/externalpackages/petsc/install/"
 ```
 
@@ -93,75 +91,26 @@ Use the following configuration script (adapt to your needs):
 ```sh
 export CXXFLAGS="-g -O3 -fPIC -std=c++11 -DCODI_ForcedInlines"
 ./configure \
-    --prefix="${ISSM_DIR}" \
-    --enable-development \
-    --enable-debugging \
-    --enable-tape-alloc \
-    --with-numthreads=32 \
-    --without-kriging \
-    --without-Love \
-    --without-Sealevelchange \
-    --with-matlab-dir="/usr/local/MATLAB/{{ site.matlab_ver }}" \
-    --with-mpi-include="${ISSM_DIR}/externalpackages/petsc/install/include" \
-    --with-mpi-libflags="-L${ISSM_DIR}/externalpackages/petsc/install/lib -lmpi -lmpicxx -lmpifort" \
-    --with-fortran-lib="-L/usr/lib/x86_64-linux-gnu -lgfortran" \
-    --with-petsc-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-    --with-adjointpetsc-dir="${ISSM_DIR}/externalpackages/adjointpetsc/install" \
-    --with-metis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-    --with-parmetis-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-    --with-mumps-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-    --with-blas-lapack-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-    --with-scalapack-dir="${ISSM_DIR}/externalpackages/petsc/install" \
-    --with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install" \
-    --with-m1qn3-dir="${ISSM_DIR}/externalpackages/m1qn3/install" \
-    --with-codipack-dir="${ISSM_DIR}/externalpackages/codipack/install" \
-    --with-medipack-dir="${ISSM_DIR}/externalpackages/medipack/install" \
-    --with-gsl-dir="${ISSM_DIR}/externalpackages/gsl/install" 
-```
-
-## Installing ISSM with Solid Earth Capabilities
-For an installation of ISSM with Solid Earth capabilities, you will need to install the following *additional* packages:
-```sh
-autotools    install-linux.sh
-zlib         install-1.sh
-hdf5         install-1.sh
-boost        install-1.7-linux.sh
-chaco        install-linux.sh
-curl         install-7-linux.sh
-netcdf       install-4.sh
-sqlite       install.sh
-proj         install-6.sh
-gdal         install-3-linux.sh
-gshhg        install.sh
-gmt          install-6-pleiades.sh
-gmsh         install-4-pleiades.sh
-m1qn3        install-linux.sh
-```
-
-Use the following configuration script for ISSM (adapt to your needs),
-```sh
-./configure \
-    --prefix="${ISSM_DIR}" \
-    --enable-development \
-    --enable-debugging \
-    --with-numthreads=32 \
-    --with-matlab-dir="/usr/local/MATLAB/{{ site.matlab_ver }}" \
-    --with-mpi-include="$ISSM_DIR/externalpackages/petsc/install/include" \
-    --with-mpi-libflags="-L$ISSM_DIR/externalpackages/petsc/install/lib -lmpi -lmpifort"\
-    --with-fortran-lib="-L/usr/lib/x86_64-linux-gnu -lgfortran" \
-    --with-triangle-dir="$ISSM_DIR/externalpackages/triangle/install" \
-    --with-metis-dir="$ISSM_DIR/externalpackages/petsc/install" \
-    --with-petsc-dir="$ISSM_DIR/externalpackages/petsc/install" \
-    --with-blas-lapack-dir="$ISSM_DIR/externalpackages/petsc/install" \
-    --with-scalapack-dir="$ISSM_DIR/externalpackages/petsc/install" \
-    --with-mumps-dir="$ISSM_DIR/externalpackages/petsc/install/" \
-    --with-m1qn3-dir="$ISSM_DIR/externalpackages/m1qn3/install" \
-    --with-parmetis-dir="$ISSM_DIR/externalpackages/petsc/install/" \
-    --with-hdf5-dir="${ISSM_DIR}/externalpackages/hdf5/install" \
-    --with-boost-dir="${ISSM_DIR}/externalpackages/boost/install" \
-    --with-chaco-dir="${ISSM_DIR}/externalpackages/chaco/install" \
-    --with-proj-dir="${ISSM_DIR}/externalpackages/proj/install" \
-    --with-semic-dir="${ISSM_DIR}/externalpackages/semic/install"
+   --prefix=$ISSM_DIR\
+   --without-Love \
+   --with-matlab-dir="/usr/local/MATLAB/R2021b" \
+   --with-mpi-include=$ISSM_DIR/externalpackages/petsc/install/include  \
+   --with-mpi-libflags="-L$ISSM_DIR/externalpackages/petsc/install/lib -lmpi -lmpicxx -lmpifort"\
+   --with-petsc-dir=$ISSM_DIR/externalpackages/petsc/install \
+   --with-adjointpetsc-dir=$ISSM_DIR/externalpackages/adjointpetsc/install \
+   --with-metis-dir=$ISSM_DIR/externalpackages/petsc/install \
+   --with-parmetis-dir="$ISSM_DIR/externalpackages/petsc/install" \
+   --with-mumps-dir=$ISSM_DIR/externalpackages/petsc/install \
+   --with-blas-lapack-dir=$ISSM_DIR/externalpackages/petsc/install \
+   --with-scalapack-dir=$ISSM_DIR/externalpackages/petsc/install \
+   --with-triangle-dir=$ISSM_DIR/externalpackages/triangle/install \
+   --with-codipack-dir="$ISSM_DIR/externalpackages/codipack/install" \
+   --with-medipack-dir="$ISSM_DIR/externalpackages/medipack/install" \
+   --with-fortran-lib="-L/usr/lib/x86_64-linux-gnu -lgfortran" \
+   --with-numthreads=32 \
+   --enable-tape-alloc \
+   --enable-development \
+   --enable-debugging
 ```
 
 ## Running a Jupyter Notebook on {{ page.machine_name }}
