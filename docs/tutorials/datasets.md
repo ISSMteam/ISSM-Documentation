@@ -27,3 +27,4 @@ If you would prefer to download the datasets manually, use the following links, 
 - [GRACE and supporting datasets for SESAW tutorials](https://issm.ess.uci.edu/files/tutorials/GRACE_and_suporting_datasets.zip){:target="_blank"}
 <div data-marker="datasets-list-end"></div>
 
+**NOTE**: In that case that https://issm.ess.uci.edu is down or otherwise not responding, datasets above that are stored there have been made available also at https://ross.ics.uci.edu/tutorials/.
