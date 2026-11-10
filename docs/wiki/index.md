@@ -21,6 +21,8 @@ has_toc: false
   - [Adding a New Field](./development/add-field)
   - [Adding a New Enum](./development/add-enum)
   - [Changelog](./development/changelog)
+- Finite Element Formulations
+  - [Vertical velocity for depth integrated models](./fem/femvz.md)
 - Miscellaneous
   - [Coding Tips](./misc/coding-tips)
   - [SSH](./misc/ssh)
