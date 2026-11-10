@@ -1,6 +1,7 @@
 ---
 title: Vertical Velocity
 layout: default
+math: mathjax3
 parent: Wiki
 nav_order: 1
 ---
@@ -144,7 +145,7 @@ w_j\\
 \left[
 \begin{array}{c}
 \vdots \\
-F_{j}\\
+F_{i}\\
 \vdots\\
 \end{array}
 \right]
@@ -192,9 +193,9 @@ $$
 
 ## Elementary load vector
 
-### Without the lower surface
+### Volume term
 
-The elementary load vector has the following shape:
+The volume part of the elementary load vector has the following shape:
 
 $$
 F_{i} =
