@@ -1,5 +1,5 @@
 ---
-title: Vertical Velocity for Depth Integrated Models
+title: Vertical Velocity
 layout: default
 parent: Wiki
 nav_order: 1
