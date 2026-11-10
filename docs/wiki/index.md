@@ -22,6 +22,7 @@ has_toc: false
   - [Adding a New Enum](./development/add-enum)
   - [Changelog](./development/changelog)
 - Finite Element Formulations
+  - [Shelfy-Stream Approximation (SSA)](./fem/femssa)
   - [Vertical velocity for depth integrated models](./fem/femvz)
 - Miscellaneous
   - [Coding Tips](./misc/coding-tips)
