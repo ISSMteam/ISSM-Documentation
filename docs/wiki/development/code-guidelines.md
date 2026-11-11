@@ -14,48 +14,45 @@ nav_order: 1
 # C/C++
 `if/for` should follow these guidelines:
 - No space between if/for and its statement
-- If an if/for holds on one line, then do not use brackets
-- Otherwise, use brackets,
+- If an if/for holds on one line, then do not use brackets. Otherwise, use brackets,
 ```c
-for(int i=0;i<n;i++)  A[i]=i;
+  for(int i=0;i<n;i++) A[i]=i;
 
-for(int i=0;i<n;i++){
+  for(int i=0;i<n;i++){
     A[i]=B[i];
     B[i]=0;
-}
+  }
 
-if(a==0) bool=true;
+  if(a==0) bool=true;
 
-if(a==0)
-    bool=true;
-else if(a==1)
-    bool=false;
-else
-    _error_("a=" << a << " not supported");
+  if(a==0)
+      bool=true;
+  else if(a==1)
+      bool=false;
+  else
+      _error_("a=" << a << " not supported");
 
-if(a==0){
-    output=true;
-    c=b;
-}
-else{
-    output=false;
-    c=a;
-}
+  if(a==0){
+      output=true;
+      c=b;
+  }
+  else{
+      output=false;
+      c=a;
+  }
 ```
-
 - Comments should follow the code indentation and there should not be any blank line between a comment and the code it is referring to,
 ```c
-    /*Assigning values of A*/
-    for(int i=0;i<n;i++){
+  /*Assigning values of A*/
+  for(int i=0;i<n;i++){
 
-       /*The comment here is indented*/
-       A[i]=i;
-    }
+      /*The comment here is indented*/
+      A[i]=i;
+  }
 ```
-
 - Function declaration should hold on one line only,
 ```c
-bool Test(int a,double b,char* c){
+  bool Test(int a,double b,char* c){
 ```
 
 # MATLAB
