@@ -42,17 +42,17 @@ Tests are organized as follows:
 
 Go to `test/NightlyRun`. To run a test without checking whether it worked or not, just type: `test<N>` in MATLAB, where `<N>` is the test number. To check whether the results of that test are still consistent with the archive,
 ```matlab
->> runme('id',<N>)
+>> runme('id', <N>)
 ```
 
 For tests > 1000, you will need to specify that you want to use all the benchmarks,
 ```matlab
->> runme('id',<N>,'benchmark','all')
+>> runme('id', <N>, 'benchmark', 'all')
 ```
 
 If you would like to test a specific feature, you can use the function `IdFromString`. For example, if you would like to run all the tests that use Dakota, run,
 ```matlab
->> runme('id',IdFromString('Dakota'))
+>> runme('id', IdFromString('Dakota'))
 ```
 You should see a list of results that say `SUCCESS`.
 
@@ -76,16 +76,16 @@ At the end of the file make sure to include `field_names`, `field_tolerances` an
 
 Run the following command to create the archive (the archive gives the reference values for all the fields that are checked),
 ```matlab
->> runme('id',<N>,'procedure','update')
+>> runme('id', <N>, 'procedure', 'update')
 ```
 
 **NOTE**: The default benchmark used by the test driver is 'nightly', which includes only tests in the range 1-999. If you are manually running a test outside of this range, make sure to pass in the appropriate benchmark option.
 
 The new/modified archive will be located in `$ISSM_DIR/test/Archives` in binary format (`.arch`) and is the same for the Python test if you create one as well. Now if you run,
 ```matlab
->> runme('id',<N>)
+>> runme('id', <N>)
 ```
-you should see 'SUCCESS' everywhere. If not, you have to adjust the tolerances slightly.
+you should see `SUCCESS` everywhere. If not, you have to adjust the tolerances slightly.
 
 **NOTE:** Create/modify the corresponding `test<N>.py`. However, you do not need to create/update the archive again. There has been an increasing demand for and use of Python for over a decade. If this is not your scripting language of choice, or you are otherwise having difficulty translating the test from MATLAB to Python, please [reach out to the core ISSM developers on GitHub](https://github.com/ISSMteam/ISSM/issues){:target="_blank"} for assistance.
 
@@ -96,7 +96,7 @@ git add ./test/NightlyRun/test<N>.m ./test/NightlyRun/test<N>.py ./test/Archives
 ```
 then,
 ```sh
-git commit –m "Added new regression test to check <CAPABILITIES>"
+git commit –m "NEW: Added new regression test to check <CAPABILITIES>"
 git push
 ```
 with an appropriate message. Otherwise you can simply update the archive and commit the changes.
