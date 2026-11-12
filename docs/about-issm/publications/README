@@ -1,4 +1,4 @@
-This directory contains scripts and other resources for generating publication references formatted for inclusion on the for inclusion in the online ISSM documentation (`https://issmteam.github.io/ISSM-Documentation/publications`).
+This directory contains scripts and other resources for generating publication references formatted for inclusion on the for inclusion in the online ISSM documentation (`https://issmteam.github.io/ISSM-Documentation/about-issm/publications/`).
 
 ## Instructions
 `./doi/` contains a series of text files that are named after years. Each of files contains a series of DOI's, one per line, that correspond to publications from that year.
@@ -7,21 +7,21 @@ This directory contains scripts and other resources for generating publication r
 
 IMPORTANT: These files *must* end with a blank line in order to be parsed correctly.
 
-- It is good practice to check locally before committing that all DOI's in a file are unique. One way to do this is,
+- It is good practice to check locally that all DOI's in a file are unique before committing. One way to do this is,
 ````
 tempfile=$(mktemp)
 cat -n ./doi/<year> | sort -uk2 | sort -nk1 | cut -f2- > ${tempfile}
 yes | mv ${tempfile} ./doi/<year>
 ````
 - After adding a new DOI or year, commit the changes to the repository.
-- A workflow (`../../.github/workflows/publications.sh`) will generate a new page (`./index.md`) for inclusion in the online ISSM documentation (`https://issmteam.github.io/ISSM-Documentation/publications`).
+- A workflow (`../../.github/workflows/publications.sh`) will generate a new page (`./index.md`) for inclusion in the online ISSM documentation (`https://issmteam.github.io/ISSM-Documentation/about-issm/publications/`).
 
 ### Local Use
 From a local copy of this directory, run,
 ````
 ./bin/generate_publications_page.sh
 ````
-to markup for the ISSM Documentation 'Publications' page.
+to generate markup for the ISSM Documentation 'Publications' page.
 
 To generate markup for all of the DOI's, run,
 ````

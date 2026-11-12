@@ -35,5 +35,7 @@ NOTE: This file was generated automatically by .github/workflows/publications.ym
 
 ----
 
-The following is a list of articles that feature research conducted in whole or in part using ISSM, as well as articles that cite ISSM."
+The following is a list of articles that feature research conducted in whole or in part using ISSM, as well as articles that cite ISSM.
+
+For an extensive list of publications, including that simply reference ISSM, please see the [JEME Dashboard](https://nasa-jpl.github.io/JEME/ISSM){:target=\"_blank\"}."
 $(dirname "$0")/issm_pub_list.sh

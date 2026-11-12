@@ -17,6 +17,8 @@ NOTE: This file was generated automatically by .github/workflows/publications.ym
 
 The following is a list of articles that feature research conducted in whole or in part using ISSM, as well as articles that cite ISSM.
 
+For an extensive list of publications, including that simply reference ISSM, please see the [JEME Dashboard](https://nasa-jpl.github.io/JEME/ISSM){:target="_blank"}.
+
 ## 2026
 - Goldberg, D. N., Morlighem, M., & Gourmelen, N. (2026). Recent Observations of Thwaites Glacier, West Antarctica Are Consistent With High Rates of Loss in Next 50 Years. Geophysical Research Letters, 53(5). [https://doi.org/10.1029/2025GL118823](https://doi.org/10.1029/2025GL118823){:target="_blank"}
 
