@@ -182,7 +182,7 @@ where `<MATLAB_PATH>` is the path to the MATLAB installation that you wish to us
     --with-petsc-dir="${ISSM_DIR}/externalpackages/petsc/install" \
     --with-triangle-dir="${ISSM_DIR}/externalpackages/triangle/install"
 ```
-You can change `--with-python` to whichever python you will be using (e.g., `--with-python="/usr/bin/python3`)
+You can change `--with-python` to whichever python you will be using (e.g., `--with-python="/usr/bin/python3"`)
 </div>
 </div>
 
