@@ -3,7 +3,7 @@ title: Vertical Velocity
 layout: default
 math: mathjax3
 parent: Wiki
-nav_order: 1
+has_toc: false
 ---
 
 # Finite Element Formulation of Vertical Speed for Depth Integrated Models
